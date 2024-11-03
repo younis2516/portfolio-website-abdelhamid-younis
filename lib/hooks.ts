@@ -12,6 +12,6 @@ export function useScrollIntoView(sectionName:SectionName,threshold:number) {
         if (inView && Date.now() - timeOfLastClick > 1000) {
             setActiveSection(sectionName)
         }
-    }, [timeOfLastClick, setActiveSection, inView])
+    }, [timeOfLastClick, setActiveSection, inView,sectionName])
     return {ref}
 }
