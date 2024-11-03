@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "npm run dev",
+    "build": "npm run build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -39,5 +39,9 @@
   "devDependencies": {
     "@types/mailgun-js": "^0.22.18",
     "@types/react-vertical-timeline-component": "^3.3.6"
-  }
+  },
+  "engines": {
+  "node": ">=16.x",
+  "react": ">=18.x"
+}
 }
