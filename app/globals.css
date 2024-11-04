@@ -3,11 +3,25 @@
 @tailwind utilities;
 
 html{
-    --line-color: #e5e7eb 
+    --line-color: #e5e7eb
 }
 html.dark{
     --line-color:rgba(255,255,255,0.15)
 }
 .borderBlack{
      @apply border border-black/10
+}
+html,
+body {
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+}
+section {
+    box-sizing: border-box;
+    /* Ensures padding/border don’t add to total width */
+}
+
+ul li {
+    white-space: nowrap;
 }

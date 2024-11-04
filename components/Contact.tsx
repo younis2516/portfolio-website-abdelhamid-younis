@@ -13,14 +13,14 @@ export default function Contact() {
     const { ref } = useScrollIntoView("Contact", 0.5)
     const [formData, setFormData] = useState<FormData | undefined | null>()
     return (
-        <motion.section id="contact" ref={ref} className='text-center flex flex-col gap-10 mb-20 scroll-mt-28 w-[min(100%,38rem)]'
+        <motion.section id="contact" ref={ref} className='text-center items-center justify-center flex flex-col gap-10 mb-20 scroll-mt-28 w-[min(100%,48rem)] mt-20'
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{duration:1}}
         >
             <SectionHeading>Get in Touch</SectionHeading>
             <p className='font-normal text-base text-gray-700 -mt-12 dark:text-white/80'>Please contact me directly at <a href='mailto:abdelhamiduonis@hotmail.com' className='underline'>abdelhamiduonis@hotmail.com</a> <br></br> or through this form.</p> 
-            <form className='flex flex-col dark:text-black -mt-4 dark:text-black'
+            <form className='flex flex-col w-full pr-10 pl-10 sm:pr-20 sm:pl-20 dark:text-black -mt-4 dark:text-black'
                 action={async (formData:FormData) => {
                     const { data, error } = await sendEmail(formData)
                     if (error) {

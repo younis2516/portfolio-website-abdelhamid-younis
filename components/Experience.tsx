@@ -11,7 +11,7 @@ const Experience = () => {
     const { ref } = useScrollIntoView("Experience", 0.3)
     const {theme}= useTheme()
   return (
-      <section id='experience' className="scroll-mt-28" ref={ref}>
+      <section id='experience' className="scroll-mt-28 mt-20 mr-5 ml-5 sm:mr-20 sm:ml-20" ref={ref}>
           <SectionHeading>Experience</SectionHeading>
           <VerticalTimeline lineColor={''}> 
               {experiencesData.map((experienceItem, index) => (

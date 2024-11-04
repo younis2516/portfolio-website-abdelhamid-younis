@@ -12,7 +12,7 @@ const fadeInAnimationVariance = {
 const Skills = () => {
     const { ref}=useScrollIntoView('Skills',0.8)
   return (
-      <section className='flex flex-col justify-center items-center mr-40 ml-40 scroll-mt-28' ref={ref} id='skills'>
+      <section className='flex flex-col justify-center items-center mr-10 ml-10 sm:mr-20 sm:ml-20 scroll-mt-28 mt-20' ref={ref} id='skills'>
           <SectionHeading>Skills</SectionHeading>
           {
           <ul  className='flex justify-center items-center flex-wrap gap-4'>

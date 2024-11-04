@@ -12,7 +12,7 @@ function Intro() {
     const { ref } = useScrollIntoView("Home", 0.5)
     const {setActiveSection,setTimeOfLastClick} = useActiveSectionContext()
   return (
-      <section id='home' className='text-center sm:mb-0 scroll-mt-[100rem]' >
+      <section id='home' className='text-center mr-4 ml-4 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 scroll-mt-[100rem]' >
           <div className='flex items-center justify-center'>
               <div className='relative'>
                   <motion.div
@@ -41,7 +41,7 @@ function Intro() {
           <motion.p
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity:1,y:0}}
-              className='mb-2 ml-40 mr-40 text-center mt-10 px-4 text-lg font-medium !leading-[1.5] sm:text-xl'
+              className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-medium !leading-[1.5] sm:text-xl'
           > <span className='font-bold text-3xl mb-6'> Hello I'm Abdelhamid<br/> </span> 📍 Based in Vienna. 
               Now I am working with an awesome team @ REWE Group to design their self-checkout and point-of-sale devices. I speak fluent English and very good german. And I have been living in Austria for the past 5 years.</motion.p>
 
@@ -51,16 +51,16 @@ function Intro() {
               transition={{
                   delay:0.1
               }}
-              className='flex text-lg font-medium flex-col sm:flex-row items-cente pt-4 gap-4 justify-center'>
+              className='flex text-lg font-medium flex-col sm:flex-row items-center pt-4 gap-4 justify-center'>
               <Link href={'#contact'}
-                  className='group bg-gray-900 outline-none focus:scale-110 hover:scale-110 hover:bg-gray950 active:scale-105 transition text-white px-7 py-3 flex items-center gap-2 rounded-full'
+                  className='group bg-gray-900 outline-none focus:scale-110 hover:scale-110 hover:bg-gray950 active:scale-105 transition text-white px-7 py-3 flex items-center justify-center gap-2 rounded-full w-full sm:w-auto'
                   onClick={() => {
                       setActiveSection("Contact")
                       setTimeOfLastClick(Date.now())
                   }}
-              >Contact me <BsArrowRight className='opacity-70 group-hover:translate-x-1 transition ' /></Link>
-              <a download={true} href='/Abdelhamid CV Updated.docx.pdf' className='group bg-white text-gray-900 outline-none transition px-7 py-3 flex items-center gap-2 rounded-full cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 '>Download CV <HiDownload className='opacity-70 group-hover:translate-y-1 transition' /> </a>
-              <a href='https://www.linkedin.com/in/abdelhamid-younis-17168086/' className='bg-white text-gray-700 p-4 flex focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition items-center gap-2 rounded-full cursor-pointer border borderBlack dark:text-white/60 dark:bg-white/10 ' target='_blank'> <BsLinkedin /> </a>
+              >Contact me <BsArrowRight className='opacity-70 group-hover:translate-x-1 transition' /></Link>
+              <a download={true} href='/Abdelhamid CV Updated.docx.pdf' className='group w-full sm:w-auto bg-white text-gray-900 outline-none transition px-7 py-3 flex items-center gap-2 rounded-full cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60 justify-center items-center focus:scale-110 hover:scale-110'>Download CV <HiDownload className='opacity-70 group-hover:translate-y-1 transition' /> </a>
+              <a href='https://www.linkedin.com/in/abdelhamid-younis-17168086/' className='bg-white w-full sm:w-auto text-gray-700 p-4 flex focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition items-center gap-2 rounded-full cursor-pointer border borderBlack dark:text-white/60 dark:bg-white/10 justify-center items-center block' target='_blank'> <BsLinkedin /> </a>
               {/* <a className='bg-white text-gray-700 p-4 focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition flex items-center gap-2 rounded-full cursor-pointer border border-black/10' target='_blank'> <FaGithubSquare/> </a>   */}
           </motion.div>
     </section>
