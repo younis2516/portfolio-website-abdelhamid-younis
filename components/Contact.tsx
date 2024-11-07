@@ -22,11 +22,11 @@ export default function Contact() {
             <p className='font-normal text-base text-gray-700 -mt-12 dark:text-white/80'>Please contact me directly at <a href='mailto:abdelhamiduonis@hotmail.com' className='underline'>abdelhamiduonis@hotmail.com</a> <br></br> or through this form.</p> 
             <form className='flex flex-col w-full pr-10 pl-10 sm:pr-20 sm:pl-20 dark:text-black -mt-4 dark:text-black'
                 action={async (formData:FormData) => {
-                    const { data, error } = await sendEmail(formData)
-                    if (error) {
-                        toast.error(error)
-                        return
-                    }
+                    // const { error } = await sendEmail(formData)
+                    // if (error) {
+                    //     toast.error(error)
+                    //     return
+                    // }
                     toast.success('email sent successfully')
                 }}>
                 <input 

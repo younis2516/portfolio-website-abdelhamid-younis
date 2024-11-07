@@ -17,26 +17,26 @@ export const sendEmail = async (formData: FormData) => {
                 return {error:"invalid message"}
         }
         let data
-        try {
-                data = await resend.emails.send(
-                        {
-                                from: "Hi 👋 from Abdelhamid  <onboarding@resend.dev>",
-                                to: "abdelhamiduonis@gmail.com",
-                                subject: "Hello from Abdelhamid",
-                                reply_to: senderEmail, 
-                                text:message
-                                // react: React.createElement(ContactFormEmail, {
-                                //         message: message as string,
-                                //         senderEmail: senderEmail as string
-                                // }) 
-                        }
-                )
-        } catch (error: unknown) {
-                return {
-                        error:getErrorMessage(error )
-                }
-        }
-        return {
-                data
-        }
+        // try {
+        //         data = await resend.emails.send(
+        //                 {
+        //                         from: "Hi 👋 from Abdelhamid  <onboarding@resend.dev>",
+        //                         to: "abdelhamiduonis@gmail.com",
+        //                         subject: "Hello from Abdelhamid",
+        //                         reply_to: senderEmail, 
+        //                         text:message
+        //                         // react: React.createElement(ContactFormEmail, {
+        //                         //         message: message as string,
+        //                         //         senderEmail: senderEmail as string
+        //                         // }) 
+        //                 }
+        //         )
+        // } catch (error: unknown) {
+        //         return {
+        //                 error:getErrorMessage(error )
+        //         }
+        // }
+        // return {
+        //         data
+        // }
 }
