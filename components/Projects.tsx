@@ -5,10 +5,10 @@ import { projectsData } from '@/lib/data'
 import Project from './Project'
 import { useScrollIntoView } from '@/lib/hooks'
 const Projects = () => {
-    const [selectedType, setSelectedType] = useState<string | null>(null);
+    const [selectedType, setSelectedType] = useState<string | null>('All');
     const { ref } = useScrollIntoView('Projects', 0.3)
-    const projectTypes = ["Self checkout", "Saas App", "Data heavy app", "Student project"];
-    const filteredProjects = selectedType
+    const projectTypes = [ "All","Self checkout", "Saas App", "Data heavy app", "Student project"];
+    const filteredProjects = selectedType !="All"
     ? projectsData.filter((project) => project.project_type === selectedType)
         : projectsData;
     
