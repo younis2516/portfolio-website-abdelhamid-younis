@@ -15,7 +15,7 @@ const Projects = () => {
       <section
           ref={ref}
           id='projects'
-          className='scroll-mt-28 ml-10 mr-10 sm:ml-20 sm:mr-20 justify-center items-center mt-20'
+          className='scroll-mt-28 ml-5 mr-5 sm:ml-20 sm:mr-20 justify-center items-center mt-20'
       
       >
           <SectionHeading>Projects</SectionHeading>
@@ -23,7 +23,7 @@ const Projects = () => {
         {ProjectTypes?.map((type) => (
           <button
             key={type}
-            className={`px-6 py-3 text-base rounded-full transition ${
+            className={`px-5 py-3 text-base rounded-full transition ${
               selectedType === type ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 hover:dark:bg-gray-800"
             }`}
             onClick={() => setSelectedType(selectedType === type ? null : type)}

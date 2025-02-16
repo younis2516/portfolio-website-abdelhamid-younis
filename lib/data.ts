@@ -10,7 +10,7 @@ import portfolio_img_5 from '@/public/portfolio_img_5.png'
 import { StaticImageData } from "next/image";
 
 export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy app" | "Student project"
-export const ProjectTypes:project_type[] = ["All","Data heavy app","Student project","Self checkout","Saas"]
+export const ProjectTypes:project_type[] = ["All","Saas","Data heavy app","Student project","Self checkout"]
 export interface Project{
   title: string,
   description: string,
