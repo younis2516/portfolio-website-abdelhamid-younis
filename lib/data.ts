@@ -96,6 +96,7 @@ export const experiencesData = [
 export const projectsData = [
   {
     title: "Billa service terminal 2022/2023",
+    project_type:"Self checkout",
     description:
       "This project was completed and shipped last year and now live in 4 different supermarkets in Austria. It started with a 4 day design sprint and 2 months later it was in development. I acted as a full-stack designer on this project. ",
     tags: ["Fulltime project", "Live Now", "UI Design", "UX research", "wireframes","Competitor analysis"],
@@ -104,6 +105,7 @@ export const projectsData = [
   },
   {
     title: "Tubics Video Optimization Tool 2021",
+     project_type:"Saas App",
     description:
       "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics’s most used feature accounting to 70% of the session time on the app. ",
     tags: [" Full time project","Live now","UX/UI Design","User Analytics","Wireframes","Design system ","Usability Testing "],
@@ -112,6 +114,7 @@ export const projectsData = [
   },
   {
     title: "App Radar UI Redesign 2022",
+     project_type:"Data heavy app",
     description:
       "In late 2022, I worked with www.appradar.com to redesign some pages in their old app. This project lasted for 3 months and I got very positive feedback on it. They also alpha-released it to selected clients and its now live since February 2023.",
     tags: [" Freelance project","Live now ","UX/UI Design","Competitor analysis"],
@@ -120,6 +123,7 @@ export const projectsData = [
     },
   {
     title: "Tubics's Design System & documentation 2021",
+     project_type:"Data heavy app",
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
     tags: ["Full time project","UX/UI Design","Design system"],
@@ -128,6 +132,7 @@ export const projectsData = [
     },
   {
     title: "HCI Project: Grocery Shopping Bot 2020 ",
+     project_type:"Student project",
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. ",
     tags: ["HCI student project","Persona Interviews","Design thinking","UX/UI Design","Competitor analysis"],
