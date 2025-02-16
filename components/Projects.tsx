@@ -1,13 +1,12 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import SectionHeading from './Section_heading'
-import { projectsData } from '@/lib/data'
+import { project_type, projectsData, ProjectTypes } from '@/lib/data'
 import Project from './Project'
 import { useScrollIntoView } from '@/lib/hooks'
 const Projects = () => {
     const [selectedType, setSelectedType] = useState<string | null>('All');
     const { ref } = useScrollIntoView('Projects', 0.3)
-    const projectTypes = [ "All","Self checkout", "Saas App", "Data heavy app", "Student project"];
     const filteredProjects = selectedType !="All"
     ? projectsData.filter((project) => project.project_type === selectedType)
         : projectsData;
@@ -21,7 +20,7 @@ const Projects = () => {
       >
           <SectionHeading>Projects</SectionHeading>
           <div className="flex justify-center flex-wrap gap-4 mb-10">
-        {projectTypes.map((type) => (
+        {ProjectTypes?.map((type) => (
           <button
             key={type}
             className={`px-6 py-3 text-base rounded-full transition ${

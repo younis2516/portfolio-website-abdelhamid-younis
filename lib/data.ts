@@ -7,8 +7,18 @@ import portfolio_img_2 from '@/public/portfolio_img_2.png'
 import portfolio_img_3 from '@/public/portfolio_img_3.png'
 import portfolio_img_4 from '@/public/portfolio_img_4.png'
 import portfolio_img_5 from '@/public/portfolio_img_5.png'
+import { StaticImageData } from "next/image";
 
-
+export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy app" | "Student project"
+export const ProjectTypes:project_type[] = ["All","Data heavy app","Student project","Self checkout","Saas"]
+export interface Project{
+  title: string,
+  description: string,
+  project_type: project_type,
+  tags:string[],
+  link: string,
+  imageUrl:StaticImageData
+}
 export const links = [
   {
     name: "Home",
@@ -93,7 +103,7 @@ export const experiencesData = [
   },
 ] as const;
 
-export const projectsData = [
+export const projectsData:Project[] = [
   {
     title: "Billa service terminal 2022/2023",
     project_type:"Self checkout",
@@ -105,7 +115,7 @@ export const projectsData = [
   },
   {
     title: "Tubics Video Optimization Tool 2021",
-     project_type:"Saas App",
+     project_type:"Saas",
     description:
       "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics’s most used feature accounting to 70% of the session time on the app. ",
     tags: [" Full time project","Live now","UX/UI Design","User Analytics","Wireframes","Design system ","Usability Testing "],
