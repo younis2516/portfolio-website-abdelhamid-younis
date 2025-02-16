@@ -19,7 +19,7 @@ const Projects = () => {
       
       >
           <SectionHeading>Projects</SectionHeading>
-          <div className="flex justify-center flex-wrap gap-4 mb-10">
+          <div className="flex justify-center flex-wrap gap-4 sm:gap-2 mb-10">
         {ProjectTypes?.map((type) => (
           <button
             key={type}
