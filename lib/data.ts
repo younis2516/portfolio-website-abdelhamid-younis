@@ -7,6 +7,8 @@ import portfolio_img_2 from '@/public/portfolio_img_2.png'
 import portfolio_img_3 from '@/public/portfolio_img_3.png'
 import portfolio_img_4 from '@/public/portfolio_img_4.png'
 import portfolio_img_5 from '@/public/portfolio_img_5.png'
+import portfolio_img_6 from '@/public/portfolio_img_6.png'
+
 import { StaticImageData } from "next/image";
 
 export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy app" | "Student project"
@@ -17,7 +19,8 @@ export interface Project{
   project_type: project_type,
   tags:string[],
   link: string,
-  imageUrl:StaticImageData
+  imageUrl: StaticImageData
+  year:string
 }
 export const links = [
   {
@@ -109,8 +112,9 @@ export const projectsData:Project[] = [
     project_type:"Self checkout",
     description:
       "This project was completed and shipped last year and now live in 4 different supermarkets in Austria. It started with a 4 day design sprint and 2 months later it was in development. I acted as a full-stack designer on this project. ",
-    tags: ["Fulltime project", "Live Now", "UI Design", "UX research", "wireframes","Competitor analysis"],
+    tags: ["Fulltime", "Live Now", "UX research", "wireframes","Competitor analysis"],
     imageUrl: portfolio_img_1,
+    year:"2023",
     link:'https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11'
   },
   {
@@ -118,17 +122,19 @@ export const projectsData:Project[] = [
      project_type:"Saas",
     description:
       "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics’s most used feature accounting to 70% of the session time on the app. ",
-    tags: [" Full time project","Live now","UX/UI Design","User Analytics","Wireframes","Design system ","Usability Testing "],
+    tags: [" Full time","Live now","User Analytics","Wireframes","Usability Testing"],
     imageUrl: portfolio_img_2,
+    year:"2021",
     link:'https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12'
   },
   {
     title: "App Radar UI Redesign 2022",
-     project_type:"Data heavy app",
+    project_type:"Data heavy app",
     description:
       "In late 2022, I worked with www.appradar.com to redesign some pages in their old app. This project lasted for 3 months and I got very positive feedback on it. They also alpha-released it to selected clients and its now live since February 2023.",
-    tags: [" Freelance project","Live now ","UX/UI Design","Competitor analysis"],
+    tags: ["Freelance","Live now ","Competitor analysis"],
     imageUrl: portfolio_img_4,
+    year:"2022",
     link:"https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16"
     },
   {
@@ -136,20 +142,32 @@ export const projectsData:Project[] = [
      project_type:"Data heavy app",
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
-    tags: ["Full time project","UX/UI Design","Design system"],
+    tags: ["Full time","Design system","Research","low code"],
     imageUrl: portfolio_img_3,
+    year:"2021",
     link:'https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22'
-    },
+  },
   {
     title: "HCI Project: Grocery Shopping Bot 2020 ",
      project_type:"Student project",
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. ",
-    tags: ["HCI student project","Persona Interviews","Design thinking","UX/UI Design","Competitor analysis"],
+    tags: ["HCI student project","Persona Interviews","Design thinking","Competitor analysis"],
     imageUrl: portfolio_img_5,
+    year:"2020",
     link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15'
   },
-] as const;
+  {
+    title: "Wuzzuf Hiring dashboard 2019",
+    project_type:"Data heavy app",
+    description:
+      "Worked is the biggest job portal in Egypt and one of the biggest in the middle-east with over 30,000 employers and 20+ million job seekers. I worked at Wuzzuf in 2019 as a UX designer. This project was done in collab with product managers, developers, and the customer-success-team. It was released in summer 2019.",
+    tags: ["Full time","UX/UI Design","Usablity testing","Data heavy"],
+      imageUrl: portfolio_img_6,
+    year:"2019",
+    link:'https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24'
+    },
+] as Project[];
 
 export const skillsData = [
     "Figma",
