@@ -11,8 +11,8 @@ import portfolio_img_6 from '@/public/portfolio_img_6.png'
 
 import { StaticImageData } from "next/image";
 
-export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy app" | "Student project"
-export const ProjectTypes:project_type[] = ["All","Saas","Data heavy app","Student project","Self checkout"]
+export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy" | "Student project"
+export const ProjectTypes:project_type[] = ["All","Saas","Data heavy","Student project","Self checkout"]
 export interface Project{
   title: string,
   description: string,
@@ -129,7 +129,7 @@ export const projectsData:Project[] = [
   },
   {
     title: "App Radar UI Redesign 2022",
-    project_type:"Data heavy app",
+    project_type:"Data heavy",
     description:
       "In late 2022, I worked with www.appradar.com to redesign some pages in their old app. This project lasted for 3 months and I got very positive feedback on it. They also alpha-released it to selected clients and its now live since February 2023.",
     tags: ["Freelance","Live now ","Competitor analysis"],
@@ -139,7 +139,7 @@ export const projectsData:Project[] = [
     },
   {
     title: "Tubics's Design System & documentation 2021",
-     project_type:"Data heavy app",
+     project_type:"Data heavy",
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
     tags: ["Full time","Design system","Research","low code"],
@@ -159,9 +159,9 @@ export const projectsData:Project[] = [
   },
   {
     title: "Wuzzuf Hiring dashboard 2019",
-    project_type:"Data heavy app",
+    project_type:"Data heavy",
     description:
-      "Worked is the biggest job portal in Egypt and one of the biggest in the middle-east with over 30,000 employers and 20+ million job seekers. I worked at Wuzzuf in 2019 as a UX designer. This project was done in collab with product managers, developers, and the customer-success-team. It was released in summer 2019.",
+      "Wuzzuf is the biggest job portal in Egypt with over 30 K employers and 20+ Million job seekers.This project was done in collab with product managers, developers, and the customer-success-team and was released in summer 2019.",
     tags: ["Full time","UX/UI Design","Usablity testing","Data heavy"],
       imageUrl: portfolio_img_6,
     year:"2019",
