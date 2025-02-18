@@ -5,11 +5,16 @@ import { project_type, projectsData, ProjectTypes } from '@/lib/data'
 import Project from './Project'
 import { useScrollIntoView } from '@/lib/hooks'
 const Projects = () => {
-    const [selectedType, setSelectedType] = useState<string | null>('All');
+    const [selectedType, setSelectedType] = useState<project_type | null | undefined >('All');
     const { ref } = useScrollIntoView('Projects', 0.3)
-    const filteredProjects = selectedType !="All"
-    ? projectsData.filter((project) => project.project_type === selectedType)
-        : projectsData;
+  const filteredProjects = projectsData.filter((project) => {
+      if (selectedType === "All" || selectedType === null || selectedType ===undefined) {
+        return true; // Show all projects
+    }
+        return Array.isArray(project.project_type)
+        ? project?.project_type.includes(selectedType)
+        : project?.project_type === selectedType
+      })
     
   return (
       <section
@@ -23,9 +28,9 @@ const Projects = () => {
         {ProjectTypes?.map((type) => (
           <button
             key={type}
-            className={`px-5 py-3 text-base rounded-full transition ${
-              selectedType === type ? "bg-blue-500 text-white" : "bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 hover:dark:bg-gray-800"
-            }`}
+            className={`px-5 py-3 border border-gray-400 text-base rounded-full transition ${
+              selectedType === type ? "bg-blue-500 text-white border-none" : "bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 hover:dark:bg-gray-800"
+                      }`}
             onClick={() => setSelectedType(selectedType === type ? null : type)}
           >
             {type}

@@ -11,16 +11,22 @@ import portfolio_img_6 from '@/public/portfolio_img_6.png'
 
 import { StaticImageData } from "next/image";
 
-export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy" | "Student project"
-export const ProjectTypes:project_type[] = ["All","Saas","Data heavy","Student project","Self checkout"]
+export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy" | "Student project" | "Design system"
+export const ProjectTypes:project_type[] = ["All","Data heavy","Saas","Student project","Self checkout","Design system"]
 export interface Project{
   title: string,
   description: string,
-  project_type: project_type,
+  project_type: project_type|project_type[],
   tags:string[],
   link: string,
   imageUrl: StaticImageData
   year:string
+}
+export type SkillType = "Web Dev" | "Design" | "Business" | "UX Research" | "Language" | "All"| "Other"
+export const SkillTypes:SkillType[] = ["All","Design","UX Research","Web Dev","Language","Other"]
+export interface Skill {
+  skill: string,
+  skill_type:SkillType
 }
 export const links = [
   {
@@ -129,7 +135,7 @@ export const projectsData:Project[] = [
   },
   {
     title: "App Radar UI Redesign 2022",
-    project_type:"Data heavy",
+    project_type:["Data heavy","Saas"],
     description:
       "In late 2022, I worked with www.appradar.com to redesign some pages in their old app. This project lasted for 3 months and I got very positive feedback on it. They also alpha-released it to selected clients and its now live since February 2023.",
     tags: ["Freelance","Live now ","Competitor analysis"],
@@ -139,7 +145,7 @@ export const projectsData:Project[] = [
     },
   {
     title: "Tubics's Design System & documentation 2021",
-     project_type:"Data heavy",
+     project_type:["Data heavy","Saas","Design system"],
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
     tags: ["Full time","Design system","Research","low code"],
@@ -159,7 +165,7 @@ export const projectsData:Project[] = [
   },
   {
     title: "Wuzzuf Hiring dashboard 2019",
-    project_type:"Data heavy",
+    project_type: ["Data heavy","Saas"],
     description:
       "Wuzzuf is the biggest job portal in Egypt with over 30 K employers and 20+ Million job seekers.This project was done in collab with product managers, developers, and the customer-success-team and was released in summer 2019.",
     tags: ["Full time","UX/UI Design","Usablity testing","Data heavy"],
@@ -170,21 +176,36 @@ export const projectsData:Project[] = [
 ] as Project[];
 
 export const skillsData = [
-    "Figma",
-    "UI Design",
-    "UX Research",
-    "Quantitive user research",
-    "Google analytics (intermediate)",
-    "Design systems",
-  "HTML",
-  "CSS",
-  "JavaScript ES6",
-  "TypeScript (intermediate)",
-  "React (intermediate)",
-  "Tan Stack React Query (Basic)",
-  "Next.js (intermediate)",
-  "Tailwind CSS (Basic)",
-  "GraphQL (Basic)",
-  "Framer Motion (Basic)",
-  "German (Intermediate)"
-] as const;
+   {skill: "Figma" , skill_type:"Design"},
+    {skill:"UI Design",skill_type:"Design"},
+    {skill:"UX Research",skill_type:"UX Research"},
+  {skill:"user interviews",skill_type:"UX Research"},
+   {skill: "quantitive user research",skill_type:"UX Research"},
+  {skill:"Google analytics (intermediate)",skill_type:"UX Research"},
+  { skill: "Low code dev", skill_type:"Design"},
+   {skill: "protottyping with variables in Figma",skill_type:"Design"},
+  { skill: "Design systems", skill_type: "Design" },
+  { skill: "Animations in Figma", skill_type: "Design" },
+  { skill: "Zeplin for design handover", skill_type: "Design" },
+  { skill: "Avocode for design versioning", skill_type: "Design" },
+  {skill: "Framer",skill_type:"Design"},
+        {skill: "Design systems",skill_type:"Design"},
+       {skill:"HTML5",skill_type:"Web Dev"},
+  {skill:"CSS3",skill_type:"Web Dev"},
+  {skill:"JavaScript ES6",skill_type:"Web Dev"},
+  {skill:"TypeScript (intermediate)",skill_type:"Web Dev"},
+  {skill:"React (intermediate)",skill_type:"Web Dev"},
+  {skill:"Tan Stack React Query (Basic)",skill_type:"Web Dev"},
+  {skill:"Next.js (intermediate)",skill_type:"Web Dev"},
+  {skill:"MobX state management for react",skill_type:"Web Dev"},
+  {skill:"Tailwind CSS",skill_type:"Web Dev"},
+  {skill:"GraphQL (Basic)",skill_type:"Web Dev"},
+  {skill:"Developing animations with Framer Motion (Basic)",skill_type:"Web Dev"},
+  { skill: "German (Intermediate B2)", skill_type: "Language" },
+  { skill: "English (Fluent C2)", skill_type: "Language" },
+  { skill: "Arabic (Fluent)", skill_type: "Language" },
+  { skill: "Notion", skill_type: "Other" },
+  { skill: "Jira", skill_type: "Other" },
+  { skill: "Hotjar", skill_type: "Other" },
+  {skill: "Mixpanel",skill_type:"Other"},
+] as Skill[];
