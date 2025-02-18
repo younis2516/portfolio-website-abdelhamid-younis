@@ -24,7 +24,7 @@ const Skills = () => {
   return (
       <section className='flex flex-col justify-center items-center mr-10 ml-10 sm:mr-20 sm:ml-20 scroll-mt-28 mt-20' ref={ref} id='skills'>
           <SectionHeading>Skills</SectionHeading>
-          <div className="flex justify-center w-[90%] sm:w-full flex-wrap gap-2 sm:gap-4 mb-10">
+          <div className="flex justify-center w-[90%] sm:w-full sm:flex-nowrap flex-wrap gap-2 sm:gap-4 mb-10">
               {SkillTypes.map(skillType => (
               <button
                   key={skillType}
@@ -40,7 +40,7 @@ const Skills = () => {
           <ul  className='flex justify-center items-center  w-[90%] sm:w-full  flex-wrap gap-4'>
               {filteredSkills.map((skill:Skill, index:number) => (
                   <motion.li
-                      className='bg-gray-200  rounded-full text-lg text-gray-950 pl-4 pr-4 pt-2 pb-2 dark:bg-white/10 dark:text-white/80'
+                      className='bg-gray-200 rounded-full text-lg text-gray-950 pl-4 pr-4 pt-2 pb-2 dark:bg-white/10 dark:text-white/80'
                       key={index}
                       variants={fadeInAnimationVariance}
                       initial="initial"
