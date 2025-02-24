@@ -37,7 +37,7 @@ const Skills = () => {
         </div>
           
           {
-          <ul  className='flex justify-center items-center min-w-[90%] sm:w-full  flex-wrap gap-4'>
+          <ul  className='flex justify-center items-center w-screen mx-5 sm:mx-10 sm:w-90% sm:w-full  flex-wrap gap-4'>
               {filteredSkills.map((skill:Skill, index:number) => (
                   <motion.li
                       className='bg-gray-200 rounded-full text-lg text-gray-950 pl-4 pr-4 pt-2 pb-2 dark:bg-white/10 dark:text-white/80'

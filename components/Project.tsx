@@ -40,7 +40,10 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year}:
                 <div className="pt-4 pb-7  py-4 px-5 sm:pl-10 sm:pr-2 sm:pt-10 w-full sm:max-w-[55%] flex flex-col h-full">
                     <div className='flex gap-3 h-7 items-center inline-block  w-full rounded-md'>
                         <div className='h-7 w-2 bg-blue-500 rounded-full'></div>
-                        <p className='text-sm font-medium mt-4 gap-2 text-gray-500 dark:text-gray-400 justify-center items-center mb-4 tracking-widest w-full'>{typeof(project_type)==="string"?project_type.toUpperCase():project_type.join(", ").toUpperCase()}</p>
+                        <p className='text-sm font-medium mt-4 gap-2 text-gray-500 dark:text-gray-400 justify-center items-center mb-4 tracking-widest w-full'>{
+                            // typeof (project_type) === "string" ? project_type.toUpperCase() : project_type.join(", ").toUpperCase()
+                            project_type[0].toUpperCase()
+                        }</p>
                     </div>
                     <h3 className='text-2xl font-semibold mt-4 gap-2'>{title}</h3> 
                     <p className='bg-gray-300 w-16 flex justify-center mb-1 mt-2 sm:mb-2 sm:mt-4 py-1 mt-2 text-base text-gray-700 dark:bg-gray-600 rounded-full tracking-wider dark:text-white/70'>{year}</p>

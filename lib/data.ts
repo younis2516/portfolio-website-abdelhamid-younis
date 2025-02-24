@@ -114,8 +114,8 @@ export const experiencesData = [
 
 export const projectsData:Project[] = [
   {
-    title: "Billa service terminal 2022/2023",
-    project_type:"Self checkout",
+    title: "Billa service terminal",
+    project_type:["Self checkout"],
     description:
       "This project was completed and shipped last year and now live in 4 different supermarkets in Austria. It started with a 4 day design sprint and 2 months later it was in development. I acted as a full-stack designer on this project. ",
     tags: ["Fulltime", "Live Now", "UX research", "wireframes","Competitor analysis"],
@@ -124,8 +124,8 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11'
   },
   {
-    title: "Tubics Video Optimization Tool 2021",
-     project_type:"Saas",
+    title: "Tubics Video Optimization Tool ",
+     project_type:["Saas"],
     description:
       "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics’s most used feature accounting to 70% of the session time on the app. ",
     tags: [" Full time","Live now","User Analytics","Wireframes","Usability Testing"],
@@ -134,7 +134,7 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12'
   },
   {
-    title: "App Radar UI Redesign 2022",
+    title: "App Radar UI Redesign ",
     project_type:["Data heavy","Saas"],
     description:
       "In late 2022, I worked with www.appradar.com to redesign some pages in their old app. This project lasted for 3 months and I got very positive feedback on it. They also alpha-released it to selected clients and its now live since February 2023.",
@@ -144,8 +144,8 @@ export const projectsData:Project[] = [
     link:"https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16"
     },
   {
-    title: "Tubics's Design System & documentation 2021",
-     project_type:["Data heavy","Saas","Design system"],
+    title: "Tubics's Design System & documentation",
+     project_type:["Design system","Data heavy","Saas",],
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
     tags: ["Full time","Design system","Research","low code"],
@@ -154,8 +154,8 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22'
   },
   {
-    title: "HCI Project: Grocery Shopping Bot 2020 ",
-     project_type:"Student project",
+    title: "HCI Project: Grocery Shopping Bot ",
+     project_type:["Student project"],
     description:
       "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. ",
     tags: ["HCI student project","Persona Interviews","Design thinking","Competitor analysis"],
@@ -164,7 +164,7 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15'
   },
   {
-    title: "Wuzzuf Hiring dashboard 2019",
+    title: "Wuzzuf Hiring dashboard",
     project_type: ["Data heavy","Saas"],
     description:
       "Wuzzuf is the biggest job portal in Egypt with over 30 K employers and 20+ Million job seekers.This project was done in collab with product managers, developers, and the customer-success-team and was released in summer 2019.",
