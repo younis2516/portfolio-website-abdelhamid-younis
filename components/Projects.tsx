@@ -20,9 +20,7 @@ const Projects = () => {
       <section
           ref={ref}
           id='projects'
-          className='scroll-mt-28 ml-5 mr-5 sm:ml-20 sm:mr-20 justify-center items-center mt-20'
-      
-      >
+          className='scroll-mt-28 ml-5 mr-5 sm:ml-20 sm:mr-20 justify-center items-center mt-20'      >
           <SectionHeading>Projects</SectionHeading>
           <div className="flex justify-center flex-wrap gap-2 sm:gap-4 mb-10">
         {ProjectTypes?.map((type) => (
@@ -42,7 +40,6 @@ const Projects = () => {
                   <React.Fragment key={index}>
                       <Project {...project}  />
                   </React.Fragment>
-                  
               ))}
           </div>
     </section>

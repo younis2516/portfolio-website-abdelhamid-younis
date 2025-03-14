@@ -16,9 +16,9 @@ const About = () => {
       id='about'
     >
           <SectionHeading>About me</SectionHeading>
-          <p className='mb-3 text-lg leading-8 sm:mb-40'>Based in 📍Vienna. Beside 6 years of experience as a UX/UI designer. Did master studies in HCI at University of Salzburg and took challenging responsibilities early on in my career as a solo product designer in Hotelkit, and Tubics in Austria, which exposed me to unconventional ways to prototyping, minimum viable user testing, low code development, and jumping between a UX design and research role. Beside this I studied engineering for my bachelor, that made me a problem solver by nature. 
+          <p className='mb-3 text-lg leading-8 sm:mb-40'>Beside <strong>6 years of experience</strong> as a UX/UI designer. I studied part time <strong>Masters in HCI</strong> at the University of Salzburg in Austria. I took challenging responsibilities from the begining of my career as a solo product designer in <strong>Hotelkit</strong>, and <strong>Tubics</strong>Tubics in Austria, which exposed me to unconventional ways of rapid prototyping, <strong>low code development</strong> , user testing, and jumping between a UX design and UX research role. Beside this I studied <strong>Engineering</strong> for my bachelor, which strengthed my problem solving skills. 
 
-Now working with an awesome team @ REWE International (the biggest retailer in Europe) to design their self-checkout and point-of-sale devices. Beside product design, I am coding since 2 years and now i am working as a part-time frontend developer intern at www.suplyd.com </p>
+I am now working with an awesome team @ REWE Group <strong>the biggest retailer in Europe</strong> to design their self-checkout and point-of-sale devices. Beside product design, I am <strong>coding since 2 years</strong> and I did a <strong>part-time frontend developer internship</strong> at www.suplyd.com </p>
     </motion.section>
   )
 }

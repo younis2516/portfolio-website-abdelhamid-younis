@@ -42,8 +42,8 @@ function Intro() {
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity:1,y:0}}
               className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-medium !leading-[1.5] sm:text-xl'
-          > <span className='font-bold text-3xl mb-6'> Hello I'm Abdelhamid<br/> </span> 📍 Based in Vienna. 
-              Now I am working with an awesome team @ REWE Group to design their self-checkout and point-of-sale devices. I speak fluent English and very good german. And I have been living in Austria for the past 5 years.</motion.p>
+          > <span className='font-bold text-3xl mb-6'><strong> Hello I'm Abdelhamid</strong><br/> </span> 📍 Based in Vienna. 
+              Now I am working with an awesome team <strong>@REWE Group</strong> to design their self-checkout and point-of-sale devices. I have been living in Austria for the past 5 years.</motion.p>
 
           <motion.div
               initial={{ opacity: 0, y: 100 }}
