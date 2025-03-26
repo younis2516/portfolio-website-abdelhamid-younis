@@ -157,7 +157,7 @@ export const projectsData:Project[] = [
     title: "HCI Project: Grocery Shopping Bot ",
      project_type:["Student project"],
     description:
-      "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. ",
+      "In summer 2020 i did this project as part of a research project in my HCI master studies at the university of salzburg. It started with a literature research, then persona interviews, design thinking, then prototyping. This project also won 1st place prototype and 2nd place pitch deck in Salzburg startup weekend competition in May 2020",
     tags: ["HCI student project","Persona Interviews","Design thinking","Competitor analysis"],
     imageUrl: portfolio_img_5,
     year:"2020",
