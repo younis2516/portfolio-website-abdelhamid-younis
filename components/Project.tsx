@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import {useScroll,motion, useTransform } from 'framer-motion'
 import { projectsData } from '@/lib/data'
 import Image from 'next/image'
-import { FiExternalLink } from "react-icons/fi";
+import { FiArrowRight, FiExternalLink } from "react-icons/fi";
 
 
 type ProjectProps = {
@@ -40,24 +40,25 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year}:
                 <div className="pt-4 pb-7  py-4 px-5 sm:pl-10 sm:pr-2 sm:pt-10 w-full sm:max-w-[55%] flex flex-col h-full">
                     <div className='flex gap-3 h-7 items-center inline-block  w-full rounded-md'>
                         <div className='h-7 w-2 bg-blue-500 rounded-full'></div>
-                        <p className='text-sm font-medium mt-4 gap-2 text-gray-500 dark:text-gray-400 justify-center items-center mb-4 tracking-widest w-full'>{
+                        <p className='text-sm font-medium mt-4 mr-auto gap-2 text-gray-500 dark:text-gray-400 justify-center items-center mb-4 tracking-widest w-full'>{
                             // typeof (project_type) === "string" ? project_type.toUpperCase() : project_type.join(", ").toUpperCase()
                             project_type[0].toUpperCase()
                         }</p>
-                    </div>
-                    <h3 className='text-2xl font-semibold mt-4 gap-2'>{title}</h3> 
-                    <p className='bg-gray-300 w-16 flex justify-center mb-1 mt-2 sm:mb-2 sm:mt-4 py-1 mt-2 text-base text-gray-700 dark:bg-gray-600 rounded-full tracking-wider dark:text-white/70'>{year}</p>
+                        <p className=' w-16 flex justify-center mb-1 mt-2 sm:mb-2 sm:mt-4 py-1 px-3 mt-2 bg-gray-300 text-base text-gray-700 dark:bg-gray-600 dark:text-white/70 rounded-full tracking-wider '>{year}</p>
 
-                    <p className='mt-2 leading-relaxed text-gray-700 dark:text-white/70'>{description}</p>
-                    <div className=' mt-2 flex flex-row items-center gap-2'>
-                        <a href={link} className='leading-relaxed mb-3 text-gray-700 dark:text-white/70 underline'> Go to project documentation {" "}</a>
-                        <FiExternalLink/>
                     </div>
-                <ul className='flex flex-wrap gap-1 mt-auto'>
+                    <h3 className='text-2xl font-semibold mt-6 gap-2'>{title}</h3> 
+                    <p className='mt-2 leading-relaxed text-gray-700 dark:text-white/70'>{description}</p>
+                
+                <ul className='flex flex-wrap gap-2 mt-4 mb-6'>
                     {tags.sort((a, b) => a.length - b.length).map((tag:String, index:number) => (
-                         <li className='bg-black/[0.7] px-5 py-2 mt-1 sm:mt-2 text-[0.7rem] uppercase text-white rounded-full tracking-wider dark:text-white/70' key={index}>{tag}</li>
+                         <li className=' bg-gray-300 text-base text-gray-700 dark:bg-gray-600 dark:text-white/70 px-3 py-2 sm:mt-2 text-sm rounded-full tracking-wider' key={index}>{tag}</li>
                     ))}
                     </ul>
+                    <div className=' mt-auto flex flex-row  items-center gap-2'>
+                        <div className='flex items-center cursor-pointer justify-center px-3 py-3 text-white dark bg-gray-800 hover:bg-gray-950 dark:bg-gray-500 hover:dark:bg-gray-600 rounded-xl'><FiArrowRight/></div>
+                        <a href={link} className='leading-relaxed  text-gray-700 dark:text-white/70 hover:underline'> Go to project documentation {" "}</a>
+                    </div>
                     
             </div>
             <Image className='absolute hidden sm:block  top-8 sm:-right-40 w-0 sm:w-[28.25rem] rounded-t-lg shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition' src={imageUrl} alt={ title} quality={95} />
