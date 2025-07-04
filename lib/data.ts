@@ -8,11 +8,13 @@ import portfolio_img_3 from '@/public/portfolio_img_3.png'
 import portfolio_img_4 from '@/public/portfolio_img_4.png'
 import portfolio_img_5 from '@/public/portfolio_img_5.png'
 import portfolio_img_6 from '@/public/portfolio_img_6.png'
+import project_img_7 from '@/public/project_img_7.gif'
+
 
 import { StaticImageData } from "next/image";
 
-export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy" | "Student project" | "Design system"
-export const ProjectTypes:project_type[] = ["All","Data heavy","Saas","Student project","Self checkout","Design system"]
+export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy" | "Student project" | "Design system" | "AI"
+export const ProjectTypes:project_type[] = ["All","Data heavy","Saas","Student project","Self checkout","Design system","AI"]
 export interface Project{
   title: string,
   description: string,
@@ -172,6 +174,15 @@ export const projectsData:Project[] = [
       imageUrl: portfolio_img_6,
     year:"2019",
     link:'https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24'
+    },
+    {
+    title: "Coming soon: POS dashboard Built with Figma Make",
+    project_type: ["AI"],
+    description:
+      "In this project I experimented with Figma Make and V0 by Vercel to build a POS dashboard interface, fetching and sending data to a real API",
+    tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
+    year:"2025",
+    imageUrl: project_img_7,
     },
 ] as Project[];
 

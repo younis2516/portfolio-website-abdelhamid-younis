@@ -55,13 +55,16 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year}:
                          <li className=' bg-gray-300 text-base text-gray-700 dark:bg-gray-600 dark:text-white/70 px-3 py-2 sm:mt-2 text-sm rounded-full tracking-wider' key={index}>{tag}</li>
                     ))}
                     </ul>
-                    <div className=' mt-auto flex flex-row  items-center gap-2'>
+                    {link&&link.length>0?(<div className=' mt-auto flex flex-row  items-center gap-2'>
                         <div className='flex items-center cursor-pointer justify-center px-3 py-3 text-white dark bg-gray-800 hover:bg-gray-950 dark:bg-gray-500 hover:dark:bg-gray-600 rounded-xl'><FiArrowRight/></div>
                         <a href={link} className='leading-relaxed  text-gray-700 dark:text-white/70 hover:underline'> Go to project documentation {" "}</a>
-                    </div>
+                    </div>):""}
                     
             </div>
-            <Image className='absolute hidden sm:block  top-8 sm:-right-40 w-0 sm:w-[28.25rem] rounded-t-lg shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition' src={imageUrl} alt={ title} quality={95} />
+            {project_type.includes("AI")?
+            (<div className='absolute hidden sm:block p-12 h-[28rem] top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-purple-100 rounded-t-lg shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition'><Image className='' src={imageUrl} alt={ title} quality={95} /></div>):
+            (<Image className='absolute hidden sm:block  top-8 sm:-right-40 w-0 sm:w-[28.25rem] rounded-t-lg shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition' src={imageUrl} alt={ title} quality={95} />)
+            }
         </section>  
             </motion.div>        
     ) 
