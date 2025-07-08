@@ -14,7 +14,7 @@ import project_img_7 from '@/public/project_img_7.gif'
 import { StaticImageData } from "next/image";
 
 export type project_type = "All" | "Self checkout" | "Saas B2B" | "Data heavy" | "Student project" | "Design system" | "AI" | "Web Dev"
-export const ProjectTypes:project_type[] = ["All","Data heavy","Saas B2B","Student project","Self checkout","Design system","AI", "Web Dev"]
+export const ProjectTypes:project_type[] = ["All","Saas B2B","Student project","Self checkout","Design system","AI", "Web Dev"]
 export interface Project{
   title: string,
   description: string,
