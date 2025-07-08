@@ -176,8 +176,8 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24'
     },
     {
-    title: "Coming soon: POS dashboard Built with Figma Make",
-    project_type: ["AI"],
+    title: "Coming soon: POS dashboard Built with V0 by Vercel",
+    project_type: ["AI","Data heavy"],
     description:
       "In this project I experimented with Figma Make and V0 by Vercel to build a POS dashboard interface, fetching and sending data to a real API",
     tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
@@ -218,5 +218,7 @@ export const skillsData = [
   { skill: "Jira", skill_type: "Other" },
   { skill: "Hotjar", skill_type: "Other" },
   { skill: "Mixpanel", skill_type: "Other" },
-  {skill:"Hey Marvin", skill_type:"UX Research"}
+  {skill:"Hey Marvin", skill_type:"UX Research"},
+  {skill:"Clerk Auth", skill_type:"Web Dev"},
+  {skill:"shadcn ui", skill_type:"Web Dev"},
 ] as Skill[];
