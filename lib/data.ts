@@ -200,7 +200,7 @@ export const projectsData:Project[] = [
       "Built with React typescript, next, shadcn, authentication iusing clerk middleware, backend using firebase deployed on vercel ",
     tags: ["Fullstack project","React", "typescript","Shadcn", "next", "firebase","clerk","vercel","node"],
     year:"2025",
-    link:'https://ecommerce-admin-oc9uxzjtw-abdelhamiduonis-6506s-projects.vercel.app'
+    link:'multistore-ecommerce-admin-portal.vercel.app'
     },
 ] as Project[];
 
