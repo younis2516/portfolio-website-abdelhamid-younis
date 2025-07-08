@@ -13,8 +13,8 @@ import project_img_7 from '@/public/project_img_7.gif'
 
 import { StaticImageData } from "next/image";
 
-export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy" | "Student project" | "Design system" | "AI"
-export const ProjectTypes:project_type[] = ["All","Data heavy","Saas","Student project","Self checkout","Design system","AI"]
+export type project_type = "All" | "Self checkout" | "Saas" | "Data heavy" | "Student project" | "Design system" | "AI" | "Web Dev"
+export const ProjectTypes:project_type[] = ["All","Data heavy","Saas","Student project","Self checkout","Design system","AI", "Web Dev"]
 export interface Project{
   title: string,
   description: string,
@@ -183,6 +183,24 @@ export const projectsData:Project[] = [
     tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
     year:"2025",
     imageUrl: project_img_7,
+    },
+    {
+    title: "My portfolio website",
+    project_type: ["Web Dev"],
+    description:
+      "Built with React typescript, next, shadcn, framer motion div, and deployd on vercel ",
+    tags: ["React", "typescript","Shadcn", "next", "framer motion","vercel"],
+    year:"2025",
+    link:'https://abdelhamid-portfolio.vercel.app/'
+    },
+    {
+    title: "E-commerce admin portal",
+    project_type: ["Web Dev"],
+    description:
+      "Built with React typescript, next, shadcn, authentication iusing clerk middleware, backend using firebase deployed on vercel ",
+    tags: ["Fullstack project","React", "typescript","Shadcn", "next", "firebase","clerk","vercel","node"],
+    year:"2025",
+    link:'https://ecommerce-admin-oc9uxzjtw-abdelhamiduonis-6506s-projects.vercel.app'
     },
 ] as Project[];
 
