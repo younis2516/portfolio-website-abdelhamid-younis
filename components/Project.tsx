@@ -36,7 +36,7 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year}:
             >
               <section
                 
-                 className="bg-gray-100 w-full sm:max-w-[50rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[32rem] hover:bg-gray-200 transition  dark:text-white dark:bg-white/10 dark:hover:bg-white/20 ">
+                 className= "bg-gray-100 w-full sm:max-w-[50rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[32rem] hover:bg-gray-200 transition  dark:text-white dark:bg-white/10 dark:hover:bg-white/20 ">
                 <div className="pt-4 pb-7  py-4 px-5 sm:pl-10 sm:pr-2 sm:pt-10 w-full sm:max-w-[55%] flex flex-col h-full">
                     <div className='flex gap-3 h-7 items-center inline-block  w-full rounded-md'>
                         <div className='h-7 w-2 bg-blue-500 rounded-full'></div>
@@ -57,13 +57,13 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year}:
                     </ul>
                     {link&&link.length>0?(<div className=' mt-auto flex flex-row  items-center gap-2'>
                         <div className='flex items-center cursor-pointer justify-center px-3 py-3 text-white dark bg-gray-800 hover:bg-gray-950 dark:bg-gray-500 hover:dark:bg-gray-600 rounded-xl'><FiArrowRight/></div>
-                        <a href={link} className='leading-relaxed  text-gray-700 dark:text-white/70 hover:underline'> Go to project documentation {" "}</a>
+                        <a href={link} className='leading-relaxed  text-gray-700 dark:text-white/70 hover:underline'> {project_type.includes("Web Dev")?"Go to project":"Read project documentation"}</a>
                     </div>):""}
                     
             </div>
             {project_type.includes("AI")?
             (<div className='absolute hidden sm:block p-12 h-[28rem] top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-purple-100 rounded-t-lg shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition'><Image className='' src={imageUrl} alt={ title} quality={95} /></div>):
-            (<Image className='absolute hidden sm:block  top-8 sm:-right-40 w-0 sm:w-[28.25rem] rounded-t-lg shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition' src={imageUrl} alt={ title} quality={95} />)
+            project_type.includes("Web Dev")?(<div className='w-[0px]'></div>):(<Image className='absolute hidden sm:block  top-8 sm:-right-40 w-0 sm:w-[28.25rem] rounded-t-lg shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition' src={imageUrl} alt={ title} quality={95} />)
             }
         </section>  
             </motion.div>        
