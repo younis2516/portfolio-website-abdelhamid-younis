@@ -9,6 +9,9 @@ import portfolio_img_4 from '@/public/portfolio_img_4.png'
 import portfolio_img_5 from '@/public/portfolio_img_5.png'
 import portfolio_img_6 from '@/public/portfolio_img_6.png'
 import project_img_7 from '@/public/project_img_7.gif'
+import project_img_8 from '@/public/project_img_8.png'
+import project_img_9 from '@/public/project_img_9.png'
+
 
 
 import { StaticImageData } from "next/image";
@@ -191,7 +194,8 @@ export const projectsData:Project[] = [
       "Built with React typescript, next, shadcn, framer motion div, and deployd on vercel ",
     tags: ["React", "typescript","Shadcn", "next", "framer motion","vercel"],
     year:"2025",
-    link:'https://abdelhamid-portfolio.vercel.app/'
+    link:'https://abdelhamid-portfolio.vercel.app/',
+    imageUrl: project_img_8,
     },
     {
     title: "E-commerce admin portal",
@@ -200,7 +204,8 @@ export const projectsData:Project[] = [
       "Built with React typescript, next, shadcn, authentication iusing clerk middleware, backend using firebase deployed on vercel ",
     tags: ["Fullstack project","React", "typescript","Shadcn", "next", "firebase","clerk","vercel","node"],
     year:"2025",
-    link:'multistore-ecommerce-admin-portal.vercel.app'
+    link:'https://multistore-ecommerce-admin-portal.vercel.app',
+    imageUrl: project_img_9,
     },
 ] as Project[];
 
