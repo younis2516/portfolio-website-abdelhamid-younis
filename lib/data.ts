@@ -16,8 +16,8 @@ import project_img_9 from '@/public/project_img_9.png'
 
 import { StaticImageData } from "next/image";
 
-export type project_type = "All" | "Self checkout" | "Saas B2B" | "Data heavy" | "Student project" | "Design system" | "AI" | "Web Dev"
-export const ProjectTypes:project_type[] = ["All","Saas B2B","Student project","Self checkout","Design system","AI", "Web Dev"]
+export type project_type = "All" | "B2C" | "Saas B2B" | "Data heavy" | "Design system" | "AI" | "Web Dev"
+export const ProjectTypes:project_type[] = ["All","Saas B2B","B2C","Design system","AI", "Web Dev"]
 export interface Project{
   title: string,
   description: string,
@@ -120,7 +120,7 @@ export const experiencesData = [
 export const projectsData:Project[] = [
   {
     title: "Billa service terminal",
-    project_type:["Self checkout"],
+    project_type:["B2C"],
     description:
       "This project was completed and shipped last year and now live in 4 different supermarkets in Austria. It started with a 4 day design sprint and 2 months later it was in development. I acted as a full-stack designer on this project. ",
     tags: ["Fulltime", "Live Now", "UX research", "wireframes","Competitor analysis"],
@@ -179,7 +179,7 @@ export const projectsData:Project[] = [
     },
   {
     title: "HCI Project: Grocery Shopping Bot ",
-     project_type:["Student project"],
+     project_type:["B2C"],
     description:
       "I did this project as part of a research project in my HCI master studies at the university of salzburg. This project also won 1st place prototype and 2nd place pitch deck in Salzburg startup weekend competition in May 2020",
     tags: ["HCI student project","Persona Interviews","Design thinking","Competitor analysis"],
@@ -244,4 +244,5 @@ export const skillsData = [
   {skill:"Hey Marvin", skill_type:"UX Research"},
   {skill:"Clerk Auth", skill_type:"Web Dev"},
   {skill:"shadcn ui", skill_type:"Web Dev"},
+
 ] as Skill[];
