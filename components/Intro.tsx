@@ -43,7 +43,7 @@ function Intro() {
               animate={{ opacity:1,y:0}}
               className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-medium !leading-[1.5] sm:text-xl'
           > <span className='font-bold text-3xl mb-6'><strong> Hello I'm Abdelhamid</strong><br/> </span>  Or you can call mw younis. I built this website to tell my story. I am a Product Designer 📍 Based in Vienna. 
-              Now I am working with an awesome team <strong>@REWE Group</strong> to design their self-checkout and point-of-sale devices. I have worked on both B2B and B2C projects. I have been living in Austria for the past 6 years.</motion.p>
+             I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets</strong> released in 65 Billa Suppermarkets across Austria. <br/> I can design and code and in my free time i am building products with AI using real APIs.</motion.p>
 
           <motion.div
               initial={{ opacity: 0, y: 100 }}
