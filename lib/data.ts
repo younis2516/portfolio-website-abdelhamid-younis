@@ -129,16 +129,6 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11'
   },
   {
-    title: "Tubics Video Optimization Tool ",
-     project_type:["Saas B2B"],
-    description:
-      "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics’s most used feature accounting to 70% of the session time on the app. ",
-    tags: [" Full time","Live now","User Analytics","Wireframes","Usability Testing"],
-    imageUrl: portfolio_img_2,
-    year:"2021",
-    link:'https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12'
-  },
-  {
     title: "App Radar UI Redesign ",
     project_type:["Saas B2B","Data heavy"],
     description:
@@ -149,6 +139,16 @@ export const projectsData:Project[] = [
     link:"https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16"
     },
   {
+    title: "Tubics Video Optimization Tool ",
+     project_type:["Saas B2B"],
+    description:
+      "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics’s most used feature accounting to 70% of the session time on the app. ",
+    tags: [" Full time","Live now","User Analytics","Wireframes","Usability Testing"],
+    imageUrl: portfolio_img_2,
+    year:"2021",
+    link:'https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12'
+  },
+  {
     title: "Tubics's Design System & documentation",
      project_type:["Saas B2B","Design system","Data heavy"],
     description:
@@ -157,16 +157,6 @@ export const projectsData:Project[] = [
     imageUrl: portfolio_img_3,
     year:"2021",
     link:'https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22'
-  },
-  {
-    title: "HCI Project: Grocery Shopping Bot ",
-     project_type:["Student project"],
-    description:
-      "I did this project as part of a research project in my HCI master studies at the university of salzburg. This project also won 1st place prototype and 2nd place pitch deck in Salzburg startup weekend competition in May 2020",
-    tags: ["HCI student project","Persona Interviews","Design thinking","Competitor analysis"],
-    imageUrl: portfolio_img_5,
-    year:"2020",
-    link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15'
   },
   {
     title: "Wuzzuf Hiring dashboard",
@@ -187,6 +177,16 @@ export const projectsData:Project[] = [
     year:"2025",
     imageUrl: project_img_7,
     },
+  {
+    title: "HCI Project: Grocery Shopping Bot ",
+     project_type:["Student project"],
+    description:
+      "I did this project as part of a research project in my HCI master studies at the university of salzburg. This project also won 1st place prototype and 2nd place pitch deck in Salzburg startup weekend competition in May 2020",
+    tags: ["HCI student project","Persona Interviews","Design thinking","Competitor analysis"],
+    imageUrl: portfolio_img_5,
+    year:"2020",
+    link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15'
+  },
     {
     title: "My portfolio website",
     project_type: ["Web Dev"],
