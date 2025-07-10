@@ -12,12 +12,15 @@ import project_img_7 from '@/public/project_img_7.gif'
 import project_img_8 from '@/public/project_img_8.png'
 import project_img_9 from '@/public/project_img_9.png'
 
+import profile_img_1 from '@/public/profile_img_1.jpeg'
+import profile_img_2  from '@/public/profile_img_2.jpeg'
+
 
 
 import { StaticImageData } from "next/image";
 
-export type project_type = "All" | "B2C" | "Saas B2B" | "Data heavy" | "Design system" | "AI" | "Web Dev"
-export const ProjectTypes:project_type[] = ["All","Saas B2B","B2C","Design system","AI", "Web Dev"]
+export type project_type = "All" | "B2C" | "Saas B2B" | "Data heavy" | "Design system" | "Built with AI" | "Web Dev"
+export const ProjectTypes:project_type[] = ["All","Saas B2B","B2C","Design system","Built with AI", "Web Dev"]
 export interface Project{
   title: string,
   description: string,
@@ -42,6 +45,10 @@ export const links = [
     name: "About",
     hash: "#about",
   },
+  { 
+    name: "Testimonials",
+    hash: "#testimonials",
+  },
   {
     name: "Projects",
     hash: "#projects",
@@ -57,7 +64,7 @@ export const links = [
   { 
     name: "Contact",
     hash: "#contact",
-  },
+  }
 ] as const;
 
 export const experiencesData = [
@@ -246,3 +253,36 @@ export const skillsData = [
   {skill:"shadcn ui", skill_type:"Web Dev"},
 
 ] as Skill[];
+
+export interface TestimonialData {
+  name:string
+  role:string
+  date:string
+  relationship:string
+  quote:string
+  image:StaticImageData
+}
+
+export const TestimonialsData = [
+  {
+    name: 'Ahmed Osama Ibrahim',
+    role: 'Technical Lead @ Hotelkit',
+    date: 'May 22, 2025',
+    relationship: 'Worked with Abdelhamid on different teams',
+    image: profile_img_1,
+    quote: `Abdelhamid is one of the more pragmatic UI/UX designers I know, always focusing on intuitive user experiences. I have also always admired how he takes the time to prototype with different approaches and ideas, thinking outside the box, still with a focus on intuitiveness.
+
+Looking for someone to deliver a UX that seamlessly guides the user and communicates intent? Work with Abdelhamid.`,
+  },
+  {
+    name: 'Mario Prikasky',
+    role: 'Design System Lead @ REWE',
+    date: 'May 17, 2025',
+    image:profile_img_2,
+    relationship: 'Was senior to Abdelhamid but didn’t manage him directly',
+    quote: `Younis has a great eye for detail and is someone you can really rely on. He works independently and always delivers solid results without needing much direction. He also gave me very helpful feedback on the UNIFY design system for REWE International and contributed to making it better overall.
+
+If you’re looking for a good UX designer who cares about quality work, don’t hesitate to get in touch with him!`,
+  },
+] as TestimonialData []
+
