@@ -20,18 +20,19 @@ export const Testimonials = () => {
     >
         <SectionHeading> Linkedin Testimonials</SectionHeading>
 
-      <div className="grid md:grid-cols-2 gap-10">
+       <div className="grid md:grid-cols-2 gap-10">
         {TestimonialsData.map((rec, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow duration-300"
+            transition={{ duration: 0.6, delay: index*0.2 }}
+            className="rounded-2xl p-6 border border-gray-200 dark:border-gray-800
+              bg-white/40 dark:bg-zinc-800/40 backdrop-blur-md
+              transition-all duration-300"
           >
             <div className="flex items-center gap-4 mb-4">
-              <div className="relative w-14 h-14 rounded-full overflow-hidden border border-zinc-300 dark:border-zinc-700">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border border-zinc-300 dark:border-zinc-600">
                 <Image
                   src={rec.image}
                   alt={rec.name}
@@ -41,14 +42,14 @@ export const Testimonials = () => {
                 />
               </div>
               <div>
-                <p className="text-base font-semibold text-zinc-800 dark:text-zinc-100">{rec.name}</p>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400">{rec.role}</p>
-                <p className="text-xs text-zinc-400 dark:text-zinc-500">
+                <p className="text-base font-semibold text-zinc-800 dark:text-zinc-300">{rec.name}</p>
+                <p className="text-sm text-zinc-600 dark:text-zinc-400">{rec.role}</p>
+                <p className="text-sm text-zinc-500 dark:text-zinc-500">
                   {rec.date} • {rec.relationship}
                 </p>
               </div>
             </div>
-            <p className="text-sm text-zinc-700 dark:text-zinc-200 whitespace-pre-line">
+            <p className="text-sm text-zinc-800 dark:text-white/70 whitespace-pre-line">
               {rec.quote}
             </p>
           </motion.div>

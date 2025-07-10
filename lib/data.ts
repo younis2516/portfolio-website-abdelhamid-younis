@@ -41,10 +41,10 @@ export const links = [
     name: "Home",
     hash: "#home",
   },
-  {
-    name: "About",
-    hash: "#about",
-  },
+  // {
+  //   name: "About",
+  //   hash: "#about",
+  // },
   { 
     name: "Testimonials",
     hash: "#testimonials",
