@@ -4,7 +4,8 @@ import SectionHeading from './Section_heading'
 import { motion } from 'framer-motion'
 import { useScrollIntoView } from '@/lib/hooks'
 const About = () => {
-  const { ref}=useScrollIntoView("About",0.75)
+  // later change this to home 
+  const { ref}=useScrollIntoView("Home",0.75)
   
   return (
     <motion.section
