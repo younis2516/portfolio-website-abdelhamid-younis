@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import avatar from '../public/avatar.jpg'
 import {motion} from 'framer-motion'
 import Link from 'next/link'
@@ -9,6 +9,84 @@ import { HiDownload} from 'react-icons/hi'
 import { useScrollIntoView } from '@/lib/hooks'
 import { useActiveSectionContext } from '@/context/active_section_context'
 import { FaGithubSquare } from 'react-icons/fa'
+
+
+const paragraphs = [
+  "Hello I'm Abdelhamid",
+  "Just call me younis.",
+  "I made this website to tell my story.",
+  "I am a Product Designer 📍 Based in Vienna.",
+  "But originally I am from Cairo.",
+  "I did not study design",
+  "but it was my passion to design things people interact with in their daily life.",
+  "thankfully I turned this passion to a lucrative job.",
+  "I studied engineering for my bachelor",
+  "and since 2018 I have been working as a UX.UI designer.",
+  "I have worked on both B2B and B2C projects.",
+  "My latest Project was released in 65 Billa Suppermarkets in Austria.",
+  "Also I can design and code",
+  "in my free time I am building products with AI using real APIs",
+  "thanks for reading that far",
+];
+
+export const TypingParagraph = () => {
+  const [text, setText] = useState('');
+  const [paragraphIndex, setParagraphIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const currentParagraph = paragraphs[paragraphIndex];
+    const baseTypingSpeed = 55;
+    const baseDeletingSpeed = 20;
+    const randomOffset = Math.floor(Math.random() * 5);
+
+    const delay = isDeleting
+      ? baseDeletingSpeed + randomOffset
+      : baseTypingSpeed + randomOffset;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        setText(currentParagraph.slice(0, text.length + 1));
+        if (text === currentParagraph) {
+          setTimeout(() => setIsDeleting(true), 1000);
+        }
+      } else {
+        setText(currentParagraph.slice(0, text.length - 1));
+        if (text === '') {
+          setIsDeleting(false);
+          setParagraphIndex((prev) => (prev + 1) % paragraphs.length);
+        }
+      }
+    }, delay);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, paragraphIndex, isVisible]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="text-base sm:text-xl font-medium text-zinc-900 dark:text-zinc-100 text-center min-h-[3rem] md:min-h-[3rem]"
+    >
+      <span>{text}</span>
+      <span className="animate-pulse">|</span>
+    </div>
+  );
+};
+
 function Intro() {
     const { ref } = useScrollIntoView("Home", 0.5)
     const {setActiveSection,setTimeOfLastClick} = useActiveSectionContext()
@@ -39,12 +117,17 @@ function Intro() {
               </div>
              
           </div>
-          <motion.p
+          
+          {/* <motion.p
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity:1,y:0}}
               className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-medium !leading-[1.5] sm:text-xl'
           > <span className='font-bold text-3xl mb-6'><strong> Hello I'm Abdelhamid</strong><br/> </span>  Just call me younis. I made this website to tell my story. I am a Product Designer 📍 Based in Vienna. But originally I am from Cairo. I didnt study design, but it was my passion to design things people interact with in their daily life. And thankfully I turned this passion to a lucrative job. I studied engineering for my bachelor and since 2018 I have been working as a UX.UI designer.
-             I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets in Austria</strong> <br/> I can design and code and in my free time i am building products with AI using real APIs.</motion.p>
+             I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets in Austria</strong> <br/> I can design and code and in my free time i am building products with AI using real APIs.
+             
+             </motion.p> */}
+             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> Senior UX.UI Product Designer</p>
+             <TypingParagraph/>
 
           <motion.div
               initial={{ opacity: 0, y: 100 }}
