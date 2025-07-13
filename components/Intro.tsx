@@ -79,7 +79,7 @@ export const TypingParagraph = () => {
   return (
     <div
       ref={containerRef}
-      className="text-base sm:text-xl font-medium text-zinc-900 dark:text-zinc-100 text-center min-h-[3rem] md:min-h-[3rem]"
+      className="text-lg sm:text-xl font-medium text-zinc-900 dark:text-zinc-100 text-center min-h-[2rem] md:min-h-[3rem]"
     >
       <span>{text}</span>
       <span className="animate-pulse">|</span>
@@ -126,7 +126,7 @@ function Intro() {
              I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets in Austria</strong> <br/> I can design and code and in my free time i am building products with AI using real APIs.
              
              </motion.p> */}
-             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> Senior UX.UI Product Designer</p>
+             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-5 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> Senior UX.UI Product Designer</p>
              <TypingParagraph/>
 
           <motion.div
@@ -143,7 +143,7 @@ function Intro() {
                       setTimeOfLastClick(Date.now())
                   }}
               >Contact me <BsArrowRight className='opacity-70 group-hover:translate-x-1 transition' /></Link>
-              <a download={true} href='/Abdelhamid CV Updated.docx.pdf' className='group w-full sm:w-auto bg-white text-gray-900 outline-none transition px-7 py-3 flex items-center gap-2 rounded-full cursor-pointer borderBlack dark:bg-white/5 dark:text-white/60 justify-center items-center focus:scale-110 hover:scale-110'>Download CV <HiDownload className='opacity-70 group-hover:translate-y-1 transition' /> </a>
+              <a download={true} href='/Abdelhamid_CV_Final.pdf' className='group w-full sm:w-auto bg-white text-gray-900 outline-none transition px-7 py-3 flex items-center gap-2 rounded-full cursor-pointer borderBlack dark:bg-white/5 dark:text-white/60 justify-center items-center focus:scale-110 hover:scale-110'>Download CV <HiDownload className='opacity-70 group-hover:translate-y-1 transition' /> </a>
               <a href='https://www.linkedin.com/in/abdelhamid-younis-17168086/' className='bg-white w-full sm:w-auto text-gray-700 p-4 flex focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition items-center gap-2 rounded-full cursor-pointer border borderBlack dark:text-white/60 dark:bg-white/5 justify-center items-center block' target='_blank'> <BsLinkedin /> </a>
             <a href='https://github.com/aaayounis94?tab=repositories' className='bg-white w-full sm:w-auto text-gray-700 p-4 flex focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition items-center gap-2 rounded-full cursor-pointer border borderBlack dark:text-white/60 dark:bg-white/5 justify-center items-center block' target='_blank'> <FaGithubSquare /> </a>
 
