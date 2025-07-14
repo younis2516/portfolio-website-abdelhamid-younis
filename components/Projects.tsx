@@ -22,6 +22,7 @@ const Projects = () => {
           id='projects'
           className='scroll-mt-28 ml-5 mr-5 sm:ml-20 sm:mr-20 justify-center items-center mt-20'      >
           <SectionHeading>Projects</SectionHeading>
+          <p className='text-base text-center w-full sm:max-w-[50rem] sm:text-lg text-gray-700 mb-8 dark:text-white/70'> <strong>Heads up!</strong> these case studies are a bit lengthy, the average reading time is 10 minutes. I added lots of visuals but I am also trying to explain my thinking process.</p>
           <div className="flex justify-center flex-wrap gap-2 sm:gap-4 mb-10">
         {ProjectTypes?.map((type) => (
           <button

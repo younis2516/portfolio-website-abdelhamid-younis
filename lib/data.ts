@@ -29,6 +29,7 @@ export interface Project{
   link: string,
   imageUrl: StaticImageData
   year:string
+  readingTime:string
 }
 export type SkillType = "Web Dev" | "Design" | "Business" | "UX Research" | "Language" | "All"| "Other"
 export const SkillTypes:SkillType[] = ["All","Design","UX Research","Web Dev","Language","Other"]
@@ -133,7 +134,8 @@ export const projectsData:Project[] = [
     tags: ["Fulltime", "Live Now", "UX research", "wireframes","Competitor analysis"],
     imageUrl: portfolio_img_1,
     year:"2023",
-    link:'https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11'
+    link:'https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11',
+    readingTime:"10 min"
   },
   {
     title: "App Radar UI Redesign ",
@@ -143,7 +145,8 @@ export const projectsData:Project[] = [
     tags: ["Freelance","Live now ","Competitor analysis"],
     imageUrl: portfolio_img_4,
     year:"2022",
-    link:"https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16"
+    link:"https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16",
+    readingTime:"5 min"
     },
   {
     title: "Tubics Video Optimization Tool ",
@@ -153,7 +156,8 @@ export const projectsData:Project[] = [
     tags: [" Full time","Live now","User Analytics","Wireframes","Usability Testing"],
     imageUrl: portfolio_img_2,
     year:"2021",
-    link:'https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12'
+    link:'https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12',
+    readingTime:"12 min"
   },
   {
     title: "Tubics's Design System & documentation",
@@ -163,7 +167,8 @@ export const projectsData:Project[] = [
     tags: ["Full time","Design system","Research","low code"],
     imageUrl: portfolio_img_3,
     year:"2021",
-    link:'https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22'
+    link:'https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22',
+    readingTime:"7 min"
   },
   {
     title: "Wuzzuf Hiring dashboard",
@@ -173,7 +178,8 @@ export const projectsData:Project[] = [
     tags: ["Full time","UX/UI Design","Usablity testing","Data heavy"],
       imageUrl: portfolio_img_6,
     year:"2019",
-    link:'https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24'
+    link:'https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24',
+    readingTime:"8 min"
     },
     {
     title: "Coming soon: POS dashboard Built with V0 by Vercel",
@@ -183,6 +189,7 @@ export const projectsData:Project[] = [
     tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
     year:"2025",
     imageUrl: project_img_7,
+    readingTime:"0 min"
     },
   {
     title: "HCI Project: Grocery Shopping Bot ",
@@ -192,7 +199,8 @@ export const projectsData:Project[] = [
     tags: ["HCI student project","Persona Interviews","Design thinking","Competitor analysis"],
     imageUrl: portfolio_img_5,
     year:"2020",
-    link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15'
+    link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15',
+    readingTime:"6 min"
   },
     {
     title: "My portfolio website",
@@ -203,6 +211,7 @@ export const projectsData:Project[] = [
     year:"2025",
     link:'https://abdelhamid-portfolio.vercel.app/',
     imageUrl: project_img_8,
+    readingTime:"0 min"
     },
     {
     title: "E-commerce admin portal",
@@ -213,6 +222,7 @@ export const projectsData:Project[] = [
     year:"2025",
     link:'https://multistore-ecommerce-admin-portal.vercel.app',
     imageUrl: project_img_9,
+    readingTime:"0 min"
     },
 ] as Project[];
 
