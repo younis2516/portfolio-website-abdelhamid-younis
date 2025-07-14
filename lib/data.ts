@@ -177,7 +177,7 @@ export const projectsData:Project[] = [
     },
     {
     title: "Coming soon: POS dashboard Built with V0 by Vercel",
-    project_type: ["AI","Data heavy"],
+    project_type: ["Built with AI","Data heavy"],
     description:
       "In this project I experimented with Figma Make and V0 by Vercel to build a POS dashboard interface, fetching and sending data to a real API",
     tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
