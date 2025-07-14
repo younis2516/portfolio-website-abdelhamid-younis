@@ -126,7 +126,7 @@ function Intro() {
              I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets in Austria</strong> <br/> I can design and code and in my free time i am building products with AI using real APIs.
              
              </motion.p> */}
-             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-5 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> Senior UX.UI Product Designer</p>
+             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-5 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> UX.UI Product Designer</p>
              <TypingParagraph/>
 
           <motion.div
