@@ -79,9 +79,9 @@ export const TypingParagraph = () => {
   return (
     <div
       ref={containerRef}
-      className="text-lg sm:text-xl font-medium text-zinc-900 dark:text-zinc-100 text-center min-h-[2rem] md:min-h-[3rem]"
+      className="text-md sm:text-lg items-center justify-center font-medium text-zinc-900 dark:text-zinc-100 text-center min-h-[4.5rem] md:min-h-[3rem] max-w-[16rem] sm:max-w-[100%] text-wrap"
     >
-      <span>{text}</span>
+      <span className=' text-gray-700 px-2 py-1 bg-indigo-200 dark:text-white dark:bg-indigo-600'>{text}</span>
       <span className="animate-pulse">|</span>
     </div>
   );
@@ -126,7 +126,16 @@ function Intro() {
              I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets in Austria</strong> <br/> I can design and code and in my free time i am building products with AI using real APIs.
              
              </motion.p> */}
-             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-5 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> UX.UI Product Designer</p>
+             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> UX.UI Product Designer</p>
+             <div className='flex justify-center items-center flex-row mb-2 text-center text-lg sm:text-xl text-zinc-600 dark:text-zinc-300'> 
+              <p className='mr-1'>I</p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-purple-300 hover:text-gray-900 dark:hover:bg-purple-700 dark:hover:text-white/50'>Design</p>
+              <p>,</p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-teal-200 hover:text-gray-900 dark:hover:bg-teal-700 dark:hover:text-white/50'>Code</p>
+              <p className='mr-1'>& </p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-indigo-300 hover:text-gray-900 dark:hover:bg-indigo-700 dark:hover:text-white/50'>Research</p>
+
+             </div>
              <TypingParagraph/>
 
           <motion.div
