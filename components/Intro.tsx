@@ -79,7 +79,7 @@ export const TypingParagraph = () => {
   return (
     <div
       ref={containerRef}
-      className="text-md sm:text-lg items-center justify-center font-medium text-zinc-900 dark:text-zinc-100 text-center min-h-[4.5rem] md:min-h-[3rem] w-full max-w-[20rem] sm:max-w-[100%] text-wrap"
+      className="text-md sm:text-lg items-center justify-center font-medium text-zinc-900 dark:text-zinc-100 text-center min-h-[4.5rem] md:min-h-[3rem] w-full sm:max-w-[100%] text-wrap"
     >
       <span className=' text-gray-700 px-2 py-1 bg-indigo-200 dark:text-white dark:bg-indigo-600'>{text}</span>
       <span className="animate-pulse">|</span>
