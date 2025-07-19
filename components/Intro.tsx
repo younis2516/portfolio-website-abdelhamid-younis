@@ -10,23 +10,15 @@ import { useScrollIntoView } from '@/lib/hooks'
 import { useActiveSectionContext } from '@/context/active_section_context'
 import { FaGithubSquare } from 'react-icons/fa'
 
-
 const paragraphs = [
-  "Hello I'm Abdelhamid",
-  "Just call me younis.",
-  "I made this website to tell my story.",
-  "I am a Product Designer 📍 Based in Vienna.",
-  "But originally I am from Cairo.",
-  "I did not study design",
-  "but it was my passion to design things people interact with in their daily life.",
-  "thankfully I turned this passion to a lucrative job.",
-  "I studied engineering for my bachelor",
-  "and since 2018 I have been working as a UX.UI designer.",
+  "Creative and tech-savvy designer with 7+ years of experience in UX/UI",
+  "product design, and frontend implementation",
+  "Currently designing the next-gen self-checkout systems for REWE Group",
+  "Skilled in Figma, React, and prototyping",
+  "— bridging the gap between user needs and production-ready code.",
+  "I am based in Vienna ",
   "I have worked on both B2B and B2C projects.",
   "My latest Project was released in 65 Billa Suppermarkets in Austria.",
-  "Also I can design and code",
-  "in my free time I am building products with AI using real APIs",
-  "thanks for reading that far",
 ];
 
 export const TypingParagraph = () => {
@@ -128,14 +120,14 @@ function Intro() {
              </motion.p> */}
              <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> UX.UI Product Designer</p>
              <div className='flex justify-center items-center flex-row mb-2 text-center text-lg sm:text-xl text-zinc-600 dark:text-zinc-300'> 
-              <p className='mr-1'>I</p>
-              <p className='px-2 py-1 rounded rounded-md hover:bg-purple-300 hover:text-gray-900 dark:hover:bg-purple-700 dark:hover:text-white/50'>Design</p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-purple-300 hover:text-gray-900 dark:hover:bg-purple-700 dark:hover:text-white/50'>🎨 Design</p>
               <p>,</p>
-              <p className='px-2 py-1 rounded rounded-md hover:bg-teal-200 hover:text-gray-900 dark:hover:bg-teal-700 dark:hover:text-white/50'>Code</p>
-              <p className='mr-1'>& </p>
-              <p className='px-2 py-1 rounded rounded-md hover:bg-indigo-300 hover:text-gray-900 dark:hover:bg-indigo-700 dark:hover:text-white/50'>Research</p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-teal-200 hover:text-gray-900 dark:hover:bg-teal-700 dark:hover:text-white/50'>👨🏻‍💻 Code</p>
+              <p className='mr-1'>, </p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-indigo-300 hover:text-gray-900 dark:hover:bg-indigo-700 dark:hover:text-white/50'>🔍 Research</p>
 
              </div>
+           
              <TypingParagraph/>
 
           <motion.div

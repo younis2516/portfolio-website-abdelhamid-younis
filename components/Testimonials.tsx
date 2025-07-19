@@ -1,11 +1,9 @@
-// components/Recommendations.tsx
 "use client"
-import { TestimonialsData } from '@/lib/data';
+import { TestimonialsData,TestimonialData } from '@/lib/data';
 import { motion } from 'framer-motion';
 import SectionHeading from './Section_heading';
 import Image from 'next/image';
 import { useScrollIntoView } from '@/lib/hooks';
-import { BsLinkedin } from 'react-icons/bs';
 
 export const Testimonials = () => {
     const { ref}=useScrollIntoView('Testimonials',0.3)
@@ -33,7 +31,7 @@ export const Testimonials = () => {
               transition-all duration-300"
           >
             {/* <p className='font-extrabold text-gray-200 text-[120px]/[120px] absolute font-serif top-24 left-6 z-[-10]'>❝</p> */}
-                        <p className='font-extrabold text-gray-200 dark:text-white/10 text-[120px]/[120px] absolute font-serif top-56 right-6 z-[-10]'>❞</p>
+                        {/* <p className='font-extrabold text-gray-200 dark:text-white/10 text-[120px]/[120px] absolute font-serif top-56 right-6 z-[-10]'>❞</p> */}
             <div className="flex items-center gap-4 mb-4">
               <div className="relative w-14 h-14 rounded-full overflow-hidden border border-zinc-300 dark:border-zinc-600">
                 <Image

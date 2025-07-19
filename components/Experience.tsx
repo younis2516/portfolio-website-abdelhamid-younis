@@ -37,7 +37,15 @@ const Experience = () => {
                       >
                           <h3 className="font-semibold text-lg capitalize">{experienceItem.title}</h3>
                           <p className="font-normal text-lg !mt-0 ">{experienceItem.location}</p>
-                          <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">{experienceItem.description}</p>
+                          <ol>
+                            {experienceItem.descriptions.map((item,index) =>(
+                                <li key={index} className=' text-wrap'>
+                                    <p className="!mt-1 !font-normal text-gray-700 dark:text-white/75">{item}</p>
+                                </li>
+                                 
+                            ) )
+                            }
+                          </ol>
                       </VerticalTimelineElement>
                   </React.Fragment>
               ))}

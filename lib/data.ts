@@ -70,56 +70,51 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Senior Product Designer Point of Sale @REWE Group",
+    title: " 🧑🏼‍💻 Senior Product Designer @ REWE International",
     location: "Vienna, Austria",
-    description:`Designed Billa self ordering kiosk, now live in 60 branches. Collaborated with devs and PO to make a white label Design System for Self_service_terminals for all REWE brands `,
+    descriptions:["Led UX for Billa’s self-checkout kiosks (now live in 60+ branches)","Built a white-label design system for all REWE brands","Prototyped AI-powered retail dashboards using V0 + Shadcn UI","Created interactive mockups with FigmaMake"],
     icon: React.createElement(CgWorkAlt),
     date: "APRIL 2022 - NOW",
   },
   {
-    title: "Part time (Sun & Mon) Intern Frontend Dev @Suplyd",
+    title: "🧑🏼‍💻 Frontend Intern (Part-Time) @ Suplyd ",
     location: "Remote",
-    description:
-      "I was working on small tasks on the web shop and the mobile app using React, antd, next,mobx state management, react query and graphQL.",
+    descriptions:["Implemented UI components in React & Ant Design","Worked across webshop + mobile app with MobX, GraphQL, Next.js, and react native"],
     icon: React.createElement(FaReact),
     date: "MAY 2024 - NOW",
   },
   {
-    title: "Product Designer & low code dev @Tubics",
+    title: "🎥 Product Designer / Low-Code Dev @Tubics ",
     location: "Vienna, Austria",
-    description:`Designed the video optimization tool (top selling feature). Worked on Tubics rank tracking app on SEMrush app store. Built small frontend features using JS and low code dev tools. Designed and documented tubics design system`,
+    descriptions:["Designed video optimization tool (top-selling feature)","Built UI for YouTube rank tracker on SEMrush","Created and documented company-wide design system"],
     icon: React.createElement(CgWorkAlt),
     date: "OCTOBER 2020 -  JANUARY 2022",
     },
   {
-    title: "Part-time 20h/w UX/UI Designer @ Hotelkit",
+    title: "🏨 Part time UX/UI Designer @ Hotelkit",
     location: "Salzburg, Austria",
-    description:`Designed the housekeeping tool (second top selling feature). Worked on redesigning Hotelkit mobile & web app`,
+    descriptions:["Designed housekeeping tool (2nd best-selling feature)","Redesigned web + mobile app interfaces"],
     icon: React.createElement(CgWorkAlt),
     date: "NOVEMBER 2019 - OCTOBER 2020",
     },
     {
-    title: "MA of Science  Human-Computer Interaction @ FH Salzburg ",
+    title: "🎓 M.Sc. Human-Computer Interaction @ University of Salzburg",
     location: "Salzburg, Austria",
-    description:`Finished all subjects and courses, except the master thesis which I am not planning to do it soon.`,
+    descriptions:["focus on User Research, interaction design","Designed tangible interactions with Arduino"],
     icon: React.createElement(LuGraduationCap),
     date: "SEPTEMBER 2019 - JANUARY 2021",
     },
   {
-    title: "Jr.UX Designer @ Wuzzuf B2B Growth team",
+    title: "🔧 Junior UX Designer in Growth Squad @ Wuzzuf",
     location: "Cairo, Egypt",
-    description:`Worked on wuzzuf job post form, through which 100s jobs are posted everyday. Worked on fast product experiments with the growth team 
-
-`,
+    descriptions:["Designed job post flow (still in daily use)","Ran UX experiments for user acquisition "],
     icon: React.createElement(CgWorkAlt),
     date: "OCTOBER 2018 - OCTOBER 2019 ",
     },
   {
-    title: "BSC Material Engineering @The German University in Cairo",
+    title: "🎓 BSC Material Engineering @The German University in Cairo",
     location: "Cairo, Egypt",
-    description:`Engineering in Egypt is 5 years, graduation GPA 2.56 (good)  
-
-`,
+    descriptions:["5 year program"],
     icon: React.createElement(LuGraduationCap),
     date: "OCTOBER 2012 - OCTOBER 2018 ",
   },
@@ -227,51 +222,51 @@ export const projectsData:Project[] = [
 ] as Project[];
 
 export const skillsData = [ 
-   {skill: "Figma" , skill_type:"Design"},
-    {skill:"Adobe XD",skill_type:"Design"},
-  {skill:"User interviews",skill_type:"UX Research"},
-   {skill: "Quantitive UX research",skill_type:"UX Research"},
-   {skill: "AB Testing",skill_type:"UX Research"},
-      {skill: "Gorilla User Research",skill_type:"UX Research"},
-     {skill: "Focus Groups",skill_type:"UX Research"},
-  {skill:"Google analytics",skill_type:"UX Research"},
-  { skill: "Low code dev", skill_type:"Design"},
-   {skill: "protottyping with variables in Figma",skill_type:"Design"},
-  { skill: "Design systems", skill_type: "Design" },
-  { skill: "Animations in Figma & Framer", skill_type: "Design" },
-  { skill: "Zeplin", skill_type: "Design" },
-  {skill: "Framer",skill_type:"Design"},
-  {skill: "Design systems",skill_type:"Design"},
-  {skill:"HTML5",skill_type:"Web Dev"},
-  {skill:"CSS3",skill_type:"Web Dev"},
-  {skill:"JavaScript ES6",skill_type:"Web Dev"},
-  {skill:"TypeScript",skill_type:"Web Dev"},
-  {skill:"React",skill_type:"Web Dev"},
-  {skill:"Tan Stack React Query (Basic)",skill_type:"Web Dev"},
-  {skill:"Next.js",skill_type:"Web Dev"},
-  {skill:"MobX state management(Basic)",skill_type:"Web Dev"},
-  {skill:"Tailwind CSS",skill_type:"Web Dev"},
-  {skill:"Framer Motion",skill_type:"Web Dev"},
-  { skill: "German (B2)", skill_type: "Language" },
-  { skill: "English (Fluent C2)", skill_type: "Language" },
-  { skill: "Arabic (Fluent)", skill_type: "Language" },
-  { skill: "Notion", skill_type: "Other" },
-  { skill: "Jira", skill_type: "Other" },
-  { skill: "Hotjar", skill_type: "UX Research" },
-  { skill: "Mixpanel", skill_type: "UX Research" },
-  {skill:"Hey Marvin", skill_type:"UX Research"},
-  {skill:"Clerk Auth", skill_type:"Web Dev"},
-  {skill:"shadcn ui", skill_type:"Web Dev"},
+   {skill: "🎨 Figma" , skill_type:"Design"},
+    {skill:"🎨 Adobe XD",skill_type:"Design"},
+  {skill:"🎤️ User interviews",skill_type:"UX Research"},
+   {skill: "🔍 Quantitive UX research",skill_type:"UX Research"},
+   {skill: "🆎 AB Testing",skill_type:"UX Research"},
+      {skill: "🔍 Gorilla User Research",skill_type:"UX Research"},
+     {skill: "👥 Focus Groups",skill_type:"UX Research"},
+  {skill:"📊 Google analytics",skill_type:"UX Research"},
+  { skill: "💻 Low code dev", skill_type:"Design"},
+   {skill: "💻 protottyping with variables in Figma",skill_type:"Design"},
+  { skill: "🎨 Design systems", skill_type: "Design" },
+  { skill: "🎥 Animations in Figma & Framer", skill_type: "Design" },
+  { skill: "🎨 Zeplin", skill_type: "Design" },
+  {skill: "🎨 Framer",skill_type:"Design"},
+  {skill: "🎨 Design systems",skill_type:"Design"},
+  {skill:"👨🏻‍💻 HTML5",skill_type:"Web Dev"},
+  {skill:"👨🏻‍💻 CSS3",skill_type:"Web Dev"},
+  {skill:"👨🏻‍💻 JavaScript ES6",skill_type:"Web Dev"},
+  {skill:"👨🏻‍💻 TypeScript",skill_type:"Web Dev"},
+  {skill:"👨🏻‍💻 React",skill_type:"Web Dev"},
+  {skill:"👨🏻‍💻 Tan Stack React Query (Basic)",skill_type:"Web Dev"},
+  {skill:"👨🏻‍💻 Next.js",skill_type:"Web Dev"},
+  {skill:"👨🏻‍💻 MobX state management(Basic)",skill_type:"Web Dev"},
+  {skill:"🎨 Tailwind CSS",skill_type:"Web Dev"},
+  {skill:"🎥 Framer Motion",skill_type:"Web Dev"},
+  { skill: "🇩🇪 German (B2)", skill_type: "Language" },
+  { skill: " 🇬🇧 English (Fluent C2)", skill_type: "Language" },
+  { skill: " 🇪🇬 Arabic (Fluent)", skill_type: "Language" },
+  { skill: "💡 Notion", skill_type: "Other" },
+  { skill: "💡 Jira", skill_type: "Other" },
+  { skill: "📊 Hotjar", skill_type: "UX Research" },
+  { skill: "📊 Mixpanel", skill_type: "UX Research" },
+  {skill:"🔍 Hey Marvin", skill_type:"UX Research"},
+  {skill:"🔐 Clerk Auth", skill_type:"Web Dev"},
+  {skill:"💻 shadcn ui", skill_type:"Web Dev"},
 
 ] as Skill[];
 
 export interface TestimonialData {
   name:string
   role:string
-  date:string
+  date?:string
   relationship:string
   quote:string
-  image:StaticImageData
+  image:StaticImageData | string  
 }
 
 export const TestimonialsData = [
