@@ -17,7 +17,7 @@ export const Testimonials = () => {
       id='testimonials'
     className=" scroll-mt-28 py-20 px-6 md:px-12 max-w-6xl mx-auto"
     >
-        <SectionHeading> Testimonials</SectionHeading>
+        <SectionHeading> Linkedin Reviews</SectionHeading>
 
        <div className="grid md:grid-cols-2 gap-10">
         {TestimonialsData.map((rec, index) => (

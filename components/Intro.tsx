@@ -120,11 +120,11 @@ function Intro() {
              </motion.p> */}
              <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> UX.UI Product Designer</p>
              <div className='flex justify-center items-center flex-row mb-2 text-center text-lg sm:text-xl text-zinc-600 dark:text-zinc-300'> 
-              <p className='px-2 py-1 rounded rounded-md hover:bg-purple-300 hover:text-gray-900 dark:hover:bg-purple-700 dark:hover:text-white/50'>🎨 Design</p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-purple-300 hover:text-gray-900 dark:hover:bg-purple-700 dark:hover:text-white/50 transition-transform [transform-style:preserve-3d] hover:[transform:rotateX(360deg)]'>🎨 Design</p>
               <p>,</p>
-              <p className='px-2 py-1 rounded rounded-md hover:bg-teal-200 hover:text-gray-900 dark:hover:bg-teal-700 dark:hover:text-white/50'>👨🏻‍💻 Code</p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-teal-200 hover:text-gray-900 dark:hover:bg-teal-700 dark:hover:text-white/50 transition-transform [transform-style:preserve-3d] hover:[transform:rotateX(360deg)]'>👨🏻‍💻 Code</p>
               <p className='mr-1'>, </p>
-              <p className='px-2 py-1 rounded rounded-md hover:bg-indigo-300 hover:text-gray-900 dark:hover:bg-indigo-700 dark:hover:text-white/50'>🔍 Research</p>
+              <p className='px-2 py-1 rounded rounded-md hover:bg-indigo-300 hover:text-gray-900 dark:hover:bg-indigo-700 dark:hover:text-white/50 transition-transform [transform-style:preserve-3d] hover:[transform:rotateX(360deg)]'>🔍 Research</p>
 
              </div>
            
