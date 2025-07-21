@@ -122,7 +122,7 @@ export const experiencesData = [
 
 export const projectsData:Project[] = [
   {
-    title: "Billa service terminal",
+    title: "Billa Austria self-service terminal",
     project_type:["B2C"],
     description:
       "This project was completed and shipped last year and now live in 4 different supermarkets in Austria. It started with a 4 day design sprint and 2 months later it was in development. I acted as a full-stack designer on this project. ",
@@ -183,7 +183,6 @@ export const projectsData:Project[] = [
       "In this project I experimented with Figma Make and V0 by Vercel to build a POS dashboard interface, fetching and sending data to a real API",
     tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
     year:"2025",
-    imageUrl: project_img_7,
     readingTime:"0 min"
     },
   {
