@@ -97,15 +97,29 @@ function Intro() {
                      <Image width={200} height={200} quality={95} className='h-32 w-32 border-[0.35rem] border-white object-cover shadow-xl rounded-full' src={avatar} alt={"My profile image"} />
                   </motion.div>
                   <motion.span
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{
-                          type: 'spring',
-                          stiffness: 125,
-                          delay:0.5,
-                          duration:0.7 
-                      }}
-                      className='absolute text-4xl bottom-0 right-0'>👋</motion.span>
+                      // initial={{ opacity: 0, scale: 0 }}
+                      // animate={{ opacity: 1, scale: 1 }}
+                      // transition={{
+                      //     type: 'spring',
+                      //     stiffness: 125,
+                      //     delay:0.5,
+                      //     duration:0.7 
+                      // }}
+                      initial={{ rotate: 0 }}
+      animate={{
+        rotate: [
+          0, 20, -10, 20, -10, 20, -10, 20, -10, 0 // 4 full shakes
+        ],
+      }}
+      transition={{
+        duration: 3.3, // 4 shakes × (0.3s delay + ~0.5s move)
+        ease: "easeInOut",
+        times: [ // Spread out to include 0.3s pause between each keyframe
+          0.0, 0.1, 0.2, 0.4, 0.5, 0.7, 0.8, 1.0, 1.1, 1.3
+        ],
+        delay: 0.3, // Wait before starting
+      }}
+                      className='absolute text-5xl bottom-0 right-0'>👋</motion.span>
               </div>
              
           </div>
