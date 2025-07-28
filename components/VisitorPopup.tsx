@@ -29,7 +29,7 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
     console.log('Submitting visitor data:', visitor); // ✅ log request body
 
     try {
-      const response = await fetch(`${process.env.FORM_UR}`, {
+      const response = await fetch(`${process.env.FORM_URL}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(visitor),
