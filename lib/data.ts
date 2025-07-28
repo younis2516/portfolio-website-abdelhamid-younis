@@ -29,7 +29,7 @@ export interface Project{
   link: string,
   imageUrl: StaticImageData
   year:string
-  readingTime:string
+  readingTime:number
 }
 export type SkillType = "Web Dev" | "Design" | "Business" | "UX Research" | "Language" | "All"| "Other"
 export const SkillTypes:SkillType[] = ["All","Design","UX Research","Web Dev","Language","Other"]
@@ -130,7 +130,7 @@ export const projectsData:Project[] = [
     imageUrl: portfolio_img_1,
     year:"2023",
     link:'https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11',
-    readingTime:"10 min"
+    readingTime:10
   },
   {
     title: "App Radar UI Redesign ",
@@ -141,7 +141,7 @@ export const projectsData:Project[] = [
     imageUrl: portfolio_img_4,
     year:"2022",
     link:"https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16",
-    readingTime:"5 min"
+    readingTime:5
     },
   {
     title: "Tubics Video Optimization Tool ",
@@ -152,7 +152,7 @@ export const projectsData:Project[] = [
     imageUrl: portfolio_img_2,
     year:"2021",
     link:'https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12',
-    readingTime:"12 min"
+    readingTime:12
   },
   {
     title: "Tubics's Design System & documentation",
@@ -163,7 +163,7 @@ export const projectsData:Project[] = [
     imageUrl: portfolio_img_3,
     year:"2021",
     link:'https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22',
-    readingTime:"7 min"
+    readingTime:7
   },
   {
     title: "Wuzzuf Hiring dashboard",
@@ -174,7 +174,7 @@ export const projectsData:Project[] = [
       imageUrl: portfolio_img_6,
     year:"2019",
     link:'https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24',
-    readingTime:"8 min"
+    readingTime:8
     },
     {
     title: "Coming soon: POS dashboard Built with V0 by Vercel",
@@ -183,7 +183,7 @@ export const projectsData:Project[] = [
       "In this project I experimented with Figma Make and V0 by Vercel to build a POS dashboard interface, fetching and sending data to a real API",
     tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
     year:"2025",
-    readingTime:"0 min"
+    readingTime:0
     },
   {
     title: "HCI Project: Grocery Shopping Bot ",
@@ -194,7 +194,7 @@ export const projectsData:Project[] = [
     imageUrl: portfolio_img_5,
     year:"2020",
     link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15',
-    readingTime:"6 min"
+    readingTime:6
   },
     {
     title: "My portfolio website",
@@ -205,7 +205,7 @@ export const projectsData:Project[] = [
     year:"2025",
     link:'https://abdelhamid-portfolio.vercel.app/',
     imageUrl: project_img_8,
-    readingTime:"0 min"
+    readingTime:0
     },
     {
     title: "E-commerce admin portal",
@@ -216,7 +216,7 @@ export const projectsData:Project[] = [
     year:"2025",
     link:'https://multistore-ecommerce-admin-portal.vercel.app',
     imageUrl: project_img_9,
-    readingTime:"0 min"
+    readingTime:0
     },
 ] as Project[];
 
