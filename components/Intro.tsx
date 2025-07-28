@@ -152,7 +152,7 @@ function Intro() {
               }}
               className='flex text-lg font-medium flex-col sm:flex-row items-center pt-4 gap-4 justify-center'>
               <Link href={'#contact'}
-                  className='group bg-gray-900 dark:bg-gray-600 outline-none focus:scale-110 hover:scale-110 hover:bg-gray950 active:scale-105 transition text-white px-7 py-3 flex items-center justify-center gap-2 rounded-full w-full sm:w-auto'
+                  className='group bg-gray-900 dark:bg-gray-600 outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition text-white px-7 py-3 flex items-center justify-center gap-2 rounded-full w-full sm:w-auto'
                   onClick={() => {
                       setActiveSection("Contact")
                       setTimeOfLastClick(Date.now())
