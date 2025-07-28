@@ -8,7 +8,7 @@ interface VisitorPopupProps {
 
 const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
     const [name, setName] = useState('');
-  const [email, setEmail] = useState('anon@anon.com');
+  const [email, setEmail] = useState('example@email.com');
   const [showError, setShowError] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
@@ -83,6 +83,7 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
           <input
             type="email"
             value={email}
+            placeholder='example@email.com'
             onChange={(e) => setEmail(e.target.value)}
             className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white/70 dark:bg-gray-700/70 text-black dark:text-white"
           />
