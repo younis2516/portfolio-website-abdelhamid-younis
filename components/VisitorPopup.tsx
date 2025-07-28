@@ -2,6 +2,7 @@ import { create } from 'domain';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { FiSend } from 'react-icons/fi';
+import { SubmitButton } from './SubmitButton';
 
 interface VisitorPopupProps {
   onClose: () => void;
@@ -90,12 +91,13 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
           />
         </div>
 
-        <button
+        {/* <button
           type="submit"
           className="group bg-gray-900 dark:bg-gray-600 outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition text-white px-7 py-3 flex items-center justify-center gap-2 rounded-full w-full sm:w-auto"
         >
           Submit
-        </button>
+        </button> */}
+        <SubmitButton  />
       </form>
        {/* ✅ Toast */}
       {/* {showToast && (
