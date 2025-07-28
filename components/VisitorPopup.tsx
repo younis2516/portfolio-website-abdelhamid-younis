@@ -1,5 +1,6 @@
 import { create } from 'domain';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
 import { FiSend } from 'react-icons/fi';
 
 interface VisitorPopupProps {
@@ -42,8 +43,8 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
       if (!response.ok) {
         throw new Error('Failed to submit form');
       }
-
-      setShowToast(true); // ✅ show success toast
+      toast.success("Your response is submitted successfully! ")
+      // setShowToast(true); // ✅ show success toast
       localStorage.setItem('visited', 'true');
 
       setTimeout(() => {
@@ -97,11 +98,11 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
         </button>
       </form>
        {/* ✅ Toast */}
-      {showToast && (
+      {/* {showToast && (
         <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fadeIn">
           Submitted successfully!
         </div>
-      )}
+      )} */}
     </div>
     
   );
