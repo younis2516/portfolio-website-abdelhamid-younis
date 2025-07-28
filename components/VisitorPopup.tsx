@@ -29,7 +29,7 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
     console.log('Submitting visitor data:', visitor); // ✅ log request body
 
     try {
-      const response = await fetch(`${process.env.FORM_URL}`, {
+      const response = await fetch(`${process.env.FORM_URL || "https://6887ec7badf0e59551b898c0.mockapi.io/api/visitors-data"}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(visitor),
