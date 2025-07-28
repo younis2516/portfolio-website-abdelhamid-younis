@@ -8,7 +8,7 @@ interface VisitorPopupProps {
 
 const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
     const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState('anon@anon.com');
   const [showError, setShowError] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
@@ -32,7 +32,11 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
       const response = await fetch(`${process.env.FORM_URL || "https://6887ec7badf0e59551b898c0.mockapi.io/api/visitors-data"}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(visitor),
+        body: JSON.stringify({
+          name:name,
+          email:email,
+          createdAt: new Date().toISOString(),
+        }),
       });
 
       if (!response.ok) {
