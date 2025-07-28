@@ -21,7 +21,7 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
     }
 
         const visitor = {
-            // id: crypto.randomUUID(),
+            id: crypto.randomUUID(),
             name: name.trim(),
             email: email.trim() || "anon@anon.com", // ✅ Always send a string (never undefined or null)
             createdAt: new Date().toISOString(),
