@@ -11,6 +11,7 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [showError, setShowError] = useState(false);
   const [showToast, setShowToast] = useState(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -52,9 +53,9 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
 
   return (
     <div className="bg-white/50 dark:bg-gray-800/90 backdrop-blur-md border border-white/20 dark:border-gray-300/10 shadow-2xl rounded-xl p-6 w-[90%] max-w-md">
-      <h2 className="text-2xl font-semibold mb-4 text-center text-black dark:text-white">Nice to meet you 👋</h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center text-black dark:text-white">Nice to meet you! 👋</h2>
       <p className="mb-4 text-sm text-gray-700 dark:text-gray-300 text-center">
-        Please enter your name or your company name if you are a recruiter to view the site
+        Please enter your name or if you are a recruiter enter your company name to view my portfolio.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
