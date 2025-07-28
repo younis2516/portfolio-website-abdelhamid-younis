@@ -23,7 +23,7 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
         const visitor = {
             // id: crypto.randomUUID(),
             name: name.trim(),
-            email: email.trim() || "anon@anon.com", // ✅ Always send a string (never undefined or null)
+            email: email.trim() || "example@email.com", // ✅ Always send a string (never undefined or null)
             createdAt: new Date().toISOString(),
         };
     console.log('Submitting visitor data:', visitor); // ✅ log request body
