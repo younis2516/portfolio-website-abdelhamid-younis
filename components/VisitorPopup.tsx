@@ -1,3 +1,4 @@
+import { create } from 'domain';
 import React, { useState } from 'react';
 import { FiSend } from 'react-icons/fi';
 
@@ -19,10 +20,10 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
     }
 
         const visitor = {
-            id: crypto.randomUUID(),
+            // id: crypto.randomUUID(),
             name: name.trim(),
             email: email.trim() || "user didnt give an email", // ✅ Always send a string (never undefined or null)
-            submittedAt: new Date().toISOString(),
+            createdAt: new Date().toISOString(),
         };
     console.log('Submitting visitor data:', visitor); // ✅ log request body
 
