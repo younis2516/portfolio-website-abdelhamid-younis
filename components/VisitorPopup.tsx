@@ -8,7 +8,7 @@ interface VisitorPopupProps {
 
 const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
     const [name, setName] = useState('');
-  const [email, setEmail] = useState('example@email.com');
+  const [email, setEmail] = useState('  ');
   const [showError, setShowError] = useState(false);
   const [showToast, setShowToast] = useState(false);
 
