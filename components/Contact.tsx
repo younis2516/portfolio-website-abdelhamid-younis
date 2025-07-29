@@ -12,6 +12,34 @@ import toast from 'react-hot-toast'
 export default function Contact() {
     const { ref } = useScrollIntoView("Contact", 0.5)
     const [formData, setFormData] = useState<FormData | undefined | null>()
+    const [email,setEmail]= useState(" ")
+    const [message,setMessage]= useState(" ")
+    const [showError, setShowError] = useState(false);
+    const handleSubmit = async (e: React.FormEvent) => {
+    
+        e.preventDefault();
+       console.log("FFFF Form data",email,message)
+        try {
+        const response = await fetch(`${process.env.CONTACT_FORM || "https://6887ec7badf0e59551b898c0.mockapi.io/api/contact-form"}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email,
+                message,
+                createdAt:new Date().toISOString(),
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to submit form');
+        }
+        toast.success("Your response is submitted successfully! ")
+        setEmail("")
+        setMessage("")
+        } catch (err) {
+        console.error('Submission error:', err);
+        }
+  };
     return (
         <motion.section id="contact" ref={ref} className='text-center items-center justify-center flex flex-col gap-10 mb-20 scroll-mt-28 w-[min(100%,48rem)] mt-20'
             initial={{ opacity: 0 }}
@@ -21,30 +49,44 @@ export default function Contact() {
             <SectionHeading>Get in Touch</SectionHeading>
             <p className='font-normal text-base text-gray-700 -mt-12 dark:text-white/80'>Please contact me directly at <a href='mailto:abdelhamiduonis@hotmail.com' className='underline'>abdelhamiduonis@hotmail.com</a> <br></br> or through this form.</p> 
             <form className='flex flex-col w-full pr-10 pl-10 sm:pr-20 sm:pl-20 dark:text-black -mt-4 dark:text-black'
-                action={ (formData:FormData) => {
-                    // const { error } = await sendEmail(formData)
-                    // if (error) {
-                    //     toast.error(error)
-                    //     return
-                    // }
-                    toast.success('email sent successfully')
-                }}>
+                // action={ (formData:FormData) => {
+                //     // const { error } = await sendEmail(formData)
+                //     // if (error) {
+                //     //     toast.error(error)
+                //     //     return
+                //     // }
+                //     toast.success('email sent successfully')
+                // }}
+                onSubmit={handleSubmit} 
+                >
                 <input 
                     className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
                     placeholder='example@gmail.com'
                     type='email'
                     required
                     name="email"
+                    value={email}
+                    onChange={(e) => {
+                    setEmail(e.target.value);
+                    setShowError(false);
+                    }}
                     maxLength={500}
                 />
+                {showError && <p className="text-red-500 text-sm mt-1">email is required</p>}
                 <textarea
                     className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
                     lang='en'
                     name="message"
                     placeholder="Your message"
+                    value={message}
+                    onChange={(e) => {
+                    setMessage(e.target.value);
+                    setShowError(false);
+                    }}
                     required
                     maxLength={5000}
                 />
+                {showError && <p className="text-red-500 text-sm mt-1">message is required</p>}
                 <SubmitButton  />
             </form>
         </motion.section>
