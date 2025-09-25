@@ -11,7 +11,7 @@ import portfolio_img_6 from '@/public/portfolio_img_6.png'
 import project_img_7 from '@/public/project_img_7.gif'
 import project_img_8 from '@/public/project_img_8.png'
 import project_img_9 from '@/public/project_img_9.png'
-
+import project_img_10 from '@/public/project_img_10.gif'
 import profile_img_1 from '@/public/profile_img_1.jpeg'
 import profile_img_2  from '@/public/profile_img_2.jpeg'
 
@@ -216,6 +216,17 @@ export const projectsData:Project[] = [
     year:"2025",
     link:'https://multistore-ecommerce-admin-portal.vercel.app',
     imageUrl: project_img_9,
+    readingTime:0
+    },
+    {
+    title: "lehr.ai: Practice German with AI-generated Exercises",
+    project_type: ["Web Dev","Built with AI"],
+    description:
+      "I was a frontend developer and a UX.UI designer in this projet, the frontend was Built with React typescript, next, shadcn, React Query and v0.dev ",
+    tags: ["Fullstack project","React", "typescript","Shadcn", "next","vercel"],
+    year:"2025",
+    link:'https://lehr.app',
+    imageUrl: project_img_10,
     readingTime:0
     },
 ] as Project[];
