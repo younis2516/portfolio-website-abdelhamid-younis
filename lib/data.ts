@@ -219,7 +219,7 @@ export const projectsData:Project[] = [
     readingTime:0
     },
     {
-    title: "lehr.ai: Practice German with AI-generated Exercises",
+    title: "lehr.app: Practice German with AI-generated Exercises",
     project_type: ["Web Dev","Built with AI"],
     description:
       "I was a frontend developer and a UX.UI designer in this projet, the frontend was Built with React typescript, next, shadcn, React Query and v0.dev ",

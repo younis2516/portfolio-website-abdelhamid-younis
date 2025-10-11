@@ -3,7 +3,7 @@ import React, { useRef } from 'react'
 import {useScroll,motion, useTransform } from 'framer-motion'
 import { projectsData } from '@/lib/data'
 import Image from 'next/image'
-import { FiArrowRight, FiBookOpen, FiClock } from "react-icons/fi";
+import { FiArrowRight, FiBookOpen, FiCalendar, FiClock } from "react-icons/fi";
 
 
 type ProjectProps = {
@@ -46,10 +46,13 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
                         }</p>
 
                         {readingTime>0?(<div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-300  dark:bg-gray-600  rounded-full'>
-                            {/* <FiBookOpen className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/> */}
-                        <p className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'>{readingTime} min</p>
+                            <FiBookOpen className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/>
+                        <p className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'>{readingTime}</p>
                         </div>):null}
-                        <p className=' w-16 flex justify-center py-1 px-3 bg-gray-300 text-base text-gray-700 dark:bg-gray-600 dark:text-white/70 rounded-full tracking-wider '>{year}</p>
+                        <div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-300  dark:bg-gray-600  rounded-full'>
+                            {/* <FiCalendar className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/> */}
+                        <p className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'>{year}</p>
+                        </div>
 
                     </div>
                     <h3 className='text-2xl font-semibold mt-6 gap-2'>{title}</h3> 

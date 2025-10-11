@@ -6,7 +6,7 @@ const Footer = () => {
           <small className="mb-2 block text-xs">
               &copy; 2024 abdelhamiduonis@gmail.com. All rights reserved.
           </small>
-          <p className="text-xs"><span className="font-semibold">About this website:</span> built with react & next.js (App router and server actions), Typescript, Tailwind CSS, Resend, React Email. framer motion, and it is hosted on Vercel.</p>
+          <p className="text-xs"><span className="font-semibold"></span> Built with react & next.js (App router and server actions), Typescript, Tailwind CSS, Resend, React Email. framer motion, and it is hosted on Vercel.</p>
     </footer>
   )
 }
