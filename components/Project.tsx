@@ -46,7 +46,7 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
                         }</p>
 
                         {readingTime>0?(<div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-300  dark:bg-gray-600  rounded-full'>
-                            <FiBookOpen className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/>
+                            <FiClock className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/>
                         <p className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'>{readingTime}</p>
                         </div>):null}
                         <div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-300  dark:bg-gray-600  rounded-full'>
