@@ -135,14 +135,14 @@ function Intro() {
 
              </div>
 
-             <motion.p
+             {/* <motion.p
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity:1,y:0}}
               className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-medium !leading-[1.5] sm:text-xl'
           >I am a Product Designer 📍 Based in Vienna. But originally I am from Cairo. I didnt study design, but it was my passion to design things people interact with in their daily life. And thankfully I turned this passion to a job. I studied engineering for my bachelor and since 2018 I have been working as a UX.UI designer.
              I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets in Austria</strong> <br/> I can design and code and in my free time i am building products with AI using real APIs.
              
-             </motion.p>
+             </motion.p> */}
            
              {/* <TypingParagraph/> */}
 
