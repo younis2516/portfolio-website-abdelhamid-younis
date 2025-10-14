@@ -6,6 +6,8 @@ import { Toaster } from 'react-hot-toast'
 import Footer from '@/components/Footer'
 import ThemeSwitch from '@/components/ThemeSwitch'
 import { ThemeProvider } from '@/context/theme-context'
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -41,6 +43,7 @@ export default function RootLayout({
             <Toaster position="top-right" />
             <ThemeSwitch/>
         </ActiveSectionContextProvider>
+        <SpeedInsights />
         </ThemeProvider>
         
       </body>
