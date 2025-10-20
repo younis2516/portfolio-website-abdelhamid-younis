@@ -70,49 +70,56 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: " 🧑🏼‍💻 Senior Product Designer @ REWE International",
+    title: " Product Designer @ REWE International",
     location: "Vienna, Austria",
-    descriptions:["Led UX for Billa’s self-checkout kiosks (now live in 60+ branches)","Built a white-label design system for all REWE brands","Prototyped AI-powered retail dashboards using V0 + Shadcn UI","Created interactive mockups with FigmaMake"],
+    descriptions:["with the help of a one of my senior colleagues I Designed Billa’s self-checkout kiosks (now live in 60+ branches)","Designed a white-label design system for all REWE Self-checkout kiosks in collab with the webshop team","Used AI tools to build interactive Retail dashboards"],
     icon: React.createElement(CgWorkAlt),
     date: "APRIL 2022 - NOW",
   },
   {
-    title: "🧑🏼‍💻 Frontend Intern (Part-Time) @ Suplyd ",
+    title: "Frontend & Design Cofounder @ lehr.app ",
     location: "Remote",
-    descriptions:["Implemented UI components in React & Ant Design","Worked across webshop + mobile app with MobX, GraphQL, Next.js, and react native"],
+    descriptions:["Lehr.app is a platform to practice your german with AI-Generated exercises"," We are 2 founders. I was a Product designer & front end developer, used react, next, v0 and react query"],
     icon: React.createElement(FaReact),
     date: "MAY 2024 - NOW",
   },
   {
-    title: "🎥 Product Designer / Low-Code Dev @Tubics ",
+    title: "Frontend Intern (Part-Time) @ Suplyd ",
+    location: "Remote",
+    descriptions:["with the help of more senior developers I Implemented small features in the UI with React, Ant Design, MobX, GraphQL and Next.js"],
+    icon: React.createElement(FaReact),
+    date: "MAY 2024 - NOW",
+  },
+  {
+    title: "Product Designer / Low-Code Dev @Tubics ",
     location: "Vienna, Austria",
-    descriptions:["Designed video optimization tool (top-selling feature)","Built UI for YouTube rank tracker on SEMrush","Created and documented company-wide design system"],
+    descriptions:["I was the only designer in Tubics","Designed the video optimization tool (most-used-feature)","With the help of another freelance designer, we designed YouTube rank tracker on SEMrush app store","Created and documented company-wide design system"],
     icon: React.createElement(CgWorkAlt),
     date: "OCTOBER 2020 -  JANUARY 2022",
     },
   {
-    title: "🏨 Part time UX/UI Designer @ Hotelkit",
+    title: "Part time UX/UI Designer @ Hotelkit",
     location: "Salzburg, Austria",
-    descriptions:["Designed housekeeping tool (2nd best-selling feature)","Redesigned web + mobile app interfaces"],
+    descriptions:["I was the only designer at Hotelkit","Worked closely with devs and PM to design the housekeeping tool (2nd best-selling feature)","Redesigned web + mobile app screens for a UI face-lift"],
     icon: React.createElement(CgWorkAlt),
     date: "NOVEMBER 2019 - OCTOBER 2020",
     },
     {
-    title: "🎓 M.Sc. Human-Computer Interaction @ University of Salzburg",
+    title: " M.Sc. Human-Computer Interaction @ University of Salzburg",
     location: "Salzburg, Austria",
-    descriptions:["focus on User Research, interaction design","Designed tangible interactions with Arduino"],
+    descriptions:["Focus on User Research, and 3D interaction design"],
     icon: React.createElement(LuGraduationCap),
     date: "SEPTEMBER 2019 - JANUARY 2021",
     },
   {
-    title: "🔧 Junior UX Designer in Growth Squad @ Wuzzuf",
+    title: "Junior UX Designer in Growth Squad @ Wuzzuf",
     location: "Cairo, Egypt",
-    descriptions:["Designed job post flow (still in daily use)","Ran UX experiments for user acquisition "],
+    descriptions:["Designed job post flow (still in use till now)","Ran UX experiments for user acquisition on landing page"],
     icon: React.createElement(CgWorkAlt),
     date: "OCTOBER 2018 - OCTOBER 2019 ",
     },
   {
-    title: "🎓 BSC Material Engineering @The German University in Cairo",
+    title: "BSC Material Engineering @The German University in Cairo",
     location: "Cairo, Egypt",
     descriptions:["5 year program"],
     icon: React.createElement(LuGraduationCap),
@@ -147,7 +154,7 @@ export const projectsData:Project[] = [
     title: "Tubics Video Optimization Tool ",
      project_type:["Saas B2B"],
     description:
-      "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics’s most used feature accounting to 70% of the session time on the app. ",
+      "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics most used feature accounting to 70% of the session time on the app. ",
     tags: [" Full time","Live now","User Analytics","Wireframes","Usability Testing"],
     imageUrl: portfolio_img_2,
     year:"2021",
@@ -158,7 +165,7 @@ export const projectsData:Project[] = [
     title: "Tubics's Design System & documentation",
      project_type:["Saas B2B","Design system","Data heavy"],
     description:
-      "In  late 2021 I was working with www.tubics.net to build their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
+      "In  late 2021 I was working with www.tubics.net to redesign their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
     tags: ["Full time","Design system","Research","low code"],
     imageUrl: portfolio_img_3,
     year:"2021",
@@ -211,7 +218,7 @@ export const projectsData:Project[] = [
     title: "E-commerce admin portal",
     project_type: ["Web Dev"],
     description:
-      "Built with React typescript, next, shadcn, authentication iusing clerk middleware, backend using firebase deployed on vercel ",
+      "Built with React typescript, next, shadcn, authentication using clerk middleware, backend using firebase deployed on vercel ",
     tags: ["Fullstack project","React", "typescript","Shadcn", "next", "firebase","clerk","vercel","node"],
     year:"2025",
     link:'https://multistore-ecommerce-admin-portal.vercel.app',
@@ -281,24 +288,21 @@ export interface TestimonialData {
 
 export const TestimonialsData = [
   {
-    name: 'Ahmed Osama Ibrahim',
-    role: 'Technical Lead @ Hotelkit',
-    date: 'May 22, 2025',
-    relationship: 'Worked with Abdelhamid on different teams',
-    image: profile_img_1,
-    quote: `Abdelhamid is one of the more pragmatic UI/UX designers I know, always focusing on intuitive user experiences. I have also always admired how he takes the time to prototype with different approaches and ideas, thinking outside the box, still with a focus on intuitiveness.
-
-Looking for someone to deliver a UX that seamlessly guides the user and communicates intent? Work with Abdelhamid.`,
-  },
-  {
     name: 'Mario Prikasky',
     role: 'Design System Lead @ REWE',
     date: 'May 17, 2025',
     image:profile_img_2,
-    relationship: 'Was senior to Abdelhamid but didn’t manage him directly',
-    quote: `Younis has a great eye for detail and is someone you can really rely on. He works independently and always delivers solid results without needing much direction. He also gave me very helpful feedback on the UNIFY design system for REWE International and contributed to making it better overall.
-
-If you’re looking for a good UX designer who cares about quality work, don’t hesitate to get in touch with him!`,
+    relationship: 'Was senior to Abdelhamid but did not manage him directly',
+    quote: `Younis has a great eye for detail and is someone you can really rely on. He works independently and always delivers solid results without needing much direction. He also gave me very helpful feedback on the UNIFY design system for REWE International. If you’re looking for a good UX designer who cares about quality work, don’t hesitate to get in touch with him!`,
   },
+  {
+    name: 'Ahmed Osama Ibrahim',
+    role: 'Tech Lead @ Hotelkit',
+    date: 'May 22, 2025',
+    relationship: 'Worked with Abdelhamid at Hotelkit',
+    image: profile_img_1,
+    quote: `Abdelhamid is one of the more pragmatic UI/UX designers I know, always focusing on intuitive user experiences. I have also always admired how he takes the time to prototype with different approaches and ideas, thinking outside the box, still with a focus on intuitiveness.`,
+  },
+  
 ] as TestimonialData []
 
