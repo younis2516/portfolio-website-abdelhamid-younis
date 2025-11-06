@@ -1,4 +1,5 @@
-import Header from '@/components/Header'
+import ConditionalHeader from '@/components/ConditionalHeader'
+import ConditionalBackground from '@/components/ConditionalBackground'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import ActiveSectionContextProvider from '@/context/active_section_context'
@@ -26,20 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en" className='!scroll-smooth'>
       <body className={`${inter.className} bg-gray-50 text-gray950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90 pl-0 pr-0`}>
-        <div className={`bg-[#fbe2e3] -z-10 absolute top-[-6rem] right-[-11rem] h-[32.25rem] w-[32.25rem] rounded-full blur-[10rem]
-          sm:w-[68.75rem] dark:bg-[#946263]  
-          `}></div>
-                <div className={`bg-[#dbd7fb] -z-10  absolute top-[-1rem] left-[-35rem] h-[32.25rem] w-[50rem] rounded-full blur-[10rem]
-          sm:w-[68.75rem]
-          md:left-[-33rem]
-          lg:left-[-28rem]
-          xl:left-[-15rem]
-          2xl:left-[-5rem]
-          dark:bg-[#676394]
-          `}></div>
+        <ConditionalBackground />
         <ThemeProvider>
           <ActiveSectionContextProvider>
-          <Header />
+          <ConditionalHeader />
           {children}
           <Footer />
             <Toaster position="top-right" />

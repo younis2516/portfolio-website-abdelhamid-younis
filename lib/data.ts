@@ -183,15 +183,6 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24',
     readingTime:8
     },
-    {
-    title: "Coming soon: POS dashboard Built with V0 by Vercel",
-    project_type: ["Built with AI","Data heavy"],
-    description:
-      "In this project I experimented with Figma Make and V0 by Vercel to build a POS dashboard interface, fetching and sending data to a real API",
-    tags: ["Full time","UX/UI Design","AI","Figma Make","Vercel AI"],
-    year:"2025",
-    readingTime:0
-    },
   {
     title: "HCI Project: Grocery Shopping Bot ",
      project_type:["B2C"],
@@ -203,17 +194,6 @@ export const projectsData:Project[] = [
     link:'https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15',
     readingTime:6
   },
-    {
-    title: "My portfolio website",
-    project_type: ["Web Dev"],
-    description:
-      "Built with React typescript, next, shadcn, framer motion div, and deployd on vercel ",
-    tags: ["React", "typescript","Shadcn", "next", "framer motion","vercel"],
-    year:"2025",
-    link:'https://abdelhamid-portfolio.vercel.app/',
-    imageUrl: project_img_8,
-    readingTime:0
-    },
     {
     title: "E-commerce admin portal",
     project_type: ["Web Dev"],

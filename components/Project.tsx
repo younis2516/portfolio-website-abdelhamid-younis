@@ -2,6 +2,7 @@
 import React, { useRef } from 'react'
 import {useScroll,motion, useTransform } from 'framer-motion'
 import { projectsData } from '@/lib/data'
+import Link from 'next/link'
 import Image from 'next/image'
 import { FiArrowRight, FiBookOpen, FiCalendar, FiClock } from "react-icons/fi";
 
@@ -25,6 +26,32 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
     }) 
     const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1])
     const opacityProgress =useTransform(scrollYProgress,[0,1],[0.6,1])
+    const titleToSlugMap: Record<string, string> = {
+        "Billa Austria self-service terminal": "billa-terminal",
+        "App Radar UI Redesign ": "app-radar-ui-redesign",
+        "Tubics Video Optimization Tool ": "tubics-video-optimization-tool",
+        "Tubics's Design System & documentation": "tubics-design-system-documentation",
+        "Wuzzuf Hiring dashboard": "wuzzuf-hiring-dashboard",
+        "Coming soon: POS dashboard Built with V0 by Vercel": "pos-dashboard-v0-vercel",
+        "HCI Project: Grocery Shopping Bot ": "grocery-shopping-bot",
+        "My portfolio website": "portfolio-website",
+        "E-commerce admin portal": "ecommerce-admin-portal",
+        "lehr.app: Practice German with AI-generated Exercises": "lehr-app",
+    }
+
+    const fallbackSlug = String(title)
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+
+    const internalHref = `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`
+    const isExternalProject = (
+      String(title) === "E-commerce admin portal" ||
+      String(title) === "lehr.app: Practice German with AI-generated Exercises"
+    )
+
     return (
             <motion.div
             ref={ref}
@@ -63,10 +90,18 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
                          <li className=' bg-gray-300 text-base text-gray-700 dark:bg-gray-600 dark:text-white/70 px-3 py-2 sm:mt-2 text-sm rounded-full tracking-wider' key={index}>{tag}</li>
                     ))}
                     </ul>
-                    {link&&link.length>0?(<div className=' mt-auto flex flex-row  items-center gap-2'>
+                    <div className=' mt-auto flex flex-row  items-center gap-2'>
                         <div className='flex items-center cursor-pointer justify-center px-3 py-3 text-white dark bg-gray-800 hover:bg-gray-950 dark:bg-gray-500 hover:dark:bg-gray-600 rounded-xl'><FiArrowRight/></div>
-                        <a href={link} className='leading-relaxed  text-gray-700 dark:text-white/70 hover:underline'> {project_type.includes("Web Dev")?"Go to project":"Read project documentation"}</a>
-                    </div>):""}
+                        {isExternalProject ? (
+                          <a href={String(link)} target="_blank" rel="noopener noreferrer" className='leading-relaxed  text-gray-700 dark:text-white/70 hover:underline'>
+                            Go to project
+                          </a>
+                        ) : (
+                          <Link href={internalHref} className='leading-relaxed  text-gray-700 dark:text-white/70 hover:underline'>
+                            {project_type.includes("Web Dev")?"Go to project":"Read project documentation"}
+                          </Link>
+                        )}
+                    </div>
                     
             </div>
             {project_type.includes("Built with AI") || project_type.includes("Web Dev")?
