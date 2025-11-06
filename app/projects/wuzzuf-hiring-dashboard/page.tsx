@@ -122,7 +122,7 @@ export default function WuzzufHiringDashboardPage() {
             </p>
 
             <ul className="list-disc list-inside text-sm sm:text-base text-gray-700 dark:text-white/70 space-y-1 sm:space-y-2 break-words">
-              <li> how many people applied ->interviewed -> shortlisted</li>
+              <li> how many people applied {'->'} interviewed {'->'} shortlisted</li>
               <li>which job had most applicants</li>
               <li>how many jobs got hired and how many applicants per job </li>
               <li>How many CVs i unlocked in total and how many cvs i can still unlock </li>
