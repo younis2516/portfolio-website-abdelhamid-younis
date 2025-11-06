@@ -75,7 +75,7 @@ export default function TubicsVideoOptimizationPage() {
           <section className="mb-12">
             <h2 className="text-xl sm:text-2xl font-semibold mb-3">Pains</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 leading-relaxed">
-              The current video optimization tool was a pain. it was buggy it didnt give rich reccomendartions and nobody wanted to use it
+              The current video optimization tool was problematic. It was buggy, didn't give rich recommendations, and nobody wanted to use it.
             </p>
             <div className="relative w-full aspect-[16/9] sm:aspect-[9/4] rounded-xl overflow-hidden">
                 <Image
@@ -99,10 +99,10 @@ export default function TubicsVideoOptimizationPage() {
 
           {/* Thought process & 1st release */}
           <section className="mb-12">
-            <h3 className="text-base sm:text-lg font-semibold mb-2">Solution1: Require a Search Term First</h3>
+            <h3 className="text-base sm:text-lg font-semibold mb-2">Solution 1: Require a Search Term First</h3>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
               Step one was a clear, justified search-term selection screen (manual or
-              suggested). This primes the AI to generate accurate recommendations. So ,first select search term → then optimize title/description/tags/thumbnail,
+              suggested). This primes the AI to generate accurate recommendations. So, first select a search term → then optimize title/description/tags/thumbnail,
               emphasizing quality over volume in the first release.
             </p>
             <div className="grid gap-6 sm:grid-cols-1">
@@ -116,12 +116,12 @@ export default function TubicsVideoOptimizationPage() {
               </div>
             </div>
             <h3 className="text-lg font-semibold mt-8 mb-2">
-              Solution2: Guided, Rich Recommendations 
+              Solution 2: Guided, Rich Recommendations 
             </h3>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
               Provide explanations and examples for each recommendation, organized like a
               left-panel checklist with the editable video fields on the right (similar to
-              Grammarly.
+              Grammarly's interface).
             </p>
             <div className="grid gap-6 sm:grid-cols-1">
               <div className="relative w-full aspect-[16/9] sm:aspect-[9/4] rounded-xl overflow-hidden">
@@ -136,9 +136,9 @@ export default function TubicsVideoOptimizationPage() {
           </section>
            {/* 1st release */}
            <section className="mb-12">
-            <h2 className="text-xl sm:text-2xl font-semibold mb-3">1st release</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-3">First Release</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            We did a figma protoype and tested it with 5 customers in an unstructured user interview. We just showed them the prototype and asked them to speak their thought loud. We put them in a scenario and asked them to optimize a video speaking about “Winter holidays in Austria” and the feedback was as follows. 
+            We created a Figma prototype and tested it with 5 customers in an unstructured user interview. We showed them the prototype and asked them to think aloud. We put them in a scenario and asked them to optimize a video about "Winter holidays in Austria" and the feedback was as follows.
             </p>
             <div className="grid gap-6 sm:grid-cols-1">
               <div className="relative w-full aspect-[16/9] sm:aspect-[9/4] rounded-xl overflow-hidden">
@@ -153,13 +153,13 @@ export default function TubicsVideoOptimizationPage() {
           </section>
           {/* Research & testing */}
           <section className="mb-12">
-            <h2 className="text-xl sm:text-2xl font-semibold mb-3">Adobting user feedback from 1st release into 2nd release</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-3">Adopting User Feedback from First Release into Second Release</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            In this release we included 3 other features based on the feedback we got from the first release. 
+            In this release, we included 3 other features based on the feedback we got from the first release.
 
             <br></br> <br></br>
 
-Feature 1: Sharing a draft with a colleague before publishing. User can click on this link icon to copy the draft link to the clipboard. The icon itself might not be very obvious so we made an onboarding tour with intercom to highlight it once the user lands on this page
+Feature 1: Sharing a draft with a colleague before publishing. Users can click on this link icon to copy the draft link to the clipboard. The icon itself might not be very obvious, so we created an onboarding tour with Intercom to highlight it once the user lands on this page.
             </p>
             <div className="grid gap-6 sm:grid-cols-1">
               <div className="relative w-full aspect-[16/9] sm:aspect-[9/2] rounded-xl overflow-hidden">
@@ -172,7 +172,7 @@ Feature 1: Sharing a draft with a colleague before publishing. User can click on
               </div>
             </div>
 
-            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">Feature 2: Search for keywords while working on your video, so the user dont need to go to any other keyword tracking tool to search for keywords and leave the app. We also released saved templates because most videos use duplicate content in the header and the footer of the video description. </p>
+            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">Feature 2: Search for keywords while working on your video, so users don't need to go to any other keyword tracking tool to search for keywords and leave the app. We also released saved templates because most videos use duplicate content in the header and the footer of the video description.</p>
              <div className="grid gap-6 sm:grid-cols-2">
               <div className="relative w-full aspect-[16/9] sm:aspect-[9/8] rounded-xl overflow-hidden">
                 <Image
@@ -198,7 +198,7 @@ Feature 1: Sharing a draft with a colleague before publishing. User can click on
           <section className="mb-12">
             <h2 className="text-xl sm:text-2xl font-semibold mb-3">Outcomes & Next Steps</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            With now the video optimization page getting bigger and having more features, it is important to offer a different experience for novice users compared to expert users. we learned that only the expert users use the templates, and the keywords search feature, also the draft feature. But our normal users didnt really use this feature, and based on a survey we launched to 200 users through our app. Those users didnt use these features because they didnt need it actually. So the next step we did, is that in the onboarding we asked the user 4 questions to classify them to expert or novice users and based on this we show them 2 different views of the video optimization page. 
+            Now that the video optimization page is getting bigger and has more features, it's important to offer a different experience for novice users compared to expert users. We learned that only expert users use the templates, the keyword search feature, and the draft feature. But our regular users didn't really use these features, and based on a survey we launched to 200 users through our app, those users didn't use these features because they didn't actually need them. So the next step we took was to ask users 4 questions during onboarding to classify them as expert or novice users, and based on this, we show them 2 different views of the video optimization page.
             </p>
           </section>
         </div>

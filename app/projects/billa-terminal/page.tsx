@@ -96,9 +96,9 @@ export default function BillaTerminalPage() {
         </section>
 
         <section className="mb-12">
-          <h3 className="text-base sm:text-lg font-semibold mt-2 mb-2">1.Design Briefing</h3>
+          <h3 className="text-base sm:text-lg font-semibold mt-2 mb-2">1. Design Briefing</h3>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-          In this step me, the PO & the UX lead gathered the stakeholders to find answers about, goal of the project, target group, which features would the minimum acceptable go to market product include and which resources and timeline we’re constrained by. 
+          In this step, I, the PO, and the UX lead gathered the stakeholders to find answers about the goal of the project, target group, which features the minimum viable product (MVP) would include, and what resources and timeline we were constrained by. 
           </p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
             <div className="relative w-full aspect-[16/9] sm:aspect-[4/3] rounded-xl overflow-hidden">
@@ -119,7 +119,7 @@ export default function BillaTerminalPage() {
             </div>
           </div>
 
-          <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">2.Competitor Analysis</h3>
+          <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">2. Competitor Analysis</h3>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
             We analyzed 11 self-service terminals to benchmark flows, scanning patterns,
             and menu structures; insights seeded sprint ideation.
@@ -135,7 +135,7 @@ export default function BillaTerminalPage() {
             </div>
           </div>
 
-          <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">3.Design Sprint (4 days)</h3>
+          <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">3. Design Sprint (4 days)</h3>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
           We planned 4 days for the design sprint with 8 stakeholders. 
           </p>
@@ -221,23 +221,23 @@ export default function BillaTerminalPage() {
             What went well
           </h3>
           <ul className="list-disc list-inside text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4 space-y-1 sm:space-y-2">
-            <li>People found it good with the nutrion circular labels and the info button</li>
-            <li>People knew how to scan a customer card and edit the cart </li>
-            <li>Users liked the allergy details and noticed the combo benefits and liked that all products are displayed with large images </li>
-            <li>most users managed to make an order </li>
+            <li>People found the nutrition circular labels helpful and appreciated the info button</li>
+            <li>People knew how to scan a customer card and edit the cart</li>
+            <li>Users liked the allergy details, noticed the combo benefits, and appreciated that all products are displayed with large images</li>
+            <li>Most users managed to place an order</li>
           </ul>
 
 
           </div>
 
-          <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">4.Iterating on the prototype
+          <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">4. Iterating on the prototype
           </h3>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
             We translated findings into user stories, iterated wireframes, and delivered
             high-fidelity UI per story before a second test round.
           </p>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-           User stories
+           User Stories
           </p>
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="relative w-full aspect-[16/9] sm:aspect-[16/6] rounded-xl overflow-hidden">
@@ -258,7 +258,7 @@ export default function BillaTerminalPage() {
             </div>
           </div>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mt-8 mb-4">
-           Then i worked on the wireframes and translated the wireframes to final design
+           Then I worked on the wireframes and translated them to the final design
           </p>
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="relative w-full aspect-[3/4] sm:aspect-[2/4] rounded-xl overflow-hidden">
@@ -361,7 +361,7 @@ export default function BillaTerminalPage() {
               />
             </div>
             <div className="flex flex-col gap-4 relative w-full aspect-[16/9] sm:aspect-[3/4] rounded-xl overflow-hidden">
-            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-2 sm:mb-4">Which dish infomration customers care about </p>
+            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-2 sm:mb-4">Which dish information customers care about</p>
               <Image
                 src="/pos-terminal-21.jpg"
                 alt="Receipt pickup reminder UI"
@@ -392,7 +392,7 @@ export default function BillaTerminalPage() {
 
           {/* Lessons Learned */}
         <section className="mb-12">
-          <h2 className="text-xl sm:text-2xl font-semibold mb-3">Lessons we learned</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-3">Lessons Learned</h2>
           <ul className="list-disc list-inside text-sm sm:text-base text-gray-700 dark:text-white/70 space-y-1 sm:space-y-2 break-words">
             <li>Less is more — focus on top-selling dishes</li>
             <li>Prompt users early to scan customer cards</li>

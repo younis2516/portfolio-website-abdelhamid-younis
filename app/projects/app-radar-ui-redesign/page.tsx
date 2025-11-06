@@ -74,11 +74,11 @@ export default function AppRadarRedesignPage() {
         <section className="mb-12 space-y-4 gap-5">
           <h3 className="text-lg sm:text-xl font-semibold">Problem 1 — First-time setup friction</h3>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">
-          When a new user sign up for the product the first time, they need to connect their app store account and their Apple ads account if they run ADs. This is how we show them their current app performance and suggest them ways to improve their ASO score (App store optimization). 
+          When a new user signs up for the product for the first time, they need to connect their App Store account and their Apple Ads account if they run ads. This is how we show them their current app performance and suggest ways to improve their ASO score (App Store Optimization). 
           </p>
           <h4 className="font-semibold">Solution</h4>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">
-            When the user sign up the first time they see this screen that prompts them to connect their app store account, and their google ads account 
+            When the user signs up for the first time, they see this screen that prompts them to connect their App Store account and their Google Ads account
           </p>
           {/* Images */}
           <div className="grid gap-6 sm:grid-cols-1">
@@ -95,9 +95,7 @@ export default function AppRadarRedesignPage() {
           <div className="grid gap-6 sm:grid-cols-1">
           <h4 className="font-semibold text-gray-200 mt-8">__</h4>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">
-          Once the user connected their app store accounts it will take few minutes to see your app analysis. 
-
-thats why we show them this empty state until the data is loaded. 
+          Once the user connects their App Store accounts, it will take a few minutes to see your app analysis. That's why we show them this empty state until the data is loaded.
           </p>
             <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
               <Image
@@ -111,7 +109,7 @@ thats why we show them this empty state until the data is loaded.
           <div className="grid gap-6 sm:grid-cols-1">
           <h4 className="font-semibold text-gray-200 mt-8">__</h4>
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">
-          Once the data is loaded the user will see the following reports in the app dashbaord. 
+          Once the data is loaded, the user will see the following reports in the app dashboard.
           </p>
             <div className="relative w-full aspect-[16/9] sm:aspect-[9/9] rounded-xl overflow-hidden">
               <Image

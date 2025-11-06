@@ -56,7 +56,7 @@ export default function GroceryBot2020Page() {
           <header className="mb-10">
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12">HCI Project — Grocery Shopping Bot (2020)</h1>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">
-              Student project for the master Program Human Computer Interaction at the University of Salzburg 
+              Student project for the Master's Program in Human Computer Interaction at the University of Salzburg
             </p>
           </header>
 
@@ -78,33 +78,33 @@ export default function GroceryBot2020Page() {
           <section className="mb-12">
             <h2 className="text-xl sm:text-2xl font-semibold mb-4">Step 1 — User Research</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            We did not have a solid idea on what to do at first. This project was done during the pandemic, when there was a total lockdown in Austria except for going to grocery stores. We noticed that many people did not want to go out even to supermarkets because they live in household with people in risk groups, we focused on the area of Salzburg in Austria, in which the popuplation is distributed among multiple villages distances apart and most households need a car to go to the nearest supermarkets. <br></br> <br></br>  So, our research question was 
+            We didn't have a solid idea of what to do at first. This project was done during the pandemic, when there was a total lockdown in Austria except for going to grocery stores. We noticed that many people did not want to go out even to supermarkets because they live in households with people in risk groups. We focused on the area of Salzburg in Austria, in which the population is distributed among multiple villages distances apart, and most households need a car to go to the nearest supermarkets. <br></br> <br></br>  So, our research question was 
             <br></br>
-            <strong> How technology could help people in rural and new developed areas to shop for grocerieres during the pandemic?  </strong>
+            <strong> How could technology help people in rural and newly developed areas shop for groceries during the pandemic?  </strong>
             <br></br>
-              Study Focus: Rural areas of Salzburg, older and non–tech-savvy users who commonly
+              Study Focus: Rural areas of Salzburg, older and non-tech-savvy users who commonly
               coordinate shopping over WhatsApp with family. 6 participants were recruited
               via classmates and their families. 6 participants took part in the study in total. <br></br>
               <br></br>
               <strong>Interview Questions </strong>
               <br></br>
               1. How often do you go to the grocery store? <br></br>
-2. If more than one time per week? Why do you do this instead of getting the studd for the whole week and restore it in the fridge?<br></br>
-3. If you do this weekly why is it the case?<br></br>
-4. Before you go to the supermarket what kind of preperations do you do? (ex: shopping list, search for offers, search for recipies and get igredients accordingly)
-Follow up: how often do you do that?<br></br>
-5. Are you loyal to certain brands/local supermarkets or whatever is convenient for you?  
-Followup: What made you loyal to that brand? <br></br>
-6. what is the thing you wish to be implemented in every supermarket you go to?
-Followup: Describe your best shopping experience? <br></br>
-7. To what extent are you satisfied about the packaging of the fresh products you get from the supermarket? <br></br>
-8. Describe your worst shopping experience?<br></br>
-9. Did you do any grocery shopping online service before?<br></br>
-Follow up: Are you a frequent user?<br></br>
-Followup: If not why you stopped using it?<br></br>
-Followup: Describe your experience with the online store, what did you like and what frustrated you?  <br></br>
-Followup: What kind of products do you buy from the grocery shop all the daily needs or just secondary products?  <br></br>
-10. What barriers could be there for online shopping compared to instore shopping? <br></br> <br></br>
+2. If more than once per week, why do you do this instead of getting the stuff for the whole week and storing it in the fridge?<br></br>
+3. If you do this weekly, why is it the case?<br></br>
+4. Before you go to the supermarket, what kind of preparations do you do? (ex: shopping list, search for offers, search for recipes and get ingredients accordingly)
+Follow-up: How often do you do that?<br></br>
+5. Are you loyal to certain brands/local supermarkets, or do you go to whatever is convenient for you?  
+Follow-up: What made you loyal to that brand? <br></br>
+6. What is one thing you wish would be implemented in every supermarket you go to?
+Follow-up: Describe your best shopping experience.<br></br>
+7. To what extent are you satisfied with the packaging of the fresh products you get from the supermarket? <br></br>
+8. Describe your worst shopping experience.<br></br>
+9. Have you used any online grocery shopping service before?<br></br>
+Follow-up: Are you a frequent user?<br></br>
+Follow-up: If not, why did you stop using it?<br></br>
+Follow-up: Describe your experience with the online store. What did you like and what frustrated you?  <br></br>
+Follow-up: What kind of products do you buy from the grocery shop—all the daily needs or just secondary products?  <br></br>
+10. What barriers could there be for online shopping compared to in-store shopping? <br></br> <br></br>
             </p>
             <div className="grid gap-6 sm:grid-cols-2 mb-6">
               <div className="relative w-full aspect-[16/9] sm:aspect-[5/4] rounded-xl overflow-hidden">
@@ -161,7 +161,7 @@ Followup: What kind of products do you buy from the grocery shop all the daily n
             </p>
             <div className="grid gap-6 sm:grid-cols-3">
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            <strong>Idea 1:</strong> <br></br>  Make an app for people living in the same area within 1 km, whoever is going for shopping can announce it on the app, and someone can chat with him to request an order. There shoulf be a maximum weight for the order in case the picker does not have a car, and the picker recieve 5-10 euro delivery fee depending on order size. 
+            <strong>Idea 1:</strong> <br></br>  Create an app for people living in the same area within 1 km. Whoever is going shopping can announce it on the app, and someone can chat with them to request an order. There should be a maximum weight for the order in case the picker does not have a car, and the picker receives a 5-10 euro delivery fee depending on order size.
             </p>
               <div className="relative w-full aspect-[16/9] sm:aspect-[10/9] rounded-xl overflow-hidden">
               
@@ -184,7 +184,7 @@ Followup: What kind of products do you buy from the grocery shop all the daily n
             </div>
             <div className="grid gap-6 sm:grid-cols-3 mt-10">
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            <strong>Idea 2:</strong> <br></br>  VR tour in the supermarket. This was very hard to implement because of the technological complexity of building VR products on 1 hand and it will be difficult for supermarkets to provide products as 3D opjects for the VR glasses 
+            <strong>Idea 2:</strong> <br></br>  VR tour in the supermarket. This was very hard to implement because of the technological complexity of building VR products on one hand, and it would be difficult for supermarkets to provide products as 3D objects for the VR glasses.
             </p>
               <div className="relative w-full aspect-[16/9] sm:aspect-[11/9] rounded-xl overflow-hidden">
               
@@ -199,7 +199,7 @@ Followup: What kind of products do you buy from the grocery shop all the daily n
             </div>
             <div className="grid gap-6 sm:grid-cols-3 mt-10">
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            <strong>Idea 3:</strong> <br></br>  conversational grocery shopping app, it works like whatsapp, first it asks u to upload a shopping list or scan it, then confirm or adjust the amounts, then it will aggregate the products from different grocery stores, you can choose your favorite one, then choose the delivery time window and pay. </p>
+            <strong>Idea 3:</strong> <br></br>  Conversational grocery shopping app that works like WhatsApp. First, it asks you to upload a shopping list or scan it, then confirm or adjust the amounts. Then it will aggregate products from different grocery stores, you can choose your favorite one, then choose the delivery time window and pay.</p>
               <div className="relative w-full aspect-[16/9] sm:aspect-[11/9] rounded-xl overflow-hidden">
               
                 <Image
@@ -326,9 +326,9 @@ Followup: What kind of products do you buy from the grocery shop all the daily n
           <section className="mb-12">
             <h2 className="text-xl sm:text-2xl font-semibold mb-3">Feedback & Next Steps</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            When I pitched this product in salzburg startup weekend competition in 2022, I got the feedback from the judge panel that supermarkets would be quite tentative to give me these data, so it is better to focus on 1 supermarket rather than agregatting the data from multiple supermarkets. 2 years later on August 2022, Meta launched this feature on whatsapp which enables Whatsapp users in India to order their groceries from whatsapp. https://about.fb.com/news/2022/08/shop-on-whatsapp-with-jiomart-in-india/
+            When I pitched this product at the Salzburg Startup Weekend competition in 2022, I received feedback from the judge panel that supermarkets would be quite hesitant to provide this data, so it's better to focus on one supermarket rather than aggregating the data from multiple supermarkets. 2 years later, in August 2022, Meta launched this feature on WhatsApp which enables WhatsApp users in India to order their groceries from WhatsApp. https://about.fb.com/news/2022/08/shop-on-whatsapp-with-jiomart-in-india/
 
-This would have been already a prrof of concept for the idea. I had the chance to test the prototype internally with the panel of judges, but I didnt have the chance to test it with the users I have already talked to in the user research phase, which would have been a crucial step to validate if the solution prototype would solve the problems they mentioned and whether they would consider using something like this in the future. 
+This would have been already a proof of concept for the idea. I had the chance to test the prototype internally with the panel of judges, but I didn't have the chance to test it with the users I had already talked to in the user research phase, which would have been a crucial step to validate if the solution prototype would solve the problems they mentioned and whether they would consider using something like this in the future.
             </p>
           </section>
         </div>

@@ -57,7 +57,7 @@ export default function TubicsDesignSystemPage() {
             <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12">
               Tubics — Design System & Documentation (2021)
             </h1>
-            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70"><strong>Company: </strong> <br></br> Tubics GmbH <br></br> <br></br> <strong> Duration:</strong> <br></br> 2 months<br></br></p>
+            <p className="text-sm sm:text-base text-gray-700 dark:text-white/70"><strong>Company:</strong> <br></br> Tubics GmbH <br></br> <br></br> <strong>Duration:</strong> <br></br> 2 months<br></br></p>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70"><br></br><strong>Role:</strong> <br></br> UX/UI Designer</p>
           </header>
 
@@ -98,7 +98,7 @@ export default function TubicsDesignSystemPage() {
           <section className="mb-12">
             <h3 className="text-lg sm:text-xl font-semibold mb-2">Step 1 — Design system research and selecting UI Framework</h3>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            We did a research on different design systems for inspirations. Them together with the frontend developer wechoose which react library we will use in the code to import the components from. 
+            We researched different design systems for inspiration. Then, together with the frontend developer, we chose which React library we would use in the code to import the components from.
             </p>
             <div className="grid gap-6 sm:grid-cols-1">
               <div className="relative w-full aspect-[16/9] sm:aspect-[9/3] rounded-xl overflow-hidden">
@@ -115,7 +115,7 @@ export default function TubicsDesignSystemPage() {
           <section className="mb-12">
             <h3 className="text-lg sm:text-xl font-semibold mb-2">Step 2 — Migrating old colors to new colors</h3>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            There was a lot of old colors and unused colors and duplicate colors in the code base so we had to get red of the hard coded colors and replace them with color variables.
+            There were many old, unused, and duplicate colors in the codebase, so we had to get rid of the hard-coded colors and replace them with color variables.
             </p>
             <div className="grid gap-6 sm:grid-cols-1">
               <div className="relative w-full aspect-[16/9] sm:aspect-[9/3] rounded-xl overflow-hidden">
@@ -132,7 +132,7 @@ export default function TubicsDesignSystemPage() {
           <section className="mb-12">
             <h3 className="text-lg sm:text-xl font-semibold mb-2">Step 3 — Creating an inventory of all app components</h3>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-            I collected all the current app components in on Figma File 
+            I collected all the current app components in one Figma file.
             </p>
             
           </section>
@@ -243,7 +243,7 @@ export default function TubicsDesignSystemPage() {
           <section className="mb-12">
             <h2 className="text-xl sm:text-2xl font-semibold mb-3">Step 7 - Building an HTML web page for the components</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4">
-              Using a low code tool called harmony, i created an HTML web page for developers to be a reference for the design system, they they used this page and created the components in storbook.
+              Using a low-code tool called Harmony, I created an HTML web page for developers to reference the design system. They used this page and created the components in Storybook.
             </p>
             <div className="grid gap-6 sm:grid-cols-1 mt-4">
               <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">

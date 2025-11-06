@@ -54,7 +54,7 @@ export default function WuzzufHiringDashboardPage() {
         <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border border-black/5 p-6 sm:p-10">
           {/* Hero */}
           <header className="mb-10">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12">Wuzzuf — Hiring Dashboard 2019</h1>
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 sm:mb-12">Wuzzuf — Hiring Dashboard (2019)</h1>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70"><strong>Company:</strong><br></br> Wuzzuf<br></br><br></br></p>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70"><strong>Duration:</strong><br></br> 2 months<br></br><br></br> </p>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70"><strong>Role:</strong><br></br> UX/UI Designer & Researcher<br></br></p>
@@ -106,7 +106,7 @@ export default function WuzzufHiringDashboardPage() {
             </p>
 
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 leading-relaxed">
-             <strong> <br></br> <br></br>Users Feedback and pains</strong>
+             <strong> <br></br> <br></br>User Feedback and Pain Points</strong>
             </p>
             <div className="mb-12 relative w-full aspect-[16/9] rounded-xl overflow-hidden">
             <Image
@@ -118,14 +118,14 @@ export default function WuzzufHiringDashboardPage() {
           </div>
 
           <p className="text-sm sm:text-base text-gray-700 dark:text-white/70 leading-relaxed">
-             <strong> <br></br> <br></br> when we asked the customers what are the metrics they want to track that was their answer. </strong>
+             <strong> <br></br> <br></br>When we asked customers what metrics they wanted to track, this was their answer.</strong>
             </p>
 
             <ul className="list-disc list-inside text-sm sm:text-base text-gray-700 dark:text-white/70 space-y-1 sm:space-y-2 break-words">
-              <li> how many people applied {'->'} interviewed {'->'} shortlisted</li>
-              <li>which job had most applicants</li>
-              <li>how many jobs got hired and how many applicants per job </li>
-              <li>How many CVs i unlocked in total and how many cvs i can still unlock </li>
+              <li>How many people applied {'->'} interviewed {'->'} shortlisted</li>
+              <li>Which job had the most applicants</li>
+              <li>How many jobs resulted in hires and how many applicants per job</li>
+              <li>How many CVs I unlocked in total and how many CVs I can still unlock</li>
               <li>I want to get suggested candidates and tips to improve or boost the job posting</li>
             </ul>
 
@@ -233,7 +233,7 @@ export default function WuzzufHiringDashboardPage() {
 
           {/* Outcomes / Notes */}
           <section className="mb-12">
-            <h2 className="text-xl sm:text-2xl font-semibold mb-3">User Feedback after testing</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold mb-3">User Feedback After Testing</h2>
             <p className="text-sm sm:text-base text-gray-700 dark:text-white/70">
               The redesigned dashboard foregrounded funnel visibility, plan usage, and
               next-step actions, aiming to shorten time-to-hire and reduce support load
