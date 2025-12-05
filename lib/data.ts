@@ -11,7 +11,7 @@ import portfolio_img_6 from '@/public/portfolio_img_6.png'
 import project_img_7 from '@/public/project_img_7.gif'
 import project_img_8 from '@/public/project_img_8.png'
 import project_img_9 from '@/public/project_img_9.png'
-import project_img_10 from '@/public/project_img_10.gif'
+import project_img_10 from '@/public/hero-image.png'
 import profile_img_1 from '@/public/profile_img_1.jpeg'
 import profile_img_2  from '@/public/profile_img_2.jpeg'
 
