@@ -106,7 +106,7 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
             </div>
             { title.includes("E-commerce admin portal")?
             (<div className='absolute hidden sm:block p-6 py-24 h-[28rem]  top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-indigo-100 shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition rounded rounded-2xl'><Image className='rounded rounded-lg' src={imageUrl} alt={ title} quality={95} /></div>):
-            (title.includes("lehr.app") ?  (<div className='absolute hidden sm:block p-6 py-24 h-[28rem]  top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-[#FFFBED] shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition rounded rounded-2xl'><Image className='rounded rounded-lg' src={imageUrl} alt={ title} quality={95} /></div>):
+            (title.includes("lehr.app") ?  (<div className='absolute hidden sm:block px-[-40px] py-24 h-[28rem]  top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-[#FFFBED] shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition rounded rounded-2xl'><Image className='rounded rounded-lg object-fit' src={imageUrl} alt={ title} quality={95} /></div>):
             (<Image className='absolute hidden sm:block  top-8 sm:-right-40 w-0 sm:w-[28.25rem] rounded rounded-2xl shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition' src={imageUrl} alt={ title} quality={95} />))
             }
         </section>  
