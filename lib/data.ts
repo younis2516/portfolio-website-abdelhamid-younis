@@ -14,7 +14,7 @@ import project_img_9 from '@/public/project_img_9.png'
 import project_img_10 from '@/public/hero-image.png'
 import profile_img_1 from '@/public/profile_img_1.jpeg'
 import profile_img_2  from '@/public/profile_img_2.jpeg'
-
+import profile_img_3  from '@/public/profile_img_3.jpeg'
 
 
 import { StaticImageData } from "next/image";
@@ -282,6 +282,14 @@ export const TestimonialsData = [
     relationship: 'Worked with Abdelhamid at Hotelkit',
     image: profile_img_1,
     quote: `Abdelhamid is one of the more pragmatic UI/UX designers I know, always focusing on intuitive user experiences. I have also always admired how he takes the time to prototype with different approaches and ideas, thinking outside the box, still with a focus on intuitiveness.`,
+  },
+  {
+    name: 'Dr.-Ing.Mostafa Amin',
+    role: 'Senior Researcher in Gen AI ',
+    date: 'Decemver 14, 2025',
+    relationship: 'Cofounder with Abdelhamid at an AI German Language Learninng App ',
+    image: profile_img_3,
+    quote:`I worked with Abdelhamid on a soon-to-be-released AI-powered German-learning web app. He co-shaped the product vision and owned the entire frontend, building it cleanly on top of the backend I developed. He combines strong UX instincts with solid product thinking and hands-on frontend engineering. He consistently showed initiative—actively recruiting test users, following up thoroughly, and translating feedback into meaningful product improvements. He uses modern AI tools pragmatically, in ways that genuinely accelerate development rather than add complexity, and pays attention to details such as real-time model streaming and polished, fluid interactions. He iterates fast: absorbing feedback, sketching solutions, refining them, and shipping working UI with minimal friction.`
   },
   
 ] as TestimonialData []
