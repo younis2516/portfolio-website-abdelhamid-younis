@@ -19,17 +19,27 @@ export const Testimonials = () => {
     >
         <SectionHeading> Linkedin Reviews</SectionHeading>
 
-       <div className="grid md:grid-cols-2 gap-10">
-        {TestimonialsData.map((rec, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index*0.2 }}
-            className="rounded-2xl p-6 border border-gray-200 dark:border-gray-800
-              bg-white/40 dark:bg-zinc-800/40 backdrop-blur-md
-              transition-all duration-300"
-          >
+       <div className="grid gap-6 md:grid-cols-2 md:grid-rows-2 mt-10">
+        {TestimonialsData.map((rec, index) => { 
+           const isLast = index === TestimonialsData.length - 1;
+          return(
+           <motion.div
+      key={index}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.2 }}
+      className={`
+        rounded-2xl p-6 border border-gray-200 dark:border-gray-800
+        bg-white/40 dark:bg-zinc-800/40 backdrop-blur-md
+        transition-all duration-300 
+
+        ${
+         isLast
+  ? 'md:col-start-2 md:row-start-1 md:row-span-2 md:p-8'
+  : ''
+        }
+      `}
+    >
             {/* <p className='font-extrabold text-gray-200 text-[120px]/[120px] absolute font-serif top-24 left-6 z-[-10]'>❝</p> */}
                         {/* <p className='font-extrabold text-gray-200 dark:text-white/10 text-[120px]/[120px] absolute font-serif top-56 right-6 z-[-10]'>❞</p> */}
             <div className="flex items-center gap-4 mb-4">
@@ -55,7 +65,7 @@ export const Testimonials = () => {
               {rec.quote}
             </p>
           </motion.div>
-        ))}
+        )})}
       </div>
     </motion.section>
   );

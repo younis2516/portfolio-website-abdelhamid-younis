@@ -289,7 +289,11 @@ export const TestimonialsData = [
     date: 'Decemver 14, 2025',
     relationship: 'Cofounder with Abdelhamid at an AI German Language Learninng App ',
     image: profile_img_3,
-    quote:`I worked with Abdelhamid on a soon-to-be-released AI-powered German-learning web app. He co-shaped the product vision and owned the entire frontend, building it cleanly on top of the backend I developed. He combines strong UX instincts with solid product thinking and hands-on frontend engineering. He consistently showed initiative—actively recruiting test users, following up thoroughly, and translating feedback into meaningful product improvements. He uses modern AI tools pragmatically, in ways that genuinely accelerate development rather than add complexity, and pays attention to details such as real-time model streaming and polished, fluid interactions. He iterates fast: absorbing feedback, sketching solutions, refining them, and shipping working UI with minimal friction.`
+    quote:`I worked with Abdelhamid on a soon-to-be-released AI-powered German-learning web app. He co-shaped the product vision and owned the entire frontend, building it cleanly on top of the backend I developed. 
+    
+    He combines strong UX instincts with solid product thinking and hands-on frontend engineering. He consistently showed initiative—actively recruiting test users, following up thoroughly, and translating feedback into meaningful product improvements. 
+    
+    He uses modern AI tools pragmatically, in ways that genuinely accelerate development rather than add complexity, and pays attention to details such as real-time model streaming and polished, fluid interactions. He iterates fast: absorbing feedback, sketching solutions, refining them, and shipping working UI with minimal friction.`
   },
   
 ] as TestimonialData []
