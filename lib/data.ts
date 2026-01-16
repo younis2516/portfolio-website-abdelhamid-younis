@@ -15,7 +15,7 @@ import project_img_10 from '@/public/hero-image.png'
 import profile_img_1 from '@/public/profile_img_1.jpeg'
 import profile_img_2  from '@/public/profile_img_2.jpeg'
 import profile_img_3  from '@/public/profile_img_3.jpeg'
-
+import project_img_11 from '@/public/project_img_11.png'
 
 import { StaticImageData } from "next/image";
 
@@ -128,6 +128,17 @@ export const experiencesData = [
 ] as const;
 
 export const projectsData:Project[] = [
+  {
+    title: "Rewe International Self checkout white label solution",
+    project_type:["B2C"],
+    description:
+      "Serving millions of Billa customers in Austria Everyday, improving checkout speed, confidence, and operational efficiency without requiring explanation.",
+    tags: ["Fulltime", "Live Now", "UX research", "UI Design","Design System"],
+    imageUrl: project_img_11,
+    year:"2026",
+    link:'https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11',
+    readingTime:10
+  },
   {
     title: "Billa Austria self-service terminal",
     project_type:["B2C"],

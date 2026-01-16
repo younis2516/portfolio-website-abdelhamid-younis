@@ -37,6 +37,7 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
         "My portfolio website": "portfolio-website",
         "E-commerce admin portal": "ecommerce-admin-portal",
         "lehr.app: Practice German with AI-generated Exercises": "lehr-app",
+        "Rewe International Self checkout white label solution": "rewe-white-label-sco"
     }
 
     const fallbackSlug = String(title)
