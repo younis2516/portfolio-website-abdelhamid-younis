@@ -73,11 +73,11 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
                             project_type[0].toUpperCase()
                         }</p>
 
-                        {readingTime>0?(<div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-300  dark:bg-gray-600  rounded-full'>
+                        {readingTime>0?(<div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-200 border border-gray-300  dark:bg-gray-600  rounded-full'>
                             <FiClock className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/>
                         <p className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'>{readingTime}</p>
                         </div>):null}
-                        <div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-300  dark:bg-gray-600  rounded-full'>
+                        <div className='flex flex-row items-center justify-center gap-1  py-1 px-3 bg-gray-200  border border-gray-300 dark:bg-gray-600  rounded-full'>
                             {/* <FiCalendar className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/> */}
                         <p className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'>{year}</p>
                         </div>
@@ -88,7 +88,7 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
                 
                 <ul className='flex flex-wrap gap-2 mt-4 mb-6'>
                     {tags.sort((a, b) => a.length - b.length).map((tag:String, index:number) => (
-                         <li className=' bg-gray-300 text-base text-gray-700 dark:bg-gray-600 dark:text-white/70 px-3 py-2 sm:mt-2 text-sm rounded-full tracking-wider' key={index}>{tag}</li>
+                         <li className=' border border-gray-300 text-sm text-gray-700 dark:bg-gray-600 dark:text-white/70 px-3 py-1 sm:mt-2 text-sm rounded-full tracking-wider' key={index}>{tag}</li>
                     ))}
                     </ul>
                     <div className=' mt-auto flex flex-row  items-center gap-2'>
@@ -106,8 +106,8 @@ function Project({ title, description, tags, imageUrl, link ,project_type,year,r
                     
             </div>
             { title.includes("E-commerce admin portal")?
-            (<div className='absolute hidden sm:block p-6 py-24 h-[28rem]  top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-indigo-100 shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition rounded rounded-2xl'><Image className='rounded rounded-lg' src={imageUrl} alt={ title} quality={95} /></div>):
-            (title.includes("lehr.app") ?  (<div className='absolute hidden sm:block px-[-40px] py-24 h-[28rem]  top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-[#FFFBED] shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition rounded rounded-2xl'><Image className='rounded rounded-lg object-fit' src={imageUrl} alt={ title} quality={95} /></div>):
+            (<div className='absolute hidden sm:block p-6 py-24 h-[28rem]  top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-indigo-100/40 shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition rounded rounded-2xl'><Image className='rounded rounded-lg' src={imageUrl} alt={ title} quality={95} /></div>):
+            (title.includes("lehr.appp") ?  (<div className='absolute hidden sm:block px-[-40px] py-24 h-[28rem]  top-8 sm:-right-40 w-0 sm:w-[28.25rem] justify-center items-center bg-[#F0F0EC] shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition rounded rounded-2xl'><Image className='rounded rounded-lg object-fit' src={imageUrl} alt={ title} quality={95} /></div>):
             (<Image className='absolute hidden sm:block  top-8 sm:-right-40 w-0 sm:w-[28.25rem] rounded rounded-2xl shadow-2xl group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2  group-hover:scale-125 transition' src={imageUrl} alt={ title} quality={95} />))
             }
         </section>  

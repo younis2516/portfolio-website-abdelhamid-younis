@@ -31,7 +31,7 @@ export default function BillaSelfCheckoutPage() {
       {/* Banner */}
       <div className="relative z-0 w-full mx-auto overflow-hidden bg-yellow-200 -mt-28 sm:-mt-36">
         <picture>
-          <source media="(max-width: 640px)" srcSet="/billa-sco-banner-mobile.png" />
+          <source media="(max-width: 640px)" srcSet="/rewe-hero.png" />
           <img
             src="/rewe-hero.png"
             alt="BILLA Self Checkout banner"
