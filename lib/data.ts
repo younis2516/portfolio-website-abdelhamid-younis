@@ -396,16 +396,16 @@ export const TestimonialsData = [
     quote: `Abdelhamid is one of the more pragmatic UI/UX designers I know, always focusing on intuitive user experiences. I have also always admired how he takes the time to prototype with different approaches and ideas, thinking outside the box, still with a focus on intuitiveness.`,
   },
   {
-    name: "Dr.-Ing.Mostafa Amin",
+    name: "Dr.Ing.Mostafa Amin",
     role: "Senior Researcher in Gen AI ",
     date: "Decemver 14, 2025",
     relationship:
       "Cofounder with Abdelhamid at an AI German Language Learninng App ",
     image: profile_img_3,
-    quote: `I worked with Abdelhamid on a soon-to-be-released AI-powered German-learning web app. He co-shaped the product vision and owned the entire frontend, building it cleanly on top of the backend I developed. 
+    quote: `I worked with Abdelhamid on an AI-powered German-learning web app. He co-shaped the product vision and owned the entire frontend, building it cleanly on top of the backend I developed. 
     
-    He combines strong UX instincts with solid product thinking and hands-on frontend engineering. He consistently showed initiative—actively recruiting test users, following up thoroughly, and translating feedback into meaningful product improvements. 
+    He combines strong UX instincts withhands-on frontend engineering. He consistently showed initiative—actively recruiting test users, following up thoroughly, and translating feedback into meaningful product improvements. 
     
-    He uses modern AI tools pragmatically, in ways that genuinely accelerate development rather than add complexity, and pays attention to details such as real-time model streaming and polished, fluid interactions. He iterates fast: absorbing feedback, sketching solutions, refining them, and shipping working UI with minimal friction.`,
+    He uses modern AI tools pragmatically, in ways that genuinely accelerate development rather than add complexity, and pays attention to details such as real-time model streaming, smooth agent experience  and polished, fluid interactions. He iterates fast: absorbing feedback, sketching solutions, refining them, and shipping working UI with minimal friction.`,
   },
 ] as TestimonialData[];

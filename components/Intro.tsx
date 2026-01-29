@@ -1,27 +1,16 @@
-"use client"
-import Image from 'next/image'
-import React, { useEffect, useRef, useState } from 'react'
-import avatar from '../public/avatar.jpg'
-import {motion} from 'framer-motion'
-import Link from 'next/link'
-import { BsArrowRight, BsLinkedin } from 'react-icons/bs'
-import { HiDownload} from 'react-icons/hi'
-import { useScrollIntoView } from '@/lib/hooks'
-import { useActiveSectionContext } from '@/context/active_section_context'
-import { FaGithubSquare } from 'react-icons/fa'
+"use client";
+import Image from "next/image";
+import React, { useEffect, useRef, useState } from "react";
+import avatar from "../public/avatar.jpg";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { BsLinkedin } from "react-icons/bs";
+import { MdEmail } from "react-icons/md";
+import { TiDownload } from "react-icons/ti";
+import { useScrollIntoView } from "@/lib/hooks";
+import { useActiveSectionContext } from "@/context/active_section_context";
+import { FaGithubSquare } from "react-icons/fa";
 
-// const paragraphs = [
-//   "Creative and tech-savvy designer with 7+ years of experience in UX/UI",
-//   "product design, and frontend implementation",
-//   "Currently designing the next-gen self-checkout systems for REWE Group",
-//   "Skilled in Figma, React, and prototyping",
-//   "— bridging the gap between user needs and production-ready code.",
-//   "I am based in Vienna ",
-//   "I have worked on both B2B and B2C projects.",
-//   "My latest Project was released in 65 Billa Suppermarkets in Austria.",
-// ];
-
-// export const TypingParagraph = () => {
 //   const [text, setText] = useState('');
 //   const [paragraphIndex, setParagraphIndex] = useState(0);
 //   const [isDeleting, setIsDeleting] = useState(false);
@@ -80,94 +69,132 @@ import { FaGithubSquare } from 'react-icons/fa'
 // };
 
 function Intro() {
-    const { ref } = useScrollIntoView("Home", 0.5)
-    const {setActiveSection,setTimeOfLastClick} = useActiveSectionContext()
+  const { ref } = useScrollIntoView("Home", 0.5);
+  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
   return (
-      <section id='home' className='text-center mr-4 ml-4 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 scroll-mt-[100rem]' >
-          <div className='flex items-center justify-center'>
-              <div className='relative'>
-                  <motion.div
-                      initial={{opacity:0,scale:0}}
-                      animate={{ opacity: 100, scale: 1 }}
-                      transition={{
-                          type: 'tween',
-                          duration:0.2
-                      }}
-                  >
-                     <Image width={200} height={200} quality={95} className='h-32 w-32 border-[0.35rem] border-white object-cover shadow-xl rounded-full' src={avatar} alt={"My profile image"} />
-                  </motion.div>
-                  <motion.span
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{
-                          type: 'spring',
-                          stiffness: 125,
-                          delay:0.5,
-                          duration:0.7 
-                      }}
-      //                 initial={{ rotate: 0 }}
-      // animate={{
-      //   rotate: [
-      //     0, 20, -10, 20, -10, 20, -10, 20, -10, 0 // 4 full shakes
-      //   ],
-      // }}
-      // transition={{
-      //   duration: 3.3, // 4 shakes × (0.3s delay + ~0.5s move)
-      //   ease: "easeInOut",
-      //   times: [ // Spread out to include 0.3s pause between each keyframe
-      //     0.0, 0.1, 0.2, 0.4, 0.5, 0.7, 0.8, 1.0, 1.1, 1.3
-      //   ],
-      //   delay: 0.3, // Wait before starting
-      // }}
-                      className='absolute text-5xl bottom-0 right-0'>👋</motion.span>
-              </div>
-             
-          </div>
-          
-          
-             <p className='mr-2 ml-2 sm:mr-20 sm:ml-20 sm:mb-0 text-center mt-10 px-4 text-lg font-bold !leading-[1.5] text-xl sm:text-3xl'> UX.UI Product Designer</p>
-             <div className='flex justify-center items-center flex-row mb-2 text-center text-lg sm:text-xl text-zinc-600 dark:text-zinc-300'> 
-              <p className='px-2 py-1 rounded rounded-md hover:bg-purple-300 hover:text-gray-900 dark:hover:bg-purple-700 dark:hover:text-white/50'>🎨 Design</p>
-              <p>,</p>
-              <p className='px-2 py-1 rounded rounded-md hover:bg-teal-200 hover:text-gray-900 dark:hover:bg-teal-700 dark:hover:text-white/50'>👨🏻‍💻 Code</p>
-              <p className='mr-1'>, </p>
-              <p className='px-2 py-1 rounded rounded-md hover:bg-indigo-300 hover:text-gray-900 dark:hover:bg-indigo-700 dark:hover:text-white/50'>🔍 Research</p>
+    <section
+      ref={ref}
+      id="home"
+      className="scroll-mt-[100rem] max-w-7xl mx-auto px-6 py-4 sm:px-12 sm:py-12"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+        {/* RIGHT — TEXT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="text-center lg:text-left order-2 lg:order-1"
+        >
+          <span className="inline-block mb-4 px-4 py-1 mt-12 text-md rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+            Hi! I am Younis 👋
+          </span>
+          <h2 className="text-lg sm:text-2xl lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+            <span className="text-zinc-900 dark:text-white">
+              Senior Product Designer,
+            </span>{" "}
+            <span className="text-zinc-900 dark:text-white">
+              Designed Retail solutions
+            </span>
+            <span className="text-zinc-500 dark:text-zinc-400">
+              {" "}
+              Used by Millions of Customers at BILLA and other REWE brands in 7
+              different countries,
+            </span>
+            <span className="text-zinc-900 dark:text-white">
+              {" "}
+              Frontend-Fluent and co-founded an AI German Learning web app
+            </span>{" "}
+          </h2>
 
-             </div>
-
-             {/* <motion.p
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity:1,y:0}}
-              className='mr-2 ml-2 sm:mr-20 sm:ml-20 mb-10 sm:mb-0 text-center mt-10 px-4 text-lg font-medium !leading-[1.5] sm:text-xl'
-          >I am a Product Designer 📍 Based in Vienna. But originally I am from Cairo. I didnt study design, but it was my passion to design things people interact with in their daily life. And thankfully I turned this passion to a job. I studied engineering for my bachelor and since 2018 I have been working as a UX.UI designer.
-             I have worked on both B2B and B2C projects. My latest Project was <strong>released in 65 Billa Suppermarkets in Austria</strong> <br/> I can design and code and in my free time i am building products with AI using real APIs.
-             
-             </motion.p> */}
-           
-             {/* <TypingParagraph/> */}
-
-          <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                  delay:0.1
+          {/* CTA BUTTONS */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
+            <Link
+              href="#contact"
+              onClick={() => {
+                setActiveSection("Contact");
+                setTimeOfLastClick(Date.now());
               }}
-              className='flex text-lg font-medium flex-col sm:flex-row items-center pt-4 gap-4 justify-center'>
-              <Link href={'#contact'}
-                  className='group bg-gray-900 dark:bg-gray-600 outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition text-white px-7 py-3 flex items-center justify-center gap-2 rounded-full w-full sm:w-auto'
-                  onClick={() => {
-                      setActiveSection("Contact")
-                      setTimeOfLastClick(Date.now())
-                  }}
-              >Contact me <BsArrowRight className='opacity-70 group-hover:translate-x-1 transition' /></Link>
-              <a download={true} href='/abdelhamid_cv_2025_final.pdf' className='group w-full sm:w-auto bg-white text-gray-900 outline-none transition px-7 py-3 flex items-center gap-2 rounded-full cursor-pointer borderBlack dark:bg-white/5 dark:text-white/60 justify-center items-center focus:scale-110 hover:scale-110'>Download CV <HiDownload className='opacity-70 group-hover:translate-y-1 transition' /> </a>
-              <a href='https://www.linkedin.com/in/abdelhamid-younis-17168086/' className='bg-white w-full sm:w-auto text-gray-700 p-4 flex focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition items-center gap-2 rounded-full cursor-pointer border borderBlack dark:text-white/60 dark:bg-white/5 justify-center items-center block' target='_blank'> <BsLinkedin /> </a>
-            <a href='https://github.com/aaayounis94?tab=repositories' className='bg-white w-full sm:w-auto text-gray-700 p-4 flex focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition items-center gap-2 rounded-full cursor-pointer border borderBlack dark:text-white/60 dark:bg-white/5 justify-center items-center block' target='_blank'> <FaGithubSquare /> </a>
+              className="px-6 py-3 rounded-full bg-black text-white hover:bg-zinc-800 transition shadow-lg"
+            >
+              Contact Me →
+            </Link>
 
-              {/* <a className='bg-white text-gray-700 p-4 focus:scale-110 hover:scale-110 active:scale-105 hover:text-gray950 transition flex items-center gap-2 rounded-full cursor-pointer border border-black/10' target='_blank'> <FaGithubSquare/> </a>   */}
-          </motion.div>
+            <a
+              download
+              href="/abdelhamid_cv_2025_final.pdf"
+              className="px-6 py-3 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+            >
+              Download Resume
+            </a>
+          </div>
+        </motion.div>
+
+        {/* LEFT — IMAGE + ICONS */}
+        <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+          <div className="relative">
+            {/* IMAGE */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.4 }}
+            >
+              <Image
+                width={500}
+                height={650}
+                quality={95}
+                className="h-[18rem] w-[16rem] sm:h-[30rem] sm:w-[26rem] object-cover rounded-3xl border border-white/20"
+                src={avatar}
+                alt="My profile image"
+              />
+            </motion.div>
+
+            {/* ICONS — BOTTOM CENTER */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="absolute -bottom-6 left-[70px] sm:left-[160px]   -translate-x-1/2 flex gap-4 z-10"
+            >
+              {/* <Link
+                href={"#contact"}
+                onClick={() => {
+                  setActiveSection("Contact");
+                  setTimeOfLastClick(Date.now());
+                }}
+                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
+              >
+                <MdEmail />
+              </Link> */}
+
+              {/* <a
+                download
+                href="/abdelhamid_cv_2025_final.pdf"
+                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
+              >
+                <TiDownload />
+              </a> */}
+
+              <a
+                href="https://www.linkedin.com/in/abdelhamid-younis-17168086/"
+                target="_blank"
+                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
+              >
+                <BsLinkedin />
+              </a>
+
+              <a
+                href="https://github.com/aaayounis94?tab=repositories"
+                target="_blank"
+                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
+              >
+                <FaGithubSquare />
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </div>
     </section>
-  )
+  );
 }
 
-export default Intro 
+export default Intro;
