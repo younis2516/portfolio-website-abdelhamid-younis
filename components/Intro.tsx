@@ -107,26 +107,26 @@ function Intro() {
           </h2>
           <div className="grid grid-cols-3 gap 8 mt-6 mb-6">
             <div className="flex flex-col gap2">
-              <h2 className="text-lg sm:text-2xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+              <h2 className="text-2xl sm:text-4xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
                 7+
               </h2>
-              <span className="text-md rounded-full  text-zinc-600 dark:text-zinc-300">
+              <span className=" text-sm sm:text-md rounded-full  text-zinc-600 dark:text-zinc-300">
                 Years of Experience
               </span>
             </div>
             <div className="flex flex-col gap2">
-              <h2 className="text-lg sm:text-2xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+              <h2 className="text-2xl sm:text-4xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
                 100M +
               </h2>
-              <span className="text-md rounded-full  text-zinc-600 dark:text-zinc-300">
+              <span className=" text-sm sm:text-md rounded-full  text-zinc-600 dark:text-zinc-300">
                 User interactions
               </span>
             </div>
             <div className="flex flex-col gap2">
-              <h2 className="text-lg sm:text-2xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+              <h2 className="text-2xl sm:text-4xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
                 100+
               </h2>
-              <span className="text-md rounded-full  text-zinc-600 dark:text-zinc-300">
+              <span className=" text-sm sm:text-md rounded-full  text-zinc-600 dark:text-zinc-300">
                 Customer interviews
               </span>
             </div>

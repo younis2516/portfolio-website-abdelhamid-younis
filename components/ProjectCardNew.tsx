@@ -5,6 +5,8 @@ import { projectsData } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowRight, FiBookOpen, FiCalendar, FiClock } from "react-icons/fi";
+import { useTheme } from "@/context/theme-context";
+import { getThemedBg } from "@/lib/utils";
 
 type ProjectProps = {
   title: String;
@@ -60,7 +62,12 @@ function ProjectCardNew({
   const isExternalProject =
     String(title) === "E-commerce admin portal" ||
     String(title) === "lehr.app: Practice German with AI-generated Exercises";
+  const { theme } = useTheme();
 
+  const bg = getThemedBg(bgColor, theme, {
+    lightPercent: 5,
+    darkPercent: 7,
+  });
   return (
     <motion.div
       ref={ref}
@@ -72,7 +79,7 @@ function ProjectCardNew({
     >
       <section
         style={{
-          backgroundColor: `color-mix(in srgb, ${bgColor} 5%, transparent)`,
+          backgroundColor: bg,
         }}
         className={`bg-[${bgColor}] py-4  w-full sm:max-w-[50rem] border border-black/5 rounded rounded-2xl overflow-hidden sm:pr-8 relative sm:h-[40rem] transition  dark:text-white dark:bg-white/10 dark:hover:bg-white/20`}
       >
@@ -97,7 +104,7 @@ function ProjectCardNew({
           <h3 className="text-2xl sm:text-3xl font-semibold mt-2 gap-2">
             {title}
           </h3>
-          <p className=" hidden sm:block mt-2 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-white/70">
+          <p className=" line-clamp-2 lg:line-clamp-none mt-2 mb-2 sm:mb-0 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-white/70">
             {description}
           </p>
           {/* TAGS SECTION */}
@@ -132,7 +139,7 @@ function ProjectCardNew({
             )}
           </div>
           {readingTime > 0 ? (
-            <p className="text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70">
+            <p className="text-sm sm:text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70">
               {readingTime} min read
             </p>
           ) : null}

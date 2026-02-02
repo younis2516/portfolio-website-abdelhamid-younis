@@ -44,7 +44,9 @@ export const Testimonials = () => {
   bg-white/80 dark:bg-zinc-900/70 backdrop-blur-xl
   transition-all duration-300
   cursor-pointer
+ ${isLast ? "min-h-[720px]" : "min-h-[430px]"}
   sm:h-[540px] 
+    sm:min-h-[540px] 
   ${isLast ? "md:col-span-3" : "md:col-span-2"}
 `}
             >
