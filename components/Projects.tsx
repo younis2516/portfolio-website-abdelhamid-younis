@@ -27,10 +27,10 @@ const Projects = () => {
     <section
       ref={ref}
       id="projects"
-      className="scroll-mt-28 ml-5 mr-5 sm:ml-20 sm:mr-20 justify-center items-center mt-20"
+      className="scroll-mt-28 py-20 px-6 sm:px-8 max-w-7xl mx-auto justify-center items-center "
     >
       <SectionHeading>Projects</SectionHeading>
-      <p className="text-base text-center w-full sm:max-w-[50rem] sm:text-lg text-gray-700 mb-8 dark:text-white/70">
+      <p className="text-base text-center w-full sm:max-w-7xl sm:text-lg text-gray-700 mb-8 dark:text-white/70">
         {" "}
         <strong>Heads up!</strong> these case studies are a bit lengthy, the
         average reading time is 10 minutes. I added lots of visuals but I am
@@ -51,7 +51,7 @@ const Projects = () => {
           </button>
         ))}
       </div>
-      <div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {filteredProjects.map((project, index) => (
           <React.Fragment key={index}>
             {/* <Project {...project} /> */}

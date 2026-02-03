@@ -69,7 +69,7 @@ const Experience = () => {
     <section
       id="experience"
       ref={ref}
-      className="scroll-mt-28 mt-32 max-w-6xl mx-auto px-6 sm:px-12"
+      className="scroll-mt-28 mt-32 max-w-[94%] mx-auto  py-0 px-4 sm:px-12 sm:py-0"
     >
       {/* Header */}
       <div className="flex flex-col lg:flex-row justify-center mb-16">

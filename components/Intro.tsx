@@ -4,12 +4,13 @@ import React, { useEffect, useRef, useState } from "react";
 import avatar from "../public/avatar.jpeg";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { BsLinkedin } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import { TiDownload } from "react-icons/ti";
+
+import { BsLinkedin } from "react-icons/bs";
 import { useScrollIntoView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active_section_context";
-import { FaGithubSquare } from "react-icons/fa";
+import { FaDownload, FaGithubSquare } from "react-icons/fa";
+import { FiMessageSquare } from "react-icons/fi";
 
 //   const [text, setText] = useState('');
 //   const [paragraphIndex, setParagraphIndex] = useState(0);
@@ -75,20 +76,41 @@ function Intro() {
     <section
       ref={ref}
       id="home"
-      className="scroll-mt-[100rem] max-w-7xl mx-auto px-6 py-4 sm:px-12 sm:py-12"
+      className="scroll-mt-[80rem] max-w-full mx-auto  py-0 px-6 sm:px-8 sm:py-0"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-4 items-center relative z-0">
         {/* RIGHT — TEXT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-center lg:text-left order-2 lg:order-1"
+          className="
+  order-2 lg:order-1
+  sm:h-[35.3rem]
+  rounded-3xl
+  px-6 py-8 sm:px-14 sm:py-14
+  bg-gradient-to-br
+  from-[#d7f3ef]
+  via-[#f3efe5]
+  to-[#f7e2c8]
+  dark:from-[#0f2f2c]
+  dark:via-[#2a2520]
+  dark:to-[#3a2f22]
+  flex flex-col
+  items-center text-center
+  lg:items-start lg:text-left
+"
         >
-          <span className="inline-block mb-4 px-4 py-1 mt-12 text-md rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+          <span className="inline-block mb-4 px-4 py-1 text-md rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300">
             Hi! I am Younis 👋
           </span>
-          <h2 className="text-lg sm:text-2xl lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+
+          <h1 className="text-lg sm:text-xl lg:text-4xl mt-0 sm:mt-0 mb-4 font-semibold sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+            Senior Product Designer, React Frontend Developer, and cofounded an
+            AI Startup
+          </h1>
+
+          <h2 className="text-md sm:text-md lg:text-lg mt-0 sm:mt-0 sm:font-medium leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
             <span className="text-zinc-900 dark:text-white">
               Senior Product Designer,
             </span>{" "}
@@ -105,51 +127,43 @@ function Intro() {
               and co-founded an AI German Learning web app
             </span>{" "}
           </h2>
-          <div className="grid grid-cols-3 gap 8 mt-6 mb-6">
-            <div className="flex flex-col gap2">
-              <h2 className="text-2xl sm:text-4xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-                7+
-              </h2>
-              <span className=" text-sm sm:text-md rounded-full  text-zinc-600 dark:text-zinc-300">
-                Years of Experience
-              </span>
-            </div>
-            <div className="flex flex-col gap2">
-              <h2 className="text-2xl sm:text-4xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-                100M +
-              </h2>
-              <span className=" text-sm sm:text-md rounded-full  text-zinc-600 dark:text-zinc-300">
-                User interactions
-              </span>
-            </div>
-            <div className="flex flex-col gap2">
-              <h2 className="text-2xl sm:text-4xl text-indigo-500 dark:text-indigo-400 lg:text-5xl mt-0 sm:mt-0 font-medium sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-                100+
-              </h2>
-              <span className=" text-sm sm:text-md rounded-full  text-zinc-600 dark:text-zinc-300">
-                Customer interviews
-              </span>
-            </div>
-          </div>
+
           {/* CTA BUTTONS */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
+          <div className="flex flex-wrap gap-4 mt-8 sm:mt-auto justify-center lg:justify-start w-full">
             <Link
               href="#contact"
               onClick={() => {
                 setActiveSection("Contact");
                 setTimeOfLastClick(Date.now());
               }}
-              className="px-6 py-3 rounded-full bg-black text-white hover:bg-zinc-800 transition shadow-lg"
+              className="flex flex-row gap-2 items-center justify-center px-4 sm:px-6 sm:py-3 rounded-full bg-black text-white hover:bg-zinc-800 hover:scale-110 transition shadow-lg"
             >
-              Contact Me →
+              <p className="hidden sm:block">Contact me</p>
+              <MdEmail />
             </Link>
 
             <a
               download
               href="/abdelhamid_cv_2025_final.pdf"
-              className="px-6 py-3 rounded-full border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+              className="flex flex-row gap-2 items-center justify-center px-4 sm:px-6 sm:py-3  bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-white/0 rounded-full  hover:scale-110  transition"
             >
-              Download Resume
+              <p className="hidden sm:block">Download Resume</p>
+              <FaDownload />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/abdelhamid-younis-17168086/"
+              target="_blank"
+              className="bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-none  p-4 rounded-full hover:scale-110 transition"
+            >
+              <BsLinkedin />
+            </a>
+
+            <a
+              href="https://github.com/aaayounis94?tab=repositories"
+              target="_blank"
+              className="bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-none   p-4 rounded-full hover:scale-110 transition"
+            >
+              <FaGithubSquare />
             </a>
           </div>
         </motion.div>
@@ -167,53 +181,10 @@ function Intro() {
                 width={500}
                 height={650}
                 quality={95}
-                className="h-[18rem] w-[16rem] sm:h-[30rem] sm:w-[26rem] object-cover rounded-3xl border border-white/20"
+                className="h-[18rem]  sm:h-[35.3rem] sm:w-[26rem] object-cover rounded-3xl border border-white/20"
                 src={avatar}
                 alt="My profile image"
               />
-            </motion.div>
-
-            {/* ICONS — BOTTOM CENTER */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="absolute -bottom-6 left-[70px] sm:left-[160px]   -translate-x-1/2 flex gap-4 z-10"
-            >
-              {/* <Link
-                href={"#contact"}
-                onClick={() => {
-                  setActiveSection("Contact");
-                  setTimeOfLastClick(Date.now());
-                }}
-                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
-              >
-                <MdEmail />
-              </Link> */}
-
-              {/* <a
-                download
-                href="/abdelhamid_cv_2025_final.pdf"
-                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
-              >
-                <TiDownload />
-              </a> */}
-
-              <a
-                href="https://www.linkedin.com/in/abdelhamid-younis-17168086/"
-                target="_blank"
-                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
-              >
-                <BsLinkedin />
-              </a>
-
-              <a
-                href="https://github.com/aaayounis94?tab=repositories"
-                target="_blank"
-                className="bg-white/80 dark:bg-zinc-900/70 backdrop-blur-md border border-white/20 p-4 rounded-full hover:scale-110 transition"
-              >
-                <FaGithubSquare />
-              </a>
             </motion.div>
           </div>
         </div>

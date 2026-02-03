@@ -5,6 +5,7 @@ import { projectsData } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowRight, FiBookOpen, FiCalendar, FiClock } from "react-icons/fi";
+import { RxArrowTopRight } from "react-icons/rx";
 
 type ProjectProps = {
   title: String;
@@ -125,15 +126,19 @@ function Project({
                 className="leading-relaxed  text-gray-700 dark:text-white/70 hover:underline"
               >
                 Go to project
+                <RxArrowTopRight />
               </a>
             ) : (
               <Link
                 href={internalHref}
                 className="leading-relaxed  text-gray-700 dark:text-white/70 hover:underline"
               >
-                {project_type.includes("Web Dev")
-                  ? "Go to project"
-                  : "Read project documentation"}
+                <p>
+                  {project_type.includes("Web Dev")
+                    ? "Go to project"
+                    : "Read project documentation"}
+                </p>
+                <RxArrowTopRight />
               </Link>
             )}
           </div>

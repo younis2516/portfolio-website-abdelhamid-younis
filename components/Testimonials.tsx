@@ -15,7 +15,7 @@ export const Testimonials = () => {
       transition={{ delay: 0.175 }}
       viewport={{ once: true }}
       id="testimonials"
-      className=" scroll-mt-28 py-20 px-6 md:px-12 max-w-6xl mx-auto"
+      className=" scroll-mt-28 py-20 px-6 sm:px-8 max-w-7xl mx-auto"
     >
       <SectionHeading> Linkedin Reviews</SectionHeading>
 

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { FiArrowRight, FiBookOpen, FiCalendar, FiClock } from "react-icons/fi";
 import { useTheme } from "@/context/theme-context";
 import { getThemedBg } from "@/lib/utils";
+import { RxArrowTopRight } from "react-icons/rx";
 
 type ProjectProps = {
   title: String;
@@ -81,7 +82,7 @@ function ProjectCardNew({
         style={{
           backgroundColor: bg,
         }}
-        className={`bg-[${bgColor}] py-4  w-full sm:max-w-[50rem] border border-black/5 rounded rounded-2xl overflow-hidden sm:pr-8 relative sm:h-[40rem] transition  dark:text-white dark:bg-white/10 dark:hover:bg-white/20`}
+        className={`bg-[${bgColor}] py-4  w-full sm:max-w-[50rem] border border-black/5 rounded rounded-2xl overflow-hidden sm:pr-8 relative sm:h-[44rem] transition  dark:text-white dark:bg-white/10 dark:hover:bg-white/20`}
       >
         {/* {readingTime > 0 ? (
           <div className="absolute top-8 right-8 items-center flex flex-row justify-center gap-1  py-1 px-3 bg-gray-200/70 border border-gray-200  dark:bg-gray-600  rounded-full">
@@ -131,10 +132,14 @@ function ProjectCardNew({
                 Go to project
               </a>
             ) : (
-              <Link href={internalHref} className="leading-relaxed">
+              <Link
+                href={internalHref}
+                className="leading-relaxed flex flex-row items-center justify-center gap-2"
+              >
                 {project_type.includes("Web Dev")
                   ? "Go to project"
                   : "View case study"}
+                <RxArrowTopRight />
               </Link>
             )}
           </div>
@@ -143,7 +148,7 @@ function ProjectCardNew({
               {readingTime} min read
             </p>
           ) : null}
-          <div className="rounded rounded-2xl mt-6 transition hover:translate-y-[-70px] hover:scale-75">
+          <div className="rounded rounded-2xl mt-8 transition hover:translate-y-[-70px] hover:scale-75">
             <Image
               className="rounded rounded-lg"
               src={imageUrl}
