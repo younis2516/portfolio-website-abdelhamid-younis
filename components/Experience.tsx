@@ -69,7 +69,7 @@ const Experience = () => {
     <section
       id="experience"
       ref={ref}
-      className="scroll-mt-28 mt-24 max-w-[100%] mx-auto py-0 px-4 sm:px-24 sm:py-0"
+      className="scroll-mt-28 mt-24 max-w-7xl mx-auto py-20 px-6 sm:px-8 sm:py-0"
     >
       {/* Header */}
       <div className="flex flex-col lg:flex-row justify-center mb-16">
@@ -77,7 +77,6 @@ const Experience = () => {
           <SectionHeading>Explore My Journey</SectionHeading>
         </div>
       </div>
-
       {/* Experience List */}
       <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
         {experiencesData.map((exp, index) => (
