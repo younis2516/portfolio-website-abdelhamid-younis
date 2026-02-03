@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
-import avatar from "../public/avatar.jpg";
+import avatar from "../public/avatar.jpeg";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { BsLinkedin } from "react-icons/bs";
