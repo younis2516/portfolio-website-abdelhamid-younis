@@ -483,7 +483,7 @@ export const TestimonialsData = [
     quote: `Younis has a great eye for detail and is someone you can really rely on. He works independently and always delivers solid results without needing much direction. He also gave me very helpful feedback on the UNIFY design system for REWE International. If you’re looking for a good UX designer who cares about quality work, don’t hesitate to get in touch with him!`,
   },
   {
-    name: "Ahmed Osama Ibrahim",
+    name: "Ahmed Ibrahim",
     role: "Tech Lead @ Hotelkit",
     date: "May 22, 2025",
     relationship: "Worked with Abdelhamid at Hotelkit",
@@ -492,7 +492,7 @@ export const TestimonialsData = [
   },
   {
     name: "Dr.Ing.Mostafa Amin",
-    role: "Senior Researcher in Gen AI ",
+    role: "Sen.AI Researcher @ Dynatrace ",
     date: "Decemver 14, 2025",
     relationship:
       "Cofounder with Abdelhamid at an AI German Language Learninng App ",

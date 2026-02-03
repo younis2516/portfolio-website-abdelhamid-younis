@@ -76,7 +76,7 @@ function Intro() {
     <section
       ref={ref}
       id="home"
-      className="scroll-mt-[80rem] max-w-full mx-auto  py-0 px-6 sm:px-8 sm:py-0"
+      className="scroll-mt-[60rem] max-w-full mx-auto  py-0 px-6 sm:px-8 sm:py-0"
     >
       <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr] gap-4 items-center relative z-0">
         {/* RIGHT — TEXT CONTENT */}
@@ -88,7 +88,7 @@ function Intro() {
   order-2 lg:order-1
   sm:h-[35.3rem]
   rounded-3xl
-  px-6 py-8 sm:px-14 sm:py-14
+  px-6 py-8 sm:px-12 sm:py-12
   bg-gradient-to-br
   from-[#d7f3ef]
   via-[#f3efe5]
@@ -151,7 +151,7 @@ function Intro() {
               <FaDownload />
             </a>
             <a
-              href="https://www.linkedin.com/in/abdelhamid-younis-17168086/"
+              href="https://www.linkedin.com/in/a-hamid-younis-17168086/"
               target="_blank"
               className="bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-none  p-4 rounded-full hover:scale-110 transition"
             >
