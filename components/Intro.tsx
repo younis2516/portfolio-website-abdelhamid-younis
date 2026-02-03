@@ -106,14 +106,11 @@ function Intro() {
           </span>
 
           <h1 className="text-lg sm:text-xl lg:text-4xl mt-0 sm:mt-0 mb-4 font-semibold sm:font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-            Senior Product Designer, React Frontend Developer, and cofounded an
-            AI Startup
+            Senior Product Designer, building things on the web with React
           </h1>
 
           <h2 className="text-md sm:text-md lg:text-lg mt-0 sm:mt-0 sm:font-medium leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-            <span className="text-zinc-900 dark:text-white">
-              Senior Product Designer,
-            </span>{" "}
+            <span className="text-zinc-900 dark:text-white"></span>{" "}
             <span className="text-zinc-900 dark:text-white">
               Designed Retail solutions
             </span>
@@ -124,7 +121,7 @@ function Intro() {
             </span>
             <span className="text-zinc-900 dark:text-white">
               {" "}
-              and co-founded an AI German Learning web app
+              and co-founded an AI German Learning web app.
             </span>{" "}
           </h2>
 
