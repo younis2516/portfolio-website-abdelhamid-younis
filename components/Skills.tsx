@@ -30,7 +30,7 @@ const Skills = () => {
   });
   return (
     <section
-      className="flex flex-col justify-center items-center mr-10 ml-10 sm:mr-20 sm:ml-20 scroll-mt-28 mt-10"
+      className="flex flex-col justify-center items-center mr-10 ml-10 sm:mr-20 sm:ml-20 scroll-mt-28 "
       ref={ref}
       id="skills"
     >

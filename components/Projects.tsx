@@ -27,7 +27,7 @@ const Projects = () => {
     <section
       ref={ref}
       id="projects"
-      className="scroll-mt-28 py-20 px-6 sm:px-8 max-w-7xl mx-auto justify-center items-center "
+      className="scroll-mt-28 py-20 px-6 sm:px-8 sm:py-16 max-w-7xl mx-auto justify-center items-center "
     >
       <SectionHeading>Projects</SectionHeading>
       <p className="text-base text-center w-full sm:max-w-7xl sm:text-lg text-gray-700 mb-8 dark:text-white/70">
