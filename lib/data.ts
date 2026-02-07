@@ -402,28 +402,28 @@ export const projectsData: Project[] = [
     readingTime: 6,
     bgColor: "#1DC6BB",
   },
-  {
-    title: "E-commerce admin portal",
-    project_type: ["Web Dev"],
-    description:
-      "Built with React typescript, next, shadcn, authentication using clerk middleware, backend using firebase deployed on vercel ",
-    tags: [
-      "Fullstack project",
-      "React",
-      "typescript",
-      "Shadcn",
-      "next",
-      "firebase",
-      "clerk",
-      "vercel",
-      "node",
-    ],
-    year: "2025",
-    link: "https://multistore-ecommerce-admin-portal.vercel.app",
-    imageUrl: project_img_9,
-    readingTime: 0,
-    bgColor: "#232323",
-  },
+  // {
+  //   title: "E-commerce admin portal",
+  //   project_type: ["Web Dev"],
+  //   description:
+  //     "Built with React typescript, next, shadcn, authentication using clerk middleware, backend using firebase deployed on vercel ",
+  //   tags: [
+  //     "Fullstack project",
+  //     "React",
+  //     "typescript",
+  //     "Shadcn",
+  //     "next",
+  //     "firebase",
+  //     "clerk",
+  //     "vercel",
+  //     "node",
+  //   ],
+  //   year: "2025",
+  //   link: "https://multistore-ecommerce-admin-portal.vercel.app",
+  //   imageUrl: project_img_9,
+  //   readingTime: 0,
+  //   bgColor: "#232323",
+  // },
 ] as Project[];
 
 export const skillsData = [
