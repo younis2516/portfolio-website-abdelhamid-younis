@@ -434,7 +434,7 @@ export default function TubicsVideoOptimizationPage() {
             </p>
           </section>
 
-          {/* LEARNINGS */}
+          {/* LEARNINGS
           <section>
             <h2 className="text-2xl font-semibold mb-3">Strategic Learnings</h2>
 
@@ -446,7 +446,7 @@ export default function TubicsVideoOptimizationPage() {
               <li>Expert vs beginner segmentation improves adoption</li>
               <li>Rapid research loops accelerate PMF iteration</li>
             </ul>
-          </section>
+          </section> */}
         </div>
       </div>
     </main>
