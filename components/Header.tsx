@@ -31,10 +31,10 @@ function Header() {
 
       {/* CENTERED CONTENT */}
       <nav className="relative h-[6.25rem] sm:h-[5rem] pointer-events-auto">
-        <div className="max-w-7xl mx-auto h-full px-8 sm:px-6 pt-2 flex items-center justify-between">
+        <div className="max-w-[90%] mx-auto h-full px-8 sm:px-6 pt-2 flex items-center justify-between">
           {/* BRAND */}
           <div className="hidden sm:flex items-center gap-3 font-semibold text-zinc-900 dark:text-white">
-            <span className="h-8 w-8 text-white text-xs items-center flex justify-center text-center rounded-full bg-gradient-to-br from-teal-400/50 to-amber-300/50">
+            <span className="h-8 w-8 text-gray-900 text-[10px] items-center flex justify-center text-center rounded-full bg-gradient-to-br from-teal-400/50 to-amber-300/50">
               AY
             </span>
             <span className="hidden sm:block tracking-wide">YOUNIS</span>

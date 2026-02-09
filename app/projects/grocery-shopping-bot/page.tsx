@@ -324,7 +324,8 @@ export default function GroceryBot2020Page() {
           {/* HERO */}
           <header className="mb-12">
             <h1 className="text-3xl font-bold mb-6">
-              Conversational Grocery Shopping Bot — HCI Research Project
+              Conversational Grocery Assistant — Research-led Concept
+              Exploration
             </h1>
 
             <p className="text-gray-700 dark:text-white/70 leading-relaxed">
@@ -345,14 +346,29 @@ export default function GroceryBot2020Page() {
             <h2 className="text-2xl font-semibold mb-4">Problem Context</h2>
 
             <p className="text-gray-700 dark:text-white/70 leading-relaxed">
-              During COVID lockdown, many people in rural Salzburg avoided
-              crowded supermarkets. Interviews showed that older users often
-              coordinated grocery shopping through WhatsApp rather than using
-              complex online stores.
+              Problem During COVID, rural Salzburg users avoided supermarkets.
+              Existing online grocery flows were complex and slow. <br></br>
+              <br></br>
+              <strong>Key insight:</strong> <br /> Users already coordinated
+              shopping via WhatsApp.
+              <br />
+              <strong>Decision:</strong> <br /> Instead of building a new
+              shopping interface, we explored conversational UX to reduce
+              cognitive load.<br></br>
+              <strong>Tradeoffs:</strong> <br />
+              ❌ VR supermarket exploration (high complexity) <br />❌ community
+              runner model (logistical challenges)
+              <br></br>✅ conversational assistant aligned with real behaviour.
+              <br></br>
+              <strong>Outcome:</strong> <br /> Prototype validated internally.
+              <br></br>
+              <strong>Later industry validation:</strong>
+              <br /> WhatsApp commerce rollout (Meta 2022).
             </p>
 
             <p className="mt-4 text-gray-700 dark:text-white/70">
               Core research question:
+              <br></br>
               <strong>
                 {" "}
                 How could technology help rural households shop safely with
@@ -545,6 +561,21 @@ export default function GroceryBot2020Page() {
               Judges suggested focusing on one supermarket instead of
               aggregating multiple providers due to data integration complexity
               — feedback that shaped future thinking.
+            </p>
+          </section>
+
+          {/* RESULTS */}
+          <section>
+            <h2 className="text-2xl font-semibold mt-8 mb-4">
+              What I would do differently today
+            </h2>
+
+            <p className="text-gray-700 dark:text-white/70 leading-relaxed">
+              If revisiting this today:
+              <br></br> - Narrow scope to one retailer earlier.
+              <br></br>- Validate with real delivery constraints sooner.
+              <br></br>- Test conversational friction vs traditional checkout
+              flows.
             </p>
           </section>
         </div>

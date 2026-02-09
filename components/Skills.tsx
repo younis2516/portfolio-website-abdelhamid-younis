@@ -30,7 +30,7 @@ const Skills = () => {
   });
   return (
     <section
-      className="flex flex-col justify-center items-center mr-10 ml-10 sm:mr-20 sm:ml-20 scroll-mt-28 "
+      className="flex flex-col justify-center items-center max-w-[90%] sm:px-0  scroll-mt-28 "
       ref={ref}
       id="skills"
     >
@@ -56,10 +56,10 @@ const Skills = () => {
       </div>
 
       {
-        <ul className="flex justify-center items-center w-screen mx-5 sm:mx-0 sm:w-[100%] sm:w-full  flex-wrap gap-4">
+        <ul className="flex justify-center items-center w-[100%] mx-5 sm:mx-0 sm:w-[100%] sm:w-full  flex-wrap gap-4">
           {filteredSkills.map((skill: Skill, index: number) => (
             <motion.li
-              className="bg-gray-200 rounded-full text-lg text-gray-950 pl-4 pr-4 pt-2 pb-2 dark:bg-white/10 dark:text-white/80"
+              className=" rounded-full  sm:text-md text-gray-950 px-4 py-2 border border-gray-300 dark:text-white/80"
               key={index}
               variants={fadeInAnimationVariance}
               initial="initial"

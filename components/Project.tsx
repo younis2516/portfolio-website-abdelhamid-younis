@@ -36,10 +36,12 @@ function Project({
   const titleToSlugMap: Record<string, string> = {
     "Billa Austria self-service terminal": "billa-terminal",
     "App Radar UI Redesign ": "app-radar-ui-redesign",
-    "Tubics Video Optimization Tool ": "tubics-video-optimization-tool",
-    "Tubics's Design System & documentation":
+    "Driving PMF by designing Tubics’ highest used feature.":
+      "tubics-video-optimization-tool",
+    "Design system that ships: from UI to Development":
       "tubics-design-system-documentation",
-    "Wuzzuf Hiring dashboard": "wuzzuf-hiring-dashboard",
+    "Wuzzuf Hiring dashboard: Biggest job portal in MENA":
+      "wuzzuf-hiring-dashboard",
     "Coming soon: POS dashboard Built with V0 by Vercel":
       "pos-dashboard-v0-vercel",
     "HCI Project: Grocery Shopping Bot ": "grocery-shopping-bot",

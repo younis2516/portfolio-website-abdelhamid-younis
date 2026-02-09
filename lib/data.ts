@@ -30,16 +30,20 @@ import { StaticImageData } from "next/image";
 
 export type project_type =
   | "All"
-  | "B2C"
   | "Saas B2B"
   | "Data heavy"
   | "Design system"
   | "Built with AI"
+  | "Enterprise"
+  | "B2C"
+  | ""
+  | null
+  | undefined
   | "Web Dev";
-export const ProjectTypes: project_type[] = [
+export const ProjectTypes: project_type[] | undefined | null = [
   "All",
   "Saas B2B",
-  "B2C",
+  "Enterprise",
   "Design system",
   "Built with AI",
   "Web Dev",
@@ -47,7 +51,7 @@ export const ProjectTypes: project_type[] = [
 export interface Project {
   title: string;
   description: string;
-  project_type: project_type | project_type[];
+  project_type?: project_type | project_type[];
   tags: string[];
   link: string;
   imageUrl: StaticImageData;
@@ -80,10 +84,6 @@ export const links = [
     name: "Home",
     hash: "#home",
   },
-  // {
-  //   name: "About",
-  //   hash: "#about",
-  // },
   {
     name: "Testimonials",
     hash: "#testimonials",
@@ -92,10 +92,10 @@ export const links = [
     name: "Projects",
     hash: "#projects",
   },
-  {
-    name: "Skills",
-    hash: "#skills",
-  },
+  // {
+  //   name: "Skills",
+  //   hash: "#skills",
+  // },
   {
     name: "Experience",
     hash: "#experience",
@@ -105,86 +105,6 @@ export const links = [
     hash: "#contact",
   },
 ] as const;
-
-// export const experiencesData = [
-//   {
-//     title: " Product Designer @ REWE International",
-//     location: "Vienna, Austria",
-//     descriptions: [
-//       "with the help of a one of my senior colleagues I Designed Billa’s self-checkout kiosks (now live in 60+ branches)",
-//       "Designed a white-label design system for all REWE Self-checkout kiosks in collab with the webshop team",
-//       "Used AI tools to build interactive Retail dashboards",
-//     ],
-//     icon: React.createElement(CgWorkAlt),
-//     date: "APRIL 2022 - NOW",
-//   },
-//   {
-//     title: "Frontend & Design Cofounder @ lehr.app ",
-//     location: "Remote",
-//     descriptions: [
-//       "Lehr.app is a platform to practice your german with AI-Generated exercises",
-//       " We are 2 founders. I was a Product designer & front end developer, used react, next, v0 and react query",
-//     ],
-//     icon: React.createElement(FaReact),
-//     date: "MAY 2024 - NOW",
-//   },
-//   {
-//     title: "Frontend Intern (Part-Time) @ Suplyd ",
-//     location: "Remote",
-//     descriptions: [
-//       "with the help of more senior developers I Implemented small features in the UI with React, Ant Design, MobX, GraphQL and Next.js",
-//     ],
-//     icon: React.createElement(FaReact),
-//     date: "MAY 2024 - NOW",
-//   },
-//   {
-//     title: "Product Designer / Low-Code Dev @Tubics ",
-//     location: "Vienna, Austria",
-//     descriptions: [
-//       "I was the only designer in Tubics",
-//       "Designed the video optimization tool (most-used-feature)",
-//       "With the help of another freelance designer, we designed YouTube rank tracker on SEMrush app store",
-//       "Created and documented company-wide design system",
-//     ],
-//     icon: React.createElement(CgWorkAlt),
-//     date: "OCTOBER 2020 -  JANUARY 2022",
-//   },
-//   {
-//     title: "Part time UX/UI Designer @ Hotelkit",
-//     location: "Salzburg, Austria",
-//     descriptions: [
-//       "I was the only designer at Hotelkit",
-//       "Worked closely with devs and PM to design the housekeeping tool (2nd best-selling feature)",
-//       "Redesigned web + mobile app screens for a UI face-lift",
-//     ],
-//     icon: React.createElement(CgWorkAlt),
-//     date: "NOVEMBER 2019 - OCTOBER 2020",
-//   },
-//   {
-//     title: " M.Sc. Human-Computer Interaction @ University of Salzburg",
-//     location: "Salzburg, Austria",
-//     descriptions: ["Focus on User Research, and 3D interaction design"],
-//     icon: React.createElement(LuGraduationCap),
-//     date: "SEPTEMBER 2019 - JANUARY 2021",
-//   },
-//   {
-//     title: "Junior UX Designer in Growth Squad @ Wuzzuf",
-//     location: "Cairo, Egypt",
-//     descriptions: [
-//       "Designed job post flow (still in use till now)",
-//       "Ran UX experiments for user acquisition on landing page",
-//     ],
-//     icon: React.createElement(CgWorkAlt),
-//     date: "OCTOBER 2018 - OCTOBER 2019 ",
-//   },
-//   {
-//     title: "BSC Material Engineering @The German University in Cairo",
-//     location: "Cairo, Egypt",
-//     descriptions: ["5 year program"],
-//     icon: React.createElement(LuGraduationCap),
-//     date: "OCTOBER 2012 - OCTOBER 2018 ",
-//   },
-// ] as const;
 
 export const experiencesData = [
   {
@@ -283,11 +203,11 @@ export const experiencesData = [
 
 export const projectsData: Project[] = [
   {
-    title: "Rewe self checkout white label solution",
-    project_type: ["B2C"],
+    title: "Designing at System Scale to serve Millions in Retail",
+    project_type: ["Enterprise", "B2C", "Design system"],
     description:
-      "Serving millions of Billa customers in Austria Everyday, improving checkout speed, confidence, and operational efficiency without requiring explanation.",
-    tags: ["Fulltime", "Live Now", "UX research", "UI Design", "Design System"],
+      "White-label design system for REWE self-checkout Handling localization, hardware constraints, and operational workflows across multiple countries",
+    tags: ["Enterprise", "Design System", "Live", "B2C"],
     imageUrl: pro_img_1,
     year: "2026",
     link: "https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11",
@@ -295,36 +215,11 @@ export const projectsData: Project[] = [
     bgColor: "#FFD300",
   },
   {
-    title: "lehr.app: Learn German with AI",
-    project_type: ["Web Dev", "Built with AI"],
+    title: "Large Scale Quantitive and Qualititve UX Research",
+    project_type: ["Enterprise", "B2C"],
     description:
-      "I was a frontend developer and a UX.UI designer in this projet, the frontend was Built with React typescript, next, shadcn, React Query and v0.dev ",
-    tags: [
-      "Fullstack project",
-      "React",
-      "typescript",
-      "Shadcn",
-      "next",
-      "vercel",
-    ],
-    year: "2025",
-    link: "https://lehr.app",
-    imageUrl: pro_img_8,
-    readingTime: 0,
-    bgColor: "#474738",
-  },
-  {
-    title: "Billa Austria self-service terminal",
-    project_type: ["B2C"],
-    description:
-      "This project was completed and shipped last year and now live in 4 different supermarkets in Austria. It started with a 4 day design sprint and 2 months later it was in development. I acted as a full-stack designer on this project. ",
-    tags: [
-      "Fulltime",
-      "Live Now",
-      "UX research",
-      "wireframes",
-      "Competitor analysis",
-    ],
+      "Full-stack design ownership of self-service terminal shipped to supermarkets in Austria. From design sprint to production deployment.",
+    tags: ["Enterprise", "UX Research", "B2C", "Live"],
     imageUrl: pro_img_2,
     year: "2023",
     link: "https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11",
@@ -332,29 +227,24 @@ export const projectsData: Project[] = [
     bgColor: "#FFD300",
   },
   {
-    title: "App Radar UI Redesign ",
-    project_type: ["Saas B2B", "Data heavy"],
+    title:
+      "Owning product vision and frontend architecture for an AI learning platform.",
+    project_type: ["Web Dev", "Built with AI"],
     description:
-      "In late 2022, I worked with www.appradar.com to redesign some pages in their old app. This project lasted for 3 months and I got very positive feedback on it. They also alpha-released it to selected clients and its now live since February 2023.",
-    tags: ["Freelance", "Live now ", "Competitor analysis"],
-    imageUrl: pro_img_3,
-    year: "2022",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16",
-    readingTime: 5,
-    bgColor: "#6153FF",
+      "AI-powered language learning platform where I owned product design and frontend architecture using React and Next.js.",
+    tags: ["Startup", "AI", "Fullstack"],
+    year: "2025",
+    link: "https://lehr.app",
+    imageUrl: pro_img_8,
+    readingTime: 0,
+    bgColor: "#474738",
   },
   {
-    title: "Tubics Video Optimization Tool ",
-    project_type: ["Saas B2B"],
+    title: "Driving PMF by designing Tubics’ highest engagement feature.",
+    project_type: ["Saas B2B", "Data heavy"],
     description:
-      "In 2021 I was working at www.tubics.net. This project started on November 2020, the first user test was in January and it was live since April 2021. 3 months later it was Tubics most used feature accounting to 70% of the session time on the app. ",
-    tags: [
-      " Full time",
-      "Live now",
-      "User Analytics",
-      "Wireframes",
-      "Usability Testing",
-    ],
+      "Most-used feature on Tubics platform supporting enterprise clients and driving product engagement.",
+    tags: ["Product impact", "Analytics", "Live", "UX Research"],
     imageUrl: pro_img_4,
     year: "2021",
     link: "https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12",
@@ -362,11 +252,11 @@ export const projectsData: Project[] = [
     bgColor: "#67B988",
   },
   {
-    title: "Tubics's Design System & documentation",
-    project_type: ["Saas B2B", "Design system", "Data heavy"],
+    title: "Design system that ships: from UI to Development",
+    project_type: ["Saas B2B", "Design system"],
     description:
-      "In  late 2021 I was working with www.tubics.net to redesign their design system and migrate the old app to the new branding. This project started on Septemper 2021, and lasted for 2 months including design, research and implementation. .",
-    tags: ["Full time", "Design system", "Research", "low code"],
+      "Redesigned and migrated design system supporting new branding and scalable UI patterns.",
+    tags: ["Design system", "Migration"],
     imageUrl: pro_img_5,
     year: "2021",
     link: "https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22",
@@ -374,11 +264,23 @@ export const projectsData: Project[] = [
     bgColor: "#F15E30",
   },
   {
-    title: "Wuzzuf Hiring dashboard",
+    title: "App Radar UI Redesign",
     project_type: ["Saas B2B", "Data heavy"],
     description:
-      "Wuzzuf is the biggest job portal in Egypt with over 30 K employers and 20+ Million job seekers.This project was done in collab with product managers, developers, and the customer-success-team and was released in summer 2019.",
-    tags: ["Full time", "UX/UI Design", "Usablity testing", "Data heavy"],
+      "Data-heavy dashboard redesign improving usability for analytics workflows.",
+    tags: ["Freelance", "Analytics"],
+    imageUrl: pro_img_3,
+    year: "2022",
+    link: "https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16",
+    readingTime: 5,
+    bgColor: "#6153FF",
+  },
+  {
+    title: "Wuzzuf Hiring dashboard: Biggest job portal in MENA",
+    project_type: ["Saas B2B", "Data heavy"],
+    description:
+      "Hiring analytics dashboard for platform serving millions of job seekers and thousands of employers across MENA.",
+    tags: ["Early career", "Research", "Data UX"],
     imageUrl: pro_img_0,
     year: "2019",
     link: "https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24",
@@ -386,45 +288,18 @@ export const projectsData: Project[] = [
     bgColor: "#0754CC",
   },
   {
-    title: "HCI Project: Grocery Shopping Bot ",
+    title: "Grocery Bot (Innovation Concept)",
     project_type: ["B2C"],
     description:
-      "I did this project as part of a research project in my HCI master studies at the university of salzburg. This project also won 1st place prototype and 2nd place pitch deck in Salzburg startup weekend competition in May 2020",
-    tags: [
-      "HCI student project",
-      "Persona Interviews",
-      "Design thinking",
-      "Competitor analysis",
-    ],
+      "This project demonstrates my approach to reducing complex flows into conversational interactions, a pattern I later applied in enterprise retail products.",
+    tags: ["Research", "Academic"],
     imageUrl: pro_img_7,
     year: "2020",
     link: "https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15",
     readingTime: 6,
     bgColor: "#1DC6BB",
   },
-  // {
-  //   title: "E-commerce admin portal",
-  //   project_type: ["Web Dev"],
-  //   description:
-  //     "Built with React typescript, next, shadcn, authentication using clerk middleware, backend using firebase deployed on vercel ",
-  //   tags: [
-  //     "Fullstack project",
-  //     "React",
-  //     "typescript",
-  //     "Shadcn",
-  //     "next",
-  //     "firebase",
-  //     "clerk",
-  //     "vercel",
-  //     "node",
-  //   ],
-  //   year: "2025",
-  //   link: "https://multistore-ecommerce-admin-portal.vercel.app",
-  //   imageUrl: project_img_9,
-  //   readingTime: 0,
-  //   bgColor: "#232323",
-  // },
-] as Project[];
+];
 
 export const skillsData = [
   { skill: "🎨 Figma", skill_type: "Design" },

@@ -16,12 +16,12 @@ export const Testimonials = () => {
       transition={{ delay: 0.175 }}
       viewport={{ once: true }}
       id="testimonials"
-      className=" scroll-mt-28  px-6 sm:px-8 max-w-7xl mx-auto"
+      className=" scroll-mt-28  px-0 sm:px-0 max-w-[90%] mx-auto"
     >
       {/* <SectionHeading> Linkedin Reviews</SectionHeading> */}
 
       <div
-        className="grid gap-6 mt-14 grid-cols-1 md:grid-cols-7"
+        className="grid gap-6 mt-6 grid-cols-1 md:grid-cols-7"
         style={{ perspective: "1200px" }}
       >
         {TestimonialsData.slice(0, 3).map((rec, index) => {
@@ -40,9 +40,9 @@ export const Testimonials = () => {
               transition={{ duration: 0.4, delay: index * 0.15 }}
               viewport={{ once: true }}
               className={`
-   flex flex-col rounded-3xl py-8 px-6
+   flex flex-col rounded-3xl py-8 px-6 bg-gray-50
   border border-gray-200 dark:border-gray-800
-  bg-white/80 dark:bg-zinc-900/70 backdrop-blur-xl
+  bg-white/80 dark:bg-white/5 backdrop-blur-xl
   transition-all duration-300
  ${isLast ? "min-h-[700px]" : "min-h-[440px]"}
   sm:h-[520px] 

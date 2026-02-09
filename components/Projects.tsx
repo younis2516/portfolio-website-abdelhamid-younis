@@ -5,6 +5,7 @@ import { project_type, projectsData, ProjectTypes } from "@/lib/data";
 import Project from "./Project";
 import { useScrollIntoView } from "@/lib/hooks";
 import ProjectCardNew from "./ProjectCardNew";
+import ProjectFeaturedRL from "./ProjectFeaturedRL";
 const Projects = () => {
   const [selectedType, setSelectedType] = useState<
     project_type | null | undefined
@@ -27,16 +28,37 @@ const Projects = () => {
     <section
       ref={ref}
       id="projects"
-      className="scroll-mt-28 py-20 px-6 sm:px-8 sm:py-16 max-w-7xl mx-auto justify-center items-center "
+      className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto justify-center items-center "
     >
-      <SectionHeading>Projects</SectionHeading>
-      <p className="text-base text-center w-full sm:max-w-7xl sm:text-lg text-gray-700 mb-8 dark:text-white/70">
+      <div className="grid grid-cols-1 gap-6 mb-8 items-stretch">
+        <ProjectFeaturedRL {...filteredProjects[0]} order="imageLeft" />
+        {/* <ProjectFeaturedRL {...filteredProjects[1]} order="imageRight" /> */}
+      </div>
+      <div className="grid grid-cols-3 gap-6 mb-20 items-stretch">
+        <div className="col-span-3 sm:col-span-2">
+          <ProjectFeaturedRL {...filteredProjects[3]} />
+        </div>
+        <div className="grid col-span-3 sm:col-span-1 items-stretch">
+          {/* MOBILE → DEFAULT variant */}
+          <div className="block sm:hidden">
+            <ProjectFeaturedRL {...filteredProjects[2]} />
+          </div>
+
+          {/* DESKTOP → SMALL variant */}
+          <div className="hidden sm:block ">
+            <ProjectFeaturedRL {...filteredProjects[2]} variant="small" />
+          </div>
+        </div>
+      </div>
+
+      {/* <SectionHeading>Projects</SectionHeading> */}
+      {/* <p className="text-base text-center w-full sm:max-w-7xl sm:text-lg text-gray-700 mb-8 dark:text-white/70">
         {" "}
         <strong>Heads up!</strong> these case studies are a bit lengthy, the
         average reading time is 10 minutes. I added lots of visuals but I am
         also trying to explain my thinking process.
-      </p>
-      <div className="flex justify-center flex-wrap gap-2 sm:gap-4 mb-10">
+      </p> */}
+      {/* <div className="flex justify-center flex-wrap gap-2 sm:gap-4 mb-10">
         {ProjectTypes?.map((type) => (
           <button
             key={type}
@@ -50,14 +72,17 @@ const Projects = () => {
             {type}
           </button>
         ))}
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {filteredProjects.map((project, index) => (
-          <React.Fragment key={index}>
-            {/* <Project {...project} /> */}
-            <ProjectCardNew {...project} />
-          </React.Fragment>
-        ))}
+      </div> */}
+
+      <SectionHeading>Other Projects</SectionHeading>
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 mt-8">
+        {filteredProjects
+          .filter((project, index) => index > 3)
+          .map((project, index) => (
+            <React.Fragment key={index}>
+              <ProjectFeaturedRL {...project} variant={"small"} />
+            </React.Fragment>
+          ))}
       </div>
     </section>
   );
