@@ -1,8 +1,3 @@
-import React from "react";
-import { CgWorkAlt } from "react-icons/cg";
-import { FaReact } from "react-icons/fa";
-import { LuGraduationCap } from "react-icons/lu";
-import portfolio_img_1 from "@/public/portfolio_img_1.png";
 import pro_img_0 from "@/public/pro_img_0.png";
 import pro_img_1 from "@/public/pro_img_1.png";
 import pro_img_2 from "@/public/pro_img_2.png";
@@ -57,26 +52,26 @@ export interface Project {
   readingTime: number;
   bgColor?: string;
 }
-export type SkillType =
-  | "Web Dev"
-  | "Design"
-  | "Business"
-  | "UX Research"
-  | "Language"
-  | "All"
-  | "Other";
-export const SkillTypes: SkillType[] = [
-  "All",
-  "Design",
-  "UX Research",
-  "Web Dev",
-  "Language",
-  "Other",
-];
-export interface Skill {
-  skill: string;
-  skill_type: SkillType;
-}
+// export type SkillType =
+//   | "Web Dev"
+//   | "Design"
+//   | "Business"
+//   | "UX Research"
+//   | "Language"
+//   | "All"
+//   | "Other";
+// export const SkillTypes: SkillType[] = [
+//   "All",
+//   "Design",
+//   "UX Research",
+//   "Web Dev",
+//   "Language",
+//   "Other",
+// ];
+// export interface Skill {
+//   skill: string;
+//   skill_type: SkillType;
+// }
 export const links = [
   {
     name: "Home",
@@ -299,40 +294,40 @@ export const projectsData: Project[] = [
   },
 ];
 
-export const skillsData = [
-  { skill: "🎨 Figma", skill_type: "Design" },
-  { skill: "🎨 Adobe XD", skill_type: "Design" },
-  { skill: "🎤️ User interviews", skill_type: "UX Research" },
-  { skill: "🔍 Quantitive UX research", skill_type: "UX Research" },
-  { skill: "🆎 AB Testing", skill_type: "UX Research" },
-  { skill: "🔍 Gorilla User Research", skill_type: "UX Research" },
-  { skill: "📊 Google analytics", skill_type: "UX Research" },
-  { skill: "💻 Figma Make", skill_type: "Design" },
-  { skill: "🎨 Design systems", skill_type: "Design" },
-  { skill: "🎥 Figma Animmations", skill_type: "Design" },
-  { skill: "🎨 Zeplin", skill_type: "Design" },
-  { skill: "🎨 Design systems", skill_type: "Design" },
-  { skill: "👨🏻‍💻 HTML5", skill_type: "Web Dev" },
-  { skill: "👨🏻‍💻 CSS3", skill_type: "Web Dev" },
-  { skill: "👨🏻‍💻 JavaScript ES6", skill_type: "Web Dev" },
-  { skill: "👨🏻‍💻 TypeScript", skill_type: "Web Dev" },
-  { skill: "👨🏻‍💻 React", skill_type: "Web Dev" },
-  { skill: "👨🏻‍💻 Tan Stack React Query", skill_type: "Web Dev" },
-  { skill: "👨🏻‍💻 Next.js", skill_type: "Web Dev" },
-  { skill: "👨🏻‍💻 MobX state (Basic)", skill_type: "Web Dev" },
-  { skill: "🎨 Tailwind CSS", skill_type: "Web Dev" },
-  { skill: "🎥 Framer Motion", skill_type: "Web Dev" },
-  { skill: "🇩🇪 German (B2)", skill_type: "Language" },
-  { skill: " 🇬🇧 English (Fluent C2)", skill_type: "Language" },
-  { skill: " 🇪🇬 Arabic (Fluent)", skill_type: "Language" },
-  { skill: "💡 Notion", skill_type: "Other" },
-  { skill: "💡 Jira", skill_type: "Other" },
-  { skill: "📊 Hotjar", skill_type: "UX Research" },
-  { skill: "📊 Mixpanel", skill_type: "UX Research" },
-  { skill: "🔍 Hey Marvin", skill_type: "UX Research" },
-  { skill: "🔐 Clerk Auth", skill_type: "Web Dev" },
-  { skill: "💻 shadcn ui", skill_type: "Web Dev" },
-] as Skill[];
+// export const skillsData = [
+//   { skill: "🎨 Figma", skill_type: "Design" },
+//   { skill: "🎨 Adobe XD", skill_type: "Design" },
+//   { skill: "🎤️ User interviews", skill_type: "UX Research" },
+//   { skill: "🔍 Quantitive UX research", skill_type: "UX Research" },
+//   { skill: "🆎 AB Testing", skill_type: "UX Research" },
+//   { skill: "🔍 Gorilla User Research", skill_type: "UX Research" },
+//   { skill: "📊 Google analytics", skill_type: "UX Research" },
+//   { skill: "💻 Figma Make", skill_type: "Design" },
+//   { skill: "🎨 Design systems", skill_type: "Design" },
+//   { skill: "🎥 Figma Animmations", skill_type: "Design" },
+//   { skill: "🎨 Zeplin", skill_type: "Design" },
+//   { skill: "🎨 Design systems", skill_type: "Design" },
+//   { skill: "👨🏻‍💻 HTML5", skill_type: "Web Dev" },
+//   { skill: "👨🏻‍💻 CSS3", skill_type: "Web Dev" },
+//   { skill: "👨🏻‍💻 JavaScript ES6", skill_type: "Web Dev" },
+//   { skill: "👨🏻‍💻 TypeScript", skill_type: "Web Dev" },
+//   { skill: "👨🏻‍💻 React", skill_type: "Web Dev" },
+//   { skill: "👨🏻‍💻 Tan Stack React Query", skill_type: "Web Dev" },
+//   { skill: "👨🏻‍💻 Next.js", skill_type: "Web Dev" },
+//   { skill: "👨🏻‍💻 MobX state (Basic)", skill_type: "Web Dev" },
+//   { skill: "🎨 Tailwind CSS", skill_type: "Web Dev" },
+//   { skill: "🎥 Framer Motion", skill_type: "Web Dev" },
+//   { skill: "🇩🇪 German (B2)", skill_type: "Language" },
+//   { skill: " 🇬🇧 English (Fluent C2)", skill_type: "Language" },
+//   { skill: " 🇪🇬 Arabic (Fluent)", skill_type: "Language" },
+//   { skill: "💡 Notion", skill_type: "Other" },
+//   { skill: "💡 Jira", skill_type: "Other" },
+//   { skill: "📊 Hotjar", skill_type: "UX Research" },
+//   { skill: "📊 Mixpanel", skill_type: "UX Research" },
+//   { skill: "🔍 Hey Marvin", skill_type: "UX Research" },
+//   { skill: "🔐 Clerk Auth", skill_type: "Web Dev" },
+//   { skill: "💻 shadcn ui", skill_type: "Web Dev" },
+// ] as Skill[];
 
 export interface TestimonialData {
   name: string;
