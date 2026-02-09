@@ -40,7 +40,7 @@ export const Testimonials = () => {
               transition={{ duration: 0.4, delay: index * 0.15 }}
               viewport={{ once: true }}
               className={`
-   flex flex-col rounded-3xl py-8 px-6 bg-gray-50
+   flex flex-col rounded-3xl py-8 px-6 bg-slate-100/50
   border border-gray-200 dark:border-gray-800
   bg-white/80 dark:bg-white/5 backdrop-blur-xl
   transition-all duration-300

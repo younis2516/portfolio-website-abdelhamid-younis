@@ -38,7 +38,6 @@ export default function Home() {
       {/* <SectionDivider /> */}
       {/* <About />
          <SectionDivider /> */}
-      <Testimonials />
       {/* <SectionDivider /> */}
       <Projects />
       {/* <SectionDivider /> */}
@@ -46,6 +45,7 @@ export default function Home() {
       {/* <SectionDivider /> */}
       <Experience />
       {/* <SectionDivider /> */}
+      <Testimonials />
       <Contact />
     </main>
   );
