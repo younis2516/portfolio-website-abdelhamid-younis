@@ -78,9 +78,6 @@ function Project({
           <div className="flex gap-3 h-7 items-center inline-block  w-full rounded-md">
             <div className="h-7 w-2 bg-blue-500 rounded-full"></div>
             <p className="text-sm font-medium mr-auto gap-2 text-gray-500 dark:text-gray-400 justify-center items-center tracking-widest w-full">
-              {
-                // typeof (project_type) === "string" ? project_type.toUpperCase() : project_type.join(", ").toUpperCase()
-              }
               {project_type?.[0]?.toUpperCase()}
             </p>
 

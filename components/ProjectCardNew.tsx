@@ -101,7 +101,7 @@ function ProjectCardNew({
             <div className="flex flex-row items-center justify-center">
               {/* <FiCalendar className='text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70'/> */}
               <p className=" text-sm sm:text-base text-gray-700 tracking-wider text-nowrap dark:text-white/70">
-                {year} - {project_type[0]}
+                {year} - {project_type?.[0]}
               </p>
             </div>
           </div>
@@ -139,9 +139,9 @@ function ProjectCardNew({
                 href={internalHref}
                 className="leading-relaxed flex flex-row items-center justify-center gap-2"
               >
-                {project_type.includes("Web Dev")
+                {project_type?.includes("Web Dev")
                   ? "Go to project"
-                  : "View case study"}
+                  : "Read project documentation"}
                 <RxArrowTopRight />
               </Link>
             )}

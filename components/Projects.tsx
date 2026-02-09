@@ -1,14 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import SectionHeading from "./Section_heading";
-import { project_type, projectsData, ProjectTypes } from "@/lib/data";
+import { ProjectType, projectsData, ProjectTypes } from "@/lib/data";
 import Project from "./Project";
 import { useScrollIntoView } from "@/lib/hooks";
 import ProjectCardNew from "./ProjectCardNew";
 import ProjectFeaturedRL from "./ProjectFeaturedRL";
 const Projects = () => {
   const [selectedType, setSelectedType] = useState<
-    project_type | null | undefined
+    ProjectType | null | undefined
   >("All");
   const { ref } = useScrollIntoView("Projects", 0.3);
   const filteredProjects = projectsData.filter((project) => {
