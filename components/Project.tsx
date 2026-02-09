@@ -81,9 +81,7 @@ function Project({
               {
                 // typeof (project_type) === "string" ? project_type.toUpperCase() : project_type.join(", ").toUpperCase()
               }
-              {Array.isArray(project_type)
-                ? project_type[0]?.toUpperCase()
-                : project_type?.toUpperCase()}
+              {project_type?.[0]?.toUpperCase()}
             </p>
 
             {readingTime > 0 ? (
