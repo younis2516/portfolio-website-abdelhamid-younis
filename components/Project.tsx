@@ -80,8 +80,10 @@ function Project({
             <p className="text-sm font-medium mr-auto gap-2 text-gray-500 dark:text-gray-400 justify-center items-center tracking-widest w-full">
               {
                 // typeof (project_type) === "string" ? project_type.toUpperCase() : project_type.join(", ").toUpperCase()
-                project_type[0].toUpperCase()
               }
+              {Array.isArray(project_type)
+                ? project_type[0]?.toUpperCase()
+                : project_type?.toUpperCase()}
             </p>
 
             {readingTime > 0 ? (

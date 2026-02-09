@@ -28,7 +28,7 @@ import project_img_11 from "@/public/project_img_11.png";
 
 import { StaticImageData } from "next/image";
 
-export type project_type =
+export type ProjectType =
   | "All"
   | "Saas B2B"
   | "Data heavy"
@@ -36,11 +36,9 @@ export type project_type =
   | "Built with AI"
   | "Enterprise"
   | "B2C"
-  | ""
-  | null
-  | undefined
   | "Web Dev";
-export const ProjectTypes: project_type[] | undefined | null = [
+
+export const ProjectTypes: ProjectType[] = [
   "All",
   "Saas B2B",
   "Enterprise",
@@ -51,7 +49,7 @@ export const ProjectTypes: project_type[] | undefined | null = [
 export interface Project {
   title: string;
   description: string;
-  project_type?: project_type | project_type[];
+  project_type?: ProjectType[];
   tags: string[];
   link: string;
   imageUrl: StaticImageData;
