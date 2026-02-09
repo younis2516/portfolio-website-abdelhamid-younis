@@ -136,7 +136,7 @@ function Project({
                 className="leading-relaxed  text-gray-700 dark:text-white/70 hover:underline"
               >
                 <p>
-                  {project_type.includes("Web Dev")
+                  {project_type?.includes("Web Dev")
                     ? "Go to project"
                     : "Read project documentation"}
                 </p>
