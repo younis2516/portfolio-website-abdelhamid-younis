@@ -128,7 +128,9 @@ export default function ProjectFeaturedRL({
         <section className="relative h-full overflow-hidden rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-slate-50/5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
           {/* Floating arrow for SMALL variant */}
           {isSmall && (
-            <div className="absolute top-6 right-6 sm:top-8 sm-right-8 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black text-white flex items-center justify-center">
+            <div
+              className={`absolute top-6 right-6 sm:top-6 sm-right-6 w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-black text-white flex items-center justify-center`}
+            >
               <RxArrowTopRight />
             </div>
           )}
@@ -156,7 +158,9 @@ export default function ProjectFeaturedRL({
             )}
 
             {/* CONTENT AREA */}
-            <div className={`${contentOrder} flex flex-col p-8 lg:p-12 h-full`}>
+            <div
+              className={`${contentOrder} flex flex-col ${isSmall ? "p-8 lg:p-8" : "p-8 lg:p-12"}   h-full`}
+            >
               <p className="text-sm text-gray-500 dark:text-white/60 mb-3">
                 {year} — {project_type?.[0]}
               </p>
