@@ -48,8 +48,8 @@ function Intro() {
             </span>
 
             <h1 className="text-lg sm:text-xl lg:text-4xl mb-4 font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-              Senior Product Designer shaping enterprise systems — from research
-              to production using design + code.
+              Senior Product Designer shaping enterprise systems/ UX Engineer
+              (design + Frontend).
             </h1>
 
             <h2 className="text-md sm:text-md lg:text-lg  leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">

@@ -125,7 +125,7 @@ export default function ProjectFeaturedRL({
       className="mb-8 h-full group"
     >
       <Wrapper>
-        <section className="relative h-full overflow-hidden rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-slate-50/5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer">
+        <section className="relative h-full overflow-hidden rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-slate-50/5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer sm:max-h-[38rem]">
           {/* Floating arrow for SMALL variant */}
           {isSmall && (
             <div
@@ -145,6 +145,7 @@ export default function ProjectFeaturedRL({
                   h-full
                    ${isSmall ? "" : "bg-slate-50 dark:bg-white/10"}
                   flex items-center justify-center
+                  ${isSmall ? "mt-[-40px]" : ""}
                   p-10
                 `}
               >
@@ -165,7 +166,9 @@ export default function ProjectFeaturedRL({
                 {year} — {project_type?.[0]}
               </p>
 
-              <h3 className="text-2xl lg:text-3xl font-semibold mb-4">
+              <h3
+                className={`text-2xl ${isSmall ? "text-xl lg:text-2xl" : "text-2xl lg:text-3xl"} font-semibold mb-4`}
+              >
                 {title}
               </h3>
 

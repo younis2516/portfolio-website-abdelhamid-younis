@@ -28,15 +28,15 @@ const Projects = () => {
       id="projects"
       className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto justify-center items-center "
     >
-      <div className="grid grid-cols-1 gap-6 mb-8 items-stretch">
+      <div className="grid grid-cols-1 gap-6 mb-8 items-stretch sm:min-h-[40rem]">
         <ProjectFeaturedRL {...filteredProjects[0]} order="imageLeft" />
         {/* <ProjectFeaturedRL {...filteredProjects[1]} order="imageRight" /> */}
       </div>
-      <div className="grid grid-cols-3 gap-6 mb-20 items-stretch">
-        <div className="col-span-3 sm:col-span-2">
+      <div className="grid grid-cols-3 gap-6 mb-20 items-stretch ">
+        <div className="col-span-3 sm:col-span-2 ">
           <ProjectFeaturedRL {...filteredProjects[3]} />
         </div>
-        <div className="grid col-span-3 sm:col-span-1 items-stretch">
+        <div className="grid col-span-3 sm:col-span-1">
           {/* MOBILE → DEFAULT variant */}
           <div className="block sm:hidden">
             <ProjectFeaturedRL {...filteredProjects[2]} />
@@ -78,7 +78,11 @@ const Projects = () => {
           .filter((project, index) => index > 3)
           .map((project, index) => (
             <React.Fragment key={index}>
-              <ProjectFeaturedRL {...project} variant={"small"} />
+              <ProjectFeaturedRL
+                {...project}
+                variant={"small"}
+                showImage={false}
+              />
             </React.Fragment>
           ))}
       </div>

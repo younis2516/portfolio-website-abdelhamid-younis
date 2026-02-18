@@ -104,7 +104,7 @@ export const experiencesData = [
     company: "REWE International",
     location: "Vienna, Austria",
     date: "April 2022 — Present",
-    title: "Product Designer",
+    title: "Senior Product Designer",
     descriptions: [
       "Designed BILLA’s self-checkout kiosks now live in 60+ branches across Austria",
       "Built a white-label design system for REWE self-checkout platforms in collaboration with the webshop team",
@@ -200,7 +200,7 @@ export const projectsData: Project[] = [
     project_type: ["Enterprise", "B2C", "Design system"],
     description:
       "White-label design system for REWE self-checkout Handling localization, hardware constraints, and operational workflows across multiple countries",
-    tags: ["Enterprise", "Design System", "Live", "B2C"],
+    tags: ["Enterprise", "Design System", "Live", "B2C", "UX Research"],
     imageUrl: pro_img_1,
     year: "2026",
     link: "https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11",
@@ -225,7 +225,7 @@ export const projectsData: Project[] = [
     project_type: ["Web Dev", "Built with AI"],
     description:
       "AI-powered language learning platform where I owned product design and frontend architecture using React and Next.js.",
-    tags: ["Startup", "AI", "Fullstack"],
+    tags: ["Startup", "AI", "Fullstack", "Live"],
     year: "2025",
     link: "https://lehr.app",
     imageUrl: pro_img_8,
@@ -237,7 +237,7 @@ export const projectsData: Project[] = [
     project_type: ["Saas B2B", "Data heavy"],
     description:
       "Most-used feature on Tubics platform supporting enterprise clients and driving product engagement.",
-    tags: ["Product impact", "Analytics", "Live", "UX Research"],
+    tags: ["SAAS", "Live", "UX Research"],
     imageUrl: pro_img_4,
     year: "2021",
     link: "https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12",
