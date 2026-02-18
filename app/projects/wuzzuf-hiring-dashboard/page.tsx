@@ -62,14 +62,15 @@ export default function WuzzufHiringDashboardPage() {
           />
         </picture>
 
-        <div className="absolute inset-0 flex justify-center">
+        {/* Back button overlay */}
+        <div className="pointer-events-none absolute inset-0 flex justify-center z-10">
           <div className="relative w-full sm:max-w-[73rem] px-4">
             <Link
               href="/"
-              className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border shadow-sm hover:bg-gray-50 dark:bg-gray-900 dark:border-gray-700"
+              className="pointer-events-auto absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition dark:bg-gray-900 dark:border-gray-700 dark:text-white/80 dark:hover:bg-gray-800"
             >
               <FiArrowLeft />
-              Back to home
+              <span>Back</span>
             </Link>
           </div>
         </div>
@@ -77,7 +78,7 @@ export default function WuzzufHiringDashboardPage() {
 
       {/* Content */}
       <div className="w-full sm:max-w-[73rem] -mt-10 px-4">
-        <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border p-6 sm:p-10">
+        <div className="bg-white dark:bg-gray-950 rounded-[40px] dark:border-white/0 shadow-xl border p-6 sm:p-10">
           {/* HERO */}
           <header className="mb-12">
             <h1 className="text-3xl font-bold mb-6">

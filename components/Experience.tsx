@@ -63,7 +63,10 @@ import { experiencesData } from "@/lib/data";
 import SectionHeading from "./Section_heading";
 
 const Experience = () => {
-  const { ref } = useScrollIntoView("Experience", 0.3);
+  const threshold =
+    typeof window !== "undefined" && window.innerWidth < 640 ? 0.1 : 0.3;
+
+  const { ref } = useScrollIntoView("Experience", threshold);
 
   return (
     <section

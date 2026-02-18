@@ -38,15 +38,6 @@
 //             className="w-full h-auto object-contain"
 //           />
 //         </picture>
-//         {/* Back button overlay */}
-//         <div className="pointer-events-none absolute inset-0 flex justify-center z-10">
-//           <div className="relative w-full sm:max-w-[73rem] px-4">
-//             <Link href="/" className="pointer-events-auto absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition dark:bg-gray-900 dark:border-gray-700 dark:text-white/80 dark:hover:bg-gray-800">
-//               <FiArrowLeft />
-//               <span>Back to home</span>
-//             </Link>
-//           </div>
-//         </div>
 //       </div>
 
 //       {/* Content container overlapping banner */}
@@ -228,15 +219,15 @@ export default function TubicsVideoOptimizationPage() {
             className="w-full h-auto object-contain"
           />
         </picture>
-
+        {/* Back button overlay */}
         <div className="pointer-events-none absolute inset-0 flex justify-center z-10">
           <div className="relative w-full sm:max-w-[73rem] px-4">
             <Link
               href="/"
-              className="pointer-events-auto absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700 hover:bg-gray-50 transition"
+              className="pointer-events-auto absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition dark:bg-gray-900 dark:border-gray-700 dark:text-white/80 dark:hover:bg-gray-800"
             >
               <FiArrowLeft />
-              <span>Back to home</span>
+              <span>Back</span>
             </Link>
           </div>
         </div>

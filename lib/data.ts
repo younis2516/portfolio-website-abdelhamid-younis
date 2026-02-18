@@ -333,6 +333,7 @@ export interface TestimonialData {
   name: string;
   role: string;
   date?: string;
+  company: string;
   relationship: string;
   quote: string;
   image: StaticImageData | string;
@@ -341,7 +342,8 @@ export interface TestimonialData {
 export const TestimonialsData = [
   {
     name: "Mario Prikasky",
-    role: "Design System Lead @ REWE",
+    role: "Design System Lead",
+    company: "REWE",
     date: "May 17, 2025",
     image: profile_img_2,
     relationship: "Was senior to Abdelhamid but did not manage him directly",
@@ -349,7 +351,8 @@ export const TestimonialsData = [
   },
   {
     name: "Ahmed Ibrahim",
-    role: "Tech Lead @ Hotelkit",
+    role: "Tech Lead",
+    company: "Hotelkit",
     date: "May 22, 2025",
     relationship: "Worked with Abdelhamid at Hotelkit",
     image: profile_img_1,
@@ -357,7 +360,8 @@ export const TestimonialsData = [
   },
   {
     name: "Dr.Ing.Mostafa Amin",
-    role: "Sen.AI Researcher @ Dynatrace ",
+    role: "Senior Researcher Gen AI",
+    company: "Dynatrace",
     date: "Decemver 14, 2025",
     relationship:
       "Cofounder with Abdelhamid at an AI German Language Learninng App ",

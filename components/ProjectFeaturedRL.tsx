@@ -66,7 +66,7 @@ export default function ProjectFeaturedRL({
     .trim()
     .replace(/\s+/g, "-");
 
-  const isLehrApp = title.toLowerCase().includes("ai");
+  const isLehrApp = title.toLowerCase().includes("ai learning");
 
   const href = isLehrApp
     ? "https://lehr.app"

@@ -8,7 +8,11 @@ const Projects = () => {
   const [selectedType, setSelectedType] = useState<
     ProjectType | null | undefined
   >("All");
-  const { ref } = useScrollIntoView("Projects", 0.3);
+
+  const threshold =
+    typeof window !== "undefined" && window.innerWidth < 640 ? 0.15 : 0.3;
+
+  const { ref } = useScrollIntoView("Projects", threshold);
   const filteredProjects = projectsData.filter((project) => {
     if (
       selectedType === "All" ||
