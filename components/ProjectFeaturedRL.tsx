@@ -182,7 +182,7 @@ export default function ProjectFeaturedRL({
 
               {isLehrApp && (
                 <div
-                  className={`dark:border-white/10  underline text-blue-500 dark:text-blue-300 mt-[-16px] flex flex-row gap-2 items-center`}
+                  className={`dark:border-white/10  underline text-blue-500 dark:text-blue-300 mt-[-16px] mb-6 flex flex-row gap-2 items-center`}
                 >
                   <a
                     href="https://lehr.app"
