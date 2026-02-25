@@ -77,6 +77,7 @@ export default function ProjectFeaturedRL({
   const href = `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`;
 
   const external = isLehrApp;
+  // const external = false;
 
   const Wrapper = ({ children }: { children: React.ReactNode }) =>
     external ? (
