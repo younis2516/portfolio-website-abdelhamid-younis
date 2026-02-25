@@ -6,6 +6,7 @@ import { projectsData } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import { RxArrowTopRight } from "react-icons/rx";
+import { FiExternalLink } from "react-icons/fi";
 
 type ProjectProps2 = (typeof projectsData)[number];
 
@@ -58,6 +59,8 @@ export default function ProjectFeaturedRL({
       "lehr-app",
     "Designing at System Scale to serve Millions in Retail":
       "rewe-white-label-sco",
+    "Designing & Developing an AI-Native German Learning App — lehr.app":
+      "lehr-app",
   };
 
   const fallbackSlug = String(title)
@@ -68,9 +71,10 @@ export default function ProjectFeaturedRL({
 
   const isLehrApp = title.toLowerCase().includes("ai learning");
 
-  const href = isLehrApp
-    ? "https://lehr.app"
-    : `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`;
+  // const href = isLehrApp
+  //   ? "https://lehr.app"
+  //   : `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`;
+  const href = `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`;
 
   const external = isLehrApp;
 
@@ -175,6 +179,27 @@ export default function ProjectFeaturedRL({
               <p className="text-gray-700 dark:text-white/70 mb-6">
                 {description}
               </p>
+
+              {isLehrApp && (
+                <div
+                  className={`dark:border-white/10  underline text-blue-500 dark:text-blue-300 mt-[-16px] flex flex-row gap-2 items-center`}
+                >
+                  <a
+                    href="https://lehr.app"
+                    target="_blank"
+                    className="text-nowrap"
+                  >
+                    Visit lehr.app
+                  </a>
+                  <a
+                    href="https://lehr.app"
+                    target="_blank"
+                    className="text-nowrap"
+                  >
+                    <FiExternalLink />
+                  </a>
+                </div>
+              )}
 
               {!isSmall && (
                 <div className="flex flex-wrap gap-3 mb-8">
