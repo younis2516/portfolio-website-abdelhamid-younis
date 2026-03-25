@@ -257,7 +257,7 @@ export const projectsData: Project[] = [
     bgColor: "#F15E30",
   },
   {
-    title: "App Radar UI Redesign",
+    title: "App Radar — Growth & Analytics Platform Redesign",
     project_type: ["Saas B2B", "Data heavy"],
     description:
       "Data-heavy dashboard redesign improving usability for analytics workflows.",
@@ -269,7 +269,7 @@ export const projectsData: Project[] = [
     bgColor: "#6153FF",
   },
   {
-    title: "Wuzzuf Hiring dashboard: Biggest job portal in MENA",
+    title: "Wuzzuf — Hiring Intelligence Dashboard",
     project_type: ["Saas B2B", "Data heavy"],
     description:
       "Hiring analytics dashboard for platform serving millions of job seekers and thousands of employers across MENA.",

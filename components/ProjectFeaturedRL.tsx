@@ -43,13 +43,13 @@ export default function ProjectFeaturedRL({
 
   const titleToSlugMap: Record<string, string> = {
     "Large Scale Quantitive and Qualititve UX Research": "billa-terminal",
-    "App Radar UI Redesign ": "app-radar-ui-redesign",
+    "App Radar — Growth & Analytics Platform Redesign ":
+      "app-radar-ui-redesign",
     "Driving Product Adoption in an AI-Powered SaaS Platform":
       "tubics-video-optimization-tool",
     "Design system that ships: from UI to Development":
       "tubics-design-system-documentation",
-    "Wuzzuf Hiring dashboard: Biggest job portal in MENA":
-      "wuzzuf-hiring-dashboard",
+    "Wuzzuf — Hiring Intelligence Dashboard": "wuzzuf-hiring-dashboard",
     "Coming soon: POS dashboard Built with V0 by Vercel":
       "pos-dashboard-v0-vercel",
     "Grocery Bot (Innovation Concept)": "grocery-shopping-bot",

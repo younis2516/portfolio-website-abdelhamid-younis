@@ -77,9 +77,9 @@ const Projects = () => {
       </div> */}
 
       <SectionHeading>Other Projects</SectionHeading>
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
         {filteredProjects
-          .filter((project, index) => index > 3)
+          .filter((project, index) => index > 3 && index < 7)
           .map((project, index) => (
             <React.Fragment key={index}>
               <ProjectFeaturedRL
