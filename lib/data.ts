@@ -196,7 +196,7 @@ export const experiencesData = [
 
 export const projectsData: Project[] = [
   {
-    title: "Designing at System Scale to serve Millions in Retail",
+    title: "Designing & Scaling a Nationwide Self-Checkout System",
     project_type: ["Enterprise", "B2C", "Design system"],
     description:
       "White-label design system for REWE self-checkout Handling localization, hardware constraints, and operational workflows across multiple countries",
@@ -233,7 +233,7 @@ export const projectsData: Project[] = [
     bgColor: "#474738",
   },
   {
-    title: "Driving PMF by designing Tubics’ highest engagement feature.",
+    title: "Driving Product Adoption in an AI-Powered SaaS Platform",
     project_type: ["Saas B2B", "Data heavy"],
     description:
       "Most-used feature on Tubics platform supporting enterprise clients and driving product engagement.",

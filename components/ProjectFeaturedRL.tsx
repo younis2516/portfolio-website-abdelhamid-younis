@@ -44,7 +44,7 @@ export default function ProjectFeaturedRL({
   const titleToSlugMap: Record<string, string> = {
     "Large Scale Quantitive and Qualititve UX Research": "billa-terminal",
     "App Radar UI Redesign ": "app-radar-ui-redesign",
-    "Driving PMF by designing Tubics’ highest engagement feature.":
+    "Driving Product Adoption in an AI-Powered SaaS Platform":
       "tubics-video-optimization-tool",
     "Design system that ships: from UI to Development":
       "tubics-design-system-documentation",
@@ -57,7 +57,7 @@ export default function ProjectFeaturedRL({
     "E-commerce admin portal": "ecommerce-admin-portal",
     "Owning product vision and frontend architecture for an AI learning platform.":
       "lehr-app",
-    "Designing at System Scale to serve Millions in Retail":
+    "Designing & Scaling a Nationwide Self-Checkout System":
       "rewe-white-label-sco",
     "Designing & Developing an AI-Native German Learning App — lehr.app":
       "lehr-app",

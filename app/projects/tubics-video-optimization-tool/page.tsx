@@ -205,239 +205,257 @@ import { FiArrowLeft } from "react-icons/fi";
 
 export default function TubicsVideoOptimizationPage() {
   return (
-    <main className="flex flex-col items-center px-0 sm:px-0 pb-16">
-      {/* Banner */}
-      <div className="relative z-0 w-[100%] mx-auto overflow-hidden bg-yellow-200 -mt-28 sm:-mt-36">
-        <picture>
-          <source
-            media="(max-width: 640px)"
-            srcSet="/tubics-video-optimization-banner-mobile.png"
-          />
-          <img
-            src="/tubics-video-optimization-banner.png"
-            alt="Tubics video optimization banner"
-            className="w-full h-auto object-contain"
-          />
-        </picture>
-        {/* Back button overlay */}
-        <div className="pointer-events-none absolute inset-0 flex justify-center z-10">
-          <div className="relative w-full sm:max-w-[73rem] px-4">
-            <Link
-              href="/"
-              className="pointer-events-auto absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-gray-200 shadow-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition dark:bg-gray-900 dark:border-gray-700 dark:text-white/80 dark:hover:bg-gray-800"
-            >
-              <FiArrowLeft />
-              <span>Back</span>
-            </Link>
-          </div>
-        </div>
+    <main className="flex flex-col items-center pb-16">
+      {/* HERO */}
+      <div className="relative w-full overflow-hidden -mt-28 sm:-mt-36">
+        <img
+          src="/tubics-video-optimization-banner.png"
+          alt="Tubics banner"
+          className="w-full object-contain"
+        />
+
+        <Link
+          href="/"
+          className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow border"
+        >
+          <FiArrowLeft />
+          Back
+        </Link>
       </div>
 
-      {/* Content container */}
-      <div className="w-full sm:max-w-[73rem] -mt-10 sm:-mt-14 px-4 relative z-10">
-        <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border border-black/5 p-6 sm:p-10">
-          {/* HERO */}
-          <header className="mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-8">
-              Tubics — AI Video Optimization Platform (2021)
+      <div className="w-full sm:max-w-[900px] -mt-12 px-4 z-10">
+        <div className="bg-white rounded-[32px] shadow-xl p-8 sm:p-12 space-y-20">
+          {/* CONTEXT */}
+          <section>
+            <h1 className="text-3xl sm:text-4xl font-bold mb-4">
+              Driving Product Adoption in an AI-Powered SaaS Platform
             </h1>
 
-            <p className="text-gray-700 dark:text-white/70">
-              <strong>Company:</strong> Tubics GmbH
+            <p className="text-gray-600 leading-relaxed">
+              Tubics provides AI-powered SEO optimization tools for enterprise
+              YouTube teams. I redesigned the core workflow to improve adoption,
+              trust in AI recommendations, and overall product engagement.
             </p>
 
-            <p className="text-gray-700 dark:text-white/70 mt-4">
-              <strong>Role:</strong> Solo Product Designer (UX/UI & Research)
-            </p>
-
-            <p className="text-gray-700 dark:text-white/70 mt-4">
-              <strong>Impact:</strong> Redesigned core optimization workflow
-              which became the most-used feature of the platform and
-              significantly improved perceived quality of SEO recommendations
-              for enterprise YouTube teams.
-            </p>
-          </header>
-
-          {/* CONTEXT */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-3">Context & Challenge</h2>
-
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed">
-              Tubics provided AI-powered tools to help enterprise YouTube teams
-              optimize video SEO. The existing optimization workflow suffered
-              from low adoption because recommendations felt generic, users
-              lacked guidance, and the workflow required too many manual steps.
-              I was responsible for redesigning the experience end-to-end — from
-              research to delivery — with the goal of increasing adoption and
-              improving SEO decision quality.
-            </p>
+            <div className="mt-6 text-sm text-gray-600 space-y-1">
+              <p>
+                <strong>Company:</strong> Tubics
+              </p>
+              <p>
+                <strong>Role:</strong> Solo Product Designer
+              </p>
+              <p>
+                <strong>Scope:</strong> UX strategy, research, interaction
+                design, delivery
+              </p>
+            </div>
           </section>
 
-          {/* ROLE */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-3">My Role & Ownership</h2>
+          {/* IMPACT FIRST */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Impact</h2>
 
-            <ul className="list-disc list-inside text-gray-700 dark:text-white/70 space-y-2">
+            <ul className="space-y-2 text-gray-700">
               <li className="text-wrap">
-                Sole UX/UI designer responsible for discovery and delivery
+                • Became the most-used workflow in the platform
               </li>
               <li className="text-wrap">
-                Conducted 8 usability tests with enterprise customers and
-                YouTube marketing agencies
+                • Increased <strong>session time to from 20% to 70%</strong>
               </li>
               <li className="text-wrap">
-                Defined product UX strategy with stakeholders
+                • Reduced <strong>completion time by 54%</strong>
+              </li>
+
+              <li className="text-wrap">
+                • NPS score <strong>increased from 3 to 7/10</strong>
               </li>
               <li className="text-wrap">
-                Designed AI recommendation interaction model
+                • Improved perceived quality of AI recommendations
               </li>
               <li className="text-wrap">
-                Delivered validated high-fidelity UI
+                • Reduced reliance on external SEO tools
+              </li>
+              <li className="text-wrap">
+                • Enabled collaboration for enterprise teams
               </li>
             </ul>
           </section>
 
-          {/* PROBLEM */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-3">Key User Insights</h2>
+          {/* SYSTEM PROBLEM */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Problem</h2>
 
-            <p className="text-gray-700 dark:text-white/70">
-              Users wanted quick wins without deep SEO expertise. However, the
-              AI required structured inputs to generate quality recommendations.
-              Without guidance, users skipped critical steps resulting in weak
-              outcomes and low trust in the tool.
+            <p className="text-gray-700 leading-relaxed mb-4">
+              The issue wasn’t just UI — it was a mismatch between how the AI
+              system worked and how users expected to interact with it.
             </p>
 
-            <div className="relative w-full aspect-[16/9] mt-6 rounded-xl overflow-hidden">
+            <ul className="space-y-2 text-gray-700">
+              <li>
+                • AI required structured input → users wanted quick results
+              </li>
+              <li>• Recommendations felt generic → low trust</li>
+              <li>• Workflow required too many manual steps</li>
+              <li>• No clear guidance → users skipped critical steps</li>
+            </ul>
+
+            <div className="relative w-full aspect-[16/9] mt-6">
               <Image
                 src="/tubics-video-1.png"
-                alt="Old UI"
+                alt=""
                 fill
-                className="object-contain"
+                className="object-contain rounded-lg"
               />
             </div>
           </section>
 
-          {/* DECISION 1 */}
-          <section className="mb-12">
-            <h3 className="text-lg font-semibold mb-2">
-              Design Decision 1 — Guide Users Through Intent First
-            </h3>
+          {/* INSIGHTS */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Key Insight</h2>
 
-            <p className="text-gray-700 dark:text-white/70 mb-4">
-              Research showed structured intent dramatically improved AI output
-              quality. I introduced a mandatory search-term selection step to
-              frame optimization as a guided workflow rather than an open form.
+            <p className="text-gray-700 leading-relaxed">
+              Users didn’t trust the AI because they didn’t understand how to
+              get good results. The problem wasn’t the algorithm — it was the
+              lack of structured guidance in the UX.
             </p>
-
-            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
-              <Image
-                src="/tubics-video-2.png"
-                alt="Search term flow"
-                fill
-                className="object-contain"
-              />
-            </div>
           </section>
 
-          {/* DECISION 2 */}
-          <section className="mb-12">
-            <h3 className="text-lg font-semibold mb-2">
-              Design Decision 2 — Turn Recommendations into Actionable Guidance
-            </h3>
+          {/* DECISIONS */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">
+              Key Product Decisions
+            </h2>
 
-            <p className="text-gray-700 dark:text-white/70 mb-4">
-              Instead of generic suggestions, recommendations were transformed
-              into contextual guidance with explanations and examples inspired
-              by Grammarly-style feedback systems.
-            </p>
+            <div className="space-y-8">
+              <div>
+                <h3 className="font-semibold mb-2">
+                  1. Force structured input before AI execution
+                </h3>
 
-            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
-              <Image
-                src="/tubics-video-3.png"
-                alt="Guided recommendations"
-                fill
-                className="object-contain"
-              />
+                <p className="text-gray-700 mb-3">
+                  Introduced a mandatory search-term selection step to guide
+                  users toward high-quality inputs instead of free-form
+                  interaction.
+                </p>
+
+                <p className="text-sm text-gray-600 mb-3">
+                  → Result: Improved AI output quality and reduced failed
+                  optimization attempts.
+                  <br></br>→ Result: Customers can now see the highest ranking
+                  relevant keywords to optimize their video metadata for
+                </p>
+
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src="/tubics-video-2.png"
+                    alt=""
+                    fill
+                    className="object-contain rounded-lg"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <h3 className="font-semibold mb-2">
+                  2. Turn AI output into actionable guidance
+                </h3>
+
+                <p className="text-gray-700 mb-3">
+                  Replaced generic recommendations with contextual, explainable
+                  feedback inspired by Grammarly-style interaction patterns.
+                </p>
+
+                <p className="text-sm text-gray-600 mb-3">
+                  → Result: Increased trust and clarity in AI recommendations
+                  <br></br>→ Result: they dont need to think about the content
+                  of the metadata
+                  <br></br>→ Result: they can see examples from other successful
+                  YouTube videos
+                </p>
+
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src="/tubics-video-3.png"
+                    alt=""
+                    fill
+                    className="object-contain rounded-lg"
+                  />
+                </div>
+              </div>
             </div>
           </section>
 
           {/* ITERATION */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-3">
-              Iteration Based on User Feedback
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">
+              Iteration & Expansion
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 mb-4">
-              After testing with enterprise users, I introduced collaborative
-              draft sharing, integrated keyword research directly into the
-              workflow, and added reusable templates to reduce repetitive work.
+            <p className="text-gray-700 mb-6">
+              Based on user feedback, I expanded the workflow to support real
+              enterprise use cases.
             </p>
 
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="relative w-full aspect-[1/1] rounded-xl overflow-hidden">
+            <ul className="space-y-2 text-gray-700 mb-6">
+              <li className="text-wrap">
+                • Added draft sharing for team collaboration
+              </li>
+              <li className="text-wrap">
+                • Integrated keyword research directly into workflow, so users
+                dont need to leave the product and search for keywords on an
+                external keyword research tool
+              </li>
+              <li className="text-wrap">
+                • Introduced reusable templates to reduce repetitive work, so
+                users can save time
+              </li>
+            </ul>
+
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="relative aspect-square">
                 <Image
                   src="/tubics-video-6.png"
-                  alt="Feature UI"
+                  alt=""
                   fill
-                  className="object-contain"
+                  className="object-contain rounded-lg"
                 />
               </div>
 
-              <div className="relative w-full aspect-[1/1] rounded-xl overflow-hidden">
+              <div className="relative aspect-square">
                 <Image
                   src="/tubics-video-7.png"
-                  alt="Feature UI"
+                  alt=""
                   fill
-                  className="object-contain"
+                  className="object-contain rounded-lg"
                 />
               </div>
             </div>
           </section>
 
-          <section className="mb-12">
-            <h2 className="text-xl sm:text-2xl font-semibold mb-3">
-              Product Impact
-            </h2>
+          {/* PRODUCT THINKING */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Product Thinking</h2>
 
-            <ul className="list-disc list-inside text-sm sm:text-base text-gray-700 dark:text-white/70 space-y-2">
-              <li className="text-wrap">
-                Feature became the most-used workflow in the Tubics platform
-                after release
-              </li>
-              <li className="text-wrap">
-                Improved perceived quality of AI SEO recommendations
-              </li>
-              <li className="text-wrap">
-                Reduced need for external keyword tools by integrating search
-                into workflow
-              </li>
-              <li className="text-wrap">
-                Enabled collaboration via draft sharing — requested by
-                enterprise teams
-              </li>
+            <ul className="space-y-2 text-gray-700">
+              <li>• Balanced flexibility vs guidance in AI workflows</li>
+              <li>• Designed for both novice and expert users</li>
+              <li>• Reduced cognitive load while increasing output quality</li>
+              <li>• Shifted product from tool → guided system</li>
             </ul>
-
-            <p className="mt-4 text-sm sm:text-base text-gray-700 dark:text-white/70">
-              Although Tubics later pivoted toward agency services, this
-              redesign significantly increased engagement and became central to
-              the product experience during its active lifecycle.
-            </p>
           </section>
 
-          {/* LEARNINGS
+          {/* OUTCOME */}
           <section>
-            <h2 className="text-2xl font-semibold mb-3">Strategic Learnings</h2>
+            <h2 className="text-2xl font-semibold mb-4">Outcome</h2>
 
-            <ul className="list-disc list-inside text-gray-700 dark:text-white/70 space-y-2">
-              <li>AI tools require structured UX scaffolding to build trust</li>
-              <li>
-                Guided workflows outperform flexible interfaces for novice users
-              </li>
-              <li>Expert vs beginner segmentation improves adoption</li>
-              <li>Rapid research loops accelerate PMF iteration</li>
-            </ul>
-          </section> */}
+            <p className="text-gray-700 leading-relaxed">
+              The redesigned workflow became the central experience of the
+              product, significantly increasing engagement and improving how
+              users interacted with AI recommendations. It transformed Tubics
+              from a tool with features into a guided system delivering
+              consistent value.
+            </p>
+          </section>
         </div>
       </div>
     </main>
