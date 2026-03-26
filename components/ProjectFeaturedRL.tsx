@@ -43,8 +43,7 @@ export default function ProjectFeaturedRL({
 
   const titleToSlugMap: Record<string, string> = {
     "Large Scale Quantitive and Qualititve UX Research": "billa-terminal",
-    "App Radar — Growth & Analytics Platform Redesign ":
-      "app-radar-ui-redesign",
+    "App Radar — Growth & Analytics Platform Redesign": "app-radar-ui-redesign",
     "Driving Product Adoption in an AI-Powered SaaS Platform":
       "tubics-video-optimization-tool",
     "Tubics — Scalable Design System & Engineering Alignment":
