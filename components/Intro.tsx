@@ -48,23 +48,24 @@ function Intro() {
             </span>
 
             <h1 className="text-lg sm:text-xl lg:text-4xl mb-4 font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-              Senior Product Designer shaping enterprise systems/ UX Engineer
-              (design + Frontend).
+              Product Designer & UX Engineer (Frontend)
             </h1>
 
             <h2 className="text-md sm:text-md lg:text-lg  leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
               <span className="text-zinc-900 dark:text-white">
-                Designed Retail solutions
+                Designing high-scale enterprise systems frontend engineering
               </span>
               <span className="text-zinc-500 dark:text-zinc-400">
                 {" "}
-                Used by Millions of Customers at BILLA and other REWE brands in
-                7 different countries,
+                and data-heavy products used by millions.
               </span>
               <span className="text-zinc-900 dark:text-white">
                 {" "}
-                and co-founded an AI German Learning web app.
+                I bridge product thinking, UX, and frontend engineering
                 <br></br>
+              </span>
+              <span className="text-zinc-900 dark:text-white">
+                to ship fast, reliable, and scalable experiences.
               </span>
             </h2>
 

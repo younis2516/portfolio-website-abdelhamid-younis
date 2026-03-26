@@ -106,9 +106,9 @@ export const experiencesData = [
     date: "April 2022 — Present",
     title: "Senior Product Designer",
     descriptions: [
-      "Designed BILLA’s self-checkout kiosks now live in 60+ branches across Austria",
+      "Led design of a high-throughput self-checkout system deployed across Austria, balancing hardware constraints, performance, and usability at scale",
       "Built a white-label design system for REWE self-checkout platforms in collaboration with the webshop team",
-      "Used AI tools to create interactive enterprise retail dashboards",
+      "Designed data-heavy enterprise dashboards using AI-assisted workflows to accelerate insights and decision-making",
     ],
     tags: ["Enterprise UX", "Design Systems"],
   },
@@ -199,7 +199,7 @@ export const projectsData: Project[] = [
     title: "Designing & Scaling a Nationwide Self-Checkout System",
     project_type: ["Enterprise", "B2C", "Design system"],
     description:
-      "White-label design system for REWE self-checkout Handling localization, hardware constraints, and operational workflows across multiple countries",
+      "Designed and scaled a nationwide self-checkout system used in 60+ stores, solving for hardware constraints, localization, and high-throughput retail environments.",
     tags: ["Enterprise", "Design System", "Live", "B2C", "UX Research"],
     imageUrl: pro_img_1,
     year: "2026",
@@ -224,7 +224,7 @@ export const projectsData: Project[] = [
       "Owning product vision and frontend architecture for an AI learning platform.",
     project_type: ["Web Dev", "Built with AI"],
     description:
-      "AI-powered language learning platform where I owned product design and frontend architecture using React and Next.js.",
+      "Owned product architecture and frontend for an AI-powered learning platform, designing real-time interactions and scalable UI systems using React and Next.js.",
     tags: ["Startup", "AI", "Fullstack", "Live"],
     year: "2025",
     link: "https://lehr.app",
@@ -245,7 +245,7 @@ export const projectsData: Project[] = [
     bgColor: "#67B988",
   },
   {
-    title: "Design system that ships: from UI to Development",
+    title: "Tubics — Scalable Design System & Engineering Alignment",
     project_type: ["Saas B2B", "Design system"],
     description:
       "Redesigned and migrated design system supporting new branding and scalable UI patterns.",
@@ -260,7 +260,7 @@ export const projectsData: Project[] = [
     title: "App Radar — Growth & Analytics Platform Redesign",
     project_type: ["Saas B2B", "Data heavy"],
     description:
-      "Data-heavy dashboard redesign improving usability for analytics workflows.",
+      "Redesigned a complex analytics platform used by enterprise teams, simplifying multi-step data workflows and improving decision speed.",
     tags: ["Freelance", "Analytics"],
     imageUrl: pro_img_3,
     year: "2022",

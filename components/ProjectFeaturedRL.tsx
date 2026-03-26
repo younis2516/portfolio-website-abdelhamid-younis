@@ -47,7 +47,7 @@ export default function ProjectFeaturedRL({
       "app-radar-ui-redesign",
     "Driving Product Adoption in an AI-Powered SaaS Platform":
       "tubics-video-optimization-tool",
-    "Design system that ships: from UI to Development":
+    "Tubics — Scalable Design System & Engineering Alignment":
       "tubics-design-system-documentation",
     "Wuzzuf — Hiring Intelligence Dashboard": "wuzzuf-hiring-dashboard",
     "Coming soon: POS dashboard Built with V0 by Vercel":

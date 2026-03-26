@@ -2,6 +2,7 @@ import Contact from "@/components/Contact";
 import Experience from "@/components/Experience";
 import Intro from "@/components/Intro";
 import Projects from "@/components/Projects";
+import SystemPositioning from "@/components/SystemPositioning";
 import { Testimonials } from "@/components/Testimonials";
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
         </div>
       )} */}
       <Intro />
+      <SystemPositioning />
       {/* <SectionDivider /> */}
       {/* <About />
          <SectionDivider /> */}
