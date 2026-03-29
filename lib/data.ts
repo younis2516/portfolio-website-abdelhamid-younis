@@ -20,6 +20,7 @@ import profile_img_1 from "@/public/profile_img_1.jpeg";
 import profile_img_2 from "@/public/profile_img_2.jpeg";
 import profile_img_3 from "@/public/profile_img_3.jpeg";
 import project_img_11 from "@/public/project_img_11.png";
+import forasnaCover from "@/public/forasna-banner.png";
 
 import { StaticImageData } from "next/image";
 
@@ -279,6 +280,18 @@ export const projectsData: Project[] = [
     link: "https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24",
     readingTime: 8,
     bgColor: "#0754CC",
+  },
+  {
+    title: "Forasna — Increasing Job Post Completion & Application Volume",
+    description:
+      "Redesigned a broken job posting flow, reducing drop-offs and increasing job creation by 4% through data-driven UX decisions.",
+    project_type: ["Saas B2B"],
+    tags: ["UX Research", "Data-Driven Design", "B2B", "Conversion"],
+    link: "/projects/forasna",
+    imageUrl: forasnaCover,
+    year: "2019",
+    readingTime: 4,
+    bgColor: "#F3F4F6",
   },
   {
     title: "Grocery Bot (Innovation Concept)",
