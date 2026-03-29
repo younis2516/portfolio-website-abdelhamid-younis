@@ -65,7 +65,7 @@ export default function ForasnaCaseStudy() {
 
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
               <li className="text-wrap">
-                <strong>+22% increase</strong> in job postings (direct revenue
+                <strong>+12% increase</strong> in job postings (direct revenue
                 impact)
               </li>
               <li className="text-wrap">

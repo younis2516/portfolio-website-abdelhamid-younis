@@ -284,7 +284,7 @@ export const projectsData: Project[] = [
   {
     title: "Forasna — Increasing Job Post Completion & Application Volume",
     description:
-      "Redesigned a broken job posting flow, reducing drop-offs and increasing job creation by 4% through data-driven UX decisions.",
+      "Redesigned a broken job posting flow, reducing drop-offs and increasing job creation by 12% through data-driven UX decisions.",
     project_type: ["Saas B2B"],
     tags: ["UX Research", "Data-Driven Design", "B2B", "Conversion"],
     link: "/projects/forasna",
