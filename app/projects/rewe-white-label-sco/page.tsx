@@ -420,6 +420,108 @@ export default function BillaSelfCheckoutPage() {
               </p>
             </div>
           </div>
+
+          {/* VALIDATION */}
+          <section>
+            <h2 className="text-2xl font-semibold mb-4">Alpha Test Results </h2>
+
+            <p className="text-gray-700 mb-6 dark:text-white/70">
+              We went to Billa Praterstern and testedf with over 300 Customers
+              before rollout.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  35
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Customers <br /> personally interviewed
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  60
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Customers <br /> observed
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  303
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Receipts processed <br /> with new GUI
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  8
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  SCO lanes <br /> active
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  80%
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Had prior <br /> SCO experience
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  20%
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  First-time <br /> users
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  13.5%
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Fewer staff <br /> calls for help
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  17%
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Fewer failed <br /> searches
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  65%
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Could intuitively <br /> delete an item
+                </p>
+              </div>
+
+              <div className="flex flex-col text-center justify-center items-center">
+                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                  8/10
+                </p>
+                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                  Very positive <br /> satisfaction
+                </p>
+              </div>
+            </div>
+          </section>
           {/* IMPACT FIRST */}
           <section>
             <h2 className="text-2xl font-semibold mb-4">Impact</h2>
@@ -758,108 +860,6 @@ export default function BillaSelfCheckoutPage() {
             </ul>
           </section>
 
-          {/* VALIDATION */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Alpha Test Results </h2>
-
-            <p className="text-gray-700 mb-6 dark:text-white/70">
-              We went to Billa Praterstern and testedf with over 300 Customers
-              before rollout.
-            </p>
-
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  35
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Customers <br /> personally interviewed
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  60
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Customers <br /> observed
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  303
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Receipts processed <br /> with new GUI
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  8
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  SCO lanes <br /> active
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  80%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Had prior <br /> SCO experience
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  20%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  First-time <br /> users
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  13.5%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Fewer staff <br /> calls for help
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  17%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Fewer failed <br /> searches
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  65%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Could intuitively <br /> delete an item
-                </p>
-              </div>
-
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  8/10
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                  Very positive <br /> satisfaction
-                </p>
-              </div>
-            </div>
-          </section>
-
           {/* SYSTEM */}
           <section>
             <h2 className="text-2xl font-semibold mb-4">Design System</h2>
@@ -880,6 +880,15 @@ export default function BillaSelfCheckoutPage() {
                 />
               </div>
             ))}
+
+            <div className="relative aspect-[1/1] mb-4">
+              <Image
+                src="/rewe-23.png"
+                alt=""
+                fill
+                className="object-contain rounded-lg"
+              />
+            </div>
           </section>
 
           {/* OUTCOME */}
