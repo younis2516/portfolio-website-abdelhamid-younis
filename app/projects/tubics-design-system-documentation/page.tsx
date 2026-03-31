@@ -85,14 +85,20 @@ export default function TubicsDesignSystemPage() {
             <h2 className="text-2xl font-semibold mb-6">Impact</h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
-              <li>
-                <strong>+55% increase</strong> in development velocity
+              <li className="text-wrap">
+                <strong>+65% increase</strong> in development velocity based on
+                story cycle times across 2 releases before and after
               </li>
-              <li>
-                <strong>~80% reduction</strong> in UI inconsistencies
+              <li className="text-wrap">
+                <strong>~60% reduction</strong> in UI inconsistencies based on
+                QA bug counts.
               </li>
-              <li>Reduced handoff time from days → hours</li>
-              <li>Enabled 5+ new features without system rework</li>
+              <li className="text-wrap">
+                Reduced handoff time from days → hours
+              </li>
+              <li className="text-wrap">
+                Enabled 5+ new features without system rework
+              </li>
             </ul>
           </section>
 
@@ -164,13 +170,29 @@ export default function TubicsDesignSystemPage() {
             </div>
           </section>
 
+          {/* ENGINEERING */}
+          <section className="mb-20">
+            <h2 className="text-2xl font-semibold mb-6">
+              Engineering Thinking
+            </h2>
+
+            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
+              <li>Token system compatible with CSS variables</li>
+              <li>Figma ↔ React alignment</li>
+              <li>Edge case handling</li>
+              <li>Reusable architecture</li>
+            </ul>
+          </section>
+
           {/* EXECUTION */}
           <section className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Execution</h2>
 
             <h3 className="font-semibold mb-2">1. Token System</h3>
             <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
-              Introduced semantic tokens to replace hard-coded values.
+              Introduced semantic tokens to replace hard-coded values. like
+              surface-primary mapped to global.css variables and MUI theme
+              overrides”
             </p>
 
             <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden mb-10">
@@ -184,7 +206,9 @@ export default function TubicsDesignSystemPage() {
 
             <h3 className="font-semibold mb-2">2. Component Architecture</h3>
             <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
-              Built reusable components aligned with MUI.
+              Built reusable components aligned with MUI. For each componenent i
+              handeled all edge cases error state, empty state, slow-data state,
+              syncing state, offline state and loading state.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2">
               <div className="relative w-full aspect-[1/1] rounded-xl overflow-hidden mb-10">
@@ -218,6 +242,103 @@ export default function TubicsDesignSystemPage() {
                   fill
                   className="object-contain"
                 />
+              </div>
+            </div>
+
+            <h3 className="font-semibold mb-2">2a. Edge case handling</h3>
+            <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
+              Because we relied heabvily on google adwords and YouTube API, we
+              often ran into cases where we get no response or we hit the daily
+              rate limit for API calls. And sometimes the AI recommendations
+              takes time to load and the user needs to come back later to see
+              them
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 text-sm font-bold dark:text-white/70 max-w-3xl mb-6">
+                  Error state: failure to import keywords from Google Adwords
+                  API
+                </p>
+                <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-10">
+                  <Image
+                    src="/tubics-ds-error-state.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 text-sm font-bold dark:text-white/70 max-w-3xl mb-6">
+                  Loading state: Rank tracking calculation takes time and it
+                  gets updated every 24 hour.
+                </p>
+                <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-10">
+                  <Image
+                    src="/tubics-loading.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 text-sm font-bold dark:text-white/70 max-w-3xl mb-6">
+                  Empty state: Sometimes youtube API return no keywords
+                </p>
+                <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-10">
+                  <Image
+                    src="/tubics-empty-table.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 text-sm font-bold dark:text-white/70 max-w-3xl mb-6">
+                  Coming soons state: The thumbnail recommendations takes time
+                  to load (3-5 minutes), so we display a nice illustration for
+                  thr user until they are loaded successfully
+                </p>
+                <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-10">
+                  <Image
+                    src="/tubics-coming-soon.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 text-sm font-bold dark:text-white/70 max-w-3xl mb-6">
+                  Network error state
+                </p>
+                <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-10">
+                  <Image
+                    src="/tubics-network-error.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <p className="text-gray-700 text-sm font-bold dark:text-white/70 max-w-3xl mb-6">
+                  Feature locked for Enterprise users
+                </p>
+                <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-10">
+                  <Image
+                    src="/tubics-paywalls.png"
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>
 
@@ -255,12 +376,20 @@ export default function TubicsDesignSystemPage() {
           {/* VALIDATION */}
           <section className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Validation</h2>
+            <ul>
+              <li className="text-gray-700 text-wrap dark:text-white/70 max-w-3xl ">
+                Developer rebuilt a page in under 24 hours using only the
+                system.
+              </li>
+              <li className="text-gray-700 text-wrap dark:text-white/70 max-w-3xl ">
+                5 releases shipped with no new ad‑hoc components
+              </li>
+              <li className="text-gray-700 text-wrap dark:text-white/70 max-w-3xl">
+                ~60% reduction in UI inconsistencies based on QA bug counts.
+              </li>
+            </ul>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
-              Developer rebuilt a page in under 24 hours using only the system.
-            </p>
-
-            <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden">
+            <div className="relative w-full aspect-[16/9] mt-6 rounded-xl overflow-hidden">
               <Image
                 src="/tubics-validation.png"
                 alt=""
@@ -273,30 +402,17 @@ export default function TubicsDesignSystemPage() {
           {/* VIDEO */}
           <section className="mb-20">
             <h2 className="text-2xl font-semibold mb-4">
-              Full Process Walkthrough
+              Full Process Walkthrough video including Dos and Dont's and design
+              principles
             </h2>
 
             <div className="relative w-full aspect-video rounded-xl overflow-hidden">
               <iframe
-                className="w-full h-full"
+                className="w-[50%] h-[50%]"
                 src="https://www.youtube.com/embed/4reO_JY3v48"
                 allowFullScreen
               />
             </div>
-          </section>
-
-          {/* ENGINEERING */}
-          <section className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">
-              Engineering Thinking
-            </h2>
-
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
-              <li>Token system compatible with CSS variables</li>
-              <li>Figma ↔ React alignment</li>
-              <li>Edge case handling</li>
-              <li>Reusable architecture</li>
-            </ul>
           </section>
 
           {/* OUTCOME */}

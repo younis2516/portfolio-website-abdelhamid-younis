@@ -53,10 +53,14 @@ export default function LehrAppPage() {
                 Architecture
               </p>
               <p>
-                <strong>Ownership:</strong> Led product strategy, designed AI
-                interaction patterns, and built the full frontend system
-                including real-time feedback, async state handling, and UI
-                architecture.
+                <strong>Ownership:</strong> Led the UX strategy, designed AI
+                interaction patterns, and built the app frontend including
+                real-time feedback, async state handling, and websockets.
+              </p>
+              <p>
+                <strong>Frontend Stack:</strong> React, typescript, Tanstack
+                react query, Next, Redux, framer motion, and AI assisted
+                development (Claude)
               </p>
               <p>
                 <strong>Collaboration:</strong> AI backend, LLM pipelines, and
@@ -74,6 +78,51 @@ export default function LehrAppPage() {
             </div>
           </header>
 
+          <div className="grid  w-full grid-cols-2 sm:grid-cols-3 gap-6 mb-10">
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                6-8 Sec
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                decrease in AI feedback <br></br> waiting time
+              </p>
+            </div>
+
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                2 Min
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                decrease in time to <br></br> first exercise
+              </p>
+            </div>
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                19%
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                decrease in drop-off rate <br></br> during exercise generation
+              </p>
+            </div>
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                1 Min
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                reduction in percieved <br></br> latency
+              </p>
+            </div>
+
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                +20%
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                increase in answered <br></br> quetions
+              </p>
+            </div>
+          </div>
+
           {/* IMPACT */}
           <section className="mb-20">
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
@@ -82,24 +131,26 @@ export default function LehrAppPage() {
 
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 max-w-3xl">
               <li className="text-wrap">
-                Designed and shipped a full AI-native product from 0 →
-                production
+                Cut time-to-first-exercise from{" "}
+                <strong>~3 min to under 1 min</strong>
               </li>
               <li className="text-wrap">
                 <strong>Reduced perceived latency</strong> of 1–2 min AI
-                operations through UX and streaming design
+                operations through streaming AI response
               </li>
               <li className="text-wrap">
-                Implemented real-time AI feedback/agent-expereience using{" "}
+                Reduced AI feedback waiting time{" "}
+                <strong>from 15 s to 5-9seconds</strong> through implementing a
+                real-time AI feedback using{" "}
                 <strong>WebSocket-based architecture</strong>
               </li>
               <li className="text-wrap">
-                Transformed raw LLM outputs into{" "}
-                <strong> structured learning and analytics systems</strong>
+                Cut drop-off rate during generation step{" "}
+                <strong> by 19%</strong>
               </li>
               <li className="text-wrap">
-                Validated core UX through rapid testing loops, shaping final
-                interaction model
+                Transformed raw LLM feedback into{" "}
+                <strong> structured analytics data</strong>
               </li>
             </ul>
           </section>
@@ -138,6 +189,13 @@ export default function LehrAppPage() {
                 LLM check, ensuring viable outputs before submission and
                 eliminating dead-end flows.
               </p>
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Impact
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Cut time-to-first-exercise from ~3 min to under 1 min by giving
+                the AI a better creiteria to generate the exercise.
+              </p>
             </div>
 
             <div className="relative w-full aspect-square">
@@ -158,16 +216,23 @@ export default function LehrAppPage() {
               </h2>
 
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                AI generation takes 1–2 minutes. I designed and implemented a
-                generation-state UI system where words streams progressively
+                AI generation takes 1–1.5 minutes. I designed and implemented a
+                generation-state UI state where words streams progressively
                 instead of blocking the user. So users can see the words they
-                gonnna practice before initiating the exercise.
+                gonnna practice before starting the exercise.
               </p>
 
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 This required coordinating async backend responses with frontend
                 state management to maintain responsiveness and transform
                 waiting time into perceived learning value.
+              </p>
+
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Impact
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Cut drop-off rate during generation step by 19%
               </p>
             </div>
 
@@ -197,6 +262,14 @@ export default function LehrAppPage() {
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 This required handling partial updates, synchronizing UI state,
                 and designing progressive disclosure of AI reasoning.
+              </p>
+
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Impact
+              </p>
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Reduced AI feedback waiting time{" "}
+                <strong>from 15 s to 5-9seconds</strong>
               </p>
 
               <h2 className="text-lg sm:text-xl font-semibold mt-6 mb-6 text-gray-900 dark:text-white">
@@ -232,6 +305,15 @@ export default function LehrAppPage() {
                 I designed a performance system that aggregates AI outputs into
                 structured signals across level, grammar, and topic — turning
                 raw model outputs into actionable insights.
+              </p>
+
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Example
+              </p>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                A learner struggling with dative cases sees that pattern in
+                their stats and can request more targeted exercises.
               </p>
             </div>
 
@@ -276,8 +358,29 @@ export default function LehrAppPage() {
 
             <p className="text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
               Conducted rapid usability testing to validate latency tolerance,
-              streaming feedback comprehension, and interaction clarity.
+              streaming feedback comprehension, exercise quality, questions
+              quality, usefulness and interaction clarity.
             </p>
+
+            <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+              Most user requested features
+            </p>
+            <ul>
+              <li className="text-gray-700 dark:text-gray-300 max-w-3xl text-wrap leading-relaxed">
+                - Users wanted to practice for B1/B2 writing exam, which made us
+                create a writing exercise type based on users selected theme
+              </li>
+
+              <li className="text-gray-700 dark:text-gray-300 max-w-3xl text-wrap leading-relaxed">
+                - Users wanted to save the news words they learned, so we will
+                add flash cards feature for new words, and send them daily
+                notifications for new words they learn so they can remeber it
+              </li>
+              <li className="text-gray-700 dark:text-gray-300 max-w-3xl text-wrap leading-relaxed">
+                - Users wanted to practice speaking, in the future we will add
+                voice prompts
+              </li>
+            </ul>
           </section>
 
           {/* REFLECTION */}
