@@ -53,7 +53,7 @@ function Intro() {
 
             <h2 className="text-md sm:text-md lg:text-lg  leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
               <span className="text-zinc-900 dark:text-white">
-                Designing high-scale enterprise systems frontend engineering
+                Designing high-scale enterprise systems
               </span>
               <span className="text-zinc-500 dark:text-zinc-400">
                 {" "}
@@ -62,7 +62,6 @@ function Intro() {
               <span className="text-zinc-900 dark:text-white">
                 {" "}
                 I bridge product thinking, UX, and frontend engineering
-                <br></br>
               </span>
               <span className="text-zinc-900 dark:text-white">
                 to ship fast, reliable, and scalable experiences.

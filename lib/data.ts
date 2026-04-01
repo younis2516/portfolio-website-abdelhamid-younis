@@ -200,7 +200,7 @@ export const projectsData: Project[] = [
     title: "Designing & Scaling a Nationwide Self-Checkout System",
     project_type: ["Enterprise", "B2C", "Design system"],
     description:
-      "Designed and scaled a nationwide self-checkout system used in 60+ stores, solving for hardware constraints, localization, and high-throughput retail environments.",
+      "Designed and scaled a nationwide self-checkout used in 600+ stores serving millions of customers daily. Reduced employee interventions by 14% and reduced failed searches by 18%, achieving an overall 8/10 customer satisfaction.  ",
     tags: ["Enterprise", "Design System", "Live", "B2C", "UX Research"],
     imageUrl: pro_img_1,
     year: "2026",
@@ -225,7 +225,7 @@ export const projectsData: Project[] = [
       "Owning product vision and frontend architecture for an AI learning platform.",
     project_type: ["Web Dev", "Built with AI"],
     description:
-      "Owned product architecture and frontend for an AI-powered learning platform, designing real-time interactions and scalable UI systems using React and Next.js.",
+      "Owned product architecture and frontend for an AI-powered learning platform. Reduced perceived latency of AI operations by 1-2 minutes through streaming AI response and websocket architecture.",
     tags: ["Startup", "AI", "Fullstack", "Live"],
     year: "2025",
     link: "https://lehr.app",
@@ -237,7 +237,7 @@ export const projectsData: Project[] = [
     title: "Driving Product Adoption in an AI-Powered SaaS Platform",
     project_type: ["Saas B2B", "Data heavy"],
     description:
-      "Most-used feature on Tubics platform supporting enterprise clients and driving product engagement.",
+      "Designed the Most-used feature on Tubics platform supporting enterprise clients in growing their YouTube channels. Increased session time by 50%, reduced completion time by 34%, and improved customer satisfaction score from 4 to 8/10. ",
     tags: ["SAAS", "Live", "UX Research"],
     imageUrl: pro_img_4,
     year: "2021",
@@ -269,18 +269,18 @@ export const projectsData: Project[] = [
     readingTime: 5,
     bgColor: "#6153FF",
   },
-  {
-    title: "Wuzzuf — Hiring Intelligence Dashboard",
-    project_type: ["Saas B2B", "Data heavy"],
-    description:
-      "Hiring analytics dashboard for platform serving millions of job seekers and thousands of employers across MENA.",
-    tags: ["Early career", "Research", "Data UX"],
-    imageUrl: pro_img_0,
-    year: "2019",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24",
-    readingTime: 8,
-    bgColor: "#0754CC",
-  },
+  // {
+  //   title: "Wuzzuf — Hiring Intelligence Dashboard",
+  //   project_type: ["Saas B2B", "Data heavy"],
+  //   description:
+  //     "Hiring analytics dashboard for platform serving millions of job seekers and thousands of employers across MENA.",
+  //   tags: ["Early career", "Research", "Data UX"],
+  //   imageUrl: pro_img_0,
+  //   year: "2019",
+  //   link: "https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24",
+  //   readingTime: 8,
+  //   bgColor: "#0754CC",
+  // },
   {
     title: "Forasna — Increasing Job Post Completion & Application Volume",
     description:
@@ -293,18 +293,18 @@ export const projectsData: Project[] = [
     readingTime: 4,
     bgColor: "#F3F4F6",
   },
-  {
-    title: "Grocery Bot (Innovation Concept)",
-    project_type: ["B2C"],
-    description:
-      "This project demonstrates my approach to reducing complex flows into conversational interactions, a pattern I later applied in enterprise retail products.",
-    tags: ["Research", "Academic"],
-    imageUrl: pro_img_7,
-    year: "2020",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15",
-    readingTime: 6,
-    bgColor: "#1DC6BB",
-  },
+  // {
+  //   title: "Grocery Bot (Innovation Concept)",
+  //   project_type: ["B2C"],
+  //   description:
+  //     "This project demonstrates my approach to reducing complex flows into conversational interactions, a pattern I later applied in enterprise retail products.",
+  //   tags: ["Research", "Academic"],
+  //   imageUrl: pro_img_7,
+  //   year: "2020",
+  //   link: "https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15",
+  //   readingTime: 6,
+  //   bgColor: "#1DC6BB",
+  // },
 ];
 
 // export const skillsData = [

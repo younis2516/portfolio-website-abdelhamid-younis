@@ -61,6 +61,33 @@ export default function WuzzufHiringDashboardPage() {
             </div>
           </header>
 
+          <div className="grid grid-cols-2 sm:grid-cols-3 mb-6">
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                32%
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                increase in dashboard <br></br> engagement
+              </p>
+            </div>
+
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                17.5%
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                increase in premium <br></br> plan upgrades
+              </p>
+            </div>
+            <div className="flex flex-col text-center justify-center items-center">
+              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
+                15%
+              </p>
+              <p className="text-gray-900 leading-relaxed dark:text-white/70">
+                reduction in <br></br>support tickets
+              </p>
+            </div>
+          </div>
           {/* IMPACT */}
           <section className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Impact</h2>
