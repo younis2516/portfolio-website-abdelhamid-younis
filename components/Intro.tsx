@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 import avatar from "../public/avatar.jpeg";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -43,30 +42,32 @@ function Intro() {
               lg:items-start lg:text-left
             "
           >
-            <span className="inline-block mb-4 px-4 py-1 text-md rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300">
-              Hi! I am Younis 👋
+            <span className="inline-block mb-4 px-4 py-1 text-sm rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-medium tracking-wide">
+              Younis Abdelhamid
             </span>
 
             <h1 className="text-lg sm:text-xl lg:text-4xl mb-4 font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-              Product Designer & UX Engineer (Frontend)
+              Designing enterprise systems that ship to millions
             </h1>
 
-            <h2 className="text-md sm:text-md lg:text-lg  leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-              <span className="text-zinc-900 dark:text-white">
-                Designing high-scale enterprise systems
-              </span>
-              <span className="text-zinc-500 dark:text-zinc-400">
-                {" "}
-                and data-heavy products used by millions.
-              </span>
-              <span className="text-zinc-900 dark:text-white">
-                {" "}
-                I bridge product thinking, UX, and frontend engineering
-              </span>
-              <span className="text-zinc-900 dark:text-white">
-                to ship fast, reliable, and scalable experiences.
-              </span>
-            </h2>
+            <p className="text-md sm:text-md lg:text-lg leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0">
+              Senior Product Designer & UX Engineer. I've shipped self-checkout systems, data-heavy dashboards, and AI products — closing the gap between design and production.
+            </p>
+
+            {/* Metrics bar */}
+            <div className="flex flex-wrap gap-x-12 gap-y-3 mt-6 justify-center lg:justify-start border-t border-black/10 dark:border-white/10 pt-5">
+              {[
+                { value: "7+", label: "years" },
+                { value: "20M+", label: "users reached" },
+                { value: "60+", label: "stores deployed" },
+                { value: "2", label: "design systems" },
+              ].map((stat) => (
+                <div key={stat.label} className="flex flex-col items-center lg:items-start">
+                  <span className="text-xl sm:text-3xl font-bold text-zinc-900 dark:text-white leading-none">{stat.value}</span>
+                  <span className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">{stat.label}</span>
+                </div>
+              ))}
+            </div>
 
             {/* CTA BUTTONS */}
             <div className="flex flex-wrap gap-4 mt-8 sm:mt-auto justify-center lg:justify-start w-full">
