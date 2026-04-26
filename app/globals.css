@@ -22,7 +22,3 @@ section {
     box-sizing: border-box;
     /* Ensures padding/border don’t add to total width */
 }
-
-ul li {
-    white-space: nowrap;
-}

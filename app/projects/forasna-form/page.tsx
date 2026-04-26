@@ -42,6 +42,12 @@ export default function ForasnaCaseStudy() {
               postings, directly impacting revenue and job supply.
             </p>
 
+            <p className="text-gray-700 dark:text-white/70 max-w-3xl mt-4">
+              Employers paid per job post. Every form abandonment was a lost
+              transaction — at a 27% drop-off rate, a significant share of
+              posting revenue never reached confirmation.
+            </p>
+
             <div className="mt-6 space-y-2 text-gray-700 dark:text-white/70">
               <p>
                 <strong>Role:</strong> Product Designer
@@ -64,20 +70,20 @@ export default function ForasnaCaseStudy() {
             <h2 className="text-2xl font-semibold mb-6">Impact</h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
-              <li className="text-wrap">
+              <li>
                 <strong>+12% increase</strong> in job postings (direct revenue
                 impact)
               </li>
-              <li className="text-wrap">
+              <li>
                 <strong>-15% drop</strong> in form exit rate (27% → 12%)
               </li>
-              <li className="text-wrap">
+              <li>
                 <strong>+70%</strong> of users added structured job benefits
               </li>
-              <li className="text-wrap">
+              <li>
                 <strong>-65 seconds</strong> average form completion time
               </li>
-              <li className="text-wrap">
+              <li>
                 Reduced support tickets related to job posting errors
               </li>
             </ul>
@@ -96,14 +102,14 @@ export default function ForasnaCaseStudy() {
             </p>
 
             <ul className="list-disc list-inside text-gray-700 dark:text-white/70 max-w-3xl space-y-2">
-              <li className="text-wrap">27% form exit rate</li>
-              <li className="text-wrap">
+              <li>27% form exit rate</li>
+              <li>
                 Users misusing fields (job title, salary, benefits)
               </li>
-              <li className="text-wrap">
+              <li>
                 Low-quality job posts affecting applicant trust
               </li>
-              <li className="text-wrap">High dependency on customer support</li>
+              <li>High dependency on customer support</li>
             </ul>
           </section>
 
@@ -119,19 +125,19 @@ export default function ForasnaCaseStudy() {
             </p>
 
             <ul className="list-disc list-inside text-gray-700 dark:text-white/70 max-w-3xl space-y-2 mb-10">
-              <li className="text-wrap">
+              <li>
                 Analyzed funnel drop-offs via Google Analytics
               </li>
-              <li className="text-wrap">
+              <li>
                 Reviewed session recordings (Inspectlet)
               </li>
-              <li className="text-wrap">
+              <li>
                 Audited real input data from Tableau
               </li>
-              <li className="text-wrap">
+              <li>
                 Interviewed employers & customer support team
               </li>
-              <li className="text-wrap">Benchmarked competing job platforms</li>
+              <li>Benchmarked competing job platforms</li>
             </ul>
 
             <div className="relative w-full aspect-[5/1]">
@@ -149,17 +155,17 @@ export default function ForasnaCaseStudy() {
             <h2 className="text-2xl font-semibold mb-6">Key UX Problems</h2>
 
             <ul className="list-disc list-inside text-gray-700 dark:text-white/70 max-w-3xl space-y-2">
-              <li className="text-wrap">
+              <li>
                 Job title field abused for SEO & marketing
               </li>
-              <li className="text-wrap">
+              <li>
                 Salary field lacked trust & transparency
               </li>
-              <li className="text-wrap">
+              <li>
                 {" "}
                 Job Benefits-section ignored due to poor UX
               </li>
-              <li className="text-wrap">Form length discouraged completion</li>
+              <li>Form length discouraged completion</li>
             </ul>
           </section>
 

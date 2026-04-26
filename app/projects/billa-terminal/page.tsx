@@ -90,19 +90,19 @@ export default function BillaTerminalPage() {
             <h2 className="text-xl sm:text-2xl font-semibold mb-4">Impact</h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li className="text-wrap">
+              <li>
                 Live rollout across 60+ supermarkets in Austria
               </li>
-              <li className="text-wrap">
+              <li>
                 Reduced ordering friction in high-traffic environments
               </li>
-              <li className="text-wrap">
+              <li>
                 Validated via qualitative and quantitative research
               </li>
-              <li className="text-wrap">
+              <li>
                 Enabled scalable digital ordering infrastructure
               </li>
-              <li className="text-wrap">
+              <li>
                 Improved learnability for first-time kiosk users
               </li>
             </ul>
@@ -147,15 +147,15 @@ export default function BillaTerminalPage() {
             </p>
 
             <ul className="list-disc list-inside text-gray-700 space-y-2">
-              <li className="text-wrap">
+              <li>
                 Analysis of 11 competing kiosk systems
               </li>
-              <li className="text-wrap">Design sprint with 8 stakeholders</li>
-              <li className="text-wrap">Moderated usability tests</li>
-              <li className="text-wrap">
+              <li>Design sprint with 8 stakeholders</li>
+              <li>Moderated usability tests</li>
+              <li>
                 Survey with 390 employees to validate priorities
               </li>
-              <li className="text-wrap">
+              <li>
                 Behavioral insights translated into product decisions
               </li>
             </ul>
@@ -215,14 +215,14 @@ export default function BillaTerminalPage() {
               We planned 4 days for the design sprint with 8 stakeholders.
             </p>
             <ul className="list-disc list-inside text-sm sm:text-base text-gray-700 dark:text-white/70 mb-2 space-y-1 sm:space-y-2">
-              <li className="text-wrap">
+              <li>
                 Day 1 — Problem framing & success metrics
               </li>
-              <li className="text-wrap">
+              <li>
                 Day 2 — Crazy-8s, voting, journey mapping, low-fi sketch
               </li>
-              <li className="text-wrap">Day 3 — First prototype in Figma</li>
-              <li className="text-wrap">
+              <li>Day 3 — First prototype in Figma</li>
+              <li>
                 Day 4 — Usability testing with 5 users
               </li>
             </ul>
@@ -236,9 +236,7 @@ export default function BillaTerminalPage() {
                   className="object-contain rounded-xl"
                 />
               </div> */}
-              <h3 className="text-lg text-center font-semibold text-gray-200 ">
-                ________________
-              </h3>
+              <hr className="border-t border-gray-200 dark:border-gray-800 my-8" />
               <p className="text-sm sm:text-base font-semibold text-gray-700 dark:text-white/70 mt-4">
                 User journey
               </p>
@@ -250,11 +248,9 @@ export default function BillaTerminalPage() {
                   className="object-contain rounded-xl"
                 />
               </div>
-              <h3 className="text-lg text-center font-semibold text-gray-200 ">
-                ________________
-              </h3>
+              <hr className="border-t border-gray-200 dark:border-gray-800 my-8" />
               <p className="text-sm sm:text-base font-semibold text-gray-700 dark:text-white/70 mt-4 mb-8">
-                Low-fed sketches
+                Lo-fi sketches
               </p>
               <div className="relative w-full aspect-[16/9] sm:aspect-[3.5/2] rounded-xl overflow-hidden">
                 <Image
@@ -264,12 +260,9 @@ export default function BillaTerminalPage() {
                   className="object-contain rounded-xl"
                 />
               </div>
-              <h3 className="text-lg text-center font-semibold text-gray-200 mt-8 ">
-                ________________
-              </h3>
-
+              <hr className="border-t border-gray-200 dark:border-gray-800 my-8" />
               <p className="text-sm sm:text-base font-semibold text-gray-700 dark:text-white/70  mt-8 mb-4">
-                First low-fed prototype in Figma
+                First lo-fi prototype in Figma
               </p>
               <div className="relative w-full aspect-[16/9] sm:aspect-[3/1.25] rounded-xl overflow-hidden">
                 <Image
@@ -279,9 +272,7 @@ export default function BillaTerminalPage() {
                   className="object-contain rounded-xl"
                 />
               </div>
-              <h3 className="text-lg text-center font-semibold text-gray-200 mt-4 ">
-                ________________
-              </h3>
+              <hr className="border-t border-gray-200 dark:border-gray-800 my-8" />
               <p className="text-sm sm:text-base font-semibold text-gray-700 dark:text-white/70  mt-8 mb-4">
                 Feedback from first usability testing with 5 users
               </p>
@@ -303,28 +294,7 @@ export default function BillaTerminalPage() {
                   />
                 </div>
               </div>
-              <h3 className="text-lg text-center font-semibold text-gray-200 mt-4 ">
-                ________________
-              </h3>
-
-              {/* <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">
-                What went well
-              </h3>
-              <ul className="list-disc list-inside text-sm sm:text-base text-gray-700 dark:text-white/70 mb-4 space-y-1 sm:space-y-2">
-                <li>
-                  People found the nutrition circular labels helpful and
-                  appreciated the info button
-                </li>
-                <li>
-                  People knew how to scan a customer card and edit the cart
-                </li>
-                <li>
-                  Users liked the allergy details, noticed the combo benefits,
-                  and appreciated that all products are displayed with large
-                  images
-                </li>
-                <li>Most users managed to place an order</li>
-              </ul> */}
+              <hr className="border-t border-gray-200 dark:border-gray-800 my-8" />
               <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">
                 4. Iterating on the prototype
               </h3>
@@ -371,9 +341,7 @@ export default function BillaTerminalPage() {
                   />
                 </div>
               </div>
-              <h3 className="text-lg text-center font-semibold text-gray-200 mt-4 ">
-                ________________
-              </h3>
+              <hr className="border-t border-gray-200 dark:border-gray-800 my-8" />
 
               <h3 className="text-base sm:text-lg font-semibold mt-8 mb-2">
                 5. Final User Testing

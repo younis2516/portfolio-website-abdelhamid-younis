@@ -12,13 +12,12 @@ import toast from 'react-hot-toast'
 export default function Contact() {
     const { ref } = useScrollIntoView("Contact", 0.5)
     const [formData, setFormData] = useState<FormData | undefined | null>()
-    const [email,setEmail]= useState(" ")
-    const [message,setMessage]= useState(" ")
+    const [email,setEmail]= useState("")
+    const [message,setMessage]= useState("")
     const [showError, setShowError] = useState(false);
     const handleSubmit = async (e: React.FormEvent) => {
     
         e.preventDefault();
-       console.log("FFFF Form data",email,message)
         try {
         const response = await fetch(`${process.env.CONTACT_FORM || "https://6887ec7badf0e59551b898c0.mockapi.io/api/contact-form"}`, {
             method: 'POST',
@@ -49,15 +48,7 @@ export default function Contact() {
             <SectionHeading>Get in Touch</SectionHeading>
             <p className='font-normal text-base text-gray-700 -mt-12 dark:text-white/80'>Please contact me directly at <a href='mailto:abdelhamiduonis@hotmail.com' className='underline'>abdelhamiduonis@hotmail.com</a> <br></br> or through this form.</p> 
             <form className='flex flex-col w-full pr-10 pl-10 sm:pr-20 sm:pl-20 dark:text-black -mt-4 dark:text-black'
-                // action={ (formData:FormData) => {
-                //     // const { error } = await sendEmail(formData)
-                //     // if (error) {
-                //     //     toast.error(error)
-                //     //     return
-                //     // }
-                //     toast.success('email sent successfully')
-                // }}
-                onSubmit={handleSubmit} 
+                onSubmit={handleSubmit}
                 >
                 <input 
                     className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"

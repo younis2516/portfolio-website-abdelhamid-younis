@@ -1,7 +1,5 @@
-import { create } from 'domain';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
-import { FiSend } from 'react-icons/fi';
 import { SubmitButton } from './SubmitButton';
 
 interface VisitorPopupProps {
@@ -9,10 +7,9 @@ interface VisitorPopupProps {
 }
 
 const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
-    const [name, setName] = useState('');
-  const [email, setEmail] = useState('  ');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [showError, setShowError] = useState(false);
-  const [showToast, setShowToast] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,21 +19,19 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
       return;
     }
 
-        const visitor = {
-            // id: crypto.randomUUID(),
-            name: name.trim(),
-            email: email.trim() || "example@email.com", // ✅ Always send a string (never undefined or null)
-            createdAt: new Date().toISOString(),
-        };
-    console.log('Submitting visitor data:', visitor); // ✅ log request body
+    const visitor = {
+      name: name.trim(),
+      email: email.trim() || "example@email.com",
+      createdAt: new Date().toISOString(),
+    };
 
     try {
       const response = await fetch(`${process.env.FORM_URL || "https://6887ec7badf0e59551b898c0.mockapi.io/api/visitors-data"}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name:name,
-          email:email,
+          name: name,
+          email: email,
           createdAt: new Date().toISOString(),
         }),
       });
@@ -45,12 +40,10 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
         throw new Error('Failed to submit form');
       }
       toast.success("Your response is submitted successfully! ")
-      // setShowToast(true); // ✅ show success toast
       localStorage.setItem('visited', 'true');
 
       setTimeout(() => {
-        setShowToast(false);
-        onClose(); // Close after toast
+        onClose();
       }, 2000);
     } catch (err) {
       console.error('Submission error:', err);
@@ -91,22 +84,9 @@ const VisitorPopup: React.FC<VisitorPopupProps> = ({ onClose }) => {
           />
         </div>
 
-        {/* <button
-          type="submit"
-          className="group bg-gray-900 dark:bg-gray-600 outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition text-white px-7 py-3 flex items-center justify-center gap-2 rounded-full w-full sm:w-auto"
-        >
-          Submit
-        </button> */}
-        <SubmitButton  />
+        <SubmitButton />
       </form>
-       {/* ✅ Toast */}
-      {/* {showToast && (
-        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-fadeIn">
-          Submitted successfully!
-        </div>
-      )} */}
     </div>
-    
   );
 };
 

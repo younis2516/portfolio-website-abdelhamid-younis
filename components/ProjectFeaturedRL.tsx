@@ -42,7 +42,7 @@ export default function ProjectFeaturedRL({
   ===================================================== */
 
   const titleToSlugMap: Record<string, string> = {
-    "Large Scale Quantitive and Qualititve UX Research": "billa-terminal",
+    "Large-Scale Quantitative & Qualitative UX Research": "billa-terminal",
     "App Radar — Growth & Analytics Platform Redesign": "app-radar-ui-redesign",
     "Forasna — Increasing Job Post Completion & Application Volume":
       "forasna-form",
@@ -50,18 +50,11 @@ export default function ProjectFeaturedRL({
       "tubics-video-optimization-tool",
     "Tubics — Scalable Design System & Engineering Alignment":
       "tubics-design-system-documentation",
-    "Wuzzuf — Hiring Intelligence Dashboard": "wuzzuf-hiring-dashboard",
-    "Coming soon: POS dashboard Built with V0 by Vercel":
-      "pos-dashboard-v0-vercel",
     "Grocery Bot (Innovation Concept)": "grocery-shopping-bot",
-    "My portfolio website": "portfolio-website",
-    "E-commerce admin portal": "ecommerce-admin-portal",
     "Owning product vision and frontend architecture for an AI learning platform.":
       "lehr-app",
     "Designing & Scaling a Nationwide Self-Checkout System":
       "rewe-white-label-sco",
-    "Designing & Developing an AI-Native German Learning App — lehr.app":
-      "lehr-app",
   };
 
   const fallbackSlug = String(title)
@@ -72,29 +65,13 @@ export default function ProjectFeaturedRL({
 
   const isLehrApp = title.toLowerCase().includes("ai learning");
 
-  // const href = isLehrApp
-  //   ? "https://lehr.app"
-  //   : `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`;
   const href = `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`;
 
-  const external = isLehrApp;
-  // const external = false;
-
-  const Wrapper = ({ children }: { children: React.ReactNode }) =>
-    external ? (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block h-full"
-      >
-        {children}
-      </a>
-    ) : (
-      <Link href={href} className="block h-full">
-        {children}
-      </Link>
-    );
+  const Wrapper = ({ children }: { children: React.ReactNode }) => (
+    <Link href={href} className="block h-full">
+      {children}
+    </Link>
+  );
 
   const CTA_LABEL = project_type?.includes("Web Dev")
     ? "View project"

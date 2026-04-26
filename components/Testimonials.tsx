@@ -18,9 +18,9 @@ const TestimonialCard = ({ index, rec }: TestimonialCardProps) => {
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       whileHover={{
-        rotate: 10,
-        y: -12,
-        scale: 1.05,
+        rotate: 1.5,
+        y: -6,
+        scale: 1.02,
       }}
       transition={{ duration: 0.4, delay: index * 0.15 }}
       viewport={{ once: true }}
@@ -67,10 +67,9 @@ const TestimonialCard = ({ index, rec }: TestimonialCardProps) => {
           </div>
         </div>
 
-        <AiFillLinkedin
-          className="text-gray-300 dark:text-white/30 w-6 h-6"
-          href="https://www.linkedin.com/in/a-hamid-younis-17168086/"
-        />
+        <a href="https://www.linkedin.com/in/a-hamid-younis-17168086/" target="_blank" rel="noopener noreferrer">
+          <AiFillLinkedin className="text-gray-300 dark:text-white/30 w-6 h-6" />
+        </a>
       </div>
 
       <div></div>
@@ -90,7 +89,7 @@ export const Testimonials = () => {
       id="testimonials"
       className=" scroll-mt-28  px-0 sm:px-0 max-w-[90%] mx-auto"
     >
-      {/* <SectionHeading> Linkedin Reviews</SectionHeading> */}
+      <SectionHeading>What Colleagues Say</SectionHeading>
 
       <div
         className="grid gap-6 mt-6 grid-cols-1 md:grid-cols-7"
@@ -98,11 +97,9 @@ export const Testimonials = () => {
       >
         {TestimonialsData.slice(0, 3)
           .reverse()
-          .map((rec, index) => {
-            const isCenter = index === 1;
-            const isLast = index === TestimonialsData.slice(0, 3).length - 1;
-            return <TestimonialCard rec={rec} index={index} />;
-          })}
+          .map((rec, index) => (
+            <TestimonialCard key={index} rec={rec} index={index} />
+          ))}
       </div>
     </motion.section>
   );

@@ -85,18 +85,18 @@ export default function TubicsDesignSystemPage() {
             <h2 className="text-2xl font-semibold mb-6">Impact</h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
-              <li className="text-wrap">
+              <li>
                 <strong>+65% increase</strong> in development velocity based on
                 story cycle times across 2 releases before and after
               </li>
-              <li className="text-wrap">
+              <li>
                 <strong>~60% reduction</strong> in UI inconsistencies based on
                 QA bug counts.
               </li>
-              <li className="text-wrap">
+              <li>
                 Reduced handoff time from days → hours
               </li>
-              <li className="text-wrap">
+              <li>
                 Enabled 5+ new features without system rework
               </li>
             </ul>
@@ -206,8 +206,8 @@ export default function TubicsDesignSystemPage() {
 
             <h3 className="font-semibold mb-2">2. Component Architecture</h3>
             <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
-              Built reusable components aligned with MUI. For each componenent i
-              handeled all edge cases error state, empty state, slow-data state,
+              Built reusable components aligned with MUI. For each component I
+              handled all edge cases: error state, empty state, slow-data state,
               syncing state, offline state and loading state.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2">
@@ -247,7 +247,7 @@ export default function TubicsDesignSystemPage() {
 
             <h3 className="font-semibold mb-2">2a. Edge case handling</h3>
             <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
-              Because we relied heabvily on google adwords and YouTube API, we
+              Because we relied heavily on google adwords and YouTube API, we
               often ran into cases where we get no response or we hit the daily
               rate limit for API calls. And sometimes the AI recommendations
               takes time to load and the user needs to come back later to see
@@ -300,9 +300,9 @@ export default function TubicsDesignSystemPage() {
 
               <div className="flex flex-col gap-2">
                 <p className="text-gray-700 text-sm font-bold dark:text-white/70 max-w-3xl mb-6">
-                  Coming soons state: The thumbnail recommendations takes time
+                  Coming soon state: The thumbnail recommendations take time
                   to load (3-5 minutes), so we display a nice illustration for
-                  thr user until they are loaded successfully
+                  the user until they are loaded successfully
                 </p>
                 <div className="relative w-full aspect-[2/1] rounded-xl overflow-hidden mb-10">
                   <Image
@@ -377,14 +377,14 @@ export default function TubicsDesignSystemPage() {
           <section className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Validation</h2>
             <ul>
-              <li className="text-gray-700 text-wrap dark:text-white/70 max-w-3xl ">
+              <li className="text-gray-700 dark:text-white/70 max-w-3xl ">
                 Developer rebuilt a page in under 24 hours using only the
                 system.
               </li>
-              <li className="text-gray-700 text-wrap dark:text-white/70 max-w-3xl ">
+              <li className="text-gray-700 dark:text-white/70 max-w-3xl ">
                 5 releases shipped with no new ad‑hoc components
               </li>
-              <li className="text-gray-700 text-wrap dark:text-white/70 max-w-3xl">
+              <li className="text-gray-700 dark:text-white/70 max-w-3xl">
                 ~60% reduction in UI inconsistencies based on QA bug counts.
               </li>
             </ul>

@@ -109,7 +109,7 @@ export default function LehrAppPage() {
                 1 Min
               </p>
               <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                reduction in percieved <br></br> latency
+                reduction in perceived <br></br> latency
               </p>
             </div>
 
@@ -118,7 +118,7 @@ export default function LehrAppPage() {
                 +20%
               </p>
               <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                increase in answered <br></br> quetions
+                increase in answered <br></br> questions
               </p>
             </div>
           </div>
@@ -130,25 +130,25 @@ export default function LehrAppPage() {
             </h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300 max-w-3xl">
-              <li className="text-wrap">
+              <li>
                 Cut time-to-first-exercise from{" "}
                 <strong>~3 min to under 1 min</strong>
               </li>
-              <li className="text-wrap">
+              <li>
                 <strong>Reduced perceived latency</strong> of 1–2 min AI
                 operations through streaming AI response
               </li>
-              <li className="text-wrap">
+              <li>
                 Reduced AI feedback waiting time{" "}
                 <strong>from 15 s to 5-9seconds</strong> through implementing a
                 real-time AI feedback using{" "}
                 <strong>WebSocket-based architecture</strong>
               </li>
-              <li className="text-wrap">
+              <li>
                 Cut drop-off rate during generation step{" "}
                 <strong> by 19%</strong>
               </li>
-              <li className="text-wrap">
+              <li>
                 Transformed raw LLM feedback into{" "}
                 <strong> structured analytics data</strong>
               </li>
@@ -194,7 +194,7 @@ export default function LehrAppPage() {
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 Cut time-to-first-exercise from ~3 min to under 1 min by giving
-                the AI a better creiteria to generate the exercise.
+                the AI better criteria to generate the exercise.
               </p>
             </div>
 
@@ -219,7 +219,7 @@ export default function LehrAppPage() {
                 AI generation takes 1–1.5 minutes. I designed and implemented a
                 generation-state UI state where words streams progressively
                 instead of blocking the user. So users can see the words they
-                gonnna practice before starting the exercise.
+                going to practice before starting the exercise.
               </p>
 
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -273,7 +273,7 @@ export default function LehrAppPage() {
               </p>
 
               <h2 className="text-lg sm:text-xl font-semibold mt-6 mb-6 text-gray-900 dark:text-white">
-                Percieved ease of use
+                Perceived ease of use
               </h2>
 
               <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
@@ -366,17 +366,17 @@ export default function LehrAppPage() {
               Most user requested features
             </p>
             <ul>
-              <li className="text-gray-700 dark:text-gray-300 max-w-3xl text-wrap leading-relaxed">
+              <li className="text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
                 - Users wanted to practice for B1/B2 writing exam, which made us
                 create a writing exercise type based on users selected theme
               </li>
 
-              <li className="text-gray-700 dark:text-gray-300 max-w-3xl text-wrap leading-relaxed">
-                - Users wanted to save the news words they learned, so we will
-                add flash cards feature for new words, and send them daily
-                notifications for new words they learn so they can remeber it
+              <li className="text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
+                - Users wanted to save the new words they learned, so we will
+                add a flash cards feature for new words, and send them daily
+                notifications for new words they learn so they can remember it
               </li>
-              <li className="text-gray-700 dark:text-gray-300 max-w-3xl text-wrap leading-relaxed">
+              <li className="text-gray-700 dark:text-gray-300 max-w-3xl leading-relaxed">
                 - Users wanted to practice speaking, in the future we will add
                 voice prompts
               </li>

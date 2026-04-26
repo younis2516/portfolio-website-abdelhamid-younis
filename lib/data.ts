@@ -1,25 +1,12 @@
-import pro_img_0 from "@/public/pro_img_0.png";
 import pro_img_1 from "@/public/pro_img_1.png";
 import pro_img_2 from "@/public/pro_img_2.png";
 import pro_img_3 from "@/public/pro_img_3.png";
 import pro_img_4 from "@/public/pro_img_4.png";
 import pro_img_5 from "@/public/pro_img_5.png";
-import pro_img_6 from "@/public/pro_img_6.png";
-import pro_img_7 from "@/public/pro_img_7.png";
 import pro_img_8 from "@/public/pro_img_8.png";
-import portfolio_img_2 from "@/public/portfolio_img_2.png";
-import portfolio_img_3 from "@/public/portfolio_img_3.png";
-import portfolio_img_4 from "@/public/portfolio_img_4.png";
-import portfolio_img_5 from "@/public/portfolio_img_5.png";
-import portfolio_img_6 from "@/public/portfolio_img_6.png";
-import project_img_7 from "@/public/project_img_7.gif";
-import project_img_8 from "@/public/project_img_8.png";
-import project_img_9 from "@/public/project_img_9.png";
-import project_img_10 from "@/public/hero-image.png";
 import profile_img_1 from "@/public/profile_img_1.jpeg";
 import profile_img_2 from "@/public/profile_img_2.jpeg";
 import profile_img_3 from "@/public/profile_img_3.jpeg";
-import project_img_11 from "@/public/project_img_11.png";
 import forasnaCover from "@/public/forasna-banner.png";
 
 import { StaticImageData } from "next/image";
@@ -42,37 +29,18 @@ export const ProjectTypes: ProjectType[] = [
   "Built with AI",
   "Web Dev",
 ];
+
 export interface Project {
   title: string;
   description: string;
   project_type?: ProjectType[];
   tags: string[];
-  link: string;
   imageUrl: StaticImageData;
   year: string;
   readingTime: number;
   bgColor?: string;
 }
-// export type SkillType =
-//   | "Web Dev"
-//   | "Design"
-//   | "Business"
-//   | "UX Research"
-//   | "Language"
-//   | "All"
-//   | "Other";
-// export const SkillTypes: SkillType[] = [
-//   "All",
-//   "Design",
-//   "UX Research",
-//   "Web Dev",
-//   "Language",
-//   "Other",
-// ];
-// export interface Skill {
-//   skill: string;
-//   skill_type: SkillType;
-// }
+
 export const links = [
   {
     name: "Home",
@@ -82,10 +50,6 @@ export const links = [
     name: "Projects",
     hash: "#projects",
   },
-  // {
-  //   name: "Skills",
-  //   hash: "#skills",
-  // },
   {
     name: "Experience",
     hash: "#experience",
@@ -204,19 +168,17 @@ export const projectsData: Project[] = [
     tags: ["Enterprise", "Design System", "Live", "B2C", "UX Research"],
     imageUrl: pro_img_1,
     year: "2026",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11",
     readingTime: 10,
     bgColor: "#FFD300",
   },
   {
-    title: "Large Scale Quantitive and Qualititve UX Research",
+    title: "Large-Scale Quantitative & Qualitative UX Research",
     project_type: ["Enterprise", "B2C"],
     description:
       "Full-stack design ownership of self-service terminal shipped to supermarkets in Austria. From design sprint to production deployment.",
     tags: ["Enterprise", "UX Research", "B2C", "Live"],
     imageUrl: pro_img_2,
     year: "2023",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/billa-self-service-terminal-2022-2023-11",
     readingTime: 10,
     bgColor: "#FFD300",
   },
@@ -228,7 +190,6 @@ export const projectsData: Project[] = [
       "Owned product architecture and frontend for an AI-powered learning platform. Reduced perceived latency of AI operations by 1-2 minutes through streaming AI response and websocket architecture.",
     tags: ["Startup", "AI", "Fullstack", "Live"],
     year: "2025",
-    link: "https://lehr.app",
     imageUrl: pro_img_8,
     readingTime: 0,
     bgColor: "#474738",
@@ -241,7 +202,6 @@ export const projectsData: Project[] = [
     tags: ["SAAS", "Live", "UX Research"],
     imageUrl: pro_img_4,
     year: "2021",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/tubics-video-optimization-tool-2021-12",
     readingTime: 12,
     bgColor: "#67B988",
   },
@@ -253,7 +213,6 @@ export const projectsData: Project[] = [
     tags: ["Design system", "Migration"],
     imageUrl: pro_img_5,
     year: "2021",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/tubicss-design-system-documentation-2021-22",
     readingTime: 7,
     bgColor: "#F15E30",
   },
@@ -265,82 +224,21 @@ export const projectsData: Project[] = [
     tags: ["Freelance", "Analytics"],
     imageUrl: pro_img_3,
     year: "2022",
-    link: "https://coda.io/@abdelhamid-younis/portfolio/app-radar-ui-redesign-2022-16",
     readingTime: 5,
     bgColor: "#6153FF",
   },
-  // {
-  //   title: "Wuzzuf — Hiring Intelligence Dashboard",
-  //   project_type: ["Saas B2B", "Data heavy"],
-  //   description:
-  //     "Hiring analytics dashboard for platform serving millions of job seekers and thousands of employers across MENA.",
-  //   tags: ["Early career", "Research", "Data UX"],
-  //   imageUrl: pro_img_0,
-  //   year: "2019",
-  //   link: "https://coda.io/@abdelhamid-younis/portfolio/wuzzuf-hiring-dashboard-2019-24",
-  //   readingTime: 8,
-  //   bgColor: "#0754CC",
-  // },
   {
     title: "Forasna — Increasing Job Post Completion & Application Volume",
     description:
       "Redesigned a broken job posting flow, reducing drop-offs and increasing job creation by 12% through data-driven UX decisions.",
     project_type: ["Saas B2B"],
     tags: ["UX Research", "Data-Driven Design", "B2B", "Conversion"],
-    link: "/projects/forasna",
     imageUrl: forasnaCover,
     year: "2019",
     readingTime: 4,
     bgColor: "#F3F4F6",
   },
-  // {
-  //   title: "Grocery Bot (Innovation Concept)",
-  //   project_type: ["B2C"],
-  //   description:
-  //     "This project demonstrates my approach to reducing complex flows into conversational interactions, a pattern I later applied in enterprise retail products.",
-  //   tags: ["Research", "Academic"],
-  //   imageUrl: pro_img_7,
-  //   year: "2020",
-  //   link: "https://coda.io/@abdelhamid-younis/portfolio/hci-project-grocery-shopping-bot-2020-15",
-  //   readingTime: 6,
-  //   bgColor: "#1DC6BB",
-  // },
 ];
-
-// export const skillsData = [
-//   { skill: "🎨 Figma", skill_type: "Design" },
-//   { skill: "🎨 Adobe XD", skill_type: "Design" },
-//   { skill: "🎤️ User interviews", skill_type: "UX Research" },
-//   { skill: "🔍 Quantitive UX research", skill_type: "UX Research" },
-//   { skill: "🆎 AB Testing", skill_type: "UX Research" },
-//   { skill: "🔍 Gorilla User Research", skill_type: "UX Research" },
-//   { skill: "📊 Google analytics", skill_type: "UX Research" },
-//   { skill: "💻 Figma Make", skill_type: "Design" },
-//   { skill: "🎨 Design systems", skill_type: "Design" },
-//   { skill: "🎥 Figma Animmations", skill_type: "Design" },
-//   { skill: "🎨 Zeplin", skill_type: "Design" },
-//   { skill: "🎨 Design systems", skill_type: "Design" },
-//   { skill: "👨🏻‍💻 HTML5", skill_type: "Web Dev" },
-//   { skill: "👨🏻‍💻 CSS3", skill_type: "Web Dev" },
-//   { skill: "👨🏻‍💻 JavaScript ES6", skill_type: "Web Dev" },
-//   { skill: "👨🏻‍💻 TypeScript", skill_type: "Web Dev" },
-//   { skill: "👨🏻‍💻 React", skill_type: "Web Dev" },
-//   { skill: "👨🏻‍💻 Tan Stack React Query", skill_type: "Web Dev" },
-//   { skill: "👨🏻‍💻 Next.js", skill_type: "Web Dev" },
-//   { skill: "👨🏻‍💻 MobX state (Basic)", skill_type: "Web Dev" },
-//   { skill: "🎨 Tailwind CSS", skill_type: "Web Dev" },
-//   { skill: "🎥 Framer Motion", skill_type: "Web Dev" },
-//   { skill: "🇩🇪 German (B2)", skill_type: "Language" },
-//   { skill: " 🇬🇧 English (Fluent C2)", skill_type: "Language" },
-//   { skill: " 🇪🇬 Arabic (Fluent)", skill_type: "Language" },
-//   { skill: "💡 Notion", skill_type: "Other" },
-//   { skill: "💡 Jira", skill_type: "Other" },
-//   { skill: "📊 Hotjar", skill_type: "UX Research" },
-//   { skill: "📊 Mixpanel", skill_type: "UX Research" },
-//   { skill: "🔍 Hey Marvin", skill_type: "UX Research" },
-//   { skill: "🔐 Clerk Auth", skill_type: "Web Dev" },
-//   { skill: "💻 shadcn ui", skill_type: "Web Dev" },
-// ] as Skill[];
 
 export interface TestimonialData {
   name: string;
@@ -360,7 +258,7 @@ export const TestimonialsData = [
     date: "May 17, 2025",
     image: profile_img_2,
     relationship: "Was senior to Abdelhamid but did not manage him directly",
-    quote: `Younis has a great eye for detail and is someone you can really rely on. He works independently and always delivers solid results without needing much direction. He also gave me very helpful feedback on the UNIFY design system for REWE International. If you’re looking for a good UX designer who cares about quality work, don’t hesitate to get in touch with him!`,
+    quote: `Younis has a great eye for detail and is someone you can really rely on. He works independently and always delivers solid results without needing much direction. He also gave me very helpful feedback on the UNIFY design system for REWE International. If you're looking for a good UX designer who cares about quality work, don't hesitate to get in touch with him!`,
   },
   {
     name: "Ahmed Ibrahim",
@@ -375,14 +273,14 @@ export const TestimonialsData = [
     name: "Dr.Ing.Mostafa Amin",
     role: "Senior Researcher Gen AI",
     company: "Dynatrace",
-    date: "Decemver 14, 2025",
+    date: "December 14, 2025",
     relationship:
-      "Cofounder with Abdelhamid at an AI German Language Learninng App ",
+      "Cofounder with Abdelhamid at an AI German Language Learning App",
     image: profile_img_3,
-    quote: `I worked with Abdelhamid on an AI-powered German-learning web app. He co-shaped the product vision and owned the entire frontend, building it cleanly on top of the backend I developed. 
-    
-    He combines strong UX instincts withhands-on frontend engineering. He consistently showed initiative—actively recruiting test users, following up thoroughly, and translating feedback into meaningful product improvements. 
-    
+    quote: `I worked with Abdelhamid on an AI-powered German-learning web app. He co-shaped the product vision and owned the entire frontend, building it cleanly on top of the backend I developed.
+
+    He combines strong UX instincts withhands-on frontend engineering. He consistently showed initiative—actively recruiting test users, following up thoroughly, and translating feedback into meaningful product improvements.
+
     He uses modern AI tools pragmatically, in ways that genuinely accelerate development rather than add complexity, and pays attention to details such as real-time model streaming, smooth agent experience  and polished, fluid interactions. He iterates fast: absorbing feedback, sketching solutions, refining them, and shipping working UI with minimal friction.`,
   },
 ] as TestimonialData[];

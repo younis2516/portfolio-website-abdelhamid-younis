@@ -93,17 +93,17 @@ export default function TubicsVideoOptimizationPage() {
             <h2 className="text-2xl font-semibold mb-4">Impact</h2>
 
             <ul className="space-y-2 text-gray-700">
-              <li className="text-wrap">
+              <li>
                 • Became the most-used workflow in the platform
               </li>
 
-              <li className="text-wrap">
+              <li>
                 • Improved perceived quality of AI recommendations
               </li>
-              <li className="text-wrap">
+              <li>
                 • Reduced reliance on external SEO tools
               </li>
-              <li className="text-wrap">
+              <li>
                 • Enabled collaboration for enterprise teams
               </li>
             </ul>
@@ -119,16 +119,16 @@ export default function TubicsVideoOptimizationPage() {
             </p>
 
             <ul className="space-y-2 text-gray-700">
-              <li className="text-wrap">
+              <li>
                 • Recommendations felt generic → low trust
               </li>
-              <li className="text-wrap">
+              <li>
                 • Workflow required too many manual steps
               </li>
-              <li className="text-wrap">
+              <li>
                 • No clear guidance → users skipped critical steps
               </li>
-              <li className="text-wrap font-bold">
+              <li className="font-bold">
                 • The 3-step process overwhelmed the users
               </li>
             </ul>
@@ -164,12 +164,12 @@ export default function TubicsVideoOptimizationPage() {
             <p className="text-gray-700 mb-3">
               <strong>Before:</strong> 3 Step wizard (overwhelming)
               <br></br>
-              <strong>After:</strong> one-page-free-form gibing the user full
+              <strong>After:</strong> one-page free-form giving the user full
               control over the optimization Process
             </p>
 
             <p className="text-sm text-gray-600 mb-3">
-              → Result: Reduced the percieved length and complexity of the form
+              → Result: Reduced the perceived length and complexity of the form
               <br></br>
               <br></br>
               <strong>
@@ -261,7 +261,7 @@ export default function TubicsVideoOptimizationPage() {
 
                 <p className="text-sm text-gray-600 mb-3">
                   → Result: Increased trust and clarity in AI recommendations
-                  <br></br>→ Result: customers dont need to think about the
+                  <br></br>→ Result: customers don't need to think about the
                   content of the metadata
                   <br></br>→ Result: Reduced Completion time by 34%
                 </p>
@@ -342,15 +342,15 @@ export default function TubicsVideoOptimizationPage() {
             </p>
 
             <ul className="space-y-2 text-gray-700 mb-6">
-              <li className="text-wrap">
+              <li>
                 • Added draft sharing for team collaboration
               </li>
-              <li className="text-wrap">
+              <li>
                 • Integrated keyword research directly into workflow, so users
                 dont need to leave the product and search for keywords on an
                 external keyword research tool
               </li>
-              <li className="text-wrap">
+              <li>
                 • Introduced reusable templates to reduce repetitive work, so
                 users can save time
               </li>
