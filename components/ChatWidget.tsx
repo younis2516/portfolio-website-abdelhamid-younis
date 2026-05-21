@@ -2,6 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ChatMarkdown from "@/components/chat/ChatMarkdown";
+import ProjectCard from "@/components/chat/ProjectCard";
 
 const PHRASES = [
   "Ask AI about my work",
@@ -50,6 +52,26 @@ const STARTERS = [
   "What kind of roles are you looking for?",
 ];
 
+// Extracts a project-card code block from streamed content.
+// Returns null for projectId if the block hasn't finished streaming yet.
+function parseProjectCard(text: string): { projectId: string | null; cleanText: string } {
+  // Complete block present
+  const completeMatch = text.match(/^```project-card\n(\{[^`]*?\})\n```\n?/);
+  if (completeMatch) {
+    try {
+      const { projectId } = JSON.parse(completeMatch[1]) as { projectId: string };
+      return { projectId, cleanText: text.slice(completeMatch[0].length) };
+    } catch {
+      return { projectId: null, cleanText: text };
+    }
+  }
+  // Block is mid-stream (started but not closed yet) — hide everything until complete
+  if (text.startsWith("```project-card")) {
+    return { projectId: null, cleanText: "" };
+  }
+  return { projectId: null, cleanText: text };
+}
+
 function TypingIndicator() {
   return (
     <div className="flex items-center gap-1 px-4 py-3">
@@ -64,18 +86,40 @@ function TypingIndicator() {
   );
 }
 
-function MessageBubble({ msg }: { msg: Message }) {
-  const isUser = msg.role === "user";
+function UserBubble({ content }: { content: string }) {
   return (
-    <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
-      <div
-        className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
-          isUser
-            ? "bg-blue-600 text-white rounded-br-sm"
-            : "bg-zinc-100 dark:bg-white/10 text-zinc-800 dark:text-zinc-100 rounded-bl-sm"
-        }`}
-      >
-        {msg.content}
+    <div className="flex justify-end">
+      <div className="max-w-[85%] rounded-2xl rounded-br-sm px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap bg-blue-600 text-white">
+        {content}
+      </div>
+    </div>
+  );
+}
+
+function AssistantBubble({ content, streaming }: { content: string; streaming: boolean }) {
+  const { projectId, cleanText } = parseProjectCard(content);
+  const isEmpty = content === "" || (content.startsWith("```project-card") && !projectId);
+
+  if (isEmpty && streaming) {
+    return (
+      <div className="flex justify-start">
+        <div className="bg-zinc-100 dark:bg-white/10 rounded-2xl rounded-bl-sm">
+          <TypingIndicator />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex justify-start w-full">
+      <div className="w-full max-w-[92%]">
+        {projectId && <ProjectCard projectId={projectId} />}
+        {cleanText.trim() && (
+          <div className="bg-zinc-100 dark:bg-white/10 rounded-2xl rounded-bl-sm px-4 py-3">
+            <ChatMarkdown content={cleanText} />
+          </div>
+        )}
+        {/* Still streaming the project-card block, card not ready yet, text not ready — show nothing extra */}
       </div>
     </div>
   );
@@ -129,10 +173,7 @@ export default function ChatWidget() {
         accumulated += decoder.decode(value, { stream: true });
         setMessages((prev) => {
           const updated = [...prev];
-          updated[updated.length - 1] = {
-            role: "assistant",
-            content: accumulated,
-          };
+          updated[updated.length - 1] = { role: "assistant", content: accumulated };
           return updated;
         });
       }
@@ -207,11 +248,7 @@ export default function ChatWidget() {
                   strokeWidth={2}
                   className="w-4 h-4"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
@@ -221,8 +258,7 @@ export default function ChatWidget() {
               {messages.length === 0 && (
                 <div className="space-y-3">
                   <p className="text-xs text-center text-zinc-400 dark:text-zinc-500">
-                    Hi! Ask me anything about Younis's work, projects, or
-                    skills.
+                    Hi! Ask me anything about Younis&apos;s work, projects, or skills.
                   </p>
                   <div className="grid grid-cols-1 gap-2 mt-2">
                     {STARTERS.map((q) => (
@@ -238,16 +274,16 @@ export default function ChatWidget() {
                 </div>
               )}
 
-              {messages.map((msg, i) => (
-                <MessageBubble key={i} msg={msg} />
-              ))}
-
-              {streaming && messages[messages.length - 1]?.content === "" && (
-                <div className="flex justify-start">
-                  <div className="bg-zinc-100 dark:bg-white/10 rounded-2xl rounded-bl-sm">
-                    <TypingIndicator />
-                  </div>
-                </div>
+              {messages.map((msg, i) =>
+                msg.role === "user" ? (
+                  <UserBubble key={i} content={msg.content} />
+                ) : (
+                  <AssistantBubble
+                    key={i}
+                    content={msg.content}
+                    streaming={streaming && i === messages.length - 1}
+                  />
+                )
               )}
 
               <div ref={bottomRef} />
@@ -293,11 +329,7 @@ export default function ChatWidget() {
                 "
                 aria-label="Send"
               >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-4 h-4"
-                >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
                   <path d="M3.478 2.405a.75.75 0 0 0-.926.94l2.432 7.905H13.5a.75.75 0 0 1 0 1.5H4.984l-2.432 7.905a.75.75 0 0 0 .926.94 60.519 60.519 0 0 0 18.445-8.986.75.75 0 0 0 0-1.218A60.517 60.517 0 0 0 3.478 2.405Z" />
                 </svg>
               </button>
