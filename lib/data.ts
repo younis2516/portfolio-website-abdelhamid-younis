@@ -3,6 +3,7 @@ import pro_img_2 from "@/public/pro_img_2.png";
 import pro_img_3 from "@/public/pro_img_3.png";
 import pro_img_4 from "@/public/pro_img_4.png";
 import pro_img_5 from "@/public/pro_img_5.png";
+import pro_img_6 from "@/public/pro_img_6.png";
 import pro_img_8 from "@/public/pro_img_8.png";
 import profile_img_1 from "@/public/profile_img_1.jpeg";
 import profile_img_2 from "@/public/profile_img_2.jpeg";
@@ -238,6 +239,17 @@ export const projectsData: Project[] = [
     readingTime: 4,
     bgColor: "#F3F4F6",
   },
+  // {
+  //   title: "AI-Assisted POS Dashboard — Figma Make × Claude Pipeline",
+  //   project_type: ["Enterprise", "Built with AI"],
+  //   description:
+  //     "Compressed a 4-week design cycle into 10 days using a Figma Make → Claude → Figma Make pipeline. Reduced 40 inline filters to 5–6 smart quick filters and iterated 10+ UI decisions at 2–5 min each.",
+  //   tags: ["Enterprise", "AI", "Figma Make", "Rapid Prototyping"],
+  //   imageUrl: pro_img_6,
+  //   year: "2026",
+  //   readingTime: 8,
+  //   bgColor: "#1E3A5F",
+  // },
 ];
 
 export interface TestimonialData {

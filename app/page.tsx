@@ -4,6 +4,8 @@ import Intro from "@/components/Intro";
 import Projects from "@/components/Projects";
 import SystemPositioning from "@/components/SystemPositioning";
 import { Testimonials } from "@/components/Testimonials";
+import AIWorkflowSection from "@/components/sections/AIWorkflowSection";
+import ChatWidget from "@/components/ChatWidget";
 
 export default function Home() {
   return (
@@ -11,9 +13,11 @@ export default function Home() {
       <Intro />
       <SystemPositioning />
       <Projects />
+      <AIWorkflowSection />
       <Experience />
       <Testimonials />
       <Contact />
+      <ChatWidget />
     </main>
   );
 }

@@ -55,6 +55,8 @@ export default function ProjectFeaturedRL({
       "lehr-app",
     "Designing & Scaling a Nationwide Self-Checkout System":
       "rewe-white-label-sco",
+    "AI-Assisted POS Dashboard — Figma Make × Claude Pipeline":
+      "ai-pos-dashboard",
   };
 
   const fallbackSlug = String(title)
