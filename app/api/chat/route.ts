@@ -32,13 +32,13 @@ export async function POST(req: Request) {
   const encoder = new TextEncoder();
   const readable = new ReadableStream({
     start(controller) {
-      anthropicStream.on("text", (text) => {
+      anthropicStream.on("text", (text: string) => {
         controller.enqueue(encoder.encode(text));
       });
       anthropicStream.on("end", () => {
         controller.close();
       });
-      anthropicStream.on("error", (err) => {
+      anthropicStream.on("error", (err: Error) => {
         console.error("Anthropic stream error:", err);
         controller.close();
       });
