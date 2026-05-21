@@ -52,24 +52,102 @@ const STARTERS = [
   "What kind of roles are you looking for?",
 ];
 
-// Extracts a project-card code block from streamed content.
-// Returns null for projectId if the block hasn't finished streaming yet.
-function parseProjectCard(text: string): { projectId: string | null; cleanText: string } {
-  // Complete block present
-  const completeMatch = text.match(/^```project-card\n(\{[^`]*?\})\n```\n?/);
-  if (completeMatch) {
-    try {
-      const { projectId } = JSON.parse(completeMatch[1]) as { projectId: string };
-      return { projectId, cleanText: text.slice(completeMatch[0].length) };
-    } catch {
-      return { projectId: null, cleanText: text };
+const KNOWN_PROJECT_IDS = new Set([
+  "rewe-white-label-sco",
+  "billa-terminal",
+  "lehr-app",
+  "tubics-video-optimization-tool",
+  "tubics-design-system-documentation",
+  "app-radar-ui-redesign",
+  "forasna-form",
+]);
+
+// Short name aliases used only for the post-stream fallback matcher
+const PROJECT_NAME_MAP: Array<[string, string]> = [
+  ["self-checkout system", "rewe-white-label-sco"],
+  ["rewe self-checkout", "rewe-white-label-sco"],
+  ["billa terminal", "billa-terminal"],
+  ["lehr.app", "lehr-app"],
+  ["lehr app", "lehr-app"],
+  ["german learning platform", "lehr-app"],
+  ["tubics video optimization", "tubics-video-optimization-tool"],
+  ["video optimization tool", "tubics-video-optimization-tool"],
+  ["tubics design system", "tubics-design-system-documentation"],
+  ["app radar", "app-radar-ui-redesign"],
+  ["forasna", "forasna-form"],
+];
+
+type ParseResult = {
+  projectIds: string[];
+  cleanText: string;
+  suppressDisplay: boolean;
+};
+
+function parseResponse(text: string, isStreaming: boolean): ParseResult {
+  // Mid-stream: opening fence not yet closed — suppress display to avoid flashing raw JSON
+  if (isStreaming && text.startsWith("```")) {
+    const closingFence = text.indexOf("\n```", 3);
+    if (closingFence === -1) {
+      const looksLikeCard =
+        text.startsWith("```project-card") || !!text.match(/^```[\w-]*\n\s*\{/);
+      if (looksLikeCard) {
+        return { projectIds: [], cleanText: "", suppressDisplay: true };
+      }
     }
   }
-  // Block is mid-stream (started but not closed yet) — hide everything until complete
-  if (text.startsWith("```project-card")) {
-    return { projectId: null, cleanText: "" };
+
+  // Find all fenced code blocks regardless of language tag
+  const codeBlockRegex = /```[\w-]*\n([\s\S]*?)\n```/g;
+  const codeBlocks: Array<{ full: string; content: string }> = [];
+  let match: RegExpExecArray | null;
+  while ((match = codeBlockRegex.exec(text)) !== null) {
+    codeBlocks.push({ full: match[0], content: match[1] });
   }
-  return { projectId: null, cleanText: text };
+
+  console.log("[ChatWidget] Raw response (first 300):", text.slice(0, 300));
+  console.log(
+    "[ChatWidget] Code blocks found:",
+    codeBlocks.map((b) => ({ tag: b.full.split("\n")[0], content: b.content.slice(0, 80) }))
+  );
+
+  const projectIds: string[] = [];
+  let cleanText = text;
+
+  for (const block of codeBlocks) {
+    let parsed: { projectId?: string } | null = null;
+    try {
+      parsed = JSON.parse(block.content.trim()) as { projectId?: string };
+    } catch {
+      // not JSON — leave as regular code block
+    }
+
+    if (parsed && typeof parsed.projectId === "string" && KNOWN_PROJECT_IDS.has(parsed.projectId)) {
+      console.log("[ChatWidget] Code block parsed as project card:", parsed.projectId);
+      projectIds.push(parsed.projectId);
+      cleanText = cleanText.split(block.full).join("").trim();
+    } else {
+      console.log("[ChatWidget] Regular code block:", block.content.slice(0, 60));
+    }
+  }
+
+  // Fallback: name matching — only after streaming completes and no cards were parsed
+  if (!isStreaming && projectIds.length === 0) {
+    const lower = text.toLowerCase();
+    const first100 = lower.slice(0, 100);
+    const triggerPhrases = ["here is", "let me show", "project card", "render", "display", "check out", "here's", "showing"];
+    const hasTrigger = triggerPhrases.some((p) => lower.includes(p));
+
+    for (const [name, id] of PROJECT_NAME_MAP) {
+      if (first100.includes(name) || (hasTrigger && lower.includes(name))) {
+        console.log("[ChatWidget] Fallback name match:", name, "→", id);
+        projectIds.push(id);
+        break; // one auto-injected card max
+      }
+    }
+  }
+
+  console.log("[ChatWidget] Final project cards:", projectIds);
+  return { projectIds, cleanText, suppressDisplay: false };
 }
 
 function TypingIndicator() {
@@ -97,10 +175,9 @@ function UserBubble({ content }: { content: string }) {
 }
 
 function AssistantBubble({ content, streaming }: { content: string; streaming: boolean }) {
-  const { projectId, cleanText } = parseProjectCard(content);
-  const isEmpty = content === "" || (content.startsWith("```project-card") && !projectId);
+  const { projectIds, cleanText, suppressDisplay } = parseResponse(content, streaming);
 
-  if (isEmpty && streaming) {
+  if ((content === "" || suppressDisplay) && streaming) {
     return (
       <div className="flex justify-start">
         <div className="bg-zinc-100 dark:bg-white/10 rounded-2xl rounded-bl-sm">
@@ -113,13 +190,14 @@ function AssistantBubble({ content, streaming }: { content: string; streaming: b
   return (
     <div className="flex justify-start w-full">
       <div className="w-full max-w-[92%]">
-        {projectId && <ProjectCard projectId={projectId} />}
+        {projectIds.map((id) => (
+          <ProjectCard key={id} projectId={id} />
+        ))}
         {cleanText.trim() && (
           <div className="bg-zinc-100 dark:bg-white/10 rounded-2xl rounded-bl-sm px-4 py-3">
             <ChatMarkdown content={cleanText} />
           </div>
         )}
-        {/* Still streaming the project-card block, card not ready yet, text not ready — show nothing extra */}
       </div>
     </div>
   );
