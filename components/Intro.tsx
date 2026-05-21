@@ -9,10 +9,13 @@ import { BsLinkedin } from "react-icons/bs";
 import { useScrollIntoView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active_section_context";
 import { FaDownload, FaGithubSquare } from "react-icons/fa";
+import { usePortfolio } from "@/context/PortfolioContext";
+import HeroSkeleton from "@/components/skeletons/HeroSkeleton";
 
 function Intro() {
   const { ref } = useScrollIntoView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+  const { status, personalisation, visitorProfile } = usePortfolio();
 
   return (
     <section ref={ref} id="home" className="scroll-mt-[60rem] w-full">
@@ -42,17 +45,38 @@ function Intro() {
               lg:items-start lg:text-left
             "
           >
-            <span className="inline-block mb-4 px-4 py-1 text-sm rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-medium tracking-wide">
-              Younis Abdelhamid
-            </span>
+            {/* Greeting line when personalised */}
+            {status === "done" && personalisation?.greeting ? (
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 italic">
+                {personalisation.greeting}
+              </p>
+            ) : (
+              <span className="inline-block mb-4 px-4 py-1 text-sm rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-medium tracking-wide">
+                Younis Abdelhamid
+              </span>
+            )}
 
-            <h1 className="text-lg sm:text-xl lg:text-4xl mb-4 font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
-              Designing enterprise systems that ship to millions
-            </h1>
+            {status === "loading" ? (
+              <HeroSkeleton />
+            ) : (
+              <>
+                <h1 className="text-lg sm:text-xl lg:text-4xl mb-4 font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+                  {status === "done" && personalisation?.heroTagline
+                    ? personalisation.heroTagline
+                    : "Designing enterprise systems that ship to millions"}
+                </h1>
 
-            <p className="text-md sm:text-md lg:text-lg leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0">
-              Senior Product Designer & UX Engineer. I've shipped self-checkout systems, data-heavy dashboards, and AI products — closing the gap between design and production.
-            </p>
+                <p className="text-md sm:text-md lg:text-lg leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0">
+                  Senior Product Designer & UX Engineer. I&apos;ve shipped self-checkout systems, data-heavy dashboards, and AI products — closing the gap between design and production.
+                </p>
+
+                {status === "done" && visitorProfile && (
+                  <span className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 text-xs rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+                    ✦ Personalised for {visitorProfile.role}
+                  </span>
+                )}
+              </>
+            )}
 
             {/* Metrics bar */}
             <div className="flex flex-wrap gap-x-12 gap-y-3 mt-6 justify-center lg:justify-start border-t border-black/10 dark:border-white/10 pt-5">

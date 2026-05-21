@@ -1,23 +1,10 @@
-import Contact from "@/components/Contact";
-import Experience from "@/components/Experience";
-import Intro from "@/components/Intro";
-import Projects from "@/components/Projects";
-import SystemPositioning from "@/components/SystemPositioning";
-import { Testimonials } from "@/components/Testimonials";
-import AIWorkflowSection from "@/components/sections/AIWorkflowSection";
-import ChatWidget from "@/components/ChatWidget";
+import { PortfolioProvider } from "@/context/PortfolioContext";
+import HomeClient from "@/components/HomeClient";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center px-4">
-      <Intro />
-      <SystemPositioning />
-      <Projects />
-      <AIWorkflowSection />
-      <Experience />
-      <Testimonials />
-      <Contact />
-      <ChatWidget />
-    </main>
+    <PortfolioProvider>
+      <HomeClient />
+    </PortfolioProvider>
   );
 }

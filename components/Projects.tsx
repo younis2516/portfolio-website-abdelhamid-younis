@@ -1,92 +1,168 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SectionHeading from "./Section_heading";
-import { ProjectType, projectsData, ProjectTypes } from "@/lib/data";
+import { projectsData } from "@/lib/data";
 import { useScrollIntoView } from "@/lib/hooks";
 import ProjectFeaturedRL from "./ProjectFeaturedRL";
+import { usePortfolio } from "@/context/PortfolioContext";
+import ProjectsSkeleton from "@/components/skeletons/ProjectsSkeleton";
+import { motion } from "framer-motion";
+
+const projectById = Object.fromEntries(projectsData.map((p) => [p.id, p]));
+
 const Projects = () => {
-  const [selectedType, setSelectedType] = useState<
-    ProjectType | null | undefined
-  >("All");
+  const [showAll, setShowAll] = useState(false);
+  const { status, personalisation } = usePortfolio();
 
   const threshold =
     typeof window !== "undefined" && window.innerWidth < 640 ? 0.15 : 0.3;
-
   const { ref } = useScrollIntoView("Projects", threshold);
-  const filteredProjects = projectsData.filter((project) => {
-    if (
-      selectedType === "All" ||
-      selectedType === null ||
-      selectedType === undefined
-    ) {
-      return true; // Show all projects
-    }
-    return Array.isArray(project.project_type)
-      ? project?.project_type.includes(selectedType)
-      : project?.project_type === selectedType;
-  });
 
+  // ── PERSONALISED LAYOUT ──────────────────────────────────────────────────
+  if (status === "loading") {
+    return (
+      <section
+        ref={ref}
+        id="projects"
+        className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto"
+      >
+        <ProjectsSkeleton />
+      </section>
+    );
+  }
+
+  if (status === "done" && personalisation) {
+    const visibleSet = new Set(personalisation.visibleProjects);
+    const orderedProjects = personalisation.projectOrder
+      .map((id) => projectById[id])
+      .filter(Boolean);
+
+    const hiddenProjects = projectsData.filter((p) => !visibleSet.has(p.id));
+
+    const [featured, second, ...rest] = orderedProjects;
+
+    return (
+      <section
+        ref={ref}
+        id="projects"
+        className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
+        >
+          {/* Featured card */}
+          {featured && (
+            <div className="grid grid-cols-1 gap-6 mb-8 items-stretch sm:min-h-[40rem]">
+              <ProjectFeaturedRL {...featured} order="imageLeft" />
+            </div>
+          )}
+
+          {/* Second row: second + first of rest side-by-side */}
+          {(second || rest.length > 0) && (
+            <div className="grid grid-cols-3 gap-6 mb-20 items-stretch">
+              {second && (
+                <div className="col-span-3 sm:col-span-2">
+                  <ProjectFeaturedRL {...second} />
+                </div>
+              )}
+              {rest[0] && (
+                <div className="grid col-span-3 sm:col-span-1">
+                  <div className="block sm:hidden">
+                    <ProjectFeaturedRL {...rest[0]} />
+                  </div>
+                  <div className="hidden sm:block">
+                    <ProjectFeaturedRL {...rest[0]} variant="small" />
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Remaining personalised projects */}
+          {rest.slice(1).length > 0 && (
+            <>
+              <SectionHeading>More Projects</SectionHeading>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 mb-8">
+                {rest.slice(1).map((project) => (
+                  <ProjectFeaturedRL
+                    key={project.id}
+                    {...project}
+                    variant="small"
+                    showImage={false}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+
+          {/* Show all hidden projects */}
+          {hiddenProjects.length > 0 && (
+            <div className="mt-2 text-center">
+              {!showAll ? (
+                <button
+                  onClick={() => setShowAll(true)}
+                  className="text-sm text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 underline underline-offset-4 transition-colors"
+                >
+                  Show all projects ({hiddenProjects.length} more)
+                </button>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
+                    {hiddenProjects.map((project) => (
+                      <ProjectFeaturedRL
+                        key={project.id}
+                        {...project}
+                        variant="small"
+                        showImage={false}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          )}
+        </motion.div>
+      </section>
+    );
+  }
+
+  // ── DEFAULT LAYOUT (unchanged) ───────────────────────────────────────────
   return (
     <section
       ref={ref}
       id="projects"
-      className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto justify-center items-center "
+      className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto justify-center items-center"
     >
       <div className="grid grid-cols-1 gap-6 mb-8 items-stretch sm:min-h-[40rem]">
-        <ProjectFeaturedRL {...filteredProjects[0]} order="imageLeft" />
-        {/* <ProjectFeaturedRL {...filteredProjects[1]} order="imageRight" /> */}
+        <ProjectFeaturedRL {...projectsData[0]} order="imageLeft" />
       </div>
-      <div className="grid grid-cols-3 gap-6 mb-20 items-stretch ">
-        <div className="col-span-3 sm:col-span-2 ">
-          <ProjectFeaturedRL {...filteredProjects[3]} />
+      <div className="grid grid-cols-3 gap-6 mb-20 items-stretch">
+        <div className="col-span-3 sm:col-span-2">
+          <ProjectFeaturedRL {...projectsData[3]} />
         </div>
         <div className="grid col-span-3 sm:col-span-1">
-          {/* MOBILE → DEFAULT variant */}
           <div className="block sm:hidden">
-            <ProjectFeaturedRL {...filteredProjects[2]} />
+            <ProjectFeaturedRL {...projectsData[2]} />
           </div>
-
-          {/* DESKTOP → SMALL variant */}
-          <div className="hidden sm:block ">
-            <ProjectFeaturedRL {...filteredProjects[2]} variant="small" />
+          <div className="hidden sm:block">
+            <ProjectFeaturedRL {...projectsData[2]} variant="small" />
           </div>
         </div>
       </div>
-
-      {/* <SectionHeading>Projects</SectionHeading> */}
-      {/* <p className="text-base text-center w-full sm:max-w-7xl sm:text-lg text-gray-700 mb-8 dark:text-white/70">
-        {" "}
-        <strong>Heads up!</strong> these case studies are a bit lengthy, the
-        average reading time is 10 minutes. I added lots of visuals but I am
-        also trying to explain my thinking process.
-      </p> */}
-      {/* <div className="flex justify-center flex-wrap gap-2 sm:gap-4 mb-10">
-        {ProjectTypes?.map((type) => (
-          <button
-            key={type}
-            className={`px-5 py-3 border border-gray-400 text-base rounded-full transition ${
-              selectedType === type
-                ? "bg-blue-500 text-white border-none"
-                : "bg-gray-100 dark:bg-gray-900 hover:bg-gray-300 hover:dark:bg-gray-800"
-            }`}
-            onClick={() => setSelectedType(selectedType === type ? null : type)}
-          >
-            {type}
-          </button>
-        ))}
-      </div> */}
 
       <SectionHeading>Other Projects</SectionHeading>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-        {filteredProjects
-          .filter((project, index) => index > 3 && index < 8)
+        {projectsData
+          .filter((_, index) => index > 3 && index < 8)
           .map((project, index) => (
             <React.Fragment key={index}>
-              <ProjectFeaturedRL
-                {...project}
-                variant={"small"}
-                showImage={false}
-              />
+              <ProjectFeaturedRL {...project} variant="small" showImage={false} />
             </React.Fragment>
           ))}
       </div>

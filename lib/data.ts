@@ -32,6 +32,7 @@ export const ProjectTypes: ProjectType[] = [
 ];
 
 export interface Project {
+  id: string;
   title: string;
   description: string;
   project_type?: ProjectType[];
@@ -67,6 +68,7 @@ export const links = [
 
 export const experiencesData = [
   {
+    id: "rewe",
     company: "REWE International",
     location: "Vienna, Austria",
     date: "April 2022 — Present",
@@ -79,6 +81,7 @@ export const experiencesData = [
     tags: ["Enterprise UX", "Design Systems"],
   },
   {
+    id: "lehr-cofounder",
     company: "Lehr.app",
     location: "Remote",
     date: "May 2024 — Present",
@@ -91,6 +94,7 @@ export const experiencesData = [
     tags: ["Startup", "Frontend", "React", "AI"],
   },
   {
+    id: "suplyd",
     company: "Suplyd",
     location: "Remote",
     date: "May 2024 — Present",
@@ -102,6 +106,7 @@ export const experiencesData = [
     tags: ["Frontend", "React"],
   },
   {
+    id: "tubics",
     company: "Tubics",
     location: "Vienna, Austria",
     date: "October 2020 — January 2022",
@@ -115,6 +120,7 @@ export const experiencesData = [
     tags: ["Design Systems", "SaaS", "Low-Code"],
   },
   {
+    id: "hotelkit",
     company: "Hotelkit",
     location: "Salzburg, Austria",
     date: "November 2019 — October 2020",
@@ -127,6 +133,7 @@ export const experiencesData = [
     tags: ["SaaS", "Cross Platform"],
   },
   {
+    id: "msc-salzburg",
     company: "University of Salzburg",
     location: "Salzburg, Austria",
     date: "September 2019 — January 2021",
@@ -138,6 +145,7 @@ export const experiencesData = [
     tags: ["Msc", "UX Research", "3D Prototyping"],
   },
   {
+    id: "wuzzuf",
     company: "Wuzzuf",
     location: "Cairo, Egypt",
     date: "October 2018 — October 2019",
@@ -149,6 +157,7 @@ export const experiencesData = [
     tags: ["UX", "Growth", "SaaS"],
   },
   {
+    id: "bsc-guc",
     company: "The German University in Cairo",
     location: "Cairo, Egypt",
     date: "October 2012 — October 2018",
@@ -162,6 +171,7 @@ export const experiencesData = [
 
 export const projectsData: Project[] = [
   {
+    id: "rewe-white-label-sco",
     title: "Designing & Scaling a Nationwide Self-Checkout System",
     project_type: ["Enterprise", "B2C", "Design system"],
     description:
@@ -173,6 +183,7 @@ export const projectsData: Project[] = [
     bgColor: "#FFD300",
   },
   {
+    id: "billa-terminal",
     title: "Large-Scale Quantitative & Qualitative UX Research",
     project_type: ["Enterprise", "B2C"],
     description:
@@ -184,6 +195,7 @@ export const projectsData: Project[] = [
     bgColor: "#FFD300",
   },
   {
+    id: "lehr-app",
     title:
       "Owning product vision and frontend architecture for an AI learning platform.",
     project_type: ["Web Dev", "Built with AI"],
@@ -196,6 +208,7 @@ export const projectsData: Project[] = [
     bgColor: "#474738",
   },
   {
+    id: "tubics-video-optimization-tool",
     title: "Driving Product Adoption in an AI-Powered SaaS Platform",
     project_type: ["Saas B2B", "Data heavy"],
     description:
@@ -207,6 +220,7 @@ export const projectsData: Project[] = [
     bgColor: "#67B988",
   },
   {
+    id: "tubics-design-system-documentation",
     title: "Tubics — Scalable Design System & Engineering Alignment",
     project_type: ["Saas B2B", "Design system"],
     description:
@@ -218,6 +232,7 @@ export const projectsData: Project[] = [
     bgColor: "#F15E30",
   },
   {
+    id: "app-radar-ui-redesign",
     title: "App Radar — Growth & Analytics Platform Redesign",
     project_type: ["Saas B2B", "Data heavy"],
     description:
@@ -229,6 +244,7 @@ export const projectsData: Project[] = [
     bgColor: "#6153FF",
   },
   {
+    id: "forasna-form",
     title: "Forasna — Increasing Job Post Completion & Application Volume",
     description:
       "Redesigned a broken job posting flow, reducing drop-offs and increasing job creation by 12% through data-driven UX decisions.",
