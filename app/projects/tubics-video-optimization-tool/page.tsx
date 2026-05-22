@@ -3,8 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import { useSectionRegistration } from "@/hooks/useSectionRegistration";
+import { ProjectHighlighter } from "@/components/ProjectHighlighter";
 
 export default function TubicsVideoOptimizationPage() {
+  const overviewRef = useSectionRegistration("overview", "Overview");
+  const challengeRef = useSectionRegistration("challenge", "Challenge");
+  const processRef = useSectionRegistration("process", "Research & Insight");
+  const designRef = useSectionRegistration("design-decisions", "Design Decisions");
+  const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
+
   return (
     <main className="flex flex-col items-center pb-16">
       {/* HERO */}
@@ -25,9 +33,10 @@ export default function TubicsVideoOptimizationPage() {
       </div>
 
       <div className="w-full sm:max-w-[900px] -mt-12 px-4 z-10">
+        <ProjectHighlighter />
         <div className="bg-white rounded-[32px] shadow-xl p-8 sm:p-12 space-y-20">
           {/* CONTEXT */}
-          <section>
+          <section id="overview" ref={overviewRef as React.Ref<HTMLElement>}>
             <h1 className="text-3xl sm:text-4xl font-bold mb-4">
               Driving Product Adoption in an AI-Powered SaaS Platform
             </h1>
@@ -89,7 +98,7 @@ export default function TubicsVideoOptimizationPage() {
           </div>
 
           {/* IMPACT FIRST */}
-          <section>
+          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4">Impact</h2>
 
             <ul className="space-y-2 text-gray-700">
@@ -110,7 +119,7 @@ export default function TubicsVideoOptimizationPage() {
           </section>
 
           {/* SYSTEM PROBLEM */}
-          <section>
+          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4">Problem</h2>
 
             <p className="text-gray-700 leading-relaxed mb-4">
@@ -143,7 +152,7 @@ export default function TubicsVideoOptimizationPage() {
           </section>
 
           {/* INSIGHTS */}
-          <section>
+          <section id="process" ref={processRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4">Key Insight</h2>
 
             <p className="text-gray-700 leading-relaxed">
@@ -154,7 +163,7 @@ export default function TubicsVideoOptimizationPage() {
           </section>
 
           {/* DECISIONS */}
-          <section>
+          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4">
               Key Product Decisions (Before & After)
             </h2>

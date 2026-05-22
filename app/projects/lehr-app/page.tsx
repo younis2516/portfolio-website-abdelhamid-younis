@@ -3,8 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import { useSectionRegistration } from "@/hooks/useSectionRegistration";
+import { ProjectHighlighter } from "@/components/ProjectHighlighter";
 
 export default function LehrAppPage() {
+  const overviewRef = useSectionRegistration("overview", "Overview");
+  const challengeRef = useSectionRegistration("challenge", "Challenge");
+  const processRef = useSectionRegistration("process", "Design Process");
+  const designRef = useSectionRegistration("design-decisions", "Design Decisions");
+  const aiStackRef = useSectionRegistration("ai-stack", "AI Architecture");
+  const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
+
   return (
     <main className="flex flex-col items-center pb-16 bg-white dark:bg-gray-950 transition-colors duration-300">
       {/* Banner */}
@@ -33,9 +42,10 @@ export default function LehrAppPage() {
       </div>
 
       <div className="w-full sm:max-w-[73rem] -mt-12 px-4 z-10">
+        <ProjectHighlighter />
         <div className="bg-white dark:bg-gray-900 rounded-[40px] shadow-xl border border-gray-200 dark:border-gray-800 p-6 sm:p-10">
           {/* HERO */}
-          <header className="mb-16">
+          <header id="overview" ref={overviewRef as React.Ref<HTMLElement>} className="mb-16">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
               Designing & Building an AI-Native Learning System — lehr.app
             </h1>
@@ -124,7 +134,7 @@ export default function LehrAppPage() {
           </div>
 
           {/* IMPACT */}
-          <section className="mb-20">
+          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               Product Impact
             </h2>
@@ -156,7 +166,7 @@ export default function LehrAppPage() {
           </section>
 
           {/* PROBLEM */}
-          <section className="mb-20">
+          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               Framing the Core Problem
             </h2>
@@ -171,7 +181,7 @@ export default function LehrAppPage() {
           </section>
 
           {/* TEMPLATE SYSTEM */}
-          <section className="mb-20 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <section id="process" ref={processRef as React.Ref<HTMLElement>} className="mb-20 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
                 Intent-Driven Template System
@@ -328,7 +338,7 @@ export default function LehrAppPage() {
           </section>
 
           {/* ARCHITECTURE */}
-          <section className="mb-20">
+          <section id="ai-stack" ref={aiStackRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               System Architecture
             </h2>
@@ -351,7 +361,7 @@ export default function LehrAppPage() {
           </section>
 
           {/* VALIDATION */}
-          <section className="mb-20">
+          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               Validation
             </h2>

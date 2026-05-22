@@ -3,8 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import { useSectionRegistration } from "@/hooks/useSectionRegistration";
+import { ProjectHighlighter } from "@/components/ProjectHighlighter";
 
 export default function ForasnaCaseStudy() {
+  const overviewRef = useSectionRegistration("overview", "Overview");
+  const challengeRef = useSectionRegistration("challenge", "Challenge");
+  const processRef = useSectionRegistration("process", "Discovery & Research");
+  const designRef = useSectionRegistration("design-decisions", "Design Decisions");
+  const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
+
   return (
     <main className="flex flex-col items-center pb-16">
       {/* HERO */}
@@ -29,9 +37,10 @@ export default function ForasnaCaseStudy() {
 
       {/* CONTENT */}
       <div className="w-full max-w-[73rem] -mt-12 px-4 z-10">
+        <ProjectHighlighter />
         <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border p-8">
           {/* HEADER */}
-          <header className="mb-16">
+          <header id="overview" ref={overviewRef as React.Ref<HTMLElement>} className="mb-16">
             <h1 className="text-3xl font-bold mb-6">
               Forasna — Increasing Job Post Completion & Application Volume
             </h1>
@@ -66,7 +75,7 @@ export default function ForasnaCaseStudy() {
           </header>
 
           {/* IMPACT */}
-          <section className="mb-20">
+          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Impact</h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
@@ -90,7 +99,7 @@ export default function ForasnaCaseStudy() {
           </section>
 
           {/* PROBLEM */}
-          <section className="mb-20">
+          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">
               The Challenge — Broken Job Posting Funnel
             </h2>
@@ -114,7 +123,7 @@ export default function ForasnaCaseStudy() {
           </section>
 
           {/* DISCOVERY */}
-          <section className="mb-20">
+          <section id="process" ref={processRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">
               Discovery — Understanding Behavior at Scale
             </h2>
@@ -170,7 +179,7 @@ export default function ForasnaCaseStudy() {
           </section>
 
           {/* SOLUTIONS */}
-          <section className="mb-20">
+          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Solutions</h2>
 
             <h3 className="font-semibold mb-2">

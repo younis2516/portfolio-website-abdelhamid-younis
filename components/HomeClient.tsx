@@ -9,7 +9,6 @@ import ResetButton from "@/components/ResetButton";
 import SystemPositioning from "@/components/SystemPositioning";
 import { Testimonials } from "@/components/Testimonials";
 import AIWorkflowSection from "@/components/sections/AIWorkflowSection";
-import ChatWidget from "@/components/ChatWidget";
 import PageActionToast from "@/components/PageActionToast";
 import { usePortfolio } from "@/context/PortfolioContext";
 import { AnimatePresence } from "framer-motion";
@@ -31,7 +30,6 @@ export default function HomeClient() {
         <Experience />
         <Testimonials />
         <Contact />
-        <ChatWidget />
       </main>
 
       <ResetButton />

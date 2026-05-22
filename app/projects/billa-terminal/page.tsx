@@ -23,8 +23,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import { useSectionRegistration } from "@/hooks/useSectionRegistration";
+import { ProjectHighlighter } from "@/components/ProjectHighlighter";
 
 export default function BillaTerminalPage() {
+  const overviewRef = useSectionRegistration("overview", "Overview");
+  const challengeRef = useSectionRegistration("challenge", "Challenge");
+  const processRef = useSectionRegistration("process", "Process & Research");
+  const designRef = useSectionRegistration("design-decisions", "Design Decisions");
+  const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
+
   return (
     <main className="flex flex-col items-center pb-16">
       {/* Banner */}
@@ -54,9 +62,10 @@ export default function BillaTerminalPage() {
       </div>
 
       <div className="w-full sm:max-w-[73rem] -mt-12 px-4">
+        <ProjectHighlighter />
         <div className="bg-white rounded-[40px] shadow-xl border p-6 sm:p-10">
           {/* HERO */}
-          <header className="mb-16">
+          <header id="overview" ref={overviewRef as React.Ref<HTMLElement>} className="mb-16">
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6">
               BILLA Marktküche Self-Service Terminal
             </h1>
@@ -86,7 +95,7 @@ export default function BillaTerminalPage() {
           </header>
 
           {/* IMPACT */}
-          <section className="mb-16">
+          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>} className="mb-16">
             <h2 className="text-xl sm:text-2xl font-semibold mb-4">Impact</h2>
 
             <ul className="list-disc list-inside space-y-2 text-gray-700">
@@ -109,7 +118,7 @@ export default function BillaTerminalPage() {
           </section>
 
           {/* OVERVIEW */}
-          <section className="mb-16">
+          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>} className="mb-16">
             <h2 className="text-xl sm:text-2xl font-semibold mb-4">
               Project Overview
             </h2>
@@ -134,7 +143,7 @@ export default function BillaTerminalPage() {
           </div>
 
           {/* RESEARCH */}
-          <section className="mb-16">
+          <section id="process" ref={processRef as React.Ref<HTMLElement>} className="mb-16">
             <h2 className="text-xl sm:text-2xl font-semibold mb-4">
               Research Strategy & Validation
             </h2>
@@ -389,7 +398,7 @@ export default function BillaTerminalPage() {
           </section>
 
           {/* DESIGN SOLUTION */}
-          <section className="mb-16">
+          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>} className="mb-16">
             <h2 className="text-xl sm:text-2xl font-semibold mb-4">
               Design Solution
             </h2>

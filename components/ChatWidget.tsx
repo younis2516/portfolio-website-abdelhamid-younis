@@ -1,11 +1,17 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 import ChatMarkdown from "@/components/chat/ChatMarkdown";
 import ProjectCard from "@/components/chat/ProjectCard";
 import { usePortfolio } from "@/context/PortfolioContext";
+import { useChat, genId } from "@/context/ChatContext";
+import { usePageSections } from "@/context/PageSectionsContext";
 import { executePageAction, type PageAction } from "@/lib/pageActions";
+import { projectsData } from "@/lib/data";
+import { usePageTracking } from "@/hooks/usePageTracking";
+import { usePageContext } from "@/hooks/usePageContext";
 
 const PHRASES = [
   "Ask AI about my work",
@@ -14,13 +20,25 @@ const PHRASES = [
   "Explore my projects with AI",
 ];
 
-function useTypingCycle(phrases: string[], typingSpeed = 55, pauseMs = 1800, deleteSpeed = 30) {
+const NUDGE_FLAG = "chat_nudge_fired";
+const NUDGE_DELAY_MS = 90_000;
+const NUDGE_REVERT_MS = 8_000;
+const NUDGE_LABEL = "Ask me about this project ✦";
+
+function useTypingCycle(
+  phrases: string[],
+  typingSpeed = 55,
+  pauseMs = 1800,
+  deleteSpeed = 30,
+  paused = false
+) {
   const [displayed, setDisplayed] = useState("");
   const [phraseIdx, setPhraseIdx] = useState(0);
   const [charIdx, setCharIdx] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
+    if (paused) return;
     const target = phrases[phraseIdx];
     let timeout: ReturnType<typeof setTimeout>;
 
@@ -37,34 +55,13 @@ function useTypingCycle(phrases: string[], typingSpeed = 55, pauseMs = 1800, del
 
     setDisplayed(target.slice(0, charIdx));
     return () => clearTimeout(timeout);
-  }, [charIdx, deleting, phraseIdx, phrases, typingSpeed, pauseMs, deleteSpeed]);
+  }, [charIdx, deleting, phraseIdx, phrases, typingSpeed, pauseMs, deleteSpeed, paused]);
 
   return displayed;
 }
 
-type Message = {
-  role: "user" | "assistant";
-  content: string;
-};
+const KNOWN_PROJECT_IDS = new Set(projectsData.map((p) => p.id));
 
-const STARTERS = [
-  "What projects have you shipped?",
-  "How do you use AI in your design workflow?",
-  "What's your background?",
-  "What kind of roles are you looking for?",
-];
-
-const KNOWN_PROJECT_IDS = new Set([
-  "rewe-white-label-sco",
-  "billa-terminal",
-  "lehr-app",
-  "tubics-video-optimization-tool",
-  "tubics-design-system-documentation",
-  "app-radar-ui-redesign",
-  "forasna-form",
-]);
-
-// Short name aliases used only for the post-stream fallback matcher
 const PROJECT_NAME_MAP: Array<[string, string]> = [
   ["self-checkout system", "rewe-white-label-sco"],
   ["rewe self-checkout", "rewe-white-label-sco"],
@@ -96,7 +93,6 @@ function extractPageAction(text: string): PageAction | null {
 }
 
 function parseResponse(text: string, isStreaming: boolean): ParseResult {
-  // Mid-stream: opening fence not yet closed — suppress display to avoid flashing raw JSON
   if (isStreaming && text.startsWith("```")) {
     const closingFence = text.indexOf("\n```", 3);
     if (closingFence === -1) {
@@ -110,10 +106,8 @@ function parseResponse(text: string, isStreaming: boolean): ParseResult {
     }
   }
 
-  // Strip page-action blocks first (they are silent — never shown to user)
   let cleanText = text.replace(/```page-action\n[\s\S]*?\n```/g, "").trim();
 
-  // Find all remaining fenced code blocks regardless of language tag
   const codeBlockRegex = /```[\w-]*\n([\s\S]*?)\n```/g;
   const codeBlocks: Array<{ full: string; content: string }> = [];
   let match: RegExpExecArray | null;
@@ -128,20 +122,32 @@ function parseResponse(text: string, isStreaming: boolean): ParseResult {
     try {
       parsed = JSON.parse(block.content.trim()) as { projectId?: string };
     } catch {
-      // not JSON — leave as regular code block
+      // not JSON
     }
 
-    if (parsed && typeof parsed.projectId === "string" && KNOWN_PROJECT_IDS.has(parsed.projectId)) {
+    if (
+      parsed &&
+      typeof parsed.projectId === "string" &&
+      KNOWN_PROJECT_IDS.has(parsed.projectId)
+    ) {
       projectIds.push(parsed.projectId);
       cleanText = cleanText.split(block.full).join("").trim();
     }
   }
 
-  // Fallback: name matching — only after streaming completes and no cards were parsed
   if (!isStreaming && projectIds.length === 0) {
     const lower = text.toLowerCase();
     const first100 = lower.slice(0, 100);
-    const triggerPhrases = ["here is", "let me show", "project card", "render", "display", "check out", "here's", "showing"];
+    const triggerPhrases = [
+      "here is",
+      "let me show",
+      "project card",
+      "render",
+      "display",
+      "check out",
+      "here's",
+      "showing",
+    ];
     const hasTrigger = triggerPhrases.some((p) => lower.includes(p));
 
     for (const [name, id] of PROJECT_NAME_MAP) {
@@ -179,8 +185,17 @@ function UserBubble({ content }: { content: string }) {
   );
 }
 
-function AssistantBubble({ content, streaming }: { content: string; streaming: boolean }) {
-  const { projectIds, cleanText, suppressDisplay } = parseResponse(content, streaming);
+function AssistantBubble({
+  content,
+  streaming,
+}: {
+  content: string;
+  streaming: boolean;
+}) {
+  const { projectIds, cleanText, suppressDisplay } = parseResponse(
+    content,
+    streaming
+  );
 
   if ((content === "" || suppressDisplay) && streaming) {
     return (
@@ -208,14 +223,28 @@ function AssistantBubble({ content, streaming }: { content: string; streaming: b
   );
 }
 
+const STARTERS = [
+  "What projects have you shipped?",
+  "How do you use AI in your design workflow?",
+  "What's your background?",
+  "What kind of roles are you looking for?",
+];
+
 export default function ChatWidget() {
-  const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
+  const [input, setInput] = useState("");
+  const [nudgeActive, setNudgeActive] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const typedText = useTypingCycle(PHRASES);
+
+  const { messages, setMessages, isOpen, setIsOpen } = useChat();
+  const router = useRouter();
+  const pathname = usePathname();
+  const { highlightSection } = usePageSections();
+  const pageContext = usePageContext();
+
+  // Register navigation tracking
+  usePageTracking();
 
   const {
     setHighlightedProjectId,
@@ -227,24 +256,89 @@ export default function ChatWidget() {
     resetPageState,
   } = usePortfolio();
 
+  // Refs for proactive nudge stale-closure safety
+  const isOpenRef = useRef(isOpen);
+  const messageCountRef = useRef(0);
+  const nudgeFiredRef = useRef(false);
+
   useEffect(() => {
-    if (open && messages.length === 0) {
+    isOpenRef.current = isOpen;
+  }, [isOpen]);
+
+  const displayMessages = messages.filter((m) => m.role !== "system");
+
+  useEffect(() => {
+    messageCountRef.current = displayMessages.length;
+  }, [displayMessages.length]);
+
+  // Proactive nudge: fire once per session on a project page after 90s
+  useEffect(() => {
+    const isProjectPage = pathname.startsWith("/projects/");
+    if (!isProjectPage) return;
+
+    // Reset nudge eligibility when navigating to a new project page
+    nudgeFiredRef.current = false;
+
+    const timer = setTimeout(() => {
+      const alreadyFiredThisSession = (() => {
+        try {
+          return sessionStorage.getItem(NUDGE_FLAG) === "1";
+        } catch {
+          return false;
+        }
+      })();
+
+      if (
+        !isOpenRef.current &&
+        messageCountRef.current === 0 &&
+        !alreadyFiredThisSession &&
+        !nudgeFiredRef.current
+      ) {
+        nudgeFiredRef.current = true;
+        try {
+          sessionStorage.setItem(NUDGE_FLAG, "1");
+        } catch {
+          // ignore
+        }
+        setNudgeActive(true);
+        setTimeout(() => setNudgeActive(false), NUDGE_REVERT_MS);
+      }
+    }, NUDGE_DELAY_MS);
+
+    return () => clearTimeout(timer);
+  }, [pathname]);
+
+  const typedText = useTypingCycle(PHRASES, 55, 1800, 30, nudgeActive);
+
+  useEffect(() => {
+    if (isOpen && displayMessages.length === 0) {
       inputRef.current?.focus();
     }
-  }, [open, messages.length]);
+  }, [isOpen, displayMessages.length]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, streaming]);
 
   async function send(text: string) {
-    const userMsg: Message = { role: "user", content: text };
+    const userMsg = {
+      id: genId(),
+      role: "user" as const,
+      content: text,
+      timestamp: Date.now(),
+    };
     const nextMessages = [...messages, userMsg];
     setMessages(nextMessages);
     setInput("");
     setStreaming(true);
 
-    const assistantMsg: Message = { role: "assistant", content: "" };
+    const assistantId = genId();
+    const assistantMsg = {
+      id: assistantId,
+      role: "assistant" as const,
+      content: "",
+      timestamp: Date.now(),
+    };
     setMessages([...nextMessages, assistantMsg]);
 
     let finalText = "";
@@ -253,8 +347,23 @@ export default function ChatWidget() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: nextMessages }),
+        body: JSON.stringify({ messages: nextMessages, pageContext }),
       });
+
+      if (res.status === 429) {
+        const data = (await res.json()) as { error?: string };
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = {
+            ...updated[updated.length - 1],
+            content:
+              data.error ??
+              "Too many messages. Please try again later.",
+          };
+          return updated;
+        });
+        return;
+      }
 
       if (!res.ok || !res.body) throw new Error("Request failed");
 
@@ -268,7 +377,11 @@ export default function ChatWidget() {
         accumulated += decoder.decode(value, { stream: true });
         setMessages((prev) => {
           const updated = [...prev];
-          updated[updated.length - 1] = { role: "assistant", content: accumulated };
+          // Preserve id and timestamp while updating content
+          updated[updated.length - 1] = {
+            ...updated[updated.length - 1],
+            content: accumulated,
+          };
           return updated;
         });
       }
@@ -278,7 +391,7 @@ export default function ChatWidget() {
       setMessages((prev) => {
         const updated = [...prev];
         updated[updated.length - 1] = {
-          role: "assistant",
+          ...updated[updated.length - 1],
           content: "Sorry, something went wrong. Please try again.",
         };
         return updated;
@@ -287,7 +400,6 @@ export default function ChatWidget() {
       setStreaming(false);
     }
 
-    // Execute page-action after a short delay to let the UI settle
     if (finalText) {
       const action = extractPageAction(finalText);
       if (action) {
@@ -300,6 +412,8 @@ export default function ChatWidget() {
             setContactNudgeMessage,
             setPageActionToast,
             resetPageState,
+            router,
+            highlightSection,
           });
         }, 400);
       }
@@ -323,7 +437,7 @@ export default function ChatWidget() {
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
       <AnimatePresence>
-        {open && (
+        {isOpen && (
           <motion.div
             key="panel"
             initial={{ opacity: 0, y: 16, scale: 0.97 }}
@@ -352,7 +466,7 @@ export default function ChatWidget() {
                 </p>
               </div>
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => setIsOpen(false)}
                 className="w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors"
                 aria-label="Close"
               >
@@ -363,17 +477,22 @@ export default function ChatWidget() {
                   strokeWidth={2}
                   className="w-4 h-4"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               </button>
             </div>
 
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 scroll-smooth">
-              {messages.length === 0 && (
+              {displayMessages.length === 0 && (
                 <div className="space-y-3">
                   <p className="text-xs text-center text-zinc-400 dark:text-zinc-500">
-                    Hi! Ask me anything about Younis&apos;s work, projects, or skills.
+                    Hi! Ask me anything about Younis&apos;s work, projects, or
+                    skills.
                   </p>
                   <div className="grid grid-cols-1 gap-2 mt-2">
                     {STARTERS.map((q) => (
@@ -389,14 +508,14 @@ export default function ChatWidget() {
                 </div>
               )}
 
-              {messages.map((msg, i) =>
+              {displayMessages.map((msg, i) =>
                 msg.role === "user" ? (
-                  <UserBubble key={i} content={msg.content} />
+                  <UserBubble key={msg.id} content={msg.content} />
                 ) : (
                   <AssistantBubble
-                    key={i}
+                    key={msg.id}
                     content={msg.content}
-                    streaming={streaming && i === messages.length - 1}
+                    streaming={streaming && i === displayMessages.length - 1}
                   />
                 )
               )}
@@ -455,19 +574,32 @@ export default function ChatWidget() {
 
       {/* Toggle button */}
       <div className="relative">
-        {/* Pulsing outer glow */}
+        {/* Pulsing outer glow — intensifies during nudge */}
         <motion.div
-          className="absolute -inset-[6px] rounded-[26px] z-0 blur-md opacity-60"
+          className="absolute -inset-[6px] rounded-[26px] z-0 blur-md"
           style={{
             background:
               "linear-gradient(135deg, #6ee7e0, #a8d8d4, #f7e2c8, #e8a87c, #6ee7e0)",
             backgroundSize: "300% 300%",
           }}
-          animate={{
-            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            opacity: [0.45, 0.7, 0.45],
-          }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+          animate={
+            nudgeActive
+              ? {
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  opacity: [0.75, 1, 0.75],
+                  scale: [1, 1.06, 1],
+                }
+              : {
+                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  opacity: [0.45, 0.7, 0.45],
+                  scale: 1,
+                }
+          }
+          transition={
+            nudgeActive
+              ? { duration: 1.4, repeat: Infinity, ease: "easeInOut" }
+              : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
+          }
         />
 
         {/* Animated gradient border ring */}
@@ -483,9 +615,18 @@ export default function ChatWidget() {
         />
 
         <motion.button
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            if (nudgeActive) setNudgeActive(false);
+          }}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
+          animate={nudgeActive ? { scale: [1, 1.03, 1] } : { scale: 1 }}
+          transition={
+            nudgeActive
+              ? { duration: 1.4, repeat: Infinity, ease: "easeInOut" }
+              : {}
+          }
           className="
             relative z-10
             flex items-center gap-2.5
@@ -520,14 +661,34 @@ export default function ChatWidget() {
             />
           </motion.svg>
 
-          {/* Typewriter text + cursor */}
+          {/* Label: nudge text or typewriter */}
           <span className="flex-1 text-left whitespace-nowrap overflow-hidden">
-            <span>{typedText}</span>
-            <motion.span
-              className="inline-block w-[1.5px] h-[1em] bg-white align-[-1px] ml-[1px]"
-              animate={{ opacity: [1, 0] }}
-              transition={{ duration: 0.6, repeat: Infinity, repeatType: "reverse" }}
-            />
+            {nudgeActive ? (
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-transparent bg-clip-text"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(90deg, #6ee7e0, #f7b46e)",
+                }}
+              >
+                {NUDGE_LABEL}
+              </motion.span>
+            ) : (
+              <>
+                <span>{typedText}</span>
+                <motion.span
+                  className="inline-block w-[1.5px] h-[1em] bg-white align-[-1px] ml-[1px]"
+                  animate={{ opacity: [1, 0] }}
+                  transition={{
+                    duration: 0.6,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                />
+              </>
+            )}
           </span>
         </motion.button>
       </div>

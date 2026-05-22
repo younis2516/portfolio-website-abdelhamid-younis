@@ -9,6 +9,10 @@ import ThemeSwitch from "@/components/ThemeSwitch";
 import { ThemeProvider } from "@/context/theme-context";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { PortfolioProvider } from "@/context/PortfolioContext";
+import { ChatProvider } from "@/context/ChatContext";
+import { PageSectionsProvider } from "@/context/PageSectionsContext";
+import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,11 +34,18 @@ export default function RootLayout({
         <ConditionalBackground />
         <ThemeProvider>
           <ActiveSectionContextProvider>
-            <ConditionalHeader />
-            {children}
-            <Footer />
-            <Toaster position="top-right" />
-            <ThemeSwitch />
+            <PortfolioProvider>
+              <ChatProvider>
+                <PageSectionsProvider>
+                  <ConditionalHeader />
+                  {children}
+                  <Footer />
+                  <Toaster position="top-right" />
+                  <ThemeSwitch />
+                  <ChatWidget />
+                </PageSectionsProvider>
+              </ChatProvider>
+            </PortfolioProvider>
           </ActiveSectionContextProvider>
           <SpeedInsights />
           <Analytics />

@@ -3,8 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import { useSectionRegistration } from "@/hooks/useSectionRegistration";
+import { ProjectHighlighter } from "@/components/ProjectHighlighter";
 
 export default function BillaSelfCheckoutPage() {
+  const overviewRef = useSectionRegistration("overview", "Overview");
+  const challengeRef = useSectionRegistration("challenge", "Challenge");
+  const processRef = useSectionRegistration("process", "Process & Research");
+  const designRef = useSectionRegistration("design-decisions", "Design Decisions");
+  const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
+
   return (
     <main className="flex flex-col items-center px-0 pb-16">
       {/* HERO */}
@@ -25,9 +33,10 @@ export default function BillaSelfCheckoutPage() {
       </div>
 
       <div className="w-full sm:max-w-[900px] -mt-12 px-4 z-10">
+        <ProjectHighlighter />
         <div className="bg-white dark:bg-gray-800 dark:text-white rounded-[32px] shadow-xl p-8 sm:p-12 space-y-20">
           {/* CONTEXT */}
-          <section>
+          <section id="overview" ref={overviewRef as React.Ref<HTMLElement>}>
             <h1 className="text-3xl sm:text-4xl font-bold mb-4 dark:text-white">
               Designing & Scaling a Nationwide Self-Checkout System
             </h1>
@@ -56,7 +65,7 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* PROBLEM */}
-          <section>
+          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4">Problem</h2>
 
             <p className="text-gray-700 leading-relaxed mb-6 dark:text-white/70">
@@ -81,7 +90,7 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* RESEARCH → INSIGHTS */}
-          <section>
+          <section id="process" ref={processRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4 dark:text-white/70">
               Research → Key Insights
             </h2>
@@ -125,7 +134,7 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* KEY DECISIONS */}
-          <section>
+          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4">
               Key Design Decisions and Impact
             </h2>
@@ -412,7 +421,7 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* VALIDATION */}
-          <section>
+          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>}>
             <h2 className="text-2xl font-semibold mb-4">Alpha Test Results</h2>
 
             <p className="text-gray-700 mb-6 dark:text-white/70">

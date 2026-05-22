@@ -3,8 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import { useSectionRegistration } from "@/hooks/useSectionRegistration";
+import { ProjectHighlighter } from "@/components/ProjectHighlighter";
 
 export default function AppRadarRedesignPage() {
+  const overviewRef = useSectionRegistration("overview", "Overview");
+  const challengeRef = useSectionRegistration("challenge", "Challenge");
+  const processRef = useSectionRegistration("process", "Discovery & Research");
+  const designRef = useSectionRegistration("design-decisions", "Design Decisions");
+  const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
+
   return (
     <main className="flex flex-col items-center pb-16">
       {/* Banner */}
@@ -29,9 +37,10 @@ export default function AppRadarRedesignPage() {
 
       {/* Content */}
       <div className="w-full sm:max-w-[73rem] -mt-10 px-4 z-10">
+        <ProjectHighlighter />
         <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border p-6 sm:p-10">
           {/* HERO */}
-          <header className="mb-16">
+          <header id="overview" ref={overviewRef as React.Ref<HTMLElement>} className="mb-16">
             <h1 className="text-3xl font-bold mb-6">
               App Radar — Growth & Analytics Platform Redesign
             </h1>
@@ -60,7 +69,7 @@ export default function AppRadarRedesignPage() {
           </header>
 
           {/* IMPACT */}
-          <section className="mb-20">
+          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Impact</h2>
             <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
               <li>
@@ -91,7 +100,7 @@ export default function AppRadarRedesignPage() {
           </section>
 
           {/* PROBLEM */}
-          <section className="mb-20">
+          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">Problem Framing</h2>
 
             <p className="text-gray-700 dark:text-white/70 max-w-3xl leading-relaxed">
@@ -108,7 +117,7 @@ export default function AppRadarRedesignPage() {
           </section>
 
           {/* PROCESS */}
-          <section className="mb-20">
+          <section id="process" ref={processRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">
               Discovery & System Thinking
             </h2>
@@ -161,7 +170,7 @@ export default function AppRadarRedesignPage() {
           </section>
 
           {/* PROBLEM 1 */}
-          <section className="mb-20">
+          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>} className="mb-20">
             <h2 className="text-2xl font-semibold mb-6">
               Solving Data Latency & Empty States
             </h2>

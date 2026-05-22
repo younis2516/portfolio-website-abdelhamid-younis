@@ -1,4 +1,19 @@
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import type { PageActionToast } from "@/context/PortfolioContext";
+import { projectsData } from "@/lib/data";
+
+// Whitelist of valid project IDs derived from data.ts at module load time
+const VALID_PROJECT_IDS = new Set(projectsData.map((p) => p.id));
+
+// Valid section IDs that can appear on project pages
+const VALID_SECTION_IDS = new Set([
+  "overview",
+  "challenge",
+  "process",
+  "design-decisions",
+  "outcomes",
+  "ai-stack",
+]);
 
 export type PageAction =
   | { type: "SCROLL_TO"; section: string }
@@ -7,7 +22,9 @@ export type PageAction =
   | { type: "FILTER_BY_TAG"; tags: string[] }
   | { type: "REORDER_PROJECTS"; projectIds: string[] }
   | { type: "NUDGE_CONTACT"; message: string }
-  | { type: "RESET_PAGE" };
+  | { type: "RESET_PAGE" }
+  | { type: "NAVIGATE_TO_PROJECT"; projectId: string; sectionId?: string }
+  | { type: "HIGHLIGHT_SECTION"; sectionId: string };
 
 type ActionContext = {
   setHighlightedProjectId: (id: string | null) => void;
@@ -17,6 +34,8 @@ type ActionContext = {
   setContactNudgeMessage: (msg: string | null) => void;
   setPageActionToast: (toast: PageActionToast | null) => void;
   resetPageState: () => void;
+  router: AppRouterInstance;
+  highlightSection: (id: string) => void;
 };
 
 function scrollTo(sectionId: string) {
@@ -66,6 +85,32 @@ export function executePageAction(action: PageAction, ctx: ActionContext) {
     }
     case "RESET_PAGE": {
       ctx.resetPageState();
+      break;
+    }
+    case "NAVIGATE_TO_PROJECT": {
+      const { projectId, sectionId } = action;
+      if (!VALID_PROJECT_IDS.has(projectId)) {
+        console.warn(`[pageActions] NAVIGATE_TO_PROJECT: unknown projectId "${projectId}"`);
+        break;
+      }
+      if (sectionId !== undefined && !VALID_SECTION_IDS.has(sectionId)) {
+        console.warn(`[pageActions] NAVIGATE_TO_PROJECT: unknown sectionId "${sectionId}"`);
+        break;
+      }
+      const path = sectionId
+        ? `/projects/${projectId}?highlight=${encodeURIComponent(sectionId)}`
+        : `/projects/${projectId}`;
+      ctx.router.push(path);
+      toast(`Opening ${projectId.replace(/-/g, " ")}`);
+      break;
+    }
+    case "HIGHLIGHT_SECTION": {
+      const { sectionId } = action;
+      if (!VALID_SECTION_IDS.has(sectionId)) {
+        console.warn(`[pageActions] HIGHLIGHT_SECTION: unknown sectionId "${sectionId}"`);
+        break;
+      }
+      ctx.highlightSection(sectionId);
       break;
     }
   }
