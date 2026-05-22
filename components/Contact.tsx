@@ -1,20 +1,18 @@
 "use client"
-import react, { useState } from 'react'
+import { useState } from 'react'
 import SectionHeading from './Section_heading'
 import { useScrollIntoView } from '@/lib/hooks'
-import { FaPaperPlane } from 'react-icons/fa'
-import {motion} from 'framer-motion'
-import { sendEmail } from "@/actions/sendEmail";
-import { useFormStatus } from 'react-dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import { SubmitButton } from './SubmitButton'
 import toast from 'react-hot-toast'
+import { usePortfolio } from '@/context/PortfolioContext'
 
 export default function Contact() {
     const { ref } = useScrollIntoView("Contact", 0.5)
-    const [formData, setFormData] = useState<FormData | undefined | null>()
     const [email,setEmail]= useState("")
     const [message,setMessage]= useState("")
     const [showError, setShowError] = useState(false);
+    const { contactNudgeMessage } = usePortfolio();
     const handleSubmit = async (e: React.FormEvent) => {
     
         e.preventDefault();
@@ -46,7 +44,22 @@ export default function Contact() {
             transition={{duration:1}}
         >
             <SectionHeading>Get in Touch</SectionHeading>
-            <p className='font-normal text-base text-gray-700 -mt-12 dark:text-white/80'>Please contact me directly at <a href='mailto:abdelhamiduonis@hotmail.com' className='underline'>abdelhamiduonis@hotmail.com</a> <br></br> or through this form.</p> 
+
+            <AnimatePresence>
+              {contactNudgeMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.2 }}
+                  className="-mt-4 w-full px-5 py-3 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 text-sm text-blue-700 dark:text-blue-300 text-center"
+                >
+                  {contactNudgeMessage}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <p className='font-normal text-base text-gray-700 -mt-12 dark:text-white/80'>Please contact me directly at <a href='mailto:abdelhamiduonis@hotmail.com' className='underline'>abdelhamiduonis@hotmail.com</a> <br></br> or through this form.</p>
             <form className='flex flex-col w-full pr-10 pl-10 sm:pr-20 sm:pl-20 dark:text-black -mt-4 dark:text-black'
                 onSubmit={handleSubmit}
                 >

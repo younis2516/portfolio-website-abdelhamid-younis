@@ -14,9 +14,11 @@ type FeaturedProjectProps = ProjectProps2 & {
   order?: "imageLeft" | "imageRight";
   showImage?: boolean;
   variant?: "default" | "small";
+  isHighlighted?: boolean;
 };
 
 export default function ProjectFeaturedRL({
+  id,
   title,
   description,
   tags,
@@ -26,6 +28,7 @@ export default function ProjectFeaturedRL({
   order = "imageRight",
   showImage = true,
   variant = "default",
+  isHighlighted = false,
 }: FeaturedProjectProps) {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -106,11 +109,12 @@ export default function ProjectFeaturedRL({
   return (
     <motion.div
       ref={ref}
+      id={id ? `project-${id}` : undefined}
       style={{ scale: scaleProgress, opacity: opacityProgress }}
       className="mb-8 h-full group"
     >
       <Wrapper>
-        <section className="relative h-full overflow-hidden rounded-3xl border border-black/10 dark:border-white/10 bg-white dark:bg-slate-50/5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer sm:max-h-[38rem]">
+        <section className={`relative h-full overflow-hidden rounded-3xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer sm:max-h-[38rem] bg-white dark:bg-slate-50/5 ${isHighlighted ? "border-blue-500 dark:border-blue-400 ring-2 ring-blue-500/40 dark:ring-blue-400/40 scale-[1.01]" : "border-black/10 dark:border-white/10"}`}>
           {/* Floating arrow for SMALL variant */}
           {isSmall && (
             <div

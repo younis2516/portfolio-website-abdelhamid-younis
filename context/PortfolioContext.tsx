@@ -25,6 +25,8 @@ export type PersonalisationResult = {
   highlightTags: string[];
 };
 
+export type PageActionToast = { message: string; id: number };
+
 // "checking" = initial SSR state; "idle" = no prior visit, show modal
 export type PortfolioStatus = "checking" | "idle" | "loading" | "done" | "skipped";
 
@@ -35,6 +37,21 @@ type PortfolioContextType = {
   startPersonalisation: (profile: VisitorProfile) => Promise<void>;
   skipPersonalisation: () => void;
   resetPersonalisation: () => void;
+
+  // Agentic page state
+  highlightedProjectId: string | null;
+  activeTagFilters: string[];
+  agenticProjectOrder: string[] | null;
+  highlightedExperienceIds: string[];
+  contactNudgeMessage: string | null;
+  pageActionToast: PageActionToast | null;
+  setHighlightedProjectId: (id: string | null) => void;
+  setActiveTagFilters: (tags: string[]) => void;
+  setAgenticProjectOrder: (order: string[] | null) => void;
+  setHighlightedExperienceIds: (ids: string[]) => void;
+  setContactNudgeMessage: (msg: string | null) => void;
+  setPageActionToast: (toast: PageActionToast | null) => void;
+  resetPageState: () => void;
 };
 
 const PortfolioContext = createContext<PortfolioContextType | null>(null);
@@ -51,6 +68,14 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
   const [status, setStatus] = useState<PortfolioStatus>("checking");
   const [personalisation, setPersonalisation] = useState<PersonalisationResult | null>(null);
   const [visitorProfile, setVisitorProfile] = useState<VisitorProfile | null>(null);
+
+  // Agentic page state
+  const [highlightedProjectId, setHighlightedProjectId] = useState<string | null>(null);
+  const [activeTagFilters, setActiveTagFilters] = useState<string[]>([]);
+  const [agenticProjectOrder, setAgenticProjectOrder] = useState<string[] | null>(null);
+  const [highlightedExperienceIds, setHighlightedExperienceIds] = useState<string[]>([]);
+  const [contactNudgeMessage, setContactNudgeMessage] = useState<string | null>(null);
+  const [pageActionToast, setPageActionToast] = useState<PageActionToast | null>(null);
 
   // On mount: restore from cache if available, otherwise show modal
   useEffect(() => {
@@ -171,6 +196,15 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
     setStatus("idle");
   }, []);
 
+  const resetPageState = useCallback(() => {
+    setHighlightedProjectId(null);
+    setActiveTagFilters([]);
+    setAgenticProjectOrder(null);
+    setHighlightedExperienceIds([]);
+    setContactNudgeMessage(null);
+    setPageActionToast(null);
+  }, []);
+
   return (
     <PortfolioContext.Provider
       value={{
@@ -180,6 +214,19 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         startPersonalisation,
         skipPersonalisation,
         resetPersonalisation,
+        highlightedProjectId,
+        activeTagFilters,
+        agenticProjectOrder,
+        highlightedExperienceIds,
+        contactNudgeMessage,
+        pageActionToast,
+        setHighlightedProjectId,
+        setActiveTagFilters,
+        setAgenticProjectOrder,
+        setHighlightedExperienceIds,
+        setContactNudgeMessage,
+        setPageActionToast,
+        resetPageState,
       }}
     >
       {children}

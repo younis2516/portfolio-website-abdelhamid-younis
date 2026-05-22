@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ChatMarkdown from "@/components/chat/ChatMarkdown";
 import ProjectCard from "@/components/chat/ProjectCard";
+import { usePortfolio } from "@/context/PortfolioContext";
+import { executePageAction, type PageAction } from "@/lib/pageActions";
 
 const PHRASES = [
   "Ask AI about my work",
@@ -83,35 +85,43 @@ type ParseResult = {
   suppressDisplay: boolean;
 };
 
+function extractPageAction(text: string): PageAction | null {
+  const match = text.match(/```page-action\n([\s\S]*?)\n```/);
+  if (!match) return null;
+  try {
+    return JSON.parse(match[1].trim()) as PageAction;
+  } catch {
+    return null;
+  }
+}
+
 function parseResponse(text: string, isStreaming: boolean): ParseResult {
   // Mid-stream: opening fence not yet closed — suppress display to avoid flashing raw JSON
   if (isStreaming && text.startsWith("```")) {
     const closingFence = text.indexOf("\n```", 3);
     if (closingFence === -1) {
       const looksLikeCard =
-        text.startsWith("```project-card") || !!text.match(/^```[\w-]*\n\s*\{/);
+        text.startsWith("```project-card") ||
+        text.startsWith("```page-action") ||
+        !!text.match(/^```[\w-]*\n\s*\{/);
       if (looksLikeCard) {
         return { projectIds: [], cleanText: "", suppressDisplay: true };
       }
     }
   }
 
-  // Find all fenced code blocks regardless of language tag
+  // Strip page-action blocks first (they are silent — never shown to user)
+  let cleanText = text.replace(/```page-action\n[\s\S]*?\n```/g, "").trim();
+
+  // Find all remaining fenced code blocks regardless of language tag
   const codeBlockRegex = /```[\w-]*\n([\s\S]*?)\n```/g;
   const codeBlocks: Array<{ full: string; content: string }> = [];
   let match: RegExpExecArray | null;
-  while ((match = codeBlockRegex.exec(text)) !== null) {
+  while ((match = codeBlockRegex.exec(cleanText)) !== null) {
     codeBlocks.push({ full: match[0], content: match[1] });
   }
 
-  console.log("[ChatWidget] Raw response (first 300):", text.slice(0, 300));
-  console.log(
-    "[ChatWidget] Code blocks found:",
-    codeBlocks.map((b) => ({ tag: b.full.split("\n")[0], content: b.content.slice(0, 80) }))
-  );
-
   const projectIds: string[] = [];
-  let cleanText = text;
 
   for (const block of codeBlocks) {
     let parsed: { projectId?: string } | null = null;
@@ -122,11 +132,8 @@ function parseResponse(text: string, isStreaming: boolean): ParseResult {
     }
 
     if (parsed && typeof parsed.projectId === "string" && KNOWN_PROJECT_IDS.has(parsed.projectId)) {
-      console.log("[ChatWidget] Code block parsed as project card:", parsed.projectId);
       projectIds.push(parsed.projectId);
       cleanText = cleanText.split(block.full).join("").trim();
-    } else {
-      console.log("[ChatWidget] Regular code block:", block.content.slice(0, 60));
     }
   }
 
@@ -139,14 +146,12 @@ function parseResponse(text: string, isStreaming: boolean): ParseResult {
 
     for (const [name, id] of PROJECT_NAME_MAP) {
       if (first100.includes(name) || (hasTrigger && lower.includes(name))) {
-        console.log("[ChatWidget] Fallback name match:", name, "→", id);
         projectIds.push(id);
-        break; // one auto-injected card max
+        break;
       }
     }
   }
 
-  console.log("[ChatWidget] Final project cards:", projectIds);
   return { projectIds, cleanText, suppressDisplay: false };
 }
 
@@ -212,6 +217,16 @@ export default function ChatWidget() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const typedText = useTypingCycle(PHRASES);
 
+  const {
+    setHighlightedProjectId,
+    setActiveTagFilters,
+    setAgenticProjectOrder,
+    setHighlightedExperienceIds,
+    setContactNudgeMessage,
+    setPageActionToast,
+    resetPageState,
+  } = usePortfolio();
+
   useEffect(() => {
     if (open && messages.length === 0) {
       inputRef.current?.focus();
@@ -231,6 +246,8 @@ export default function ChatWidget() {
 
     const assistantMsg: Message = { role: "assistant", content: "" };
     setMessages([...nextMessages, assistantMsg]);
+
+    let finalText = "";
 
     try {
       const res = await fetch("/api/chat", {
@@ -255,6 +272,8 @@ export default function ChatWidget() {
           return updated;
         });
       }
+
+      finalText = accumulated;
     } catch {
       setMessages((prev) => {
         const updated = [...prev];
@@ -266,6 +285,24 @@ export default function ChatWidget() {
       });
     } finally {
       setStreaming(false);
+    }
+
+    // Execute page-action after a short delay to let the UI settle
+    if (finalText) {
+      const action = extractPageAction(finalText);
+      if (action) {
+        setTimeout(() => {
+          executePageAction(action, {
+            setHighlightedProjectId,
+            setActiveTagFilters,
+            setAgenticProjectOrder,
+            setHighlightedExperienceIds,
+            setContactNudgeMessage,
+            setPageActionToast,
+            resetPageState,
+          });
+        }, 400);
+      }
     }
   }
 

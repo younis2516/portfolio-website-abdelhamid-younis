@@ -70,11 +70,6 @@ function Intro() {
                   Senior Product Designer & UX Engineer. I&apos;ve shipped self-checkout systems, data-heavy dashboards, and AI products — closing the gap between design and production.
                 </p>
 
-                {status === "done" && visitorProfile && (
-                  <span className="inline-flex items-center gap-1.5 mt-3 px-3 py-1 text-xs rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
-                    ✦ Personalised for {visitorProfile.role}
-                  </span>
-                )}
               </>
             )}
 

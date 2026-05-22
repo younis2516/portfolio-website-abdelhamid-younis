@@ -210,52 +210,55 @@ export default function OnboardingModal() {
         </div>
 
         {/* Footer */}
-        <div className="px-8 pb-8 flex items-center justify-between gap-4">
-          {step > 1 ? (
-            <button
-              onClick={() => setStep((s) => s - 1)}
-              className="text-sm text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
-            >
-              ← Back
-            </button>
-          ) : (
+        <div className="px-8 pb-8 flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            {step > 1 && (
+              <button
+                onClick={() => setStep((s) => s - 1)}
+                className="text-sm text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+              >
+                ← Back
+              </button>
+            )}
+            {step < 3 ? (
+              <button
+                onClick={() => setStep((s) => s + 1)}
+                disabled={!canAdvance()}
+                className="
+                  ml-auto px-6 py-2.5 rounded-full text-sm font-semibold
+                  bg-zinc-900 dark:bg-white text-white dark:text-zinc-900
+                  hover:bg-zinc-700 dark:hover:bg-zinc-100
+                  disabled:opacity-30 disabled:cursor-not-allowed
+                  transition-all
+                "
+              >
+                Continue →
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmit}
+                disabled={!canAdvance()}
+                className="
+                  ml-auto px-6 py-2.5 rounded-full text-sm font-semibold
+                  bg-zinc-900 dark:bg-white text-white dark:text-zinc-900
+                  hover:bg-zinc-700 dark:hover:bg-zinc-100
+                  disabled:opacity-30 disabled:cursor-not-allowed
+                  transition-all
+                "
+              >
+                Personalise my view →
+              </button>
+            )}
+          </div>
+
+          <p className="text-center">
             <button
               onClick={skipPersonalisation}
-              className="text-sm text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+              className="text-xs text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 underline underline-offset-2 transition-colors"
             >
               Skip, show everything
             </button>
-          )}
-
-          {step < 3 ? (
-            <button
-              onClick={() => setStep((s) => s + 1)}
-              disabled={!canAdvance()}
-              className="
-                px-6 py-2.5 rounded-full text-sm font-semibold
-                bg-zinc-900 dark:bg-white text-white dark:text-zinc-900
-                hover:bg-zinc-700 dark:hover:bg-zinc-100
-                disabled:opacity-30 disabled:cursor-not-allowed
-                transition-all
-              "
-            >
-              Continue →
-            </button>
-          ) : (
-            <button
-              onClick={handleSubmit}
-              disabled={!canAdvance()}
-              className="
-                px-6 py-2.5 rounded-full text-sm font-semibold
-                bg-zinc-900 dark:bg-white text-white dark:text-zinc-900
-                hover:bg-zinc-700 dark:hover:bg-zinc-100
-                disabled:opacity-30 disabled:cursor-not-allowed
-                transition-all
-              "
-            >
-              Personalise my view →
-            </button>
-          )}
+          </p>
         </div>
       </motion.div>
     </div>

@@ -16,7 +16,7 @@ const DEFAULT_TEXT = (
 );
 
 export default function SystemPositioning() {
-  const { status, personalisation, visitorProfile } = usePortfolio();
+  const { status, personalisation } = usePortfolio();
 
   const isLoading = status === "loading";
   const isDone = status === "done" && !!personalisation?.aboutText;
@@ -60,11 +60,6 @@ export default function SystemPositioning() {
                   <p className="text-sm sm:text-base lg:text-lg text-zinc-700 dark:text-zinc-300 leading-relaxed">
                     {isDone ? personalisation!.aboutText : DEFAULT_TEXT}
                   </p>
-                  {isDone && visitorProfile && (
-                    <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-3">
-                      ✦ Curated for {visitorProfile.role} at a {visitorProfile.companySize.split(" (")[0]} company
-                    </p>
-                  )}
                 </motion.div>
               )}
             </div>

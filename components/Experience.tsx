@@ -14,7 +14,7 @@ const Experience = () => {
   const threshold =
     typeof window !== "undefined" && window.innerWidth < 640 ? 0.1 : 0.3;
   const { ref } = useScrollIntoView("Experience", threshold);
-  const { status, personalisation } = usePortfolio();
+  const { status, personalisation, highlightedExperienceIds } = usePortfolio();
 
   // Build ordered list + highlighted set
   let orderedExperiences: ExpEntry[] = [...experiencesData];
@@ -37,7 +37,14 @@ const Experience = () => {
     }
 
     orderedExperiences = ordered;
-    highlightedIds = new Set(personalisation.highlightedExperience);
+    // Agentic highlights take priority over personalisation highlights
+    highlightedIds = new Set(
+      highlightedExperienceIds.length > 0
+        ? highlightedExperienceIds
+        : personalisation.highlightedExperience
+    );
+  } else if (highlightedExperienceIds.length > 0) {
+    highlightedIds = new Set(highlightedExperienceIds);
   }
 
   return (
