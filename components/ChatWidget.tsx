@@ -247,6 +247,7 @@ export default function ChatWidget() {
   usePageTracking();
 
   const {
+    visitorProfile,
     setHighlightedProjectId,
     setActiveTagFilters,
     setAgenticProjectOrder,
@@ -414,6 +415,7 @@ export default function ChatWidget() {
             resetPageState,
             router,
             highlightSection,
+            visitorProfile,
           });
         }, 400);
       }

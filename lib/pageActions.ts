@@ -1,5 +1,5 @@
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import type { PageActionToast } from "@/context/PortfolioContext";
+import type { PageActionToast, VisitorProfile } from "@/context/PortfolioContext";
 import { projectsData } from "@/lib/data";
 
 // Whitelist of valid project IDs derived from data.ts at module load time
@@ -15,6 +15,15 @@ const VALID_SECTION_IDS = new Set([
   "ai-stack",
 ]);
 
+// Valid CV focus values
+const VALID_FOCUS = new Set([
+  "enterprise",
+  "startup",
+  "engineering",
+  "design",
+  "default",
+]);
+
 export type PageAction =
   | { type: "SCROLL_TO"; section: string }
   | { type: "HIGHLIGHT_PROJECT"; projectId: string }
@@ -24,7 +33,8 @@ export type PageAction =
   | { type: "NUDGE_CONTACT"; message: string }
   | { type: "RESET_PAGE" }
   | { type: "NAVIGATE_TO_PROJECT"; projectId: string; sectionId?: string }
-  | { type: "HIGHLIGHT_SECTION"; sectionId: string };
+  | { type: "HIGHLIGHT_SECTION"; sectionId: string }
+  | { type: "GENERATE_CV"; focus: "enterprise" | "startup" | "engineering" | "design" | "default" };
 
 type ActionContext = {
   setHighlightedProjectId: (id: string | null) => void;
@@ -36,6 +46,7 @@ type ActionContext = {
   resetPageState: () => void;
   router: AppRouterInstance;
   highlightSection: (id: string) => void;
+  visitorProfile: VisitorProfile | null;
 };
 
 function scrollTo(sectionId: string) {
@@ -111,6 +122,70 @@ export function executePageAction(action: PageAction, ctx: ActionContext) {
         break;
       }
       ctx.highlightSection(sectionId);
+      break;
+    }
+    case "GENERATE_CV": {
+      const focus = VALID_FOCUS.has(action.focus) ? action.focus : "default";
+
+      toast("✦ Generating your tailored CV...");
+
+      void (async () => {
+        const controller = new AbortController();
+        let warn8sId: ReturnType<typeof setTimeout> | null = null;
+        let fail20sId: ReturnType<typeof setTimeout> | null = null;
+        let completed = false;
+
+        warn8sId = setTimeout(() => {
+          if (!completed) toast("✦ Taking longer than expected...");
+        }, 8_000);
+
+        fail20sId = setTimeout(() => {
+          if (!completed) {
+            controller.abort();
+            toast("✦ Download failed — reach out via the contact form");
+          }
+        }, 20_000);
+
+        try {
+          const res = await fetch("/api/generate-cv", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              focus,
+              visitorProfile: ctx.visitorProfile ?? null,
+            }),
+            signal: controller.signal,
+          });
+
+          if (!res.ok) throw new Error(`generate-cv returned ${res.status}`);
+
+          const blob = await res.blob();
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "Abdelhamid-Younis-CV.pdf";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          completed = true;
+          toast("✦ CV downloaded");
+        } catch (err) {
+          if (!completed) {
+            const isAbort =
+              err instanceof Error && err.name === "AbortError";
+            if (!isAbort) {
+              toast("✦ Download failed — reach out via the contact form");
+            }
+            completed = true;
+          }
+        } finally {
+          if (warn8sId !== null) clearTimeout(warn8sId);
+          if (fail20sId !== null) clearTimeout(fail20sId);
+        }
+      })();
+
       break;
     }
   }
