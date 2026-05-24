@@ -144,7 +144,7 @@ export function executePageAction(action: PageAction, ctx: ActionContext) {
             controller.abort();
             toast("✦ Download failed — reach out via the contact form");
           }
-        }, 20_000);
+        }, 60_000);
 
         try {
           const res = await fetch("/api/generate-cv", {

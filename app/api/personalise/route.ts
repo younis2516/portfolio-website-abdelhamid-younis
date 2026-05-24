@@ -3,32 +3,31 @@ import { isRateLimited, rateLimitResponse } from "@/lib/rateLimit";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-// Allowlist — only accept roles the onboarding modal offers
+// Allowlist — exact strings from OnboardingModal.tsx ROLES / COMPANY_TYPES / COMPANY_SIZES
 const ALLOWED_ROLES = new Set([
   "Recruiter / Talent Acquisition",
   "Hiring Manager",
-  "Founder / CEO",
-  "CTO / Engineering Lead",
-  "Design Lead / Head of Design",
-  "Collaborator / Freelancer",
-  "Just browsing",
+  "Founder / Co-Founder",
+  "Product Lead",
+  "Design Lead",
+  "Engineer / CTO",
+  "Other",
 ]);
 
 const ALLOWED_COMPANY_TYPES = new Set([
-  "B2C",
+  "B2C (consumer-facing products)",
   "B2B / SaaS",
   "Enterprise",
-  "Startup",
+  "Startup / Scale-up",
   "Agency",
-  "Non-profit",
+  "Retail / E-commerce",
 ]);
 
 const ALLOWED_COMPANY_SIZES = new Set([
-  "1–10",
-  "11–50",
-  "51–200",
-  "201–1000",
-  "1000+",
+  "1–50 employees (early stage)",
+  "51–200 employees (growth stage)",
+  "201–1000 employees (mid-market)",
+  "1000+ employees (large / enterprise)",
 ]);
 
 const PROJECTS = [

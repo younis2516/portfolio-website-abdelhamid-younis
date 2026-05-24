@@ -17,15 +17,16 @@ import HeroSkeleton from "@/components/skeletons/HeroSkeleton";
 
 function inferCvFocus(profile: VisitorProfile): string {
   const { role, companySize, companyTypes } = profile;
-  if (companySize === "1000+" || companyTypes.includes("Enterprise"))
+  if (companySize === "1000+ employees (large / enterprise)" || companyTypes.includes("Enterprise"))
     return "enterprise";
-  if (role.includes("CTO") || role.includes("Engineering"))
+  if (role === "Engineer / CTO")
     return "engineering";
-  if (role.includes("Design Lead") || role.includes("Head of Design"))
+  if (role === "Design Lead")
     return "design";
   if (
-    ["1–10", "11–50", "51–200"].includes(companySize) ||
-    role.includes("Founder")
+    companySize === "1–50 employees (early stage)" ||
+    role === "Founder / Co-Founder" ||
+    companyTypes.includes("Startup / Scale-up")
   )
     return "startup";
   return "default";
@@ -55,7 +56,7 @@ function Intro() {
       controller.abort();
       toast("✦ Download failed — reach out via the contact form");
       setIsGenerating(false);
-    }, 20_000);
+    }, 60_000);
 
     try {
       const res = await fetch("/api/generate-cv", {
