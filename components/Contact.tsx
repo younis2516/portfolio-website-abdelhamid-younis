@@ -17,14 +17,10 @@ export default function Contact() {
     
         e.preventDefault();
         try {
-        const response = await fetch(`${process.env.CONTACT_FORM || "https://6887ec7badf0e59551b898c0.mockapi.io/api/contact-form"}`, {
+        const response = await fetch("/api/contact", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                email,
-                message,
-                createdAt:new Date().toISOString(),
-            }),
+            body: JSON.stringify({ email, message }),
         });
 
         if (!response.ok) {

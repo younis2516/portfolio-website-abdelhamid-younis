@@ -1,22 +1,12 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { systemPrompt } from "@/lib/systemPrompt";
+import { isRateLimited, rateLimitResponse } from "@/lib/rateLimit";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-// In-memory rate limiter: max 20 requests per IP per hour
-const rateLimitMap = new Map<string, number[]>();
-const RATE_LIMIT_MAX = 20;
-const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // 1 hour
-
-function isRateLimited(ip: string): boolean {
-  const now = Date.now();
-  const windowStart = now - RATE_LIMIT_WINDOW_MS;
-  const timestamps = (rateLimitMap.get(ip) ?? []).filter((t) => t > windowStart);
-  if (timestamps.length >= RATE_LIMIT_MAX) return true;
-  timestamps.push(now);
-  rateLimitMap.set(ip, timestamps);
-  return false;
-}
+// Safety caps — keep context window cost bounded
+const MAX_MESSAGES = 20;      // only send the last 20 turns to Claude
+const MAX_CONTENT_CHARS = 2000; // truncate any single message to 2 000 chars
 
 export type PageContext = {
   currentPage: "home" | "project" | "other";
@@ -33,20 +23,7 @@ export type PageContext = {
 };
 
 export async function POST(req: Request) {
-  // Rate limiting
-  const ip =
-    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
-    req.headers.get("x-real-ip") ??
-    "unknown";
-
-  if (isRateLimited(ip)) {
-    return new Response(
-      JSON.stringify({
-        error: "You've sent a lot of messages! Take a short break and try again in an hour.",
-      }),
-      { status: 429, headers: { "Content-Type": "application/json" } }
-    );
-  }
+  if (await isRateLimited(req)) return rateLimitResponse();
 
   const body = await req.json() as {
     messages?: unknown[];
@@ -63,11 +40,15 @@ export async function POST(req: Request) {
     return new Response("API key not configured", { status: 500 });
   }
 
-  // Filter to only user/assistant messages (strip silent system messages)
+  // Filter to only user/assistant messages, cap content length, keep last N turns
   type ApiMessage = { role: "user" | "assistant"; content: string };
   const validMessages: ApiMessage[] = (messages as Array<{ role: string; content: string }>)
     .filter((m) => m.role === "user" || m.role === "assistant")
-    .map((m) => ({ role: m.role as "user" | "assistant", content: String(m.content) }));
+    .map((m) => ({
+      role: m.role as "user" | "assistant",
+      content: String(m.content).slice(0, MAX_CONTENT_CHARS),
+    }))
+    .slice(-MAX_MESSAGES);
 
   if (validMessages.length === 0) {
     return new Response("No valid messages", { status: 400 });

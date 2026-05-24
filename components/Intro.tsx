@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import avatar from "../public/avatar.jpeg";
 import { motion } from "framer-motion";
@@ -9,13 +10,84 @@ import { BsLinkedin } from "react-icons/bs";
 import { useScrollIntoView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active_section_context";
 import { FaDownload, FaGithubSquare } from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi2";
 import { usePortfolio } from "@/context/PortfolioContext";
+import type { VisitorProfile } from "@/context/PortfolioContext";
 import HeroSkeleton from "@/components/skeletons/HeroSkeleton";
+
+function inferCvFocus(profile: VisitorProfile): string {
+  const { role, companySize, companyTypes } = profile;
+  if (companySize === "1000+" || companyTypes.includes("Enterprise"))
+    return "enterprise";
+  if (role.includes("CTO") || role.includes("Engineering"))
+    return "engineering";
+  if (role.includes("Design Lead") || role.includes("Head of Design"))
+    return "design";
+  if (
+    ["1–10", "11–50", "51–200"].includes(companySize) ||
+    role.includes("Founder")
+  )
+    return "startup";
+  return "default";
+}
 
 function Intro() {
   const { ref } = useScrollIntoView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-  const { status, personalisation, visitorProfile } = usePortfolio();
+  const { status, personalisation, visitorProfile, setPageActionToast } =
+    usePortfolio();
+  const [isGenerating, setIsGenerating] = React.useState(false);
+
+  const toast = (message: string) =>
+    setPageActionToast({ message, id: Date.now() });
+
+  async function handleGenerateCV() {
+    if (!visitorProfile || isGenerating) return;
+    setIsGenerating(true);
+    toast("✦ Generating your tailored CV...");
+
+    const controller = new AbortController();
+    const warnTimer = setTimeout(
+      () => toast("✦ Taking longer than expected..."),
+      8_000,
+    );
+    const failTimer = setTimeout(() => {
+      controller.abort();
+      toast("✦ Download failed — reach out via the contact form");
+      setIsGenerating(false);
+    }, 20_000);
+
+    try {
+      const res = await fetch("/api/generate-cv", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          focus: inferCvFocus(visitorProfile),
+          visitorProfile,
+        }),
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error(`${res.status}`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Abdelhamid-Younis-CV.pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      toast("✦ CV downloaded");
+    } catch (err) {
+      if (err instanceof Error && err.name !== "AbortError") {
+        toast("✦ Download failed — reach out via the contact form");
+      }
+    } finally {
+      clearTimeout(warnTimer);
+      clearTimeout(failTimer);
+      setIsGenerating(false);
+    }
+  }
 
   return (
     <section ref={ref} id="home" className="scroll-mt-[60rem] w-full">
@@ -67,9 +139,10 @@ function Intro() {
                 </h1>
 
                 <p className="text-md sm:text-md lg:text-lg leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0">
-                  Senior Product Designer & UX Engineer. I&apos;ve shipped self-checkout systems, data-heavy dashboards, and AI products — closing the gap between design and production.
+                  Senior Product Designer & UX Engineer. I&apos;ve shipped
+                  self-checkout systems, data-heavy dashboards, and AI products
+                  — closing the gap between design and production.
                 </p>
-
               </>
             )}
 
@@ -81,9 +154,16 @@ function Intro() {
                 { value: "60+", label: "stores deployed" },
                 { value: "2", label: "design systems" },
               ].map((stat) => (
-                <div key={stat.label} className="flex flex-col items-center lg:items-start">
-                  <span className="text-xl sm:text-3xl font-bold text-zinc-900 dark:text-white leading-none">{stat.value}</span>
-                  <span className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">{stat.label}</span>
+                <div
+                  key={stat.label}
+                  className="flex flex-col items-center lg:items-start"
+                >
+                  <span className="text-xl sm:text-3xl font-bold text-zinc-900 dark:text-white leading-none">
+                    {stat.value}
+                  </span>
+                  <span className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
+                    {stat.label}
+                  </span>
                 </div>
               ))}
             </div>
@@ -102,14 +182,31 @@ function Intro() {
                 <MdEmail />
               </Link>
 
-              <a
-                download
-                href="/abdelhamid_cv_2025_final.pdf"
-                className="flex gap-2 items-center px-4 sm:px-6 sm:py-3 bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-white/0 rounded-full hover:scale-110 transition"
-              >
-                <p className="hidden sm:block">Download Resume</p>
-                <FaDownload />
-              </a>
+              {status === "done" ? (
+                <button
+                  onClick={handleGenerateCV}
+                  disabled={isGenerating}
+                  className="flex gap-2 items-center px-4 sm:px-6 sm:py-3 bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-white/0 rounded-full hover:scale-110 transition disabled:opacity-60 disabled:scale-100 disabled:cursor-wait"
+                >
+                  <p className="hidden sm:block">
+                    {isGenerating ? "Generating…" : "Get My CV"}
+                  </p>
+                  {isGenerating ? (
+                    <span className="animate-spin inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
+                  ) : (
+                    <HiSparkles />
+                  )}
+                </button>
+              ) : (
+                <a
+                  download
+                  href="/Abdelhamid_Younis_CV_ProductDesigner.pdf"
+                  className="flex gap-2 items-center px-4 sm:px-6 sm:py-3 bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-white/0 rounded-full hover:scale-110 transition"
+                >
+                  <p className="hidden sm:block">Download Resume</p>
+                  <FaDownload />
+                </a>
+              )}
 
               <a
                 href="https://www.linkedin.com/in/a-hamid-younis-17168086/"

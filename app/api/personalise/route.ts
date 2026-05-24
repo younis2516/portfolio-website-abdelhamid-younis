@@ -1,6 +1,35 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { isRateLimited, rateLimitResponse } from "@/lib/rateLimit";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+// Allowlist — only accept roles the onboarding modal offers
+const ALLOWED_ROLES = new Set([
+  "Recruiter / Talent Acquisition",
+  "Hiring Manager",
+  "Founder / CEO",
+  "CTO / Engineering Lead",
+  "Design Lead / Head of Design",
+  "Collaborator / Freelancer",
+  "Just browsing",
+]);
+
+const ALLOWED_COMPANY_TYPES = new Set([
+  "B2C",
+  "B2B / SaaS",
+  "Enterprise",
+  "Startup",
+  "Agency",
+  "Non-profit",
+]);
+
+const ALLOWED_COMPANY_SIZES = new Set([
+  "1–10",
+  "11–50",
+  "51–200",
+  "201–1000",
+  "1000+",
+]);
 
 const PROJECTS = [
   {
@@ -119,6 +148,8 @@ Return ONLY valid JSON. No markdown fences. No explanation. No preamble. Exactly
 }
 
 export async function POST(req: Request) {
+  if (await isRateLimited(req)) return rateLimitResponse();
+
   if (!process.env.ANTHROPIC_API_KEY) {
     return new Response("API key not configured", { status: 500 });
   }
@@ -126,15 +157,28 @@ export async function POST(req: Request) {
   let role: string, companyTypes: string[], companySize: string;
   try {
     const body = await req.json();
-    role = String(body.role ?? "");
-    companyTypes = Array.isArray(body.companyTypes) ? body.companyTypes : [];
-    companySize = String(body.companySize ?? "");
+    role = String(body.role ?? "").slice(0, 100);
+    companyTypes = Array.isArray(body.companyTypes)
+      ? (body.companyTypes as unknown[]).map((t) => String(t).slice(0, 100))
+      : [];
+    companySize = String(body.companySize ?? "").slice(0, 50);
   } catch {
     return new Response("Invalid request body", { status: 400 });
   }
 
   if (!role || !companySize) {
     return new Response("Missing required fields", { status: 400 });
+  }
+
+  // Reject values not from the onboarding allowlist to block prompt injection
+  if (!ALLOWED_ROLES.has(role)) {
+    return new Response("Invalid role", { status: 400 });
+  }
+  if (companyTypes.some((t) => !ALLOWED_COMPANY_TYPES.has(t))) {
+    return new Response("Invalid company type", { status: 400 });
+  }
+  if (companySize && !ALLOWED_COMPANY_SIZES.has(companySize)) {
+    return new Response("Invalid company size", { status: 400 });
   }
 
   try {

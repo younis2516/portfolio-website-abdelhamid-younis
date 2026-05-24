@@ -4,6 +4,7 @@ import { renderToBuffer } from "@react-pdf/renderer";
 import { CVDocument } from "@/components/cv/CVDocument";
 import { cvData } from "@/lib/cvData";
 import type { CvData } from "@/lib/cvData";
+import { isRateLimited, rateLimitResponse } from "@/lib/rateLimit";
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
@@ -82,6 +83,8 @@ function getTailoringRules(focus: string): string {
 // ─── API Route ─────────────────────────────────────────────────────────────
 
 export async function POST(req: Request) {
+  if (await isRateLimited(req)) return rateLimitResponse();
+
   if (!process.env.ANTHROPIC_API_KEY) {
     return new Response("API key not configured", { status: 500 });
   }
