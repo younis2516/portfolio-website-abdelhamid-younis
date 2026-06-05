@@ -9,6 +9,7 @@ import profile_img_1 from "@/public/profile_img_1.jpeg";
 import profile_img_2 from "@/public/profile_img_2.jpeg";
 import profile_img_3 from "@/public/profile_img_3.jpeg";
 import forasnaCover from "@/public/forasna-banner.png";
+import AiPosDashboardCover from "@/public/ai-pos-dashboard-project-image.png";
 
 import { StaticImageData } from "next/image";
 
@@ -212,6 +213,18 @@ export const projectsData: Project[] = [
     bgColor: "#474738",
   },
   {
+    id: "ai-pos-dashboard",
+    title: "AI-Assisted POS Dashboard — Figma Make × Claude Pipeline",
+    project_type: ["Enterprise", "Built with AI"],
+    description:
+      "Compressed a 4-week design cycle into 10 days using a Figma Make → Claude → Figma Make pipeline. Reduced 40 inline filters to 5–6 smart quick filters and iterated 10+ UI decisions at 2–5 min each.",
+    tags: ["Enterprise", "AI", "Figma Make", "Rapid Prototyping"],
+    imageUrl: AiPosDashboardCover,
+    year: "2026",
+    readingTime: 8,
+    bgColor: "#1E3A5F",
+  },
+  {
     id: "tubics-video-optimization-tool",
     title: "Driving Product Adoption in an AI-Powered SaaS Platform",
     project_type: ["Saas B2B", "Data heavy"],
@@ -259,17 +272,6 @@ export const projectsData: Project[] = [
     readingTime: 4,
     bgColor: "#F3F4F6",
   },
-  // {
-  //   title: "AI-Assisted POS Dashboard — Figma Make × Claude Pipeline",
-  //   project_type: ["Enterprise", "Built with AI"],
-  //   description:
-  //     "Compressed a 4-week design cycle into 10 days using a Figma Make → Claude → Figma Make pipeline. Reduced 40 inline filters to 5–6 smart quick filters and iterated 10+ UI decisions at 2–5 min each.",
-  //   tags: ["Enterprise", "AI", "Figma Make", "Rapid Prototyping"],
-  //   imageUrl: pro_img_6,
-  //   year: "2026",
-  //   readingTime: 8,
-  //   bgColor: "#1E3A5F",
-  // },
 ];
 
 export interface TestimonialData {

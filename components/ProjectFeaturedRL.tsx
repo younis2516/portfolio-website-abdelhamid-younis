@@ -6,7 +6,7 @@ import { projectsData } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
 import { RxArrowTopRight } from "react-icons/rx";
-import { FiExternalLink } from "react-icons/fi";
+import { FiExternalLink, FiLock } from "react-icons/fi";
 
 type ProjectProps2 = (typeof projectsData)[number];
 
@@ -121,6 +121,14 @@ export default function ProjectFeaturedRL({
               className={`absolute top-6 right-6 sm:top-6 sm-right-6 w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-black text-white flex items-center justify-center`}
             >
               <RxArrowTopRight />
+            </div>
+          )}
+
+          {/* Password-protected badge */}
+          {id === "ai-pos-dashboard" && (
+            <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-medium">
+              <FiLock className="w-3 h-3" />
+              Password protected
             </div>
           )}
 

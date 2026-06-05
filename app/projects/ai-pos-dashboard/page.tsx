@@ -1,13 +1,98 @@
 "use client";
 
 import Link from "next/link";
-import { FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft, FiLock } from "react-icons/fi";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+
+function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === "aiposdashboard@123!") {
+      sessionStorage.setItem("aipos-unlocked", "true");
+      onUnlock();
+    } else {
+      setError(true);
+    }
+  };
+
+  return (
+    <main className="flex items-center justify-center min-h-[80vh] px-4">
+      <div className="w-full max-w-md bg-white dark:bg-gray-900 border border-black/10 dark:border-white/10 rounded-3xl p-8 sm:p-10 shadow-xl">
+        <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gray-100 dark:bg-white/10 mx-auto mb-6">
+          <FiLock className="w-6 h-6 text-gray-600 dark:text-white/70" />
+        </div>
+        <h1 className="text-2xl font-semibold text-center mb-3 text-gray-900 dark:text-white">
+          Password Protected
+        </h1>
+        <p className="text-gray-500 dark:text-white/60 text-center text-sm mb-8 leading-relaxed">
+          This is a password protected product. You can contact me directly at{" "}
+          <a
+            href="mailto:abdelhamiduonis@hotmail.com"
+            className="text-blue-500 dark:text-blue-400 underline underline-offset-2 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+          >
+            abdelhamiduonis@hotmail.com
+          </a>{" "}
+          to obtain the password.
+        </p>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError(false);
+            }}
+            placeholder="Enter password"
+            autoFocus
+            className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition"
+          />
+          {error && (
+            <p className="text-red-500 dark:text-red-400 text-sm text-center">
+              Incorrect password. Please try again.
+            </p>
+          )}
+          <button
+            type="submit"
+            className="w-full px-6 py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium hover:opacity-90 transition"
+          >
+            Unlock
+          </button>
+        </form>
+        <div className="mt-6 text-center">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-sm text-gray-400 dark:text-white/40 hover:text-gray-600 dark:hover:text-white/60 transition-colors"
+          >
+            <FiArrowLeft className="w-4 h-4" /> Back to portfolio
+          </Link>
+        </div>
+      </div>
+    </main>
+  );
+}
 
 export default function AIPOSDashboardPage() {
+  const [unlocked, setUnlocked] = useState(false);
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("aipos-unlocked") === "true") {
+      setUnlocked(true);
+    }
+    setChecked(true);
+  }, []);
+
+  if (!checked) return null;
+  if (!unlocked) return <PasswordGate onUnlock={() => setUnlocked(true)} />;
+
   return (
     <main className="flex flex-col items-center pb-16">
       {/* HERO */}
-      <div className="relative w-full overflow-hidden bg-[#0f172a] -mt-28 sm:-mt-36 flex items-end justify-center min-h-[16rem] sm:min-h-[22rem]">
+      {/* <div className="relative w-full overflow-hidden bg-[#0f172a] -mt-28 sm:-mt-36 flex items-end justify-center min-h-[16rem] sm:min-h-[22rem]">
         <div className="absolute inset-0 flex justify-center">
           <div className="relative w-full sm:max-w-[73rem] px-4">
             <Link
@@ -27,6 +112,25 @@ export default function AIPOSDashboardPage() {
             <br />
             <span className="text-blue-400">Figma Make × Claude Pipeline</span>
           </h1>
+        </div>
+      </div> */}
+
+      <div className="relative w-full overflow-hidden bg-yellow-200 -mt-28 sm:-mt-36">
+        <img
+          src="/ai-pos-dashboard-banner.png"
+          alt="App Radar banner"
+          className="w-full object-contain"
+        />
+
+        <div className="absolute inset-0 flex justify-center">
+          <div className="relative w-full sm:max-w-[73rem] px-4">
+            <Link
+              href="/"
+              className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white border shadow-sm"
+            >
+              <FiArrowLeft /> Back
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -90,21 +194,58 @@ export default function AIPOSDashboardPage() {
               with a fixed backend and a 2-week delivery window.
             </p>
 
+            <div className="text-xs font-semibold uppercase tracking-wider text-blue-500 dark:text-red-400 mb-2">
+              Research insights (5 Expert interviews)
+            </div>
+            <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-6 max-w-3xl">
+              I interviewed 5 expert users from first level, and second level
+              support to understand their pains with the current tool. And
+              collected the finiding in Miro.
+              <br></br>
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 ">
+              <div className="relative w-full aspect-[1/1] mb-8">
+                <Image
+                  src="/pos-dashoard-user-interview.png"
+                  alt="Empty state"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="relative w-full aspect-[1/1] mb-8">
+                <Image
+                  src="/pos-dashoard-user-interview-2.png"
+                  alt="Empty state"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+
             <div className="grid grid-cols-2 gap-4 my-8">
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wider text-red-500 dark:text-red-400 mb-2">
                   Before
                 </div>
-                <div className="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 flex items-center justify-center h-48 text-neutral-400 text-sm">
-                  40+ inline filters, flat dropdown-heavy layout
+                <div className="relative w-full aspect-[16/9] mb-8">
+                  <Image
+                    src="/pos-dashoard-6.png"
+                    alt="Empty state"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
               </div>
               <div>
                 <div className="text-xs font-semibold uppercase tracking-wider text-green-500 dark:text-green-400 mb-2">
                   After
                 </div>
-                <div className="rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 flex items-center justify-center h-48 text-neutral-400 text-sm">
-                  5–6 smart filters + advanced search drawer
+                <div className="relative w-full aspect-[16/9] mb-8">
+                  <video
+                    src="/video-overview-kassen.mp4"
+                    controls
+                    className="w-full rounded-lg"
+                  />
                 </div>
               </div>
             </div>
@@ -220,7 +361,7 @@ export default function AIPOSDashboardPage() {
             </div>
 
             {/* Iteration velocity table */}
-            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            {/* <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
               Iteration Velocity Comparison
             </h3>
             <div className="rounded-xl overflow-hidden border border-neutral-200 dark:border-white/10 mb-6">
@@ -261,7 +402,7 @@ export default function AIPOSDashboardPage() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </div> */}
           </section>
 
           {/* 03 Decisions */}
@@ -321,6 +462,14 @@ export default function AIPOSDashboardPage() {
                         </span>
                       ))}
                     </div>
+                    <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                      <Image
+                        src="/pos-dashoard-4.png"
+                        alt="Empty state"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
                   </div>
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-green-600 dark:text-green-400 mb-1">
@@ -344,6 +493,20 @@ export default function AIPOSDashboardPage() {
                       <span className="text-xs px-2 py-0.5 bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-white/50 rounded-full border border-neutral-200 dark:border-white/10">
                         + Erweiterte Suche
                       </span>
+                    </div>
+                    <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                      <video
+                        src="/video-filialen.mp4"
+                        controls
+                        className="w-full rounded-lg"
+                      />
+                    </div>
+                    <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                      <video
+                        src="/video-filialen-filters.mp4"
+                        controls
+                        className="w-full rounded-lg"
+                      />
                     </div>
                   </div>
                 </div>
@@ -377,7 +540,20 @@ export default function AIPOSDashboardPage() {
                   boolean fields to radio buttons, converted multi-option fields
                   (≤6 options) to chip selectors, and added Material Symbols
                   icons to every field.
+                  <br /> <br></br>
+                  Converted single-select dropdowns with ≤4 options to segmented
+                  controls and multi-select dropdowns to chip selectors with
+                  checkmarks. Reduced interaction cost from 2 clicks to 1, and
+                  made selection state immediately visible at all times.
                 </p>
+
+                <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                  <video
+                    src="/video-advanced-filters.mp4"
+                    controls
+                    className="w-full rounded-lg"
+                  />
+                </div>
                 <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
                   <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
                     Sample Prompt
@@ -393,7 +569,7 @@ export default function AIPOSDashboardPage() {
                 </div>
               </div>
 
-              {/* D03 */}
+              {/* D03
               <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
                 <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
                   DECISION 03
@@ -423,12 +599,12 @@ export default function AIPOSDashboardPage() {
                     Version dropdowns — convert them to filter chips.&quot;
                   </p>
                 </div>
-              </div>
+              </div> */}
 
-              {/* D04 */}
+              {/* D03 */}
               <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
                 <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
-                  DECISION 04
+                  DECISION 03
                 </div>
                 <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
                   Filter Section Redesign
@@ -440,6 +616,21 @@ export default function AIPOSDashboardPage() {
                   buttons for multiselect fields, and a subtle bottom divider.
                   Reduced visual weight by ~40% while improving scannability.
                 </p>
+
+                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                  Added Material Symbols Rounded icons to all dropdown and input
+                  fields across both the quick filter bar and the advanced
+                  search form. Improved scannability in dense forms and provided
+                  visual anchors for repeated interactions.
+                </p>
+                <div className="relative w-full aspect-[16/9] mb-8">
+                  <Image
+                    src="/pos-dashboard-14.png"
+                    alt="Empty state"
+                    fill
+                    className="object-contain rounded rounded-xl overflow-hidden"
+                  />
+                </div>
                 <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
                   <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
                     Sample Prompt (Round 7)
@@ -456,10 +647,10 @@ export default function AIPOSDashboardPage() {
                 </div>
               </div>
 
-              {/* D05 */}
+              {/* D04 */}
               <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
                 <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
-                  DECISION 05
+                  DECISION 04
                 </div>
                 <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
                   Dynamic Column Visibility Label
@@ -470,6 +661,16 @@ export default function AIPOSDashboardPage() {
                   real-time as users toggle column visibility. Made hidden
                   column state discoverable at a glance.
                 </p>
+
+                <div className="relative w-full aspect-[16/9] mb-8">
+                  <Image
+                    src="/pos-dashbpoard-13.png"
+                    alt="Empty state"
+                    fill
+                    className="object-contain rounded rounded-xl overflow-hidden"
+                  />
+                </div>
+
                 <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
                   <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
                     Sample Prompt (Round 3)
@@ -482,10 +683,10 @@ export default function AIPOSDashboardPage() {
                 </div>
               </div>
 
-              {/* D06 */}
+              {/* D05 */}
               <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
                 <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
-                  DECISION 06
+                  DECISION 05
                 </div>
                 <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
                   Information Hierarchy Reordering
@@ -510,10 +711,33 @@ export default function AIPOSDashboardPage() {
                 </div>
               </div>
 
-              {/* D07 */}
+              {/* D06 */}
               <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
                 <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
-                  DECISION 07
+                  DECISION 06
+                </div>
+                <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                  Moved saved filters under account
+                </h4>
+                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                  Moved saved filters under account, due to backend limitations
+                  we can not save filters per user on the backend so we decided
+                  to save it in session cookies. So the user can access them
+                  anytime without needing to recreate filters.
+                </p>
+                <div className="relative w-full aspect-[16/9] mb-8">
+                  <video
+                    src="/video-saved-filters.mp4"
+                    controls
+                    className="w-full rounded-lg"
+                  />
+                </div>
+              </div>
+
+              {/* D06 */}
+              {/* <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
+                <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
+                  DECISION 06
                 </div>
                 <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
                   Icon System for Form Fields
@@ -556,10 +780,10 @@ export default function AIPOSDashboardPage() {
                     Add appropriate Material Symbols icons to each field.&quot;
                   </p>
                 </div>
-              </div>
+              </div> */}
 
               {/* D08 */}
-              <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
+              {/* <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
                 <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
                   DECISION 08
                 </div>
@@ -583,7 +807,7 @@ export default function AIPOSDashboardPage() {
                     results page.&quot;
                   </p>
                 </div>
-              </div>
+              </div> */}
             </div>
           </section>
 
@@ -595,7 +819,7 @@ export default function AIPOSDashboardPage() {
             <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
               Technology Pipeline
             </h2>
-            <div className="flex flex-wrap gap-3 mb-8">
+            {/* <div className="flex flex-wrap gap-3 mb-8">
               {[
                 "Figma Make",
                 "Claude 4.0 (claude.ai)",
@@ -611,8 +835,17 @@ export default function AIPOSDashboardPage() {
                   {t}
                 </span>
               ))}
+            </div> */}
+
+            <div className="relative w-full aspect-[16/9] mb-8">
+              <Image
+                src="/pos_dashboard_ai_workflow 1.png"
+                alt="Empty state"
+                fill
+                className="object-contain"
+              />
             </div>
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               {[
                 [
                   "Figma Make",
@@ -625,14 +858,6 @@ export default function AIPOSDashboardPage() {
                 [
                   "Structured Markdown Handoff",
                   "design.md (visual specs: colors, typography, spacing), description.md (component behaviour: states, logic), instructions.md (business context, constraints, rationale). Version-controlled in Git. Human-readable and AI-parseable. The lynchpin that made the pipeline work.",
-                ],
-                [
-                  "React + TypeScript",
-                  "Component-based architecture matching production stack. Type safety caught data model mismatches early. Hot reload enabled instant visual feedback. Reusable component library emerged naturally through iteration.",
-                ],
-                [
-                  "Material Symbols Rounded",
-                  "Consistent icon system across all form fields. Open source, customisable via CSS. Variable font support for weight/fill. Improved form scannability and visual hierarchy across 40+ fields.",
                 ],
               ].map(([name, desc]) => (
                 <div
@@ -647,7 +872,7 @@ export default function AIPOSDashboardPage() {
                   </p>
                 </div>
               ))}
-            </div>
+            </div> */}
           </section>
 
           {/* 05 Outcomes */}
@@ -709,9 +934,7 @@ export default function AIPOSDashboardPage() {
             <ul className="space-y-3 mb-8">
               {[
                 "Initial learning curve — structuring markdown exports and writing effective prompts took 2–3 days.",
-                "TypeScript errors interrupted flow and required manual debugging in VS Code, breaking the conversational rhythm.",
                 'Hard to show "design thinking" — stakeholders used to design comps were skeptical of code-first prototypes.',
-                "Performance limits — had to scale back from 500 to 200 mock rows when rendering caused blank previews.",
                 "Icon/asset management — adding custom SVG assets required manual file management Claude couldn't automate.",
               ].map((item) => (
                 <li
@@ -737,7 +960,7 @@ export default function AIPOSDashboardPage() {
                 ],
                 [
                   "2. Structured handoff is the lynchpin.",
-                  "Without design.md / description.md / instructions.md, Claude lost context across rounds and developers couldn't understand intent. Too little → Claude loses context. Too much → developers ignore it.",
+                  "Without design.md / description.md / instructions.md, Claude lost context across rounds. Too little → Claude loses context.",
                 ],
                 [
                   "3. Functional prototypes change conversations.",
@@ -792,13 +1015,6 @@ export default function AIPOSDashboardPage() {
               learn just enough code to be dangerous.
             </p>
           </section>
-
-          {/* Footer */}
-          <footer className="pt-12 border-t border-neutral-200 dark:border-white/10 text-center">
-            <p className="text-neutral-500 dark:text-white/40 text-sm">
-              Designed and documented by Abdelhamid Younis · 2024
-            </p>
-          </footer>
         </div>
       </div>
     </main>
