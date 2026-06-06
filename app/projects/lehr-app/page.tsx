@@ -10,7 +10,10 @@ export default function LehrAppPage() {
   const overviewRef = useSectionRegistration("overview", "Overview");
   const challengeRef = useSectionRegistration("challenge", "Challenge");
   const processRef = useSectionRegistration("process", "Design Process");
-  const designRef = useSectionRegistration("design-decisions", "Design Decisions");
+  const designRef = useSectionRegistration(
+    "design-decisions",
+    "Design Decisions",
+  );
   const aiStackRef = useSectionRegistration("ai-stack", "AI Architecture");
   const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
 
@@ -19,15 +22,15 @@ export default function LehrAppPage() {
       {/* Banner */}
       <div className="relative w-full overflow-hidden -mt-28 sm:-mt-36">
         <img
-          src="/hero-image-lehr.app-desktop.jpg"
+          src="/lehr-app-banner.png"
           alt="lehr.app banner"
-          className="w-full hidden sm:block object-contain"
+          className="w-full object-contain"
         />
-        <img
+        {/* <img
           src="/hero-image-lehr.app-mobile.png"
           alt="lehr.app banner"
           className="w-full block sm:hidden object-contain"
-        />
+        /> */}
 
         <div className="absolute inset-0 flex justify-center">
           <div className="relative w-full sm:max-w-[73rem] px-4">
@@ -45,7 +48,11 @@ export default function LehrAppPage() {
         <ProjectHighlighter />
         <div className="bg-white dark:bg-gray-900 rounded-[40px] shadow-xl border border-gray-200 dark:border-gray-800 p-6 sm:p-10">
           {/* HERO */}
-          <header id="overview" ref={overviewRef as React.Ref<HTMLElement>} className="mb-16">
+          <header
+            id="overview"
+            ref={overviewRef as React.Ref<HTMLElement>}
+            className="mb-16"
+          >
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
               Designing & Building an AI-Native Learning System — lehr.app
             </h1>
@@ -134,7 +141,11 @@ export default function LehrAppPage() {
           </div>
 
           {/* IMPACT */}
-          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>} className="mb-20">
+          <section
+            id="outcomes"
+            ref={outcomesRef as React.Ref<HTMLElement>}
+            className="mb-20"
+          >
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               Product Impact
             </h2>
@@ -166,7 +177,11 @@ export default function LehrAppPage() {
           </section>
 
           {/* PROBLEM */}
-          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>} className="mb-20">
+          <section
+            id="challenge"
+            ref={challengeRef as React.Ref<HTMLElement>}
+            className="mb-20"
+          >
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               Framing the Core Problem
             </h2>
@@ -181,8 +196,12 @@ export default function LehrAppPage() {
           </section>
 
           {/* TEMPLATE SYSTEM */}
-          <section id="process" ref={processRef as React.Ref<HTMLElement>} className="mb-20 grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div>
+          <section
+            id="process"
+            ref={processRef as React.Ref<HTMLElement>}
+            className="mb-20 grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
+            <div className="">
               <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
                 Intent-Driven Template System
               </h2>
@@ -207,14 +226,25 @@ export default function LehrAppPage() {
                 the AI better criteria to generate the exercise.
               </p>
             </div>
-
-            <div className="relative w-full aspect-square">
-              <Image
-                src="/lehr-template-4.png"
-                alt="Template"
-                fill
-                className="object-contain"
-              />
+            <div className="">
+              <div className="grid grid-cols-2">
+                <div className="relative w-full aspect-[9/16] rounded rounded-xl">
+                  <Image
+                    src="/lehr-app-new-1.png"
+                    alt="Template"
+                    fill
+                    className="object-contain "
+                  />
+                </div>
+                <div className="relative w-full  aspect-[9/16] rounded rounded-xl">
+                  <Image
+                    src="/lehr-app-new-0.png"
+                    alt="Template"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
             </div>
           </section>
 
@@ -246,12 +276,11 @@ export default function LehrAppPage() {
               </p>
             </div>
 
-            <div className="relative w-full aspect-[9/16]">
-              <Image
-                src="/lehr-video-1.gif"
-                alt="Latency UX"
-                fill
-                className="object-contain"
+            <div className="relative w-full aspect-[1/1]">
+              <video
+                src="/lehr-app-new-video-1.mp4"
+                controls
+                className="w-full h-[500px] object-contain rounded-lg"
               />
             </div>
           </section>
@@ -294,12 +323,11 @@ export default function LehrAppPage() {
               </p>
             </div>
 
-            <div className="relative w-full aspect-[9/16]">
-              <Image
-                src="/lehr-video-2.gif"
-                alt="Streaming UX"
-                fill
-                className="object-contain"
+            <div className="relative w-full aspect-[1/1]">
+              <video
+                src="/lehr-app-vew-video-2.mp4"
+                controls
+                className="w-full h-[500px] object-contain rounded-lg"
               />
             </div>
           </section>
@@ -327,18 +355,131 @@ export default function LehrAppPage() {
               </p>
             </div>
 
-            <div className="relative w-full aspect-square">
-              <Image
-                src="/lehr-stats-1.png"
-                alt="Analytics"
-                fill
-                className="object-contain"
+            <div className="relative w-full aspect-[1/1]">
+              <video
+                src="/lehr-app-new-video-3.mp4"
+                controls
+                className="w-full h-[500px] object-contain rounded-lg"
+              />
+            </div>
+          </section>
+
+          {/* ANALYTICS */}
+          <section className="mb-20 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+                Word Deck
+              </h2>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Every word encountered during an exercise is automatically
+                collected into the user's Word Deck — no manual saving required.
+                Each word is tracked with attempt count and average score,
+                giving learners a live mastery signal rather than a static list.
+              </p>
+
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Design decisions
+              </p>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                I introduced a mastery ring per word — an SVG progress ring
+                colored by score band (green above 85, gold 70–84, pink below
+                70) — so learners can scan their weak spots at a glance without
+                reading numbers. Words with no attempts show an empty ring,
+                making the "not yet practiced" state visually distinct from a
+                low score.
+              </p>
+
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Template-scoped view
+              </p>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                The deck is also accessible directly from any template card,
+                filtered to show only the words collected from that template's
+                exercises. This connects learning intent — the topic and theme a
+                user chose — to the vocabulary it produced, making review feel
+                purposeful rather than random.
+              </p>
+            </div>
+
+            <div className="relative w-full aspect-[1/1]">
+              <video
+                src="/lehr-app-words-video.mp4"
+                controls
+                className="w-full h-[500px] object-contain rounded-lg"
+              />
+            </div>
+          </section>
+
+          <section className="mb-20 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
+                Personalised Theming
+              </h2>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                The app's accent color is not a static design decision — it is a
+                user-controlled preference stored in the backend profile object
+                and applied at runtime. On every app load, the frontend reads
+                the accent_color field from the profile API response, maps it to
+                a hex value, and writes it directly to the CSS custom property{" "}
+                <code className="text-sm bg-gray-100 dark:bg-gray-800 px-1 rounded">
+                  --accent
+                </code>{" "}
+                on the document root. Every button, badge, progress bar, active
+                tab, selected chip, and mastery ring across the entire app
+                instantly reflects the user's choice — with no page reload.
+              </p>
+
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Design decisions
+              </p>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                I chose 8 accent colors that each carry a personality — indigo
+                as the default, teal and emerald green for calm focus, sky blue
+                for familiarity, orange for energy, pink and coral for
+                expressiveness. In light mode, each accent is darkened by 20%
+                using{" "}
+                <code className="text-sm bg-gray-100 dark:bg-gray-800 px-1 rounded">
+                  color-mix
+                </code>{" "}
+                to maintain WCAG AA contrast on white surfaces, so the theming
+                works across both dark and light modes without separate color
+                definitions.
+              </p>
+
+              <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mt-4 leading-relaxed">
+                Instant preview
+              </p>
+
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                Tapping a color swatch in the Profile page applies the new
+                accent immediately as a live preview, then persists it to the
+                backend via a debounced PUT request 600ms later. The result is a
+                snappy, tactile interaction — the app recolors in real time as
+                the user taps through options, with no loading state or
+                confirmation step needed.
+              </p>
+            </div>
+
+            <div className="relative w-full aspect-[1/1]">
+              <video
+                src="/lehr-app-themeing-video.mp4"
+                controls
+                className="w-full h-[500px] object-contain rounded-lg"
               />
             </div>
           </section>
 
           {/* ARCHITECTURE */}
-          <section id="ai-stack" ref={aiStackRef as React.Ref<HTMLElement>} className="mb-20">
+          <section
+            id="ai-stack"
+            ref={aiStackRef as React.Ref<HTMLElement>}
+            className="mb-20"
+          >
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               System Architecture
             </h2>
@@ -361,7 +502,11 @@ export default function LehrAppPage() {
           </section>
 
           {/* VALIDATION */}
-          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>} className="mb-20">
+          <section
+            id="design-decisions"
+            ref={designRef as React.Ref<HTMLElement>}
+            className="mb-20"
+          >
             <h2 className="text-xl sm:text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               Validation
             </h2>

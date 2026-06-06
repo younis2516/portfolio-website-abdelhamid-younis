@@ -50,6 +50,12 @@ const PROJECTS = [
     description: "Co-founded and built solo. Streaming AI, websocket architecture, Next.js + Clerk + Stripe.",
   },
   {
+    id: "ai-pos-dashboard",
+    title: "AI-Assisted POS Dashboard — Figma Make × Claude Pipeline",
+    tags: ["Enterprise", "AI", "Figma Make", "Rapid Prototyping"],
+    description: "Compressed a 4-week design cycle into 10 days using Figma Make → Claude → Figma Make pipeline. Reduced 40 inline filters to 5–6 smart quick filters.",
+  },
+  {
     id: "tubics-video-optimization-tool",
     title: "Driving Product Adoption in an AI-Powered SaaS Platform",
     tags: ["SaaS", "B2B", "UX Research", "Data-heavy"],
@@ -103,13 +109,13 @@ ${EXPERIENCES.map((e) => `- ${e.id}: "${e.company}" — ${e.title} (${e.date}) [
 PERSONALISATION RULES:
 
 PROJECTS — show 3–5 maximum. Be aggressive. Remove irrelevant ones.
-- Enterprise + large company (1000+): prioritise rewe-white-label-sco, billa-terminal, tubics-design-system-documentation. Hide startup-only projects.
+- Enterprise + large company (1000+): prioritise rewe-white-label-sco, ai-pos-dashboard, billa-terminal, tubics-design-system-documentation. Hide startup-only projects.
 - Startup / small company (1–200): prioritise lehr-app, tubics-video-optimization-tool, app-radar-ui-redesign. Deprioritise heavy enterprise work.
 - B2C: prioritise rewe-white-label-sco, lehr-app.
 - B2B / SaaS: prioritise tubics-video-optimization-tool, app-radar-ui-redesign, tubics-design-system-documentation, forasna-form.
-- Founder / CTO / Engineer: lead with lehr-app. Emphasise full-stack and AI credentials.
-- Design Lead / Design-focused: prioritise tubics-video-optimization-tool, app-radar-ui-redesign, tubics-design-system-documentation. Emphasise craft and process.
-- Recruiter / Hiring Manager: show breadth — 1 enterprise (rewe-white-label-sco), 1 startup (lehr-app), 1 SaaS (tubics-video-optimization-tool).
+- Founder / CTO / Engineer: lead with lehr-app and ai-pos-dashboard. Emphasise full-stack and AI credentials.
+- Design Lead / Design-focused: prioritise tubics-video-optimization-tool, ai-pos-dashboard, app-radar-ui-redesign, tubics-design-system-documentation. Emphasise craft and process.
+- Recruiter / Hiring Manager: show breadth — 1 enterprise (rewe-white-label-sco), 1 AI (ai-pos-dashboard), 1 startup (lehr-app), 1 SaaS (tubics-video-optimization-tool).
 
 EXPERIENCE — never hide any entry. Reorder by relevance. Highlight 1–2 most relevant.
 - Large company (1000+): put rewe first, highlight it.

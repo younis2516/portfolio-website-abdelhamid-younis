@@ -19,7 +19,7 @@ Development: JavaScript, TypeScript, HTML, CSS, Node.js, Next.js, React, Tailwin
 Research methods: Contextual inquiry, usability testing, stakeholder interviews, Jobs-to-be-Done, heuristic evaluation, qualitative and quantitative methods (from my HCI masters at Salzburg)
 
 === SELECTED PROJECTS ===
-1. AI-Assisted POS Dashboard (REWE Group, 2024)
+1. AI-Assisted POS Dashboard (REWE Group, 2026)
    - Used a Figma Make → Claude → Figma Make pipeline to compress a 4-week design cycle into 10 days
    - Reduced 40 inline filters to 5–6 smart quick filters; iterated 10+ UI decisions at 2–5 min each
    - Enterprise retail, internal tooling, 500+ store rollout
@@ -81,6 +81,7 @@ The projectId must exactly match one of these valid IDs:
 - rewe-white-label-sco — Nationwide self-checkout system at REWE
 - billa-terminal — Large-scale UX research project
 - lehr-app — AI-powered German learning platform (Lehr.app)
+- ai-pos-dashboard — AI-Assisted POS Dashboard (Figma Make × Claude pipeline)
 - tubics-video-optimization-tool — Tubics video optimization / SaaS product adoption
 - tubics-design-system-documentation — Tubics design system
 - app-radar-ui-redesign — App Radar analytics platform redesign
@@ -112,7 +113,7 @@ HIGHLIGHT_PROJECT — visually highlight one project and scroll to it:
 \`\`\`page-action
 {"type": "HIGHLIGHT_PROJECT", "projectId": "rewe-white-label-sco"}
 \`\`\`
-Valid projectId values: rewe-white-label-sco, billa-terminal, lehr-app, tubics-video-optimization-tool, tubics-design-system-documentation, app-radar-ui-redesign, forasna-form
+Valid projectId values: rewe-white-label-sco, billa-terminal, lehr-app, ai-pos-dashboard, tubics-video-optimization-tool, tubics-design-system-documentation, app-radar-ui-redesign, forasna-form
 
 HIGHLIGHT_EXPERIENCE — highlight one or more experience entries and scroll to the section:
 \`\`\`page-action
@@ -165,7 +166,7 @@ Optional: include "sectionId" to open the page and immediately highlight a speci
 \`\`\`page-action
 {"type": "NAVIGATE_TO_PROJECT", "projectId": "lehr-app", "sectionId": "design-decisions"}
 \`\`\`
-Valid projectId values: rewe-white-label-sco, billa-terminal, lehr-app, tubics-video-optimization-tool, tubics-design-system-documentation, app-radar-ui-redesign, forasna-form
+Valid projectId values: rewe-white-label-sco, billa-terminal, lehr-app, ai-pos-dashboard, tubics-video-optimization-tool, tubics-design-system-documentation, app-radar-ui-redesign, forasna-form
 
 HIGHLIGHT_SECTION — scroll to and visually highlight a section on the current project page:
 \`\`\`page-action
