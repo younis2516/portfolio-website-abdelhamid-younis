@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import { useSectionRegistration } from "@/hooks/useSectionRegistration";
 import { ProjectHighlighter } from "@/components/ProjectHighlighter";
+import GrammarSkillsSection from "@/components/GrammarSkillsSection";
 
 export default function LehrAppPage() {
   const overviewRef = useSectionRegistration("overview", "Overview");
@@ -407,6 +408,21 @@ export default function LehrAppPage() {
             <div className="relative w-full aspect-[1/1]">
               <video
                 src="/lehr-app-words-video.mp4"
+                controls
+                className="w-full h-[500px] object-contain rounded-lg"
+              />
+            </div>
+          </section>
+
+          {/* Grammar Cration Skill */}
+          <section className="mb-20 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <GrammarSkillsSection />
+            </div>
+
+            <div className="relative w-full aspect-[1/1]">
+              <video
+                src="/lehr-app-skills-video.mp4"
                 controls
                 className="w-full h-[500px] object-contain rounded-lg"
               />
