@@ -5,15 +5,14 @@ import Image from "next/image";
 import avatar from "../public/avatar.jpeg";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MdEmail } from "react-icons/md";
-import { BsLinkedin } from "react-icons/bs";
 import { useScrollIntoView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active_section_context";
-import { FaDownload, FaGithubSquare } from "react-icons/fa";
-import { HiSparkles } from "react-icons/hi2";
 import { usePortfolio } from "@/context/PortfolioContext";
 import type { VisitorProfile } from "@/context/PortfolioContext";
 import HeroSkeleton from "@/components/skeletons/HeroSkeleton";
+import TracedLine from "@/components/motion/TracedLine";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 function inferCvFocus(profile: VisitorProfile): string {
   const { role, companySize, companyTypes } = profile;
@@ -91,159 +90,134 @@ function Intro() {
   }
 
   return (
-    <section ref={ref} id="home" className="scroll-mt-[60rem] w-full">
-      {/* SAME WIDTH AS NAVBAR */}
-      <div className="max-w-[90%] mx-auto py-0">
-        <div className="grid grid-cols-1 lg:grid-cols-[7fr_3fr] gap-0 sm:gap-4 items-center relative z-0">
-          {/* RIGHT — TEXT CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
-            className="
-              order-2 lg:order-1
-              sm:h-[35.3rem]
-              rounded-3xl
-              mt-4 sm:mt-0
-              px-6 py-8 sm:px-12 sm:py-12
-              bg-gradient-to-br
-              from-[#d7f3ef]
-              via-[#f3efe5]
-              to-[#f7e2c8]
-              dark:from-[#0f2f2c]
-              dark:via-[#2a2520]
-              dark:to-[#3a2f22]
-              flex flex-col
-              items-center text-center
-              lg:items-start lg:text-left
-            "
-          >
-            {/* Greeting line when personalised */}
-            {status === "done" && personalisation?.greeting ? (
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-3 italic">
-                {personalisation.greeting}
-              </p>
-            ) : (
-              <span className="inline-block mb-4 px-4 py-1 text-sm rounded-full bg-zinc-100 dark:bg-zinc-900 text-zinc-600 dark:text-zinc-300 font-medium tracking-wide">
-                Younis Abdelhamid
-              </span>
-            )}
+    <section ref={ref} id="home" className="scroll-mt-28 w-full relative overflow-hidden">
+      <div
+        className="hero-glow hero-glow--amber w-[34rem] h-[34rem] -top-40 -right-40 sm:-top-52 sm:-right-52"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-6xl px-6 pt-20 pb-20 sm:pt-28 sm:pb-28">
+        <div className="grid grid-cols-1 gap-10 items-start">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: EASE }}
+              className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-6"
+            >
+              {status === "done" && personalisation?.greeting
+                ? personalisation.greeting
+                : "Senior Product Designer & UX Engineer — Vienna"}
+            </motion.p>
 
             {status === "loading" ? (
               <HeroSkeleton />
             ) : (
               <>
-                <h1 className="text-lg sm:text-xl lg:text-4xl mb-4 font-semibold leading-[1.15] tracking-tight max-w-2xl mx-auto lg:mx-0">
+                <motion.h1
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1, ease: EASE }}
+                  className="font-display text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.1] text-ink mb-6 max-w-3xl"
+                >
                   {status === "done" && personalisation?.heroTagline
                     ? personalisation.heroTagline
-                    : "Designing enterprise systems that ship to millions"}
-                </h1>
+                    : "Every design decision should trace to a business result."}
+                </motion.h1>
 
-                <p className="text-md sm:text-md lg:text-lg leading-relaxed text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto lg:mx-0">
-                  Senior Product Designer & UX Engineer. I&apos;ve shipped
-                  self-checkout systems, data-heavy dashboards, and AI products
-                  — closing the gap between design and production.
-                </p>
+                <motion.p
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
+                  className="text-base sm:text-lg leading-relaxed text-muted max-w-2xl mb-8"
+                >
+                  I started as an engineer, which means I design for systems, not just screens.
+                  Seven years, twenty million customers, sixty stores, two design systems — from
+                  zero-to-one AI products to enterprise UX that ships across 500+ locations.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3, ease: EASE }}
+                  className="mb-10"
+                >
+                  <TracedLine
+                    decision="Built a nationwide self-checkout system"
+                    result="20M+ customers reached"
+                  />
+                </motion.div>
               </>
             )}
 
-            {/* Metrics bar */}
-            <div className="flex flex-wrap gap-x-12 gap-y-3 mt-6 justify-center lg:justify-start border-t border-black/10 dark:border-white/10 pt-5">
-              {[
-                { value: "7+", label: "years" },
-                { value: "20M+", label: "users reached" },
-                { value: "60+", label: "stores deployed" },
-                { value: "2", label: "design systems" },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="flex flex-col items-center lg:items-start"
-                >
-                  <span className="text-xl sm:text-3xl font-bold text-zinc-900 dark:text-white leading-none">
-                    {stat.value}
-                  </span>
-                  <span className="text-sm text-zinc-500 dark:text-zinc-400 mt-0.5">
-                    {stat.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA BUTTONS */}
-            <div className="flex flex-wrap gap-4 mt-8 sm:mt-auto justify-center lg:justify-start w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: EASE }}
+              className="flex flex-wrap items-center gap-x-8 gap-y-4"
+            >
               <Link
-                href="#contact"
+                href="#projects"
                 onClick={() => {
-                  setActiveSection("Contact");
+                  setActiveSection("Projects");
                   setTimeOfLastClick(Date.now());
                 }}
-                className="flex gap-2 items-center px-4 sm:px-6 sm:py-3 rounded-full bg-black text-white hover:bg-zinc-800 hover:scale-110 transition shadow-lg"
+                className="font-ss-mono text-sm uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent transition-colors"
               >
-                <p className="hidden sm:block">Contact me</p>
-                <MdEmail />
+                See the work →
               </Link>
 
               {status === "done" ? (
                 <button
                   onClick={handleGenerateCV}
                   disabled={isGenerating}
-                  className="flex gap-2 items-center px-4 sm:px-6 sm:py-3 bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-white/0 rounded-full hover:scale-110 transition disabled:opacity-60 disabled:scale-100 disabled:cursor-wait"
+                  className="font-ss-mono text-sm uppercase tracking-widest text-ink underline underline-offset-4 disabled:opacity-50 disabled:cursor-wait"
                 >
-                  <p className="hidden sm:block">
-                    {isGenerating ? "Generating…" : "Get My CV"}
-                  </p>
-                  {isGenerating ? (
-                    <span className="animate-spin inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full" />
-                  ) : (
-                    <HiSparkles />
-                  )}
+                  {isGenerating ? "Generating…" : "Download résumé"}
                 </button>
               ) : (
                 <a
                   download
                   href="/Abdelhamid_Younis_CV_ProductDesigner.pdf"
-                  className="flex gap-2 items-center px-4 sm:px-6 sm:py-3 bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-white/0 rounded-full hover:scale-110 transition"
+                  className="font-ss-mono text-sm uppercase tracking-widest text-ink underline underline-offset-4"
                 >
-                  <p className="hidden sm:block">Download Resume</p>
-                  <FaDownload />
+                  Download résumé
                 </a>
               )}
 
               <a
                 href="https://www.linkedin.com/in/a-hamid-younis-17168086/"
                 target="_blank"
-                className="bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-none p-4 rounded-full hover:scale-110 transition"
+                rel="noreferrer"
+                className="font-ss-mono text-sm uppercase tracking-widest text-muted underline underline-offset-4"
               >
-                <BsLinkedin />
+                LinkedIn
               </a>
-
-              <a
-                href="https://github.com/aaayounis94?tab=repositories"
-                target="_blank"
-                className="bg-white/80 dark:bg-white/10 dark:hover:bg-white/20 backdrop-blur-md border border-white/20 dark:border-none p-4 rounded-full hover:scale-110 transition"
-              >
-                <FaGithubSquare />
-              </a>
-            </div>
-          </motion.div>
-
-          {/* LEFT — IMAGE */}
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-            >
-              <Image
-                width={500}
-                height={650}
-                quality={95}
-                className="h-[18rem] sm:h-[35.3rem] sm:w-[28rem] object-cover rounded-3xl border border-white/20"
-                src={avatar}
-                alt="My profile image"
-              />
             </motion.div>
           </div>
+
+          {/* Portrait — removed from the hero per request, kept here in case it's wanted back.
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
+            className="justify-self-center lg:justify-self-end"
+          >
+            <div
+              className="project-media w-36 sm:w-44"
+              style={{ background: "var(--color-paper)" }}
+            >
+              <Image
+                width={300}
+                height={390}
+                quality={95}
+                className="h-auto w-full object-cover"
+                src={avatar}
+                alt="Younis Abdelhamid"
+              />
+            </div>
+          </motion.div>
+          */}
         </div>
       </div>
     </section>

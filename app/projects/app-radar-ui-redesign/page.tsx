@@ -14,8 +14,9 @@ export default function AppRadarRedesignPage() {
   const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
 
   return (
+    <div className="ss-page project-page">
     <main className="flex flex-col items-center pb-16">
-      {/* Banner */}
+      {/* Banner — retired in the Soft Structuralism redesign, kept for reference
       <div className="relative w-full overflow-hidden bg-yellow-200 -mt-28 sm:-mt-36">
         <img
           src="/app-radar-banner.png"
@@ -34,24 +35,33 @@ export default function AppRadarRedesignPage() {
           </div>
         </div>
       </div>
+      */}
 
       {/* Content */}
-      <div className="w-full sm:max-w-[73rem] -mt-10 px-4 z-10">
+      <div className="w-full sm:max-w-[73rem] px-4 z-10">
+        <div className="pt-12 mb-6">
+          <Link
+            href="/"
+            className="text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent font-ss-mono text-xs uppercase tracking-widest"
+          >
+            ← Back to portfolio
+          </Link>
+        </div>
         <ProjectHighlighter />
-        <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border p-6 sm:p-10">
+        <div className="border border-hairline p-6 sm:p-10">
           {/* HERO */}
           <header id="overview" ref={overviewRef as React.Ref<HTMLElement>} className="mb-16">
-            <h1 className="text-3xl font-bold mb-6">
+            <h1 className="font-display text-3xl sm:text-4xl text-ink mb-6">
               App Radar — Growth & Analytics Platform Redesign
             </h1>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl">
+            <p className="text-muted max-w-3xl">
               I redesigned core parts of App Radar’s B2B SaaS platform to
               improve activation, clarify data interpretation, and transform raw
               ASO data into actionable growth insights for marketers.
             </p>
 
-            <div className="mt-6 space-y-2 text-gray-700 dark:text-white/70">
+            <div className="mt-6 space-y-2 text-muted">
               <p>
                 <strong>Client:</strong> App Radar
               </p>
@@ -70,8 +80,8 @@ export default function AppRadarRedesignPage() {
 
           {/* IMPACT */}
           <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>} className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">Impact</h2>
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">Impact</h2>
+            <ul className="list-disc list-inside space-y-2 text-muted max-w-3xl">
               <li>
                 +30% increase in onboarding completion rate — measured by
                 comparing funnel completion across 4-week cohorts before and
@@ -94,22 +104,22 @@ export default function AppRadarRedesignPage() {
               </li>
             </ul>
 
-            <p className="text-sm text-gray-500 dark:text-white/40 mt-4 max-w-3xl">
+            <p className="font-ss-mono text-xs uppercase tracking-widest text-muted mt-4 max-w-3xl">
               Measured via product analytics over 4 weeks post-launch, compared against the equivalent pre-launch baseline period.
             </p>
           </section>
 
           {/* PROBLEM */}
           <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>} className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">Problem Framing</h2>
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">Problem Framing</h2>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl leading-relaxed">
+            <p className="text-muted max-w-3xl leading-relaxed">
               New users struggled to reach value because the product relied on
               external data connections (App Store, Ads). Without this data,
               dashboards appeared empty and confusing, leading to drop-off.
             </p>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl mt-4 leading-relaxed">
+            <p className="text-muted max-w-3xl mt-4 leading-relaxed">
               The core challenge was designing a system that bridges the gap
               between “no data” and “actionable insights” — while maintaining
               clarity, trust, and engagement.
@@ -118,11 +128,11 @@ export default function AppRadarRedesignPage() {
 
           {/* PROCESS */}
           <section id="process" ref={processRef as React.Ref<HTMLElement>} className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">
               Discovery & System Thinking
             </h2>
 
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
+            <ul className="list-disc list-inside space-y-2 text-muted max-w-3xl">
               <li>Analyzed onboarding drop-offs and activation funnels</li>
               <li>
                 Reviewed session recordings to identify confusion patterns
@@ -136,7 +146,7 @@ export default function AppRadarRedesignPage() {
               <li>Audited competitor tools (SensorTower, App Annie)</li>
             </ul>
 
-            <p className="text-gray-700 dark:text-white/70 mt-6 max-w-3xl">
+            <p className="text-muted mt-6 max-w-3xl">
               Key insight: Users don’t need “data” — they need{" "}
               <strong>direction under uncertainty</strong>.
             </p>
@@ -144,13 +154,13 @@ export default function AppRadarRedesignPage() {
 
           {/* ARCHITECTURE */}
           <section className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">System Architecture</h2>
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">System Architecture</h2>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl">
+            <p className="text-muted max-w-3xl">
               I redesigned the product into a progressive system:
             </p>
 
-            <ul className="list-disc list-inside mt-4 space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
+            <ul className="list-disc list-inside mt-4 space-y-2 text-muted max-w-3xl">
               <li>
                 <strong>Setup Layer:</strong> Connect accounts & prepare data
               </li>
@@ -171,26 +181,31 @@ export default function AppRadarRedesignPage() {
 
           {/* PROBLEM 1 */}
           <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>} className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">
               Solving Data Latency & Empty States
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
+            <p className="text-muted max-w-3xl mb-6">
               Data ingestion takes minutes. Instead of showing empty dashboards,
               I designed a guided transition state that explains what’s
               happening and what the user should expect.
             </p>
 
-            <div className="relative w-full aspect-[16/9] mb-8">
-              <Image
-                src="/app-radar-2.png"
-                alt="Empty state"
-                fill
-                className="object-contain"
-              />
+            <div
+              className="project-media mb-8 p-6 sm:p-10"
+              style={{ background: "var(--color-paper)" }}
+            >
+              <div className="relative w-full aspect-[16/9]">
+                <Image
+                  src="/app-radar-2.png"
+                  alt="Empty state"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl">
+            <p className="text-muted max-w-3xl">
               This reframed waiting time into a “progress phase” rather than a
               failure state.
             </p>
@@ -198,83 +213,103 @@ export default function AppRadarRedesignPage() {
 
           {/* PROBLEM 2 */}
           <section className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">
               Turning Inputs into Insights (ASO System)
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
+            <p className="text-muted max-w-3xl mb-6">
               Users didn’t know what inputs were required to generate value. I
               introduced structured prompts that guide users to add keywords and
               competitors.
             </p>
 
-            <div className="relative w-full aspect-[16/9] mb-10">
-              <Image
-                src="/app-radar-4.png"
-                alt="Keywords"
-                fill
-                className="object-contain"
-              />
+            <div
+              className="project-media mb-10 p-6 sm:p-10"
+              style={{ background: "var(--color-paper)" }}
+            >
+              <div className="relative w-full aspect-[16/9]">
+                <Image
+                  src="/app-radar-4.png"
+                  alt="Keywords"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
+            <p className="text-muted max-w-3xl mb-6">
               Once sufficient data is available, the system generates
               prioritized ASO recommendations with clear actions.
             </p>
 
-            <div className="relative w-full aspect-[16/9]">
-              <Image
-                src="/app-radar-5.png"
-                alt="ASO suggestions"
-                fill
-                className="object-contain"
-              />
+            <div
+              className="project-media p-6 sm:p-10"
+              style={{ background: "var(--color-paper)" }}
+            >
+              <div className="relative w-full aspect-[16/9]">
+                <Image
+                  src="/app-radar-5.png"
+                  alt="ASO suggestions"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           </section>
 
           {/* PROBLEM 3 */}
           <section className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">
               Keyword Intelligence & Optimization
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
+            <p className="text-muted max-w-3xl mb-6">
               Marketers were spending budget without clear visibility into
               keyword performance.
             </p>
 
-            <ul className="list-disc list-inside mb-6 text-gray-700 dark:text-white/70 max-w-3xl">
+            <ul className="list-disc list-inside mb-6 text-muted max-w-3xl">
               <li>Keyword Insights — performance & ranking</li>
               <li>Keyword Opportunities — alternative high-value targets</li>
             </ul>
 
             <div className="grid gap-6">
-              <div className="relative aspect-[16/9]">
-                <Image
-                  src="/app-radar-6.png"
-                  alt="Insights"
-                  fill
-                  className="object-contain"
-                />
+              <div
+                className="project-media p-6 sm:p-10"
+                style={{ background: "var(--color-paper)" }}
+              >
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src="/app-radar-6.png"
+                    alt="Insights"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
-              <div className="relative aspect-[16/9]">
-                <Image
-                  src="/app-radar-7.png"
-                  alt="Opportunities"
-                  fill
-                  className="object-contain"
-                />
+              <div
+                className="project-media p-6 sm:p-10"
+                style={{ background: "var(--color-paper)" }}
+              >
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src="/app-radar-7.png"
+                    alt="Opportunities"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               </div>
             </div>
           </section>
 
           {/* ENGINEERING */}
           <section className="mb-20">
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">
               Engineering & Frontend Collaboration
             </h2>
 
-            <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70 max-w-3xl">
+            <ul className="list-disc list-inside space-y-2 text-muted max-w-3xl">
               <li>Designed state-based UI for async data flows</li>
               <li>Structured scalable dashboard components</li>
               <li>Handled empty, loading, and partial data states</li>
@@ -284,28 +319,34 @@ export default function AppRadarRedesignPage() {
 
           {/* OUTCOME */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-6">
               Outcome & Reflection
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 max-w-3xl mb-6">
+            <p className="text-muted max-w-3xl mb-6">
               This project transformed the product from a data-heavy tool into a
               guided growth system. It reinforced my approach to designing
               analytics products: reduce ambiguity, structure data into meaning,
               and guide users toward action.
             </p>
 
-            <div className="relative w-full aspect-[1/1]">
-              <Image
-                src="/app-radar-3.png"
-                alt="Final dashboard"
-                fill
-                className="object-contain"
-              />
+            <div
+              className="project-media p-6 sm:p-10"
+              style={{ background: "var(--color-paper)" }}
+            >
+              <div className="relative w-full aspect-[1/1]">
+                <Image
+                  src="/app-radar-3.png"
+                  alt="Final dashboard"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
           </section>
         </div>
       </div>
     </main>
+    </div>
   );
 }

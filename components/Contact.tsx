@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react'
-import SectionHeading from './Section_heading'
+import Section from './Section'
 import { useScrollIntoView } from '@/lib/hooks'
 import { motion, AnimatePresence } from 'framer-motion'
 import { SubmitButton } from './SubmitButton'
@@ -14,7 +14,7 @@ export default function Contact() {
     const [showError, setShowError] = useState(false);
     const { contactNudgeMessage } = usePortfolio();
     const handleSubmit = async (e: React.FormEvent) => {
-    
+
         e.preventDefault();
         try {
         const response = await fetch("/api/contact", {
@@ -34,61 +34,71 @@ export default function Contact() {
         }
   };
     return (
-        <motion.section id="contact" ref={ref} className='text-center items-center justify-center flex flex-col gap-10 mb-20 scroll-mt-28 w-[min(100%,48rem)] mt-20'
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{duration:1}}
-        >
-            <SectionHeading>Get in Touch</SectionHeading>
+        <Section ref={ref} id="contact" index="05" title="Get in touch">
+            <div className="max-w-2xl">
+                <p className="text-sm sm:text-base text-muted leading-relaxed mb-8">
+                    Open to senior product design and UX engineering roles — reach out
+                    directly or use the form below.
+                </p>
 
-            <AnimatePresence>
-              {contactNudgeMessage && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2 }}
-                  className="-mt-4 w-full px-5 py-3 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 text-sm text-blue-700 dark:text-blue-300 text-center"
-                >
-                  {contactNudgeMessage}
-                </motion.div>
-              )}
-            </AnimatePresence>
+                <AnimatePresence>
+                  {contactNudgeMessage && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.2 }}
+                      className="mb-8 px-5 py-3 border border-hairline font-ss-mono text-xs uppercase tracking-widest text-muted"
+                    >
+                      {contactNudgeMessage}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-            <p className='font-normal text-base text-gray-700 -mt-12 dark:text-white/80'>Please contact me directly at <a href='mailto:abdelhamiduonis@hotmail.com' className='underline'>abdelhamiduonis@hotmail.com</a> <br></br> or through this form.</p>
-            <form className='flex flex-col w-full pr-10 pl-10 sm:pr-20 sm:pl-20 dark:text-black -mt-4 dark:text-black'
-                onSubmit={handleSubmit}
+                <a
+                    href="mailto:abdelhamiduonis@hotmail.com"
+                    className="group inline-flex items-center gap-3 font-display text-2xl sm:text-4xl text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent mb-16"
                 >
-                <input 
-                    className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-                    placeholder='example@gmail.com'
-                    type='email'
-                    required
-                    name="email"
-                    value={email}
-                    onChange={(e) => {
-                    setEmail(e.target.value);
-                    setShowError(false);
-                    }}
-                    maxLength={500}
-                />
-                {showError && <p className="text-red-500 text-sm mt-1">email is required</p>}
-                <textarea
-                    className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-                    lang='en'
-                    name="message"
-                    placeholder="Your message"
-                    value={message}
-                    onChange={(e) => {
-                    setMessage(e.target.value);
-                    setShowError(false);
-                    }}
-                    required
-                    maxLength={5000}
-                />
-                {showError && <p className="text-red-500 text-sm mt-1">message is required</p>}
-                <SubmitButton  />
-            </form>
-        </motion.section>
+                    abdelhamiduonis@hotmail.com
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                </a>
+
+                <form className="flex flex-col border-t border-hairline pt-10"
+                    onSubmit={handleSubmit}
+                    >
+                    <input
+                        className="h-12 bg-transparent border-b border-hairline focus:border-accent outline-none transition-colors text-ink placeholder:text-muted"
+                        placeholder='example@gmail.com'
+                        type='email'
+                        required
+                        name="email"
+                        value={email}
+                        onChange={(e) => {
+                        setEmail(e.target.value);
+                        setShowError(false);
+                        }}
+                        maxLength={500}
+                    />
+                    {showError && <p className="text-accent text-sm mt-1">email is required</p>}
+                    <textarea
+                        className="h-40 mt-8 bg-transparent border-b border-hairline focus:border-accent outline-none transition-colors resize-none text-ink placeholder:text-muted"
+                        lang='en'
+                        name="message"
+                        placeholder="Your message"
+                        value={message}
+                        onChange={(e) => {
+                        setMessage(e.target.value);
+                        setShowError(false);
+                        }}
+                        required
+                        maxLength={5000}
+                    />
+                    {showError && <p className="text-accent text-sm mt-1">message is required</p>}
+                    <div className="mt-8">
+                      <SubmitButton />
+                    </div>
+                </form>
+            </div>
+        </Section>
     )
 }

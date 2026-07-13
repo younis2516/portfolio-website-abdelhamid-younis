@@ -53,11 +53,11 @@ export function PageSectionsProvider({ children }: { children: ReactNode }) {
 
       el.scrollIntoView({ behavior: "smooth", block: "start" });
 
-      // ring-2 ring-blue-500 equivalent, 2s duration
-      el.style.transition = "box-shadow 0.25s ease, outline 0.25s ease";
-      el.style.outline = "2px solid rgb(59 130 246)";
+      // Soft Structuralism highlight: 2px accent outline, 0 radius, 2s duration
+      el.style.transition = "outline 0.25s ease";
+      el.style.outline = "2px solid #B45309";
       el.style.outlineOffset = "6px";
-      el.style.borderRadius = "8px";
+      el.style.borderRadius = "0";
 
       setTimeout(() => {
         el.style.outline = "";

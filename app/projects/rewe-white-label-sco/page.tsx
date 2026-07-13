@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import { useSectionRegistration } from "@/hooks/useSectionRegistration";
 import { ProjectHighlighter } from "@/components/ProjectHighlighter";
+import TracedLine from "@/components/motion/TracedLine";
 
 export default function BillaSelfCheckoutPage() {
   const overviewRef = useSectionRegistration("overview", "Overview");
@@ -13,9 +14,14 @@ export default function BillaSelfCheckoutPage() {
   const designRef = useSectionRegistration("design-decisions", "Design Decisions");
   const outcomesRef = useSectionRegistration("outcomes", "Outcomes");
 
+  // Radial wash used on this project's media frames (matches lib/data.ts wash for rewe-white-label-sco)
+  const mediaWash =
+    "radial-gradient(120% 120% at 50% 20%, #F6E7A3 0%, transparent 70%)";
+
   return (
-    <main className="flex flex-col items-center px-0 pb-16">
+    <main className="ss-page project-page flex flex-col items-center px-0 pb-16">
       {/* HERO */}
+      {/*
       <div className="relative w-full overflow-hidden -mt-28 sm:-mt-36">
         <img
           src="/rewe-hero.png"
@@ -31,44 +37,64 @@ export default function BillaSelfCheckoutPage() {
           Back
         </Link>
       </div>
+      */}
 
-      <div className="w-full sm:max-w-[900px] -mt-12 px-4 z-10">
+      <div className="w-full sm:max-w-[900px] px-4 pt-10 sm:pt-14">
+        <Link
+          href="/"
+          className="inline-block mb-10 font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent"
+        >
+          ← Back to portfolio
+        </Link>
+
         <ProjectHighlighter />
-        <div className="bg-white dark:bg-gray-800 dark:text-white rounded-[32px] shadow-xl p-8 sm:p-12 space-y-20">
+        <div className="space-y-16 sm:space-y-20">
           {/* CONTEXT */}
           <section id="overview" ref={overviewRef as React.Ref<HTMLElement>}>
-            <h1 className="text-3xl sm:text-4xl font-bold mb-4 dark:text-white">
+            <h1 className="font-display text-3xl sm:text-4xl text-ink mb-4">
               Designing & Scaling a Nationwide Self-Checkout System
             </h1>
 
-            <p className="text-gray-600 leading-relaxed dark:text-white/70">
+            <p className="text-muted leading-relaxed">
               I led the end-to-end redesign of a self-checkout platform used
               daily by millions across Austria. This required balancing UX
               decisions with hardware constraints, operational workflows, and
               real-world system behavior.
             </p>
 
-            <div className="mt-6 text-sm text-gray-600 space-y-1 dark:text-white/70">
+            <div className="mt-6 space-y-3 text-sm text-muted">
               <p>
-                <strong>Company:</strong>
-                <br></br> REWE Group (BILLA)
+                <strong className="font-ss-mono text-xs uppercase tracking-widest text-ink">
+                  Company
+                </strong>
+                <br /> REWE Group (BILLA)
               </p>
               <p>
-                <strong>Role:</strong>
-                <br></br> Senior UX/UI Designer (Solo)
+                <strong className="font-ss-mono text-xs uppercase tracking-widest text-ink">
+                  Role
+                </strong>
+                <br /> Senior UX/UI Designer (Solo)
               </p>
               <p>
-                <strong>Scope:</strong>
-                <br></br> UX, UI, system design, validation, rollout
+                <strong className="font-ss-mono text-xs uppercase tracking-widest text-ink">
+                  Scope
+                </strong>
+                <br /> UX, UI, system design, validation, rollout
               </p>
             </div>
           </section>
 
           {/* PROBLEM */}
-          <section id="challenge" ref={challengeRef as React.Ref<HTMLElement>}>
-            <h2 className="text-2xl font-semibold mb-4">Problem</h2>
+          <section
+            id="challenge"
+            ref={challengeRef as React.Ref<HTMLElement>}
+            className="border-t border-hairline pt-16"
+          >
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+              Problem
+            </h2>
 
-            <p className="text-gray-700 leading-relaxed mb-6 dark:text-white/70">
+            <p className="text-muted leading-relaxed mb-6">
               The challenge wasn't just poor UX. The system was fragmented
               across vendors, tightly coupled to hardware behavior, and
               inconsistent across stores. This created friction in scanning,
@@ -77,7 +103,11 @@ export default function BillaSelfCheckoutPage() {
 
             <div className="grid sm:grid-cols-3 gap-4">
               {["/rewe-1.png", "/rewe-2.png", "/rewe-3.png"].map((src, i) => (
-                <div key={i} className="relative aspect-[4/3]">
+                <div
+                  key={i}
+                  className="project-media relative aspect-[4/3] p-3 sm:p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={src}
                     alt=""
@@ -90,38 +120,35 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* RESEARCH → INSIGHTS */}
-          <section id="process" ref={processRef as React.Ref<HTMLElement>}>
-            <h2 className="text-2xl font-semibold mb-4 dark:text-white/70">
+          <section
+            id="process"
+            ref={processRef as React.Ref<HTMLElement>}
+            className="border-t border-hairline pt-16"
+          >
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               Research → Key Insights
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 dark:text-white/70">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div>
-                <p className="text-gray-700 mb-4 dark:text-white/70">
-                  I conducted <strong>80+ usability tests</strong> across
-                  multiple countries and store environments.
+                <p className="text-muted mb-4">
+                  I conducted <strong className="text-ink">80+ usability tests</strong>{" "}
+                  across multiple countries and store environments.
                 </p>
 
-                <ul className="space-y-2 text-gray-700 dark:text-white/70">
-                  <li>
-                    • Cart visibility directly impacts user confidence
-                  </li>
-                  <li>
-                    • Hardware feedback must guide user behavior
-                  </li>
-                  <li>
-                    • Payment stage dominates attention
-                  </li>
-                  <li>
-                    • Delayed staff intervention improves autonomy
-                  </li>
-                  <li>
-                    • Animations reduce cognitive load
-                  </li>
+                <ul className="space-y-2 text-muted">
+                  <li>• Cart visibility directly impacts user confidence</li>
+                  <li>• Hardware feedback must guide user behavior</li>
+                  <li>• Payment stage dominates attention</li>
+                  <li>• Delayed staff intervention improves autonomy</li>
+                  <li>• Animations reduce cognitive load</li>
                 </ul>
               </div>
               <div>
-                <div className="relative aspect-[1/1]">
+                <div
+                  className="project-media relative aspect-[1/1] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-7.png"}
                     alt=""
@@ -134,14 +161,18 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* KEY DECISIONS */}
-          <section id="design-decisions" ref={designRef as React.Ref<HTMLElement>}>
-            <h2 className="text-2xl font-semibold mb-4">
+          <section
+            id="design-decisions"
+            ref={designRef as React.Ref<HTMLElement>}
+            className="border-t border-hairline pt-16"
+          >
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               Key Design Decisions and Impact
             </h2>
 
-            <ul className="space-y-4 text-gray-700 dark:text-white/70 ">
+            <ul className="space-y-4 text-muted">
               <li>
-                <strong>
+                <strong className="text-ink">
                   Make cart state always visible and Making cart the focus while
                   scanning
                 </strong>
@@ -150,25 +181,25 @@ export default function BillaSelfCheckoutPage() {
               </li>
 
               <li>
-                <strong>Delay staff intervention until payment</strong>
+                <strong className="text-ink">Delay staff intervention until payment</strong>
                 <br />→ Increased user autonomy without increasing errors
                 <br />→ Saved employee time, now they intervene once instead of
                 multiple times during the process
               </li>
 
               <li>
-                <strong>Multicart editing without intervention </strong>
+                <strong className="text-ink">Multicart editing without intervention </strong>
                 <br />→ Faster completion and fewer abandoned purchases
               </li>
 
               <li>
-                <strong>Simplify search & typing interactions</strong>
+                <strong className="text-ink">Simplify search & typing interactions</strong>
                 <br />→ Reduced friction for non-barcode flows
                 <br />→ Reduced time to find items
               </li>
 
               <li>
-                <strong>More transparency on customer benefits </strong>
+                <strong className="text-ink">More transparency on customer benefits </strong>
                 <br />→ less confusion around customer card and available
                 credits
               </li>
@@ -176,37 +207,40 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* SOLUTION */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               Solution (Before & After)
             </h2>
 
-            <p className="text-gray-700 mb-6 dark:text-white/70">
+            <p className="text-muted mb-6">
               I designed a predictable system with clear states, feedback loops,
               and error handling.
             </p>
 
             <div>
-              <p className="text-gray-700 text-lg font-semibold mb-1 dark:text-white/70">
+              <p className="font-display text-lg sm:text-xl text-ink mb-2">
                 More visual guidance
               </p>
-              <p className="text-gray-700 mb-6 dark:text-white/70">
+              <p className="text-muted mb-6">
                 I Guide the user how to interact with the POS hardware through
                 animations.
-                <br></br>
+                <br />
                 Picture 1: Scan an item to start animation
-                <br></br>
+                <br />
                 Picture 2: Card payment animation
-                <br></br>
+                <br />
                 Picture 3: Cash payment animation
-                <br></br>
+                <br />
                 Picture 4: Empties receipt animation. (Users are required to put
                 the receipt in the coupon box when they scan an empties receipt)
-                <br></br>
+                <br />
                 Picture 5: Receipt printing animation
               </p>
               <div className="grid md:grid-cols-3 mb-10 gap-6">
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-15.png"}
                     alt=""
@@ -214,7 +248,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-16.png"}
                     alt=""
@@ -222,7 +259,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-17.png"}
                     alt=""
@@ -230,7 +270,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-receipt-animation.png"}
                     alt=""
@@ -238,7 +281,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-empties-animation.png"}
                     alt=""
@@ -250,16 +296,19 @@ export default function BillaSelfCheckoutPage() {
             </div>
 
             <div>
-              <p className="text-gray-700 text-lg font-semibold mb-1 dark:text-white/70">
-                Before & After:Start screen & Cart
+              <p className="font-display text-lg sm:text-xl text-ink mb-2">
+                Before & After: Start screen & Cart
               </p>
-              <p className="text-gray-700 mb-6 dark:text-white/70">
+              <p className="text-muted mb-6">
                 I reduced clutter in the start screen, focusing on cart as the
                 main element of the screen, and put all secondary actions on a
                 side bar
               </p>
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-before-1.png"}
                     alt=""
@@ -267,7 +316,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-8.png"}
                     alt=""
@@ -279,17 +331,20 @@ export default function BillaSelfCheckoutPage() {
             </div>
 
             <div>
-              <p className="text-gray-700 text-lg font-semibold mt-8 mb-1 dark:text-white/70">
+              <p className="font-display text-lg sm:text-xl text-ink mt-8 mb-2">
                 Before & After: Item search
               </p>
-              <p className="text-gray-700 mb-6 dark:text-white/70">
+              <p className="text-muted mb-6">
                 In the item search, i made the keybopard visible by default and
                 added categories to the start screen. this way users can find
                 the item faster and can navigate to the right category. The
                 keyboard disappears once the user clicks on a category.
               </p>
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-before-2.png"}
                     alt=""
@@ -297,7 +352,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-10.png"}
                     alt=""
@@ -305,7 +363,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-21.png"}
                     alt=""
@@ -317,21 +378,26 @@ export default function BillaSelfCheckoutPage() {
             </div>
 
             <div>
-              <p className="text-gray-700 text-lg font-semibold mt-8 mb-1 dark:text-white/70">
+              <p className="font-display text-lg sm:text-xl text-ink mt-8 mb-2">
                 Before & After: Payment page & Customer card reminder
               </p>
-              <p className="text-gray-700 mb-6 dark:text-white/70">
+              <p className="text-muted mb-6">
                 I reduced the 3 buttons in the customer card reminder page to
                 one popup where the user can just scan their customer card.
-                <br></br> <br></br>In the payment page I made the cart smaller
-                to make the payment the focus of the page.
-                <br></br> Made card and cash primary payment buttons, and all
+                <br />
+                <br />
+                In the payment page I made the cart smaller to make the payment
+                the focus of the page.
+                <br /> Made card and cash primary payment buttons, and all
                 other payment buttons secondary.
-                <br></br> Displayed available credits for shopping bonus and
+                <br /> Displayed available credits for shopping bonus and
                 employee cards
               </p>
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-before-4.jpg"}
                     alt=""
@@ -339,7 +405,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-22.png"}
                     alt=""
@@ -347,7 +416,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-before-3.jpeg"}
                     alt=""
@@ -355,7 +427,10 @@ export default function BillaSelfCheckoutPage() {
                     className="object-contain rounded-lg"
                   />
                 </div>
-                <div className="relative aspect-[3/2]">
+                <div
+                  className="project-media relative aspect-[3/2] p-4"
+                  style={{ background: mediaWash }}
+                >
                   <Image
                     src={"/rewe-9.png"}
                     alt=""
@@ -368,39 +443,37 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* ENGINEERING */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               Constraints & Engineering Collaboration
             </h2>
 
-            <ul className="space-y-2 text-gray-700 dark:text-white/70 ">
-              <li>
-                • Designed for scanner latency and failure states
-              </li>
-              <li>
-                • Adapted flows to weight sensor behavior
-              </li>
-              <li>
-                • Synced UI states with backend system logic and error states
-              </li>
-              <li>
-                • Tested designs in real hardware environments
-              </li>
+            <ul className="space-y-2 text-muted">
+              <li>• Designed for scanner latency and failure states</li>
+              <li>• Adapted flows to weight sensor behavior</li>
+              <li>• Synced UI states with backend system logic and error states</li>
+              <li>• Tested designs in real hardware environments</li>
             </ul>
           </section>
 
           {/* SYSTEM */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Design System</h2>
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+              Design System
+            </h2>
 
-            <p className="text-gray-700 mb-6 dark:text-white/70">
+            <p className="text-muted mb-6">
               Built a white-label system supporting multiple brands with shared
               interaction patterns for Billa (Yellow), Penny (Red), IKI (Green),
               and Bipa (Pink)
             </p>
 
             {["/rewe-12.png", "/rewe-13.png", "/rewe-14.png"].map((src, i) => (
-              <div key={i} className="relative aspect-[5/2] mb-4">
+              <div
+                key={i}
+                className="project-media relative aspect-[5/2] mb-4 p-4"
+                style={{ background: mediaWash }}
+              >
                 <Image
                   src={src}
                   alt=""
@@ -410,7 +483,10 @@ export default function BillaSelfCheckoutPage() {
               </div>
             ))}
 
-            <div className="relative aspect-[1/1] mb-4">
+            <div
+              className="project-media relative aspect-[1/1] mb-4 p-4"
+              style={{ background: mediaWash }}
+            >
               <Image
                 src="/rewe-23.png"
                 alt=""
@@ -421,101 +497,87 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* VALIDATION */}
-          <section id="outcomes" ref={outcomesRef as React.Ref<HTMLElement>}>
-            <h2 className="text-2xl font-semibold mb-4">Alpha Test Results</h2>
+          <section
+            id="outcomes"
+            ref={outcomesRef as React.Ref<HTMLElement>}
+            className="border-t border-hairline pt-16"
+          >
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+              Alpha Test Results
+            </h2>
 
-            <p className="text-gray-700 mb-6 dark:text-white/70">
+            <p className="text-muted mb-8">
               We went to Billa Praterstern and tested with over 300 Customers
               before rollout.
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  35
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-6">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">35</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Customers <br /> personally interviewed
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  60
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">60</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Customers <br /> observed
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  303
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">303</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Receipts processed <br /> with new GUI
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  8
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">8</p>
+                <p className="text-sm text-muted leading-relaxed">
                   SCO lanes <br /> active
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  80%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">80%</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Had prior <br /> SCO experience
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  20%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">20%</p>
+                <p className="text-sm text-muted leading-relaxed">
                   First-time <br /> users
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  13.5%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">13.5%</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Fewer staff <br /> calls for help
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  17%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">17%</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Fewer failed <br /> searches
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  65%
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">65%</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Could intuitively <br /> delete an item
                 </p>
               </div>
 
-              <div className="flex flex-col text-center justify-center items-center">
-                <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                  8/10
-                </p>
-                <p className="text-gray-900 leading-relaxed dark:text-white/70">
+              <div className="flex flex-col text-center justify-center items-center gap-1">
+                <p className="font-ss-mono text-2xl sm:text-3xl text-ink">8/10</p>
+                <p className="text-sm text-muted leading-relaxed">
                   Very positive <br /> satisfaction
                 </p>
               </div>
@@ -523,47 +585,56 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* IMPACT METRICS */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 mb-6">
-            <div className="flex flex-col text-center justify-center items-center">
-              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                10-12s
-              </p>
-              <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                faster <br></br> checkout
+          <div className="border-t border-hairline pt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 mb-6">
+            <div className="flex flex-col text-center justify-center items-center gap-1">
+              <p className="font-ss-mono text-2xl sm:text-3xl text-ink">10-12s</p>
+              <p className="text-sm text-muted leading-relaxed">
+                faster <br /> checkout
               </p>
             </div>
 
-            <div className="flex flex-col text-center justify-center items-center">
-              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                13.5%
-              </p>
-              <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                less <br></br> assistance needed
+            <div className="flex flex-col text-center justify-center items-center gap-1">
+              <p className="font-ss-mono text-2xl sm:text-3xl text-ink">13.5%</p>
+              <p className="text-sm text-muted leading-relaxed">
+                less <br /> assistance needed
               </p>
             </div>
-            <div className="flex flex-col text-center justify-center items-center">
-              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                25%
-              </p>
-              <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                less mistakes in <br></br> product search
+            <div className="flex flex-col text-center justify-center items-center gap-1">
+              <p className="font-ss-mono text-2xl sm:text-3xl text-ink">25%</p>
+              <p className="text-sm text-muted leading-relaxed">
+                less mistakes in <br /> product search
               </p>
             </div>
-            <div className="flex flex-col text-center justify-center items-center">
-              <p className="text-gray-900 text-4xl font-bold leading-relaxed dark:text-white">
-                8.5/10
-              </p>
-              <p className="text-gray-900 leading-relaxed dark:text-white/70">
-                customer satisfaction<br></br> score
+            <div className="flex flex-col text-center justify-center items-center gap-1">
+              <p className="font-ss-mono text-2xl sm:text-3xl text-ink">8.5/10</p>
+              <p className="text-sm text-muted leading-relaxed">
+                customer satisfaction <br /> score
               </p>
             </div>
           </div>
 
           {/* IMPACT */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Impact</h2>
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+              Impact
+            </h2>
 
-            <ul className="space-y-2 text-gray-700 dark:text-white/70">
+            <div className="space-y-3 mb-8">
+              <TracedLine
+                decision="Redesigned search & product-lookup flow"
+                result="−18% failed searches"
+              />
+              <TracedLine
+                decision="Simplified exception handling at checkout"
+                result="−14% employee interventions"
+              />
+              <TracedLine
+                decision="Nationwide rollout across 600+ stores"
+                result="8/10 CSAT"
+              />
+            </div>
+
+            <ul className="space-y-2 text-muted">
               <li>• Live in all BILLA Austria stores</li>
               <li>• Millions of users daily</li>
               <li>• 10–15s faster checkout</li>
@@ -573,10 +644,12 @@ export default function BillaSelfCheckoutPage() {
           </section>
 
           {/* OUTCOME */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">Outcome</h2>
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+              Outcome
+            </h2>
 
-            <p className="text-gray-700 leading-relaxed dark:text-white/70">
+            <p className="text-muted leading-relaxed">
               The system is now deployed nationwide. Improvements in speed,
               clarity, and autonomy translated into measurable business impact
               and improved in-store operations.

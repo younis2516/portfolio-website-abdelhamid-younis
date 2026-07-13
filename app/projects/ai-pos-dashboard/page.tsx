@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FiArrowLeft, FiLock } from "react-icons/fi";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import TracedLine from "@/components/motion/TracedLine";
 
 function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
   const [password, setPassword] = useState("");
@@ -20,19 +21,19 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
   };
 
   return (
-    <main className="flex items-center justify-center min-h-[80vh] px-4">
-      <div className="w-full max-w-md bg-white dark:bg-gray-900 border border-black/10 dark:border-white/10 rounded-3xl p-8 sm:p-10 shadow-xl">
-        <div className="flex items-center justify-center w-14 h-14 rounded-full bg-gray-100 dark:bg-white/10 mx-auto mb-6">
-          <FiLock className="w-6 h-6 text-gray-600 dark:text-white/70" />
+    <main className="ss-page project-page flex items-center justify-center min-h-[80vh] px-4 bg-paper">
+      <div className="w-full max-w-md bg-paper border border-hairline p-8 sm:p-10">
+        <div className="flex items-center justify-center w-14 h-14 rounded-full border border-hairline mx-auto mb-6">
+          <FiLock className="w-6 h-6 text-muted" />
         </div>
-        <h1 className="text-2xl font-semibold text-center mb-3 text-gray-900 dark:text-white">
+        <h1 className="font-display text-2xl text-center mb-3 text-ink">
           Password Protected
         </h1>
-        <p className="text-gray-500 dark:text-white/60 text-center text-sm mb-8 leading-relaxed">
+        <p className="text-muted text-center text-sm mb-8 leading-relaxed">
           This is a password protected product. You can contact me directly at{" "}
           <a
             href="mailto:abdelhamiduonis@hotmail.com"
-            className="text-blue-500 dark:text-blue-400 underline underline-offset-2 hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+            className="text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent transition-colors"
           >
             abdelhamiduonis@hotmail.com
           </a>{" "}
@@ -48,16 +49,16 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
             }}
             placeholder="Enter password"
             autoFocus
-            className="w-full px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 bg-gray-50 dark:bg-white/5 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition"
+            className="w-full px-4 py-3 border border-hairline bg-paper text-ink placeholder:text-muted focus:outline-none focus:border-accent transition"
           />
           {error && (
-            <p className="text-red-500 dark:text-red-400 text-sm text-center">
+            <p className="text-ink text-sm text-center font-ss-mono uppercase tracking-widest">
               Incorrect password. Please try again.
             </p>
           )}
           <button
             type="submit"
-            className="w-full px-6 py-3 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium hover:opacity-90 transition"
+            className="w-full px-6 py-3 bg-ink text-paper font-ss-mono text-xs uppercase tracking-widest hover:opacity-90 transition"
           >
             Unlock
           </button>
@@ -65,7 +66,7 @@ function PasswordGate({ onUnlock }: { onUnlock: () => void }) {
         <div className="mt-6 text-center">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-sm text-gray-400 dark:text-white/40 hover:text-gray-600 dark:hover:text-white/60 transition-colors"
+            className="inline-flex items-center gap-2 font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent transition-colors"
           >
             <FiArrowLeft className="w-4 h-4" /> Back to portfolio
           </Link>
@@ -90,6 +91,7 @@ export default function AIPOSDashboardPage() {
   if (!unlocked) return <PasswordGate onUnlock={() => setUnlocked(true)} />;
 
   return (
+    <div className="ss-page project-page">
     <main className="flex flex-col items-center pb-16">
       {/* HERO */}
       {/* <div className="relative w-full overflow-hidden bg-[#0f172a] -mt-28 sm:-mt-36 flex items-end justify-center min-h-[16rem] sm:min-h-[22rem]">
@@ -115,7 +117,7 @@ export default function AIPOSDashboardPage() {
         </div>
       </div> */}
 
-      <div className="relative w-full overflow-hidden bg-yellow-200 -mt-28 sm:-mt-36">
+      {/* <div className="relative w-full overflow-hidden bg-yellow-200 -mt-28 sm:-mt-36">
         <img
           src="/ai-pos-dashboard-banner.png"
           alt="App Radar banner"
@@ -132,13 +134,22 @@ export default function AIPOSDashboardPage() {
             </Link>
           </div>
         </div>
+      </div> */}
+
+      <div className="w-full max-w-[73rem] px-4 pt-8">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent"
+        >
+          <FiArrowLeft className="w-3 h-3" /> Back to portfolio
+        </Link>
       </div>
 
       {/* CONTENT */}
-      <div className="w-full max-w-[73rem] -mt-12 px-4 z-10">
-        <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border border-black/10 dark:border-white/10 p-8 sm:p-12">
+      <div className="w-full max-w-[73rem] mt-8 px-4 z-10">
+        <div className="bg-paper border border-hairline p-8 sm:p-12">
           {/* Header */}
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8 leading-tight">
+          <h1 className="font-display text-4xl md:text-5xl mb-8 leading-tight text-ink">
             AI-Assisted POS Dashboard —<br />
             Figma Make × Claude Pipeline
           </h1>
@@ -158,16 +169,16 @@ export default function AIPOSDashboardPage() {
                 { label: "Scope", value: "UI design + functional prototyping" },
               ].map(({ label, value }) => (
                 <div key={label} className="flex flex-col gap-1">
-                  <span className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40">
+                  <span className="font-ss-mono text-xs uppercase tracking-widest text-muted">
                     {label}
                   </span>
-                  <span className="font-medium text-gray-900 dark:text-white">
+                  <span className="font-medium text-ink">
                     {value}
                   </span>
                 </div>
               ))}
             </div>
-            <div className="border-l-4 border-blue-600 dark:border-blue-500 pl-6 text-lg text-gray-700 dark:text-white/70 leading-relaxed">
+            <div className="border-l-2 border-accent pl-6 text-lg text-muted leading-relaxed">
               Compressed a traditional 4-week design cycle into 10 days using a
               structured Figma Make → Claude → Figma Make pipeline. Key wins:
               reduced 40 inline filters to 5–6 smart quick filters, redesigned
@@ -177,14 +188,14 @@ export default function AIPOSDashboardPage() {
           </header>
 
           {/* 01 Context */}
-          <section className="mb-20">
-            <div className="text-sm font-semibold text-blue-600 dark:text-blue-500 mb-3 tracking-wide">
+          <section className="mb-20 border-t border-hairline pt-12">
+            <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3">
               01 — CONTEXT & CHALLENGE
             </div>
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="font-display text-3xl mb-6 text-ink">
               The Problem Space
             </h2>
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-6 max-w-3xl">
+            <p className="text-muted leading-relaxed mb-6 max-w-3xl">
               Austrian retail chains under REWE Group (Billa AG, Penny, BIPA,
               ADEG) needed a unified dashboard to monitor and manage POS
               hardware across 500+ retail locations in Austria, Italy,
@@ -194,17 +205,17 @@ export default function AIPOSDashboardPage() {
               with a fixed backend and a 2-week delivery window.
             </p>
 
-            <div className="text-xs font-semibold uppercase tracking-wider text-blue-500 dark:text-red-400 mb-2">
+            <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
               Research insights (5 Expert interviews)
             </div>
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-6 max-w-3xl">
+            <p className="text-muted leading-relaxed mb-6 max-w-3xl">
               I interviewed 5 expert users from first level, and second level
               support to understand their pains with the current tool. And
               collected the finiding in Miro.
               <br></br>
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 ">
-              <div className="relative w-full aspect-[1/1] mb-8">
+              <div className="project-media relative w-full aspect-[1/1] mb-8">
                 <Image
                   src="/pos-dashoard-user-interview.png"
                   alt="Empty state"
@@ -212,7 +223,7 @@ export default function AIPOSDashboardPage() {
                   className="object-contain"
                 />
               </div>
-              <div className="relative w-full aspect-[1/1] mb-8">
+              <div className="project-media relative w-full aspect-[1/1] mb-8">
                 <Image
                   src="/pos-dashoard-user-interview-2.png"
                   alt="Empty state"
@@ -224,10 +235,10 @@ export default function AIPOSDashboardPage() {
 
             <div className="grid grid-cols-2 gap-4 my-8">
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wider text-red-500 dark:text-red-400 mb-2">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   Before
                 </div>
-                <div className="relative w-full aspect-[16/9] mb-8">
+                <div className="project-media relative w-full aspect-[16/9] mb-8">
                   <Image
                     src="/pos-dashoard-6.png"
                     alt="Empty state"
@@ -237,20 +248,20 @@ export default function AIPOSDashboardPage() {
                 </div>
               </div>
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wider text-green-500 dark:text-green-400 mb-2">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   After
                 </div>
-                <div className="relative w-full aspect-[16/9] mb-8">
+                <div className="project-media relative w-full aspect-[16/9] mb-8">
                   <video
                     src="/video-overview-kassen.mp4"
                     controls
-                    className="w-full rounded-lg"
+                    className="w-full"
                   />
                 </div>
               </div>
             </div>
 
-            <h3 className="text-xl font-semibold mb-4 mt-10 text-gray-900 dark:text-white">
+            <h3 className="font-display text-xl mb-4 mt-10 text-ink">
               Key Constraints
             </h3>
             <ul className="space-y-3 mb-8">
@@ -263,9 +274,9 @@ export default function AIPOSDashboardPage() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex gap-3 text-gray-700 dark:text-white/70"
+                  className="flex gap-3 text-muted"
                 >
-                  <span className="text-blue-600 dark:text-blue-500 font-semibold flex-shrink-0">
+                  <span className="text-ink font-semibold flex-shrink-0">
                     →
                   </span>
                   <span>{item}</span>
@@ -273,7 +284,7 @@ export default function AIPOSDashboardPage() {
               ))}
             </ul>
 
-            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            <h3 className="font-display text-xl mb-4 text-ink">
               Why Traditional Workflows Wouldn&apos;t Work
             </h3>
             <ul className="space-y-3">
@@ -286,9 +297,9 @@ export default function AIPOSDashboardPage() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex gap-3 text-gray-700 dark:text-white/70"
+                  className="flex gap-3 text-muted"
                 >
-                  <span className="text-blue-600 dark:text-blue-500 font-semibold flex-shrink-0">
+                  <span className="text-ink font-semibold flex-shrink-0">
                     →
                   </span>
                   <span>{item}</span>
@@ -298,20 +309,25 @@ export default function AIPOSDashboardPage() {
           </section>
 
           {/* 02 Pipeline */}
-          <section className="mb-20">
-            <div className="text-sm font-semibold text-blue-600 dark:text-blue-500 mb-3 tracking-wide">
+          <section className="mb-20 border-t border-hairline pt-12">
+            <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3">
               02 — THE AI PIPELINE
             </div>
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="font-display text-3xl mb-6 text-ink">
               A New Design Workflow
             </h2>
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-8 max-w-3xl">
+            <p className="text-muted leading-relaxed mb-6 max-w-3xl">
               Instead of static mockups and handoff specs, I built a workflow
               treating Claude as both a design iteration partner and a
               functional prototyping tool.
             </p>
+            <TracedLine
+              decision="Figma Make → Claude → Figma Make pipeline"
+              result="4 weeks → 10 days"
+              className="mb-8"
+            />
 
-            <div className="bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-8 mb-8">
+            <div className="border border-hairline p-8 mb-8">
               {[
                 {
                   n: 1,
@@ -341,20 +357,20 @@ export default function AIPOSDashboardPage() {
               ].map(({ n, title, body }, i, arr) => (
                 <div key={n}>
                   <div className="flex gap-6 items-start">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-blue-600 dark:bg-blue-500 text-white flex items-center justify-center font-bold text-lg">
+                    <div className="flex-shrink-0 w-12 h-12 rounded-full border border-hairline text-ink flex items-center justify-center font-ss-mono text-lg">
                       {n}
                     </div>
                     <div className="flex-1 pt-2">
-                      <h4 className="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
+                      <h4 className="font-display text-lg mb-2 text-ink">
                         {title}
                       </h4>
-                      <p className="text-gray-700 dark:text-white/60 text-sm leading-relaxed">
+                      <p className="text-muted text-sm leading-relaxed">
                         {body}
                       </p>
                     </div>
                   </div>
                   {i < arr.length - 1 && (
-                    <div className="border-l-2 border-neutral-300 dark:border-white/20 ml-6 h-8 mt-2" />
+                    <div className="border-l-2 border-hairline ml-6 h-8 mt-2" />
                   )}
                 </div>
               ))}
@@ -406,36 +422,41 @@ export default function AIPOSDashboardPage() {
           </section>
 
           {/* 03 Decisions */}
-          <section className="mb-20">
-            <div className="text-sm font-semibold text-blue-600 dark:text-blue-500 mb-3 tracking-wide">
+          <section className="mb-20 border-t border-hairline pt-12">
+            <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3">
               03 — KEY DESIGN DECISIONS
             </div>
-            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">
+            <h2 className="font-display text-3xl mb-8 text-ink">
               Iteration Highlights
             </h2>
 
             <div className="space-y-10">
               {/* D01 */}
-              <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
-                <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
+              <div className="border-t border-hairline pt-8">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   DECISION 01 — Biggest Impact
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                <h4 className="font-display text-xl mb-3 text-ink">
                   Reducing 40 Filters to 5–6 Smart Quick Filters
                 </h4>
-                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                <p className="text-muted leading-relaxed mb-4">
                   The original dashboard exposed all 40+ filter fields inline on
                   the main page. This created massive visual noise and made it
                   hard to find anything. I reduced the inline surface to the 5–6
                   most-used filters, and moved everything else into a dedicated
                   advanced search form accessible via a button.
                 </p>
+                <TracedLine
+                  decision="Consolidated inline filters into smart quick filters"
+                  result="40 → 5–6 filters"
+                  className="mb-6"
+                />
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wider text-red-500 mb-1">
+                    <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-1">
                       Before — 40+ inline
                     </div>
-                    <div className="bg-white dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-3 flex flex-wrap gap-1">
+                    <div className="border border-hairline p-3 flex flex-wrap gap-1">
                       {[
                         "Firma",
                         "Filiale",
@@ -456,13 +477,13 @@ export default function AIPOSDashboardPage() {
                       ].map((t) => (
                         <span
                           key={t}
-                          className="text-xs px-2 py-0.5 bg-red-50 dark:bg-red-950 text-red-600 dark:text-red-400 rounded-full border border-red-200 dark:border-red-800"
+                          className="text-xs px-2 py-0.5 text-muted border border-hairline"
                         >
                           {t}
                         </span>
                       ))}
                     </div>
-                    <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                    <div className="project-media relative w-full aspect-[16/9] mt-6 mb-8">
                       <Image
                         src="/pos-dashoard-4.png"
                         alt="Empty state"
@@ -472,10 +493,10 @@ export default function AIPOSDashboardPage() {
                     </div>
                   </div>
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-wider text-green-600 dark:text-green-400 mb-1">
+                    <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-1">
                       After — 5 quick + advanced
                     </div>
-                    <div className="bg-white dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-3 flex flex-wrap gap-1">
+                    <div className="border border-hairline p-3 flex flex-wrap gap-1">
                       {[
                         "Firma",
                         "Filiale",
@@ -485,36 +506,36 @@ export default function AIPOSDashboardPage() {
                       ].map((t) => (
                         <span
                           key={t}
-                          className="text-xs px-2 py-0.5 bg-green-50 dark:bg-green-950 text-green-700 dark:text-green-300 rounded-full border border-green-200 dark:border-green-800"
+                          className="text-xs px-2 py-0.5 text-ink border border-hairline"
                         >
                           {t}
                         </span>
                       ))}
-                      <span className="text-xs px-2 py-0.5 bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-white/50 rounded-full border border-neutral-200 dark:border-white/10">
+                      <span className="text-xs px-2 py-0.5 text-muted border border-hairline">
                         + Erweiterte Suche
                       </span>
                     </div>
-                    <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                    <div className="project-media relative w-full aspect-[16/9] mt-6 mb-8">
                       <video
                         src="/video-filialen.mp4"
                         controls
-                        className="w-full rounded-lg"
+                        className="w-full"
                       />
                     </div>
-                    <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                    <div className="project-media relative w-full aspect-[16/9] mt-6 mb-8">
                       <video
                         src="/video-filialen-filters.mp4"
                         controls
-                        className="w-full rounded-lg"
+                        className="w-full"
                       />
                     </div>
                   </div>
                 </div>
-                <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
-                  <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
+                <div className="border border-hairline p-4">
+                  <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                     Sample Prompt
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-white/60 font-mono leading-relaxed">
+                  <p className="text-sm text-muted font-ss-mono leading-relaxed">
                     &quot;Reduce the inline Filtern section to only show the 5
                     most-used filters: Firma, Filiale, Status, Land,
                     Kassengruppe. Move all other filters into an advanced search
@@ -526,14 +547,14 @@ export default function AIPOSDashboardPage() {
               </div>
 
               {/* D02 */}
-              <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
-                <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
+              <div className="border-t border-hairline pt-8">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   DECISION 02
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                <h4 className="font-display text-xl mb-3 text-ink">
                   Advanced Search: From Boring Form to Interactive Grouped UI
                 </h4>
-                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                <p className="text-muted leading-relaxed mb-4">
                   The advanced search form started as a flat wall of identical
                   dropdowns. I redesigned it into three grouped sections — Most
                   Used Filters, Hardware Filters, Software Filters — converted
@@ -547,18 +568,18 @@ export default function AIPOSDashboardPage() {
                   made selection state immediately visible at all times.
                 </p>
 
-                <div className="relative w-full aspect-[16/9] mt-6 mb-8">
+                <div className="project-media relative w-full aspect-[16/9] mt-6 mb-8">
                   <video
                     src="/video-advanced-filters.mp4"
                     controls
-                    className="w-full rounded-lg"
+                    className="w-full"
                   />
                 </div>
-                <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
-                  <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
+                <div className="border border-hairline p-4">
+                  <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                     Sample Prompt
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-white/60 font-mono leading-relaxed">
+                  <p className="text-sm text-muted font-ss-mono leading-relaxed">
                     &quot;Redesign the advanced search form. Group all filters
                     into 3 sections: &apos;Most used filters&apos;,
                     &apos;Hardware filters&apos;, &apos;Software filters&apos;.
@@ -602,14 +623,14 @@ export default function AIPOSDashboardPage() {
               </div> */}
 
               {/* D03 */}
-              <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
-                <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
+              <div className="border-t border-hairline pt-8">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   DECISION 03
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                <h4 className="font-display text-xl mb-3 text-ink">
                   Filter Section Redesign
                 </h4>
-                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                <p className="text-muted leading-relaxed mb-4">
                   Removed grey container background, section title, and all
                   labels. Added descriptive placeholders (e.g.
                   &quot;Kassengruppe 11, 12 oder 13&quot;), inline X clear
@@ -617,25 +638,25 @@ export default function AIPOSDashboardPage() {
                   Reduced visual weight by ~40% while improving scannability.
                 </p>
 
-                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                <p className="text-muted leading-relaxed mb-4">
                   Added Material Symbols Rounded icons to all dropdown and input
                   fields across both the quick filter bar and the advanced
                   search form. Improved scannability in dense forms and provided
                   visual anchors for repeated interactions.
                 </p>
-                <div className="relative w-full aspect-[16/9] mb-8">
+                <div className="project-media relative w-full aspect-[16/9] mb-8">
                   <Image
                     src="/pos-dashboard-14.png"
                     alt="Empty state"
                     fill
-                    className="object-contain rounded rounded-xl overflow-hidden"
+                    className="object-contain"
                   />
                 </div>
-                <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
-                  <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
+                <div className="border border-hairline p-4">
+                  <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                     Sample Prompt (Round 7)
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-white/60 font-mono leading-relaxed">
+                  <p className="text-sm text-muted font-ss-mono leading-relaxed">
                     &quot;In the Filtern section in both Kassen and Filialen
                     page: 1. Remove the grey container and padding. 2. Remove
                     the &apos;Filtern&apos; section title. 3. Remove all labels
@@ -648,34 +669,34 @@ export default function AIPOSDashboardPage() {
               </div>
 
               {/* D04 */}
-              <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
-                <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
+              <div className="border-t border-hairline pt-8">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   DECISION 04
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                <h4 className="font-display text-xl mb-3 text-ink">
                   Dynamic Column Visibility Label
                 </h4>
-                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                <p className="text-muted leading-relaxed mb-4">
                   Changed the static &quot;Spalten&quot; label to show &quot;X
                   Columns hidden&quot; with a live count that updates in
                   real-time as users toggle column visibility. Made hidden
                   column state discoverable at a glance.
                 </p>
 
-                <div className="relative w-full aspect-[16/9] mb-8">
+                <div className="project-media relative w-full aspect-[16/9] mb-8">
                   <Image
                     src="/pos-dashbpoard-13.png"
                     alt="Empty state"
                     fill
-                    className="object-contain rounded rounded-xl overflow-hidden"
+                    className="object-contain"
                   />
                 </div>
 
-                <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
-                  <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
+                <div className="border border-hairline p-4">
+                  <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                     Sample Prompt (Round 3)
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-white/60 font-mono leading-relaxed">
+                  <p className="text-sm text-muted font-ss-mono leading-relaxed">
                     &quot;It&apos;s still called Spalten. Change it to show the
                     dynamic count like &apos;X Columns hidden&apos; where X is
                     the number of hidden columns.&quot;
@@ -684,25 +705,25 @@ export default function AIPOSDashboardPage() {
               </div>
 
               {/* D05 */}
-              <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
-                <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
+              <div className="border-t border-hairline pt-8">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   DECISION 05
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                <h4 className="font-display text-xl mb-3 text-ink">
                   Information Hierarchy Reordering
                 </h4>
-                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                <p className="text-muted leading-relaxed mb-4">
                   Moved Filtern section above quick chips and stats cards.
                   Rationale: filters control the entire page&apos;s data scope,
                   so they should appear first in visual hierarchy. Quick chips
                   are shortcuts (less powerful), stats are derivative of
                   filters, table is the final output.
                 </p>
-                <div className="bg-neutral-100 dark:bg-gray-950 border border-neutral-200 dark:border-white/10 rounded-lg p-4">
-                  <div className="text-xs uppercase tracking-wider text-neutral-500 dark:text-white/40 mb-2 font-medium">
+                <div className="border border-hairline p-4">
+                  <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                     Sample Prompt (Round 6)
                   </div>
-                  <p className="text-sm text-gray-700 dark:text-white/60 font-mono leading-relaxed">
+                  <p className="text-sm text-muted font-ss-mono leading-relaxed">
                     &quot;In both Kassen and Filialen page, change the order of
                     UI elements after the page header: 1. Filtern section
                     (controls data on whole page). 2. Quick filter chips. 3.
@@ -712,24 +733,24 @@ export default function AIPOSDashboardPage() {
               </div>
 
               {/* D06 */}
-              <div className="border border-neutral-200 dark:border-white/10 rounded-xl p-6 bg-neutral-50 dark:bg-white/5">
-                <div className="text-sm font-bold text-blue-600 dark:text-blue-500 mb-2">
+              <div className="border-t border-hairline pt-8">
+                <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
                   DECISION 06
                 </div>
-                <h4 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+                <h4 className="font-display text-xl mb-3 text-ink">
                   Moved saved filters under account
                 </h4>
-                <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4">
+                <p className="text-muted leading-relaxed mb-4">
                   Moved saved filters under account, due to backend limitations
                   we can not save filters per user on the backend so we decided
                   to save it in session cookies. So the user can access them
                   anytime without needing to recreate filters.
                 </p>
-                <div className="relative w-full aspect-[16/9] mb-8">
+                <div className="project-media relative w-full aspect-[16/9] mb-8">
                   <video
                     src="/video-saved-filters.mp4"
                     controls
-                    className="w-full rounded-lg"
+                    className="w-full"
                   />
                 </div>
               </div>
@@ -812,11 +833,11 @@ export default function AIPOSDashboardPage() {
           </section>
 
           {/* 04 Stack */}
-          <section className="mb-20">
-            <div className="text-sm font-semibold text-blue-600 dark:text-blue-500 mb-3 tracking-wide">
+          <section className="mb-20 border-t border-hairline pt-12">
+            <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3">
               04 — AI STACK & TOOLS
             </div>
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="font-display text-3xl mb-6 text-ink">
               Technology Pipeline
             </h2>
             {/* <div className="flex flex-wrap gap-3 mb-8">
@@ -837,7 +858,7 @@ export default function AIPOSDashboardPage() {
               ))}
             </div> */}
 
-            <div className="relative w-full aspect-[16/9] mb-8">
+            <div className="project-media relative w-full aspect-[16/9] mb-8">
               <Image
                 src="/pos_dashboard_ai_workflow 1.png"
                 alt="Empty state"
@@ -876,36 +897,33 @@ export default function AIPOSDashboardPage() {
           </section>
 
           {/* 05 Outcomes */}
-          <section className="mb-20">
-            <div className="text-sm font-semibold text-blue-600 dark:text-blue-500 mb-3 tracking-wide">
+          <section className="mb-20 border-t border-hairline pt-12">
+            <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3">
               05 — OUTCOMES & LEARNINGS
             </div>
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="font-display text-3xl mb-6 text-ink">
               What Worked, What Didn&apos;t
             </h2>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
               {[
                 ["40→5", "inline filters reduced to quick bar"],
                 ["10+", "iteration rounds in 10 days"],
                 ["2–5m", "per iteration vs. 30–60m traditional"],
                 ["~85%", "time saving on iteration velocity"],
               ].map(([num, desc]) => (
-                <div
-                  key={num}
-                  className="bg-neutral-50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 rounded-xl p-4"
-                >
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">
+                <div key={num}>
+                  <div className="font-ss-mono text-2xl text-ink mb-1">
                     {num}
                   </div>
-                  <div className="text-xs text-neutral-600 dark:text-white/50 leading-snug">
+                  <div className="text-sm text-muted leading-snug">
                     {desc}
                   </div>
                 </div>
               ))}
             </div>
 
-            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            <h3 className="font-display text-xl mb-4 text-ink">
               What Worked
             </h3>
             <ul className="space-y-3 mb-8">
@@ -918,9 +936,9 @@ export default function AIPOSDashboardPage() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex gap-3 text-gray-700 dark:text-white/70 text-sm leading-relaxed"
+                  className="flex gap-3 text-muted text-sm leading-relaxed"
                 >
-                  <span className="text-green-600 dark:text-green-400 font-semibold flex-shrink-0">
+                  <span className="text-ink font-semibold flex-shrink-0">
                     →
                   </span>
                   <span>{item}</span>
@@ -928,7 +946,7 @@ export default function AIPOSDashboardPage() {
               ))}
             </ul>
 
-            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            <h3 className="font-display text-xl mb-4 text-ink">
               What Didn&apos;t Work
             </h3>
             <ul className="space-y-3 mb-8">
@@ -939,9 +957,9 @@ export default function AIPOSDashboardPage() {
               ].map((item) => (
                 <li
                   key={item}
-                  className="flex gap-3 text-gray-700 dark:text-white/70 text-sm leading-relaxed"
+                  className="flex gap-3 text-muted text-sm leading-relaxed"
                 >
-                  <span className="text-red-500 font-semibold flex-shrink-0">
+                  <span className="text-ink font-semibold flex-shrink-0">
                     →
                   </span>
                   <span>{item}</span>
@@ -949,7 +967,7 @@ export default function AIPOSDashboardPage() {
               ))}
             </ul>
 
-            <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            <h3 className="font-display text-xl mb-4 text-ink">
               Key Learnings
             </h3>
             <div className="space-y-4">
@@ -973,12 +991,12 @@ export default function AIPOSDashboardPage() {
               ].map(([title, body]) => (
                 <div
                   key={title as string}
-                  className="border-l-4 border-blue-200 dark:border-blue-800 pl-4"
+                  className="border-l-2 border-hairline pl-4"
                 >
-                  <p className="font-semibold text-gray-900 dark:text-white mb-1 text-sm">
+                  <p className="font-semibold text-ink mb-1 text-sm">
                     {title}
                   </p>
-                  <p className="text-sm text-gray-700 dark:text-white/60 leading-relaxed">
+                  <p className="text-sm text-muted leading-relaxed">
                     {body}
                   </p>
                 </div>
@@ -987,27 +1005,27 @@ export default function AIPOSDashboardPage() {
           </section>
 
           {/* 06 Conclusion */}
-          <section className="mb-20">
-            <div className="text-sm font-semibold text-blue-600 dark:text-blue-500 mb-3 tracking-wide">
+          <section className="mb-20 border-t border-hairline pt-12">
+            <div className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3">
               06 — CONCLUSION
             </div>
-            <h2 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+            <h2 className="font-display text-3xl mb-6 text-ink">
               The Future of AI-Assisted Design
             </h2>
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4 max-w-3xl">
+            <p className="text-muted leading-relaxed mb-4 max-w-3xl">
               The traditional design-to-development handoff is becoming
               obsolete. When designers iterate in functional code and developers
               understand intent through structured documentation, the boundary
               between disciplines blurs productively.
             </p>
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed mb-4 max-w-3xl">
+            <p className="text-muted leading-relaxed mb-4 max-w-3xl">
               The Figma Make → Claude → Figma Make loop isn&apos;t just faster —
               it unlocks a different kind of design process. One where
               experimentation is cheap, functional fidelity is high from day
               one, and the artifact you&apos;re iterating <em>is</em> the
               deliverable.
             </p>
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed max-w-3xl">
+            <p className="text-muted leading-relaxed max-w-3xl">
               I see this workflow scaling to more complex projects, especially
               in enterprise contexts where data density and interaction
               complexity make static mockups inadequate. The limiting factor
@@ -1018,5 +1036,6 @@ export default function AIPOSDashboardPage() {
         </div>
       </div>
     </main>
+    </div>
   );
 }

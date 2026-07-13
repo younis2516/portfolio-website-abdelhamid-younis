@@ -6,8 +6,9 @@ import { FiArrowLeft } from "react-icons/fi";
 
 export default function GroceryBot2020Page() {
   return (
-    <main className="flex flex-col items-center pb-16">
+    <main className="ss-page project-page flex flex-col items-center pb-16">
       {/* Banner */}
+      {/*
       <div className="relative w-full overflow-hidden -z-10 bg-yellow-200 -mt-28 sm:-mt-36">
         <picture>
           <source media="(max-width: 640px)" srcSet="/hci-banner-mobile.png" />
@@ -18,7 +19,7 @@ export default function GroceryBot2020Page() {
           />
         </picture>
 
-        {/* Back button overlay */}
+        Back button overlay
         <div className="pointer-events-none absolute inset-0 flex justify-center z-10">
           <div className="relative w-full sm:max-w-[73rem] px-4">
             <Link
@@ -31,59 +32,71 @@ export default function GroceryBot2020Page() {
           </div>
         </div>
       </div>
+      */}
 
       {/* Content */}
-      <div className="w-full sm:max-w-[73rem] -mt-12 px-4">
-        <div className="bg-white dark:bg-gray-950 rounded-[40px] shadow-xl border border-black/5 p-6 sm:p-10">
+      <div className="w-full sm:max-w-[73rem] px-4 pt-10 sm:pt-14">
+        <Link
+          href="/"
+          className="inline-block mb-10 font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent"
+        >
+          ← Back to portfolio
+        </Link>
+
+        <div className="space-y-16">
           {/* HERO */}
-          <header className="mb-12">
-            <h1 className="text-3xl font-bold mb-6">
+          <header>
+            <h1 className="font-display text-3xl sm:text-4xl text-ink mb-6">
               Conversational Grocery Assistant — Research-led Concept
               Exploration
             </h1>
 
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed">
+            <p className="text-muted leading-relaxed">
               Master's project (6 ECTS) during my Human Computer Interaction
               studies at University of Salzburg. Built during COVID lockdown to
               explore how conversational interfaces could simplify grocery
               shopping for rural users.
             </p>
 
-            <p className="mt-6 text-sm text-gray-600 dark:text-white/60">
+            <p className="mt-6 font-ss-mono text-xs uppercase tracking-widest text-muted">
               🏆 Salzburg Startup Weekend — 1st place prototype · 2nd place
               pitch
             </p>
           </header>
 
           {/* OVERVIEW */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4">Problem Context</h2>
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+              Problem Context
+            </h2>
 
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed">
+            <p className="text-muted leading-relaxed">
               Problem During COVID, rural Salzburg users avoided supermarkets.
-              Existing online grocery flows were complex and slow. <br></br>
-              <br></br>
-              <strong>Key insight:</strong> <br /> Users already coordinated
-              shopping via WhatsApp.
+              Existing online grocery flows were complex and slow. <br />
               <br />
-              <strong>Decision:</strong> <br /> Instead of building a new
-              shopping interface, we explored conversational UX to reduce
-              cognitive load.<br></br>
-              <strong>Tradeoffs:</strong> <br />
+              <strong className="text-ink">Key insight:</strong> <br /> Users
+              already coordinated shopping via WhatsApp.
+              <br />
+              <strong className="text-ink">Decision:</strong> <br /> Instead of
+              building a new shopping interface, we explored conversational UX
+              to reduce cognitive load.
+              <br />
+              <strong className="text-ink">Tradeoffs:</strong> <br />
               ❌ VR supermarket exploration (high complexity) <br />❌ community
               runner model (logistical challenges)
-              <br></br>✅ conversational assistant aligned with real behaviour.
-              <br></br>
-              <strong>Outcome:</strong> <br /> Prototype validated internally.
-              <br></br>
-              <strong>Later industry validation:</strong>
+              <br />✅ conversational assistant aligned with real behaviour.
+              <br />
+              <strong className="text-ink">Outcome:</strong> <br /> Prototype
+              validated internally.
+              <br />
+              <strong className="text-ink">Later industry validation:</strong>
               <br /> WhatsApp commerce rollout (Meta 2022).
             </p>
 
-            <p className="mt-4 text-gray-700 dark:text-white/70">
+            <p className="mt-4 text-muted">
               Core research question:
-              <br></br>
-              <strong>
+              <br />
+              <strong className="text-ink">
                 {" "}
                 How could technology help rural households shop safely with
                 minimal friction?
@@ -92,19 +105,22 @@ export default function GroceryBot2020Page() {
           </section>
 
           {/* RESEARCH */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4">
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               Step 1 — User Research
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 mb-6">
+            <p className="text-muted mb-6">
               Conducted qualitative interviews with 6 participants recruited
               from rural areas around Salzburg. Focused on shopping behaviour,
               barriers to online grocery usage, and decision-making workflows.
             </p>
 
             <div className="grid gap-6 sm:grid-cols-2">
-              <div className="relative w-full aspect-[5/4]">
+              <div
+                className="project-media relative w-full aspect-[5/4] p-4"
+                style={{ background: "var(--color-paper)" }}
+              >
                 <Image
                   src="/hci-1.jpg"
                   alt="Research board"
@@ -113,7 +129,10 @@ export default function GroceryBot2020Page() {
                 />
               </div>
 
-              <div className="relative w-full aspect-[5/4]">
+              <div
+                className="project-media relative w-full aspect-[5/4] p-4"
+                style={{ background: "var(--color-paper)" }}
+              >
                 <Image
                   src="/hci-2.jpg"
                   alt="Needs mapping"
@@ -125,29 +144,23 @@ export default function GroceryBot2020Page() {
 
             <div className="grid sm:grid-cols-2 gap-10 mt-10">
               <div>
-                <h3 className="font-semibold mb-2">Key Insights</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70">
-                  <li>
-                    Online grocery flows felt complex and overwhelming
-                  </li>
-                  <li>
-                    Users wanted "just send a list and done" simplicity
-                  </li>
-                  <li>
-                    Trust in substitutions and produce quality was low
-                  </li>
-                  <li>
-                    Safety concerns during pandemic influenced behaviour
-                  </li>
+                <h3 className="font-display text-lg text-ink mb-2">
+                  Key Insights
+                </h3>
+                <ul className="list-disc list-inside space-y-2 text-muted">
+                  <li>Online grocery flows felt complex and overwhelming</li>
+                  <li>Users wanted "just send a list and done" simplicity</li>
+                  <li>Trust in substitutions and produce quality was low</li>
+                  <li>Safety concerns during pandemic influenced behaviour</li>
                 </ul>
               </div>
 
               <div>
-                <h3 className="font-semibold mb-2">User Needs</h3>
-                <ul className="list-disc list-inside space-y-2 text-gray-700 dark:text-white/70">
-                  <li>
-                    Conversational interface similar to messaging apps
-                  </li>
+                <h3 className="font-display text-lg text-ink mb-2">
+                  User Needs
+                </h3>
+                <ul className="list-disc list-inside space-y-2 text-muted">
+                  <li>Conversational interface similar to messaging apps</li>
                   <li>Clear price transparency</li>
                   <li>Flexible delivery windows</li>
                   <li>Ability to approve substitutes</li>
@@ -157,87 +170,119 @@ export default function GroceryBot2020Page() {
           </section>
 
           {/* IDEATION */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4">Step 2 — Ideation</h2>
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+              Step 2 — Ideation
+            </h2>
 
-            <p className="text-gray-700 dark:text-white/70 mb-6">
+            <p className="text-muted mb-6">
               Generated multiple concepts and evaluated feasibility, usability
               and technical constraints.
             </p>
 
             <div className="grid gap-8">
               <div className="grid sm:grid-cols-3 gap-6">
-                <p className="text-gray-700 dark:text-white/70">
-                  <strong>Idea 1:</strong> Local neighbour delivery app within
-                  1km radius.
+                <p className="text-muted">
+                  <strong className="text-ink">Idea 1:</strong> Local neighbour
+                  delivery app within 1km radius.
                 </p>
-                <Image
-                  src="/hci-3.jpg"
-                  alt="Idea sketches"
-                  width={600}
-                  height={400}
-                  className="rounded-xl object-contain"
-                />
-                <Image
-                  src="/hci-4.jpg"
-                  alt="Idea sketches"
-                  width={600}
-                  height={400}
-                  className="rounded-xl object-contain"
-                />
+                <div
+                  className="project-media p-4"
+                  style={{ background: "var(--color-paper)" }}
+                >
+                  <Image
+                    src="/hci-3.jpg"
+                    alt="Idea sketches"
+                    width={600}
+                    height={400}
+                    className="rounded-xl object-contain"
+                  />
+                </div>
+                <div
+                  className="project-media p-4"
+                  style={{ background: "var(--color-paper)" }}
+                >
+                  <Image
+                    src="/hci-4.jpg"
+                    alt="Idea sketches"
+                    width={600}
+                    height={400}
+                    className="rounded-xl object-contain"
+                  />
+                </div>
               </div>
 
               <div className="grid sm:grid-cols-3 gap-6">
-                <p className="text-gray-700 dark:text-white/70">
-                  <strong>Idea 2:</strong> VR supermarket experience (rejected
-                  due to complexity).
+                <p className="text-muted">
+                  <strong className="text-ink">Idea 2:</strong> VR supermarket
+                  experience (rejected due to complexity).
                 </p>
-                <Image
-                  src="/hci-5.jpg"
-                  alt="VR concept"
-                  width={600}
-                  height={400}
-                  className="rounded-xl object-contain"
-                />
+                <div
+                  className="project-media p-4"
+                  style={{ background: "var(--color-paper)" }}
+                >
+                  <Image
+                    src="/hci-5.jpg"
+                    alt="VR concept"
+                    width={600}
+                    height={400}
+                    className="rounded-xl object-contain"
+                  />
+                </div>
               </div>
 
               <div className="grid sm:grid-cols-3 gap-6">
-                <p className="text-gray-700 dark:text-white/70">
-                  <strong>Final concept:</strong> Conversational shopping
-                  assistant similar to WhatsApp.
+                <p className="text-muted">
+                  <strong className="text-ink">Final concept:</strong>{" "}
+                  Conversational shopping assistant similar to WhatsApp.
                 </p>
-                <Image
-                  src="/hci-6.jpg"
-                  alt="Sketches"
-                  width={600}
-                  height={400}
-                  className="rounded-xl object-contain"
-                />
-                <Image
-                  src="/hci-7.jpg"
-                  alt="Sketches"
-                  width={600}
-                  height={400}
-                  className="rounded-xl object-contain"
-                />
-                <Image
-                  src="/hci-8.jpg"
-                  alt="Sketches"
-                  width={600}
-                  height={400}
-                  className="rounded-xl object-contain"
-                />
+                <div
+                  className="project-media p-4"
+                  style={{ background: "var(--color-paper)" }}
+                >
+                  <Image
+                    src="/hci-6.jpg"
+                    alt="Sketches"
+                    width={600}
+                    height={400}
+                    className="rounded-xl object-contain"
+                  />
+                </div>
+                <div
+                  className="project-media p-4"
+                  style={{ background: "var(--color-paper)" }}
+                >
+                  <Image
+                    src="/hci-7.jpg"
+                    alt="Sketches"
+                    width={600}
+                    height={400}
+                    className="rounded-xl object-contain"
+                  />
+                </div>
+                <div
+                  className="project-media p-4"
+                  style={{ background: "var(--color-paper)" }}
+                >
+                  <Image
+                    src="/hci-8.jpg"
+                    alt="Sketches"
+                    width={600}
+                    height={400}
+                    className="rounded-xl object-contain"
+                  />
+                </div>
               </div>
             </div>
           </section>
 
           {/* DESIGN */}
-          <section className="mb-12">
-            <h2 className="text-2xl font-semibold mb-4">
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               Step 3 — UI Design & Prototyping
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 mb-6">
+            <p className="text-muted mb-6">
               Designed a conversational flow: upload list → confirm quantities →
               accept substitutes → choose provider → select delivery window →
               payment.
@@ -246,7 +291,11 @@ export default function GroceryBot2020Page() {
             <div className="grid gap-6 sm:grid-cols-3">
               {["9", "10", "11", "12", "13", "14", "15", "16", "17"].map(
                 (img) => (
-                  <div key={img} className="relative w-full aspect-[4/9]">
+                  <div
+                    key={img}
+                    className="project-media relative w-full aspect-[4/9] p-3"
+                    style={{ background: "var(--color-paper)" }}
+                  >
                     <Image
                       src={`/hci-${img}.jpg`}
                       alt="UI screen"
@@ -260,18 +309,18 @@ export default function GroceryBot2020Page() {
           </section>
 
           {/* RESULTS */}
-          <section>
-            <h2 className="text-2xl font-semibold mb-4">
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               Results & Reflection
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed">
-              The prototype won <strong>1st place prototype</strong> and{" "}
-              <strong>2nd place pitch</strong>
+            <p className="text-muted leading-relaxed">
+              The prototype won <strong className="text-ink">1st place prototype</strong>{" "}
+              and <strong className="text-ink">2nd place pitch</strong>
               at Salzburg Startup Weekend.
             </p>
 
-            <p className="mt-4 text-gray-700 dark:text-white/70">
+            <p className="mt-4 text-muted">
               Judges suggested focusing on one supermarket instead of
               aggregating multiple providers due to data integration complexity
               — feedback that shaped future thinking.
@@ -279,16 +328,16 @@ export default function GroceryBot2020Page() {
           </section>
 
           {/* RESULTS */}
-          <section>
-            <h2 className="text-2xl font-semibold mt-8 mb-4">
+          <section className="border-t border-hairline pt-16">
+            <h2 className="font-display text-2xl sm:text-3xl text-ink mb-4">
               What I would do differently today
             </h2>
 
-            <p className="text-gray-700 dark:text-white/70 leading-relaxed">
+            <p className="text-muted leading-relaxed">
               If revisiting this today:
-              <br></br> - Narrow scope to one retailer earlier.
-              <br></br>- Validate with real delivery constraints sooner.
-              <br></br>- Test conversational friction vs traditional checkout
+              <br /> - Narrow scope to one retailer earlier.
+              <br />- Validate with real delivery constraints sooner.
+              <br />- Test conversational friction vs traditional checkout
               flows.
             </p>
           </section>

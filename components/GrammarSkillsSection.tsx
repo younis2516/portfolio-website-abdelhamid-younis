@@ -1205,36 +1205,24 @@ const SKILL_STEPS = [
     label: "Scope & plan",
     detail:
       "Resolves the grammar point, slug, levels, and category. Merges thin overlapping facets into one coherent guide.",
-    color: "from-violet-500/20 to-violet-500/5",
-    border: "border-violet-500/30",
-    accent: "#8B80F9",
   },
   {
     tag: "grammar-rule-creator",
     label: "Generate page",
     detail:
       "Creates app/grammar/<slug>/page.tsx using primitives (Hero, Section, Formula, ConjGrid…), quiz questions, and worked examples.",
-    color: "from-blue-500/20 to-blue-500/5",
-    border: "border-blue-500/30",
-    accent: "#5BA3D9",
   },
   {
     tag: "grammar-svg-illustration",
     label: "Generate thumbnail",
     detail:
       "Produces two self-contained SVGs (dark + light) — atmospheric scene, grammar blocks, arc connectors — with zero CSS variables.",
-    color: "from-teal-500/20 to-teal-500/5",
-    border: "border-teal-500/30",
-    accent: "#6EE7B7",
   },
   {
     tag: "grammar-rule-creator",
     label: "Register & verify",
     detail:
       "Appends the GrammarRuleMeta to registry.ts and runs tsc --noEmit without touching the running dev server.",
-    color: "from-amber-500/20 to-amber-500/5",
-    border: "border-amber-500/30",
-    accent: "#FFD66B",
   },
 ];
 
@@ -1261,35 +1249,34 @@ function SkillPipeline() {
             if (intervalRef.current) clearInterval(intervalRef.current);
           }}
           className={`
-            text-left rounded-xl border px-4 py-3 transition-all duration-300
+            text-left border-l-2 px-4 py-3 transition-colors duration-300
             ${
               i === active
-                ? `bg-gradient-to-r ${step.color} ${step.border}`
-                : "border-gray-200/40 dark:border-white/8 bg-transparent hover:bg-gray-100/50 dark:hover:bg-white/4"
+                ? "border-accent bg-paper"
+                : "border-hairline hover:border-ink/40"
             }
           `}
         >
           <div className="flex items-center gap-2 mb-1">
             <span
-              className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full border"
-              style={{
-                color: i === active ? step.accent : "#6B7280",
-                borderColor: i === active ? step.accent + "55" : "#6B728033",
-                backgroundColor:
-                  i === active ? step.accent + "15" : "transparent",
-              }}
+              className={`text-[10px] font-ss-mono font-semibold px-2 py-0.5 border ${
+                i === active
+                  ? "border-accent text-accent"
+                  : "border-hairline text-muted"
+              }`}
             >
               {step.tag}
             </span>
             <span
-              className="text-xs font-semibold"
-              style={{ color: i === active ? step.accent : undefined }}
+              className={`text-xs font-semibold ${
+                i === active ? "text-ink" : "text-muted"
+              }`}
             >
               {i + 1}. {step.label}
             </span>
           </div>
           {i === active && (
-            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+            <p className="text-xs text-muted leading-relaxed">
               {step.detail}
             </p>
           )}
@@ -1313,11 +1300,11 @@ function GrammarCardDemo({ isDark }: { isDark: boolean }) {
             key={r.slug}
             onClick={() => setSelected(i)}
             className={`
-              text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all
+              text-xs font-semibold px-3 py-1.5 border transition-colors
               ${
                 i === selected
-                  ? "border-violet-400/50 bg-violet-500/15 text-violet-300 dark:text-violet-300"
-                  : "border-gray-300/40 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:border-gray-400/60"
+                  ? "border-accent text-accent"
+                  : "border-hairline text-muted hover:border-ink/40"
               }
             `}
           >
@@ -1328,14 +1315,9 @@ function GrammarCardDemo({ isDark }: { isDark: boolean }) {
 
       {/* Card preview */}
       <div
-        className={`rounded-2xl border overflow-hidden transition-colors duration-300 ${
-          isDark ? "border-white/10 bg-[#151826]" : "border-gray-200 bg-white"
+        className={`border overflow-hidden transition-colors duration-300 ${
+          isDark ? "border-ink bg-ink" : "border-hairline bg-paper"
         }`}
-        style={{
-          boxShadow: isDark
-            ? "0 4px 24px rgba(0,0,0,.4)"
-            : "0 4px 24px rgba(0,0,0,.08)",
-        }}
       >
         {/* Thumbnail */}
         <div className="w-full overflow-hidden" style={{ lineHeight: 0 }}>
@@ -1344,20 +1326,23 @@ function GrammarCardDemo({ isDark }: { isDark: boolean }) {
         {/* Card body */}
         <div className="px-5 pt-4 pb-5">
           <h4
-            className="font-bold text-base mb-0.5"
-            style={{ color: isDark ? "#F5F5FA" : "#14141F" }}
+            className={`font-display text-base mb-0.5 ${
+              isDark ? "text-paper" : "text-ink"
+            }`}
           >
             {rule.title}
           </h4>
           <p
-            className="text-sm mb-2"
-            style={{ color: isDark ? "#8B80F9" : "#5B4FE0" }}
+            className={`font-ss-mono text-xs uppercase tracking-wide mb-2 ${
+              isDark ? "text-paper/60" : "text-muted"
+            }`}
           >
             {rule.sub}
           </p>
           <p
-            className="text-sm leading-relaxed mb-4"
-            style={{ color: isDark ? "rgba(245,245,250,.62)" : "#565666" }}
+            className={`text-sm leading-relaxed mb-4 ${
+              isDark ? "text-paper/70" : "text-muted"
+            }`}
           >
             {rule.desc}
           </p>
@@ -1365,12 +1350,11 @@ function GrammarCardDemo({ isDark }: { isDark: boolean }) {
             {rule.levels.map((lvl) => (
               <span
                 key={lvl}
-                className="text-xs font-semibold px-2.5 py-1 rounded-lg border"
-                style={{
-                  color: isDark ? "rgba(245,245,250,.7)" : "#565666",
-                  borderColor: isDark ? "rgba(255,255,255,.15)" : "#D1D5DB",
-                  background: isDark ? "rgba(255,255,255,.06)" : "#F9FAFB",
-                }}
+                className={`font-ss-mono text-xs font-semibold px-2.5 py-1 border ${
+                  isDark
+                    ? "border-paper/20 text-paper/70"
+                    : "border-hairline text-muted"
+                }`}
               >
                 {lvl}
               </span>
@@ -1391,19 +1375,19 @@ export default function GrammarSkillsSection() {
     <section className="mb-20">
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-900 dark:text-white">
+        <h2 className="font-display text-xl sm:text-2xl text-ink mb-4">
           AI Skill System — Grammar Rules & Thumbnails
         </h2>
-        <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+        <p className="text-muted leading-relaxed">
           Each grammar guide on lehr.app is generated by a two-skill pipeline I
           designed and iterated on across multiple sessions. The first skill,{" "}
-          <code className="text-xs font-mono bg-gray-100 dark:bg-white/8 px-1.5 py-0.5 rounded text-violet-600 dark:text-violet-400">
+          <code className="font-ss-mono text-xs border border-hairline px-1.5 py-0.5 text-ink">
             grammar-rule-creator
           </code>
           , scaffolds a full Next.js page — teaching structure, conjugation
           tables, worked examples and a retrieval quiz — from a single grammar
           topic name. The second,{" "}
-          <code className="text-xs font-mono bg-gray-100 dark:bg-white/8 px-1.5 py-0.5 rounded text-teal-600 dark:text-teal-400">
+          <code className="font-ss-mono text-xs border border-hairline px-1.5 py-0.5 text-ink">
             grammar-svg-illustration
           </code>
           , generates atmospheric SVG card thumbnails that visualise the grammar
@@ -1413,10 +1397,10 @@ export default function GrammarSkillsSection() {
       </div>
 
       {/* Skill pipeline */}
-      <p className="text-gray-700 text-xl font-bold dark:text-gray-300 mb-3 mt-8 leading-relaxed">
+      <p className="font-display text-ink text-xl mb-3 mt-8 leading-relaxed">
         How the skill pipeline works
       </p>
-      <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+      <p className="text-muted leading-relaxed mb-6">
         Both skills run in parallel on every new grammar topic. The agent
         receives a rule name, resolves it to a grammar point enum and slug,
         generates the guide and thumbnail simultaneously, registers the route,
@@ -1427,7 +1411,7 @@ export default function GrammarSkillsSection() {
       <div className="grid grid-cols-1 lg:grid-cols-1 gap-6 items-start">
         {/* Left: pipeline stepper */}
         {/* <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500 mb-3">
+          <p className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3">
             4-step execution
           </p>
           <SkillPipeline />
@@ -1436,20 +1420,13 @@ export default function GrammarSkillsSection() {
         {/* Right: live card preview */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 dark:text-gray-500">
+            <p className="font-ss-mono text-xs uppercase tracking-widest text-muted">
               Live card preview
             </p>
             {/* Dark / light toggle */}
             <button
               onClick={() => setIsDark((d) => !d)}
-              className={`
-                flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-all
-                ${
-                  isDark
-                    ? "border-violet-500/40 bg-violet-500/15 text-violet-300"
-                    : "border-amber-400/40 bg-amber-50 text-amber-700 dark:text-amber-400"
-                }
-              `}
+              className="flex items-center gap-1.5 font-ss-mono text-xs uppercase tracking-widest px-3 py-1.5 border border-hairline text-muted hover:border-ink/40 hover:text-ink transition-colors"
             >
               {isDark ? (
                 <>

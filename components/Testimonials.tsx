@@ -1,106 +1,57 @@
 "use client";
 import { TestimonialsData, TestimonialData } from "@/lib/data";
-import { motion } from "framer-motion";
-import SectionHeading from "./Section_heading";
+import Section from "./Section";
 import Image from "next/image";
 import { useScrollIntoView } from "@/lib/hooks";
 import { AiFillLinkedin } from "react-icons/ai";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
 
-type TestimonialCardProps = {
-  index: number;
+type TestimonialColumnProps = {
   rec: TestimonialData;
 };
 
-const TestimonialCard = ({ index, rec }: TestimonialCardProps) => {
+const TestimonialColumn = ({ rec }: TestimonialColumnProps) => {
   return (
-    <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{
-        rotate: 1.5,
-        y: -6,
-        scale: 1.02,
-      }}
-      transition={{ duration: 0.4, delay: index * 0.15 }}
-      viewport={{ once: true }}
-      className={`
-   flex flex-col rounded-3xl py-8 px-6 bg-slate-100/50
-  border border-gray-200 dark:border-gray-800
-  bg-white/80 dark:bg-white/5 backdrop-blur-xl
-  transition-all duration-300
- ${index == 0 ? "min-h-[700px]" : "min-h-[440px]"}
-  sm:h-[520px] 
-    sm:min-h-[520px] 
-  ${index == 0 ? "md:col-span-3" : "md:col-span-2 "}
-`}
-    >
-      <p className=" text-7xl h-12 sm:text-8xl sm:h-16 font-serif text-indigo-500 dark:text-indigo-300 pointer-events-none select-none">
-        “
-      </p>
+    <StaggerItem className="px-0 md:px-10 py-10 md:py-0 md:first:pl-0 md:last:pr-0 flex flex-col">
+      <p className="text-sm leading-relaxed text-muted mb-8">{rec.quote}</p>
 
-      <p className="text-sm leading-relaxed  text-zinc-700 dark:text-white/70">
-        {rec.quote}
-      </p>
-
-      <div className=" mt-auto  flex flex-row items-center justify-between">
-        <div className="flex flex-row gap-2">
-          <div className="relative  border   w-10 h-10 rounded-full overflow-hidden border border-zinc-300 dark:border-zinc-600">
-            <Image
-              src={rec.image}
-              alt={rec.name}
-              fill
-              className="object-cover border border-white/50"
-            />
+      <div className="mt-auto flex items-center justify-between gap-3">
+        <div className="flex items-center gap-3">
+          <div className="relative w-10 h-10 shrink-0 overflow-hidden">
+            <Image src={rec.image} alt={rec.name} fill className="object-cover" />
           </div>
-          <div className="flex flex-col">
-            <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
-              {rec.name}
+          <div>
+            <p className="text-sm font-medium text-ink">{rec.name}</p>
+            <p className="font-ss-mono text-xs uppercase tracking-widest text-muted">
+              {rec.role} · {rec.company}
             </p>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              {rec.role} @ <strong>{rec.company}</strong>
-            </p>
-
-            {/* <p className="text-xs text-zinc-500">
-                        {rec.relationship}
-                      </p> */}
           </div>
         </div>
 
-        <a href="https://www.linkedin.com/in/a-hamid-younis-17168086/" target="_blank" rel="noopener noreferrer">
-          <AiFillLinkedin className="text-gray-300 dark:text-white/30 w-6 h-6" />
+        <a
+          href="https://www.linkedin.com/in/a-hamid-younis-17168086/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <AiFillLinkedin className="text-muted w-5 h-5" />
         </a>
       </div>
-
-      <div></div>
-    </motion.div>
+    </StaggerItem>
   );
 };
 
 export const Testimonials = () => {
   const { ref } = useScrollIntoView("Testimonials", 0.3);
-  return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.175 }}
-      viewport={{ once: true }}
-      id="testimonials"
-      className=" scroll-mt-28  px-0 sm:px-0 max-w-[90%] mx-auto"
-    >
-      <SectionHeading>What Colleagues Say</SectionHeading>
 
-      <div
-        className="grid gap-6 mt-6 grid-cols-1 md:grid-cols-7"
-        style={{ perspective: "1200px" }}
-      >
+  return (
+    <Section ref={ref} id="testimonials" index="04" title="What Colleagues Say">
+      <Stagger className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-hairline">
         {TestimonialsData.slice(0, 3)
           .reverse()
           .map((rec, index) => (
-            <TestimonialCard key={index} rec={rec} index={index} />
+            <TestimonialColumn key={index} rec={rec} />
           ))}
-      </div>
-    </motion.section>
+      </Stagger>
+    </Section>
   );
 };

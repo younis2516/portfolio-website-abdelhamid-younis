@@ -6,7 +6,6 @@ import Intro from "@/components/Intro";
 import OnboardingModal from "@/components/OnboardingModal";
 import Projects from "@/components/Projects";
 import ResetButton from "@/components/ResetButton";
-import SystemPositioning from "@/components/SystemPositioning";
 import { Testimonials } from "@/components/Testimonials";
 import AIWorkflowSection from "@/components/sections/AIWorkflowSection";
 import PageActionToast from "@/components/PageActionToast";
@@ -17,14 +16,13 @@ export default function HomeClient() {
   const { status } = usePortfolio();
 
   return (
-    <>
+    <div className="ss-page">
       <AnimatePresence>
         {status === "idle" && <OnboardingModal key="onboarding" />}
       </AnimatePresence>
 
-      <main className="flex flex-col items-center px-4">
+      <main className="flex flex-col items-center">
         <Intro />
-        <SystemPositioning />
         <Projects />
         <AIWorkflowSection />
         <Experience />
@@ -34,6 +32,6 @@ export default function HomeClient() {
 
       <ResetButton />
       <PageActionToast />
-    </>
+    </div>
   );
 }

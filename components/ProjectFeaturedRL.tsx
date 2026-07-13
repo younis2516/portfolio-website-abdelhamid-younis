@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { projectsData } from "@/lib/data";
 import Link from "next/link";
 import Image from "next/image";
-import { RxArrowTopRight } from "react-icons/rx";
-import { FiExternalLink, FiLock } from "react-icons/fi";
+import { FiLock } from "react-icons/fi";
+import TracedLine from "@/components/motion/TracedLine";
 
 type ProjectProps2 = (typeof projectsData)[number];
 
@@ -17,29 +17,22 @@ type FeaturedProjectProps = ProjectProps2 & {
   isHighlighted?: boolean;
 };
 
+const EASE = [0.22, 1, 0.36, 1] as const;
+
 export default function ProjectFeaturedRL({
   id,
   title,
   description,
-  tags,
   imageUrl,
   project_type,
   year,
+  traced,
+  wash,
   order = "imageRight",
   showImage = true,
   variant = "default",
   isHighlighted = false,
 }: FeaturedProjectProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["0 1", "1.2 1"],
-  });
-
-  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.96, 1]);
-  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-
   /* =====================================================
      NAVIGATION
   ===================================================== */
@@ -72,154 +65,137 @@ export default function ProjectFeaturedRL({
 
   const href = `/projects/${titleToSlugMap[String(title)] || fallbackSlug}`;
 
-  const Wrapper = ({ children }: { children: React.ReactNode }) => (
-    <Link href={href} className="block h-full">
-      {children}
-    </Link>
-  );
-
   const CTA_LABEL = project_type?.includes("Web Dev")
     ? "View project"
     : "View case study";
 
-  const isImageLeft = order === "imageLeft";
-
-  /* =====================================================
-     VARIANT CONFIG
-  ===================================================== */
-
   const isSmall = variant === "small";
-
-  const gridCols = isSmall
-    ? "grid-cols-1"
-    : showImage
-      ? "grid-cols-1 lg:grid-cols-2"
-      : "grid-cols-1";
-
-  const imageOrder = isImageLeft ? "order-1 lg:order-1" : "order-1 lg:order-2";
-
-  const contentOrder = isImageLeft
-    ? "order-2 lg:order-2"
-    : "order-2 lg:order-1";
+  const highlightClass = isHighlighted
+    ? "border-l-2 border-accent pl-6 -ml-6"
+    : "";
 
   /* =====================================================
-     COMPONENT
+     LEDGER ROW (no image — secondary / hidden projects)
   ===================================================== */
+
+  if (isSmall || !showImage) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.97 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: EASE }}
+      >
+        <Link
+          href={href}
+          id={id ? `project-${id}` : undefined}
+          className={`group block py-8 border-b border-hairline ${highlightClass}`}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-3">
+            <div className="max-w-xl">
+              <p className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-2">
+                {year} — {project_type?.[0]}
+              </p>
+              <h3 className="font-display text-xl sm:text-2xl text-ink mb-2">
+                {title}
+              </h3>
+              <p className="text-sm text-muted leading-relaxed">{description}</p>
+            </div>
+            <span className="font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 group-hover:decoration-accent whitespace-nowrap shrink-0">
+              {CTA_LABEL} →
+            </span>
+          </div>
+        </Link>
+      </motion.div>
+    );
+  }
+
+  /* =====================================================
+     EDITORIAL ROW
+  ===================================================== */
+
+  const isImageLeft = order === "imageLeft";
 
   return (
     <motion.div
-      ref={ref}
       id={id ? `project-${id}` : undefined}
-      style={{ scale: scaleProgress, opacity: opacityProgress }}
-      className="mb-8 h-full group"
+      initial={{ opacity: 0, y: 24, scale: 0.94 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.7, ease: EASE }}
+      className={`py-12 sm:py-16 ${highlightClass}`}
     >
-      <Wrapper>
-        <section className={`relative h-full overflow-hidden rounded-3xl border transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer sm:max-h-[38rem] bg-white dark:bg-slate-50/5 ${isHighlighted ? "border-blue-500 dark:border-blue-400 ring-2 ring-blue-500/40 dark:ring-blue-400/40 scale-[1.01]" : "border-black/10 dark:border-white/10"}`}>
-          {/* Floating arrow for SMALL variant */}
-          {isSmall && (
-            <div
-              className={`absolute top-6 right-6 sm:top-6 sm-right-6 w-10 h-10 sm:w-10 sm:h-10 rounded-full bg-black text-white flex items-center justify-center`}
-            >
-              <RxArrowTopRight />
-            </div>
-          )}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+        <div className={isImageLeft ? "lg:order-1" : "lg:order-2"}>
+          <Link
+            href={href}
+            className="project-media block p-6 sm:p-10"
+            style={{
+              background: wash
+                ? `radial-gradient(120% 120% at 50% 20%, ${wash} 0%, transparent 70%)`
+                : "var(--color-paper)",
+            }}
+          >
+            <Image
+              src={imageUrl}
+              alt={title}
+              className="h-auto w-full object-contain"
+              quality={95}
+            />
+          </Link>
+        </div>
 
-          {/* Password-protected badge */}
-          {id === "ai-pos-dashboard" && (
-            <div className="absolute top-4 right-4 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/80 dark:bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-medium">
-              <FiLock className="w-3 h-3" />
-              Password protected
-            </div>
-          )}
-
-          <div className={`grid h-full ${gridCols}`}>
-            {/* IMAGE AREA */}
-            {showImage && (
-              <div
-                className={`
-                  ${imageOrder}
-                  ${isSmall ? "order-last" : ""}
-                  h-full
-                   ${isSmall ? "" : "bg-slate-50 dark:bg-white/10"}
-                  flex items-center justify-center
-                  ${isSmall ? "mt-[-40px]" : ""}
-                  p-10
-                `}
-              >
-                <Image
-                  src={imageUrl}
-                  alt={title}
-                  className="object-contain transition-transform duration-500 group-hover:scale-[1.15]"
-                  quality={95}
-                />
-              </div>
+        <div className={isImageLeft ? "lg:order-2" : "lg:order-1"}>
+          <p className="font-ss-mono text-xs uppercase tracking-widest text-muted mb-3 flex flex-wrap items-center gap-3">
+            <span>
+              {year} — {project_type?.[0]}
+            </span>
+            {id === "ai-pos-dashboard" && (
+              <span className="inline-flex items-center gap-1.5 border border-hairline px-2 py-1 normal-case tracking-normal">
+                <FiLock className="w-3 h-3" /> Password protected
+              </span>
             )}
+          </p>
 
-            {/* CONTENT AREA */}
-            <div
-              className={`${contentOrder} flex flex-col ${isSmall ? "p-8 lg:p-8" : "p-8 lg:p-12"}   h-full`}
+          <h3 className="font-display text-2xl sm:text-3xl text-ink mb-4">
+            <Link href={href}>{title}</Link>
+          </h3>
+
+          <p className="text-sm sm:text-base text-muted leading-relaxed mb-6">
+            {description}
+          </p>
+
+          {isLehrApp && (
+            <a
+              href="https://lehr.app"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-block mb-6 font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent"
             >
-              <p className="text-sm text-gray-500 dark:text-white/60 mb-3">
-                {year} — {project_type?.[0]}
-              </p>
+              Visit lehr.app ↗
+            </a>
+          )}
 
-              <h3
-                className={`text-2xl ${isSmall ? "text-xl lg:text-2xl" : "text-2xl lg:text-3xl"} font-semibold mb-4`}
-              >
-                {title}
-              </h3>
-
-              <p className="text-gray-700 dark:text-white/70 mb-6">
-                {description}
-              </p>
-
-              {isLehrApp && (
-                <div
-                  className={`dark:border-white/10  underline text-blue-500 dark:text-blue-300 mt-[-16px] mb-6 flex flex-row gap-2 items-center`}
-                >
-                  <a
-                    href="https://lehr.app"
-                    target="_blank"
-                    className="text-nowrap"
-                  >
-                    Visit lehr.app
-                  </a>
-                  <a
-                    href="https://lehr.app"
-                    target="_blank"
-                    className="text-nowrap"
-                  >
-                    <FiExternalLink />
-                  </a>
-                </div>
-              )}
-
-              {!isSmall && (
-                <div className="flex flex-wrap gap-3 mb-8">
-                  {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-4 py-2 text-sm border border-gray-200 dark:border-gray-200/20 rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {/* CTA */}
-              {!isSmall && (
-                <div className="mt-auto">
-                  <span className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-black text-white hover:scale-105 transition">
-                    {CTA_LABEL}
-                    <RxArrowTopRight />
-                  </span>
-                </div>
-              )}
+          {traced && traced.length > 0 && (
+            <div className="space-y-2 mb-6">
+              {traced.map((t) => (
+                <TracedLine
+                  key={t.result}
+                  decision={t.decision}
+                  result={t.result}
+                />
+              ))}
             </div>
-          </div>
-        </section>
-      </Wrapper>
+          )}
+
+          <Link
+            href={href}
+            className="font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent"
+          >
+            {CTA_LABEL} →
+          </Link>
+        </div>
+      </div>
     </motion.div>
   );
 }

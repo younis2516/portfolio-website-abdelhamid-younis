@@ -1,7 +1,7 @@
 import ConditionalHeader from "@/components/ConditionalHeader";
 import ConditionalBackground from "@/components/ConditionalBackground";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Fraunces, Geist, Geist_Mono } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active_section_context";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/Footer";
@@ -16,6 +16,17 @@ import ChatWidget from "@/components/ChatWidget";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Soft Structuralism design system — used only on the landing page (`.ss-page`),
+// registered here as CSS variables since next/font requires a server component.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  axes: ["opsz", "SOFT", "WONK"],
+});
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
+const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+
 export const metadata = {
   title: "Younis Abdelhamid — Senior Product Designer & UX Engineer",
   description: "Senior Product Designer with 7+ years shipping enterprise UX at scale — self-checkout systems, AI products, and design systems for REWE Group and startups. Based in Vienna, Austria.",
@@ -27,9 +38,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="!scroll-smooth">
+    <html
+      lang="en"
+      className={`!scroll-smooth ${fraunces.variable} ${geistSans.variable} ${geistMono.variable}`}
+    >
       <body
-        className={`${inter.className} bg-white text-gray-950 relative pt-28 sm:pt-20 dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90 pl-0 pr-0`}
+        className={`${inter.className} bg-white text-gray-950 relative dark:bg-gray-900 dark:text-gray-50 dark:text-opacity-90 pl-0 pr-0`}
       >
         <ConditionalBackground />
         <ThemeProvider>

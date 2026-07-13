@@ -42,7 +42,16 @@ export interface Project {
   year: string;
   readingTime: number;
   bgColor?: string;
+  traced?: { decision: string; result: string }[];
+  wash?: string;
 }
+
+export const careerStats = [
+  { value: "7+", label: "Years experience" },
+  { value: "20M+", label: "Customers reached" },
+  { value: "60+", label: "Stores deployed" },
+  { value: "2", label: "Design systems built" },
+];
 
 export const links = [
   {
@@ -186,6 +195,21 @@ export const projectsData: Project[] = [
     year: "2026",
     readingTime: 10,
     bgColor: "#FFD300",
+    wash: "#FFE04D",
+    traced: [
+      {
+        decision: "Redesigned search & product-lookup flow",
+        result: "−18% failed searches",
+      },
+      {
+        decision: "Simplified exception handling at checkout",
+        result: "−14% employee interventions",
+      },
+      {
+        decision: "Nationwide rollout across 600+ stores",
+        result: "8/10 CSAT",
+      },
+    ],
   },
   {
     id: "billa-terminal",
@@ -211,6 +235,13 @@ export const projectsData: Project[] = [
     imageUrl: pro_img_8,
     readingTime: 0,
     bgColor: "#474738",
+    wash: "#B5B4E4",
+    traced: [
+      {
+        decision: "Streaming AI responses over websockets",
+        result: "−1–2 min perceived latency",
+      },
+    ],
   },
   {
     id: "ai-pos-dashboard",
@@ -223,6 +254,17 @@ export const projectsData: Project[] = [
     year: "2026",
     readingTime: 8,
     bgColor: "#1E3A5F",
+    wash: "#7FA8E6",
+    traced: [
+      {
+        decision: "Figma Make → Claude → Figma Make pipeline",
+        result: "4 weeks → 10 days",
+      },
+      {
+        decision: "Consolidated inline filters into smart quick filters",
+        result: "40 → 5–6 filters",
+      },
+    ],
   },
   {
     id: "tubics-video-optimization-tool",
@@ -235,6 +277,21 @@ export const projectsData: Project[] = [
     year: "2021",
     readingTime: 12,
     bgColor: "#67B988",
+    wash: "#CAB3FF",
+    traced: [
+      {
+        decision: "Redesigned the video optimization workflow",
+        result: "+50% session time",
+      },
+      {
+        decision: "Streamlined multi-step completion flow",
+        result: "−34% completion time",
+      },
+      {
+        decision: "Iterated on feedback across releases",
+        result: "CSAT 4 → 8/10",
+      },
+    ],
   },
   {
     id: "tubics-design-system-documentation",
@@ -271,6 +328,13 @@ export const projectsData: Project[] = [
     year: "2019",
     readingTime: 4,
     bgColor: "#F3F4F6",
+    wash: "#E5A19A",
+    traced: [
+      {
+        decision: "Redesigned the job-posting flow end to end",
+        result: "+12% job creation",
+      },
+    ],
   },
 ];
 

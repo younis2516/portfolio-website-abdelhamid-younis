@@ -1,14 +1,29 @@
 "use client";
 import { useState } from "react";
-import SectionHeading from "./Section_heading";
 import { projectsData } from "@/lib/data";
 import { useScrollIntoView } from "@/lib/hooks";
 import ProjectFeaturedRL from "./ProjectFeaturedRL";
+import Section from "./Section";
 import { usePortfolio } from "@/context/PortfolioContext";
 import ProjectsSkeleton from "@/components/skeletons/ProjectsSkeleton";
 import { motion, AnimatePresence } from "framer-motion";
 
 const projectById = Object.fromEntries(projectsData.map((p) => [p.id, p]));
+
+// Default (non-personalised) ordering, per the "Soft Structuralism" brief:
+// REWE featured, then lehr.app / AI POS / Tubics video / Forasna as full
+// editorial rows, with the remaining two projects folded into the ledger.
+const DEFAULT_FEATURED_ID = "rewe-white-label-sco";
+const DEFAULT_EDITORIAL_IDS = [
+  "lehr-app",
+  "ai-pos-dashboard",
+  "tubics-video-optimization-tool",
+  "forasna-form",
+];
+const DEFAULT_LEDGER_IDS = [
+  "tubics-design-system-documentation",
+  "app-radar-ui-redesign",
+];
 
 function projectMatchesFilters(project: (typeof projectsData)[number], filters: string[]) {
   if (filters.length === 0) return true;
@@ -31,22 +46,39 @@ const Projects = () => {
     typeof window !== "undefined" && window.innerWidth < 640 ? 0.15 : 0.3;
   const { ref } = useScrollIntoView("Projects", threshold);
 
-  // ── LOADING ─────────────────────────────────────────────────────────────────
+  const TagFilterBanner = activeTagFilters.length > 0 && (
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -8 }}
+        transition={{ duration: 0.2 }}
+        className="flex items-center gap-3 mb-10 px-5 py-3 border border-hairline"
+      >
+        <span className="font-ss-mono text-xs uppercase tracking-widest text-muted">
+          Filtering by: <span className="text-ink">{activeTagFilters.join(", ")}</span>
+        </span>
+        <button
+          onClick={() => setActiveTagFilters([])}
+          className="ml-auto font-ss-mono text-xs uppercase tracking-widest text-accent underline decoration-accent/30 underline-offset-4 hover:decoration-accent"
+        >
+          Clear filter
+        </button>
+      </motion.div>
+    </AnimatePresence>
+  );
+
+  // ── LOADING ─────────────────────────────────────────────────────────────
   if (status === "loading") {
     return (
-      <section
-        ref={ref}
-        id="projects"
-        className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto"
-      >
+      <Section id="projects" index="01" title="Selected work">
         <ProjectsSkeleton />
-      </section>
+      </Section>
     );
   }
 
   // ── PERSONALISED LAYOUT ──────────────────────────────────────────────────
   if (status === "done" && personalisation) {
-    // Agentic order overrides personalisation order when set
     const baseOrder = agenticProjectOrder ?? personalisation.projectOrder;
     const visibleSet = new Set(personalisation.visibleProjects);
 
@@ -56,102 +88,62 @@ const Projects = () => {
 
     const hiddenProjects = projectsData.filter((p) => !visibleSet.has(p.id));
 
-    const [featured, second, ...rest] = orderedProjects;
+    const [featured, ...restVisible] = orderedProjects;
 
     return (
-      <section
+      <Section
         ref={ref}
         id="projects"
-        className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto"
+        index="01"
+        title="Selected work"
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
-        >
-          {/* Tag filter banner */}
-          <AnimatePresence>
-            {activeTagFilters.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-                className="flex items-center gap-3 mb-6 px-4 py-3 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800"
+        {TagFilterBanner}
+
+        {featured && (
+          <div
+            className={`transition-opacity duration-300 ${
+              !projectMatchesFilters(featured, activeTagFilters) ? "opacity-30" : ""
+            }`}
+          >
+            <ProjectFeaturedRL
+              {...featured}
+              order="imageLeft"
+              isHighlighted={highlightedProjectId === featured.id}
+            />
+          </div>
+        )}
+
+        {restVisible.map((project, i) => (
+          <div
+            key={project.id}
+            className={`transition-opacity duration-300 ${
+              !projectMatchesFilters(project, activeTagFilters) ? "opacity-30" : ""
+            }`}
+          >
+            <ProjectFeaturedRL
+              {...project}
+              order={i % 2 === 0 ? "imageRight" : "imageLeft"}
+              isHighlighted={highlightedProjectId === project.id}
+            />
+          </div>
+        ))}
+
+        {hiddenProjects.length > 0 && (
+          <div className="mt-4 border-t border-hairline pt-2">
+            {!showAll ? (
+              <button
+                onClick={() => setShowAll(true)}
+                className="font-ss-mono text-xs uppercase tracking-widest text-muted underline underline-offset-4 hover:text-ink transition-colors py-4"
               >
-                <span className="text-sm text-blue-700 dark:text-blue-300">
-                  Filtering by: <strong>{activeTagFilters.join(", ")}</strong>
-                </span>
-                <button
-                  onClick={() => setActiveTagFilters([])}
-                  className="ml-auto text-xs text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-200 underline underline-offset-2 transition-colors"
-                >
-                  Clear filter
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* Featured card */}
-          {featured && (
-            <div
-              className={`grid grid-cols-1 gap-6 mb-8 items-stretch sm:min-h-[40rem] transition-opacity duration-300 ${
-                !projectMatchesFilters(featured, activeTagFilters) ? "opacity-30" : ""
-              }`}
-            >
-              <ProjectFeaturedRL
-                {...featured}
-                order="imageLeft"
-                isHighlighted={highlightedProjectId === featured.id}
-              />
-            </div>
-          )}
-
-          {/* Second row: second + first of rest side-by-side */}
-          {(second || rest.length > 0) && (
-            <div className="grid grid-cols-3 gap-6 mb-20 items-stretch">
-              {second && (
-                <div
-                  className={`col-span-3 sm:col-span-2 transition-opacity duration-300 ${
-                    !projectMatchesFilters(second, activeTagFilters) ? "opacity-30" : ""
-                  }`}
-                >
-                  <ProjectFeaturedRL
-                    {...second}
-                    isHighlighted={highlightedProjectId === second.id}
-                  />
-                </div>
-              )}
-              {rest[0] && (
-                <div
-                  className={`grid col-span-3 sm:col-span-1 transition-opacity duration-300 ${
-                    !projectMatchesFilters(rest[0], activeTagFilters) ? "opacity-30" : ""
-                  }`}
-                >
-                  <div className="block sm:hidden">
-                    <ProjectFeaturedRL
-                      {...rest[0]}
-                      isHighlighted={highlightedProjectId === rest[0].id}
-                    />
-                  </div>
-                  <div className="hidden sm:block">
-                    <ProjectFeaturedRL
-                      {...rest[0]}
-                      variant="small"
-                      isHighlighted={highlightedProjectId === rest[0].id}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Remaining personalised projects */}
-          {rest.slice(1).length > 0 && (
-            <>
-              <SectionHeading>More Projects</SectionHeading>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 mb-8">
-                {rest.slice(1).map((project) => (
+                Show all projects ({hiddenProjects.length} more)
+              </button>
+            ) : (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                {hiddenProjects.map((project) => (
                   <div
                     key={project.id}
                     className={`transition-opacity duration-300 ${
@@ -166,130 +158,53 @@ const Projects = () => {
                     />
                   </div>
                 ))}
-              </div>
-            </>
-          )}
-
-          {/* Show all hidden projects */}
-          {hiddenProjects.length > 0 && (
-            <div className="mt-2 text-center">
-              {!showAll ? (
-                <button
-                  onClick={() => setShowAll(true)}
-                  className="text-sm text-zinc-400 dark:text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 underline underline-offset-4 transition-colors"
-                >
-                  Show all projects ({hiddenProjects.length} more)
-                </button>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-                    {hiddenProjects.map((project) => (
-                      <div
-                        key={project.id}
-                        className={`transition-opacity duration-300 ${
-                          !projectMatchesFilters(project, activeTagFilters) ? "opacity-30" : ""
-                        }`}
-                      >
-                        <ProjectFeaturedRL
-                          {...project}
-                          variant="small"
-                          showImage={false}
-                          isHighlighted={highlightedProjectId === project.id}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </div>
-          )}
-        </motion.div>
-      </section>
+              </motion.div>
+            )}
+          </div>
+        )}
+      </Section>
     );
   }
 
-  // ── DEFAULT LAYOUT (no personalisation) ─────────────────────────────────────
+  // ── DEFAULT LAYOUT (no personalisation) ─────────────────────────────────
+  const featured = projectById[DEFAULT_FEATURED_ID];
+  const editorialRows = DEFAULT_EDITORIAL_IDS.map((id) => projectById[id]).filter(Boolean);
+  const ledgerRows = DEFAULT_LEDGER_IDS.map((id) => projectById[id]).filter(Boolean);
+
   return (
-    <section
-      ref={ref}
-      id="projects"
-      className="scroll-mt-28 py-20 sm:py-16 max-w-[90%] mx-auto justify-center items-center"
-    >
-      {/* Tag filter banner for default layout */}
-      <AnimatePresence>
-        {activeTagFilters.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="flex items-center gap-3 mb-6 px-4 py-3 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800"
-          >
-            <span className="text-sm text-blue-700 dark:text-blue-300">
-              Filtering by: <strong>{activeTagFilters.join(", ")}</strong>
-            </span>
-            <button
-              onClick={() => setActiveTagFilters([])}
-              className="ml-auto text-xs text-blue-500 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-200 underline underline-offset-2 transition-colors"
-            >
-              Clear filter
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <Section ref={ref} id="projects" index="01" title="Selected work">
+      {TagFilterBanner}
 
       <div
-        className={`grid grid-cols-1 gap-6 mb-8 items-stretch sm:min-h-[40rem] transition-opacity duration-300 ${
-          !projectMatchesFilters(projectsData[0], activeTagFilters) ? "opacity-30" : ""
+        className={`transition-opacity duration-300 ${
+          !projectMatchesFilters(featured, activeTagFilters) ? "opacity-30" : ""
         }`}
       >
         <ProjectFeaturedRL
-          {...projectsData[0]}
+          {...featured}
           order="imageLeft"
-          isHighlighted={highlightedProjectId === projectsData[0].id}
+          isHighlighted={highlightedProjectId === featured.id}
         />
       </div>
-      <div className="grid grid-cols-3 gap-6 mb-20 items-stretch">
+
+      {editorialRows.map((project, i) => (
         <div
-          className={`col-span-3 sm:col-span-2 transition-opacity duration-300 ${
-            !projectMatchesFilters(projectsData[3], activeTagFilters) ? "opacity-30" : ""
+          key={project.id}
+          className={`transition-opacity duration-300 ${
+            !projectMatchesFilters(project, activeTagFilters) ? "opacity-30" : ""
           }`}
         >
           <ProjectFeaturedRL
-            {...projectsData[3]}
-            isHighlighted={highlightedProjectId === projectsData[3].id}
+            {...project}
+            order={i % 2 === 0 ? "imageRight" : "imageLeft"}
+            isHighlighted={highlightedProjectId === project.id}
           />
         </div>
-        <div
-          className={`grid col-span-3 sm:col-span-1 transition-opacity duration-300 ${
-            !projectMatchesFilters(projectsData[2], activeTagFilters) ? "opacity-30" : ""
-          }`}
-        >
-          <div className="block sm:hidden">
-            <ProjectFeaturedRL
-              {...projectsData[2]}
-              isHighlighted={highlightedProjectId === projectsData[2].id}
-            />
-          </div>
-          <div className="hidden sm:block">
-            <ProjectFeaturedRL
-              {...projectsData[2]}
-              variant="small"
-              isHighlighted={highlightedProjectId === projectsData[2].id}
-            />
-          </div>
-        </div>
-      </div>
+      ))}
 
-      <SectionHeading>Other Projects</SectionHeading>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8">
-        {projectsData
-          .filter((_, index) => index > 3 && index < 8)
-          .map((project) => (
+      {ledgerRows.length > 0 && (
+        <div className="mt-4 border-t border-hairline pt-2">
+          {ledgerRows.map((project) => (
             <div
               key={project.id}
               className={`transition-opacity duration-300 ${
@@ -304,8 +219,9 @@ const Projects = () => {
               />
             </div>
           ))}
-      </div>
-    </section>
+        </div>
+      )}
+    </Section>
   );
 };
 

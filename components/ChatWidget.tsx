@@ -167,7 +167,7 @@ function TypingIndicator() {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-500 animate-bounce"
+          className="w-1.5 h-1.5 rounded-full animate-bounce bg-paper/40"
           style={{ animationDelay: `${i * 0.15}s` }}
         />
       ))}
@@ -178,7 +178,7 @@ function TypingIndicator() {
 function UserBubble({ content }: { content: string }) {
   return (
     <div className="flex justify-end">
-      <div className="max-w-[85%] rounded-2xl rounded-br-sm px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap bg-blue-600 text-white">
+      <div className="max-w-[85%] rounded-2xl rounded-br-sm px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap bg-paper text-ink">
         {content}
       </div>
     </div>
@@ -197,10 +197,12 @@ function AssistantBubble({
     streaming
   );
 
+  const bubbleClass = "bg-paper/10 text-paper";
+
   if ((content === "" || suppressDisplay) && streaming) {
     return (
       <div className="flex justify-start">
-        <div className="bg-zinc-100 dark:bg-white/10 rounded-2xl rounded-bl-sm">
+        <div className={`rounded-2xl rounded-bl-sm ${bubbleClass}`}>
           <TypingIndicator />
         </div>
       </div>
@@ -214,7 +216,7 @@ function AssistantBubble({
           <ProjectCard key={id} projectId={id} />
         ))}
         {cleanText.trim() && (
-          <div className="bg-zinc-100 dark:bg-white/10 rounded-2xl rounded-bl-sm px-4 py-3">
+          <div className={`rounded-2xl rounded-bl-sm px-4 py-3 ${bubbleClass}`}>
             <ChatMarkdown content={cleanText} />
           </div>
         )}
@@ -437,7 +439,7 @@ export default function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
+    <div className="ss-page fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -446,30 +448,21 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="
-              w-[360px] max-w-[calc(100vw-2.5rem)]
-              h-[480px]
-              flex flex-col
-              rounded-3xl
-              border border-black/10 dark:border-white/10
-              bg-white dark:bg-zinc-900
-              shadow-2xl
-              overflow-hidden
-            "
+            className="w-[360px] max-w-[calc(100vw-2.5rem)] h-[480px] flex flex-col border border-accent bg-ink overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-black/[0.06] dark:border-white/[0.06]">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-paper/10">
               <div>
-                <p className="text-sm font-semibold text-zinc-900 dark:text-white">
+                <p className="text-sm font-ss-mono font-normal text-paper">
                   Ask AI about my work
                 </p>
-                <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-0.5">
+                <p className="text-xs mt-0.5 text-paper/50">
                   Powered by Claude
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors"
+                className="w-8 h-8 flex items-center justify-center transition-colors text-paper/50 hover:text-paper"
                 aria-label="Close"
               >
                 <svg
@@ -492,7 +485,7 @@ export default function ChatWidget() {
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 scroll-smooth">
               {displayMessages.length === 0 && (
                 <div className="space-y-3">
-                  <p className="text-xs text-center text-zinc-400 dark:text-zinc-500">
+                  <p className="text-xs text-center text-paper/50">
                     Hi! Ask me anything about Younis&apos;s work, projects, or
                     skills.
                   </p>
@@ -501,7 +494,7 @@ export default function ChatWidget() {
                       <button
                         key={q}
                         onClick={() => send(q)}
-                        className="text-left text-xs px-3 py-2 rounded-xl border border-black/10 dark:border-white/10 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-white/5 hover:border-black/20 dark:hover:border-white/20 transition-all"
+                        className="text-left text-xs px-3 py-2 border border-paper/15 text-paper/70 hover:border-accent hover:text-paper transition-colors"
                       >
                         {q}
                       </button>
@@ -528,7 +521,7 @@ export default function ChatWidget() {
             {/* Input */}
             <form
               onSubmit={handleSubmit}
-              className="px-4 pb-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.06] flex gap-2 items-end"
+              className="px-4 pb-4 pt-2 border-t border-paper/10 flex gap-2 items-end"
             >
               <textarea
                 ref={inputRef}
@@ -538,31 +531,13 @@ export default function ChatWidget() {
                 placeholder="Ask something..."
                 rows={1}
                 disabled={streaming}
-                className="
-                  flex-1 resize-none text-sm
-                  bg-zinc-100 dark:bg-white/10
-                  text-zinc-900 dark:text-white
-                  placeholder:text-zinc-400 dark:placeholder:text-zinc-500
-                  rounded-xl px-3 py-2.5
-                  outline-none focus:ring-2 focus:ring-blue-500/30
-                  max-h-28 overflow-y-auto
-                  disabled:opacity-50
-                  transition-all
-                "
+                className="flex-1 resize-none text-sm bg-paper/10 text-paper placeholder:text-paper/40 px-3 py-2.5 outline-none focus:ring-1 focus:ring-accent max-h-28 overflow-y-auto disabled:opacity-50 transition-all"
                 style={{ lineHeight: "1.5" }}
               />
               <button
                 type="submit"
                 disabled={!input.trim() || streaming}
-                className="
-                  w-9 h-9 flex-shrink-0
-                  flex items-center justify-center
-                  rounded-xl
-                  bg-blue-600 hover:bg-blue-700
-                  disabled:opacity-40 disabled:cursor-not-allowed
-                  text-white
-                  transition-colors
-                "
+                className="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-accent disabled:opacity-40 disabled:cursor-not-allowed text-paper transition-colors"
                 aria-label="Send"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -576,44 +551,18 @@ export default function ChatWidget() {
 
       {/* Toggle button */}
       <div className="relative">
-        {/* Pulsing outer glow — intensifies during nudge */}
         <motion.div
-          className="absolute -inset-[6px] rounded-[26px] z-0 blur-md"
-          style={{
-            background:
-              "linear-gradient(135deg, #6ee7e0, #a8d8d4, #f7e2c8, #e8a87c, #6ee7e0)",
-            backgroundSize: "300% 300%",
-          }}
+          className="absolute -inset-[1px] z-[1] bg-accent"
           animate={
             nudgeActive
-              ? {
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                  opacity: [0.75, 1, 0.75],
-                  scale: [1, 1.06, 1],
-                }
-              : {
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                  opacity: [0.45, 0.7, 0.45],
-                  scale: 1,
-                }
+              ? { opacity: [0.6, 1, 0.6] }
+              : { opacity: [0.35, 0.6, 0.35] }
           }
           transition={
             nudgeActive
               ? { duration: 1.4, repeat: Infinity, ease: "easeInOut" }
               : { duration: 3.5, repeat: Infinity, ease: "easeInOut" }
           }
-        />
-
-        {/* Animated gradient border ring */}
-        <motion.div
-          className="absolute -inset-[2.5px] rounded-[20px] z-[1]"
-          style={{
-            background:
-              "linear-gradient(135deg, #6ee7e0, #a8d8d4, #f3efe5, #f7e2c8, #e8a87c, #6ee7e0)",
-            backgroundSize: "300% 300%",
-          }}
-          animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
         />
 
         <motion.button
@@ -629,33 +578,18 @@ export default function ChatWidget() {
               ? { duration: 1.4, repeat: Infinity, ease: "easeInOut" }
               : {}
           }
-          className="
-            relative z-10
-            flex items-center gap-2.5
-            px-5 py-3
-            rounded-[18px]
-            bg-zinc-900
-            text-white
-            text-sm font-semibold
-            min-w-[228px]
-          "
+          className="relative z-10 flex items-center gap-2.5 px-5 py-3 bg-ink text-paper text-sm font-ss-mono uppercase tracking-widest min-w-[228px]"
         >
           {/* Animated sparkle icon */}
           <motion.svg
             viewBox="0 0 24 24"
             fill="none"
-            stroke="url(#sparkle-grad)"
+            stroke="#B45309"
             strokeWidth={1.8}
             className="w-5 h-5 flex-shrink-0"
             animate={{ rotate: [0, 18, -18, 0], scale: [1, 1.2, 1] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            <defs>
-              <linearGradient id="sparkle-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#6ee7e0" />
-                <stop offset="100%" stopColor="#f7b46e" />
-              </linearGradient>
-            </defs>
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -669,11 +603,7 @@ export default function ChatWidget() {
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="text-transparent bg-clip-text"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(90deg, #6ee7e0, #f7b46e)",
-                }}
+                className="text-accent"
               >
                 {NUDGE_LABEL}
               </motion.span>
@@ -681,7 +611,7 @@ export default function ChatWidget() {
               <>
                 <span>{typedText}</span>
                 <motion.span
-                  className="inline-block w-[1.5px] h-[1em] bg-white align-[-1px] ml-[1px]"
+                  className="inline-block w-[1.5px] h-[1em] align-[-1px] ml-[1px] bg-paper"
                   animate={{ opacity: [1, 0] }}
                   transition={{
                     duration: 0.6,
