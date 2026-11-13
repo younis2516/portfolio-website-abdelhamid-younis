@@ -131,9 +131,9 @@ function Intro() {
                   transition={{ duration: 0.7, delay: 0.2, ease: EASE }}
                   className="text-base sm:text-lg leading-relaxed text-muted max-w-2xl mb-8"
                 >
-                  I started as an engineer, which means I design for systems, not just screens.
-                  Seven years, twenty million customers, sixty stores, two design systems — from
-                  zero-to-one AI products to enterprise UX that ships across 500+ locations.
+                  {status === "done" && personalisation?.aboutText
+                    ? personalisation.aboutText
+                    : "I started as an engineer, which means I design for systems, not just screens. Seven years, twenty million customers, sixty stores, two design systems — from zero-to-one AI products to enterprise UX that ships across 500+ locations."}
                 </motion.p>
 
                 <motion.div

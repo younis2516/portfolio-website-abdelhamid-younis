@@ -15,6 +15,9 @@ const VALID_SECTION_IDS = new Set([
   "ai-stack",
 ]);
 
+// Valid section IDs on the home page
+const VALID_HOME_SECTION_IDS = new Set(["home", "projects", "experience", "contact"]);
+
 // Valid CV focus values
 const VALID_FOCUS = new Set([
   "enterprise",
@@ -33,6 +36,7 @@ export type PageAction =
   | { type: "NUDGE_CONTACT"; message: string }
   | { type: "RESET_PAGE" }
   | { type: "NAVIGATE_TO_PROJECT"; projectId: string; sectionId?: string }
+  | { type: "NAVIGATE_HOME"; section?: string }
   | { type: "HIGHLIGHT_SECTION"; sectionId: string }
   | { type: "GENERATE_CV"; focus: "enterprise" | "startup" | "engineering" | "design" | "default" };
 
@@ -60,6 +64,12 @@ export function executePageAction(action: PageAction, ctx: ActionContext) {
 
   switch (action.type) {
     case "SCROLL_TO": {
+      // Home sections don't exist on project pages — navigate home first
+      if (window.location.pathname !== "/") {
+        const section = action.section.toLowerCase();
+        ctx.router.push(VALID_HOME_SECTION_IDS.has(section) && section !== "home" ? `/#${section}` : "/");
+        break;
+      }
       scrollTo(action.section);
       toast(`Scrolled to ${action.section}`);
       break;
@@ -111,8 +121,17 @@ export function executePageAction(action: PageAction, ctx: ActionContext) {
       const path = sectionId
         ? `/projects/${projectId}?highlight=${encodeURIComponent(sectionId)}`
         : `/projects/${projectId}`;
+      // The route-change toast in usePageTracking announces the destination
       ctx.router.push(path);
-      toast(`Opening ${projectId.replace(/-/g, " ")}`);
+      break;
+    }
+    case "NAVIGATE_HOME": {
+      const section = action.section?.toLowerCase();
+      if (section !== undefined && !VALID_HOME_SECTION_IDS.has(section)) {
+        console.warn(`[pageActions] NAVIGATE_HOME: unknown section "${action.section}"`);
+        break;
+      }
+      ctx.router.push(section && section !== "home" ? `/#${section}` : "/");
       break;
     }
     case "HIGHLIGHT_SECTION": {

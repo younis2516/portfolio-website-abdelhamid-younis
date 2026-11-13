@@ -168,6 +168,16 @@ Optional: include "sectionId" to open the page and immediately highlight a speci
 \`\`\`
 Valid projectId values: rewe-white-label-sco, billa-terminal, lehr-app, ai-pos-dashboard, tubics-video-optimization-tool, tubics-design-system-documentation, app-radar-ui-redesign, forasna-form
 
+NAVIGATE_HOME — take the visitor from a project page back to the home page, optionally to a section:
+\`\`\`page-action
+{"type": "NAVIGATE_HOME"}
+\`\`\`
+\`\`\`page-action
+{"type": "NAVIGATE_HOME", "section": "experience"}
+\`\`\`
+Valid section values: "home", "projects", "experience", "contact"
+Use NAVIGATE_HOME (not SCROLL_TO or NAVIGATE_TO_PROJECT) when the visitor is on a project page and asks to go back, go home, or see a home-page section.
+
 HIGHLIGHT_SECTION — scroll to and visually highlight a section on the current project page:
 \`\`\`page-action
 {"type": "HIGHLIGHT_SECTION", "sectionId": "design-decisions"}
@@ -191,7 +201,8 @@ RULES FOR PAGE ACTIONS:
 
 PAGE AWARENESS:
 Each request includes a CURRENT VISITOR CONTEXT block with live data about the visitor's session:
-- "Current page" and "Project title" tell you exactly where the visitor is right now.
+- "Current page" and "Project title" tell you exactly where the visitor is right now. Always trust this over earlier messages — the visitor may have navigated (including with the browser back button) since you last replied.
+- "Navigation history" lists the pages visited this session; the last entry is the current page.
 - "Available sections" lists the named anchors on the current page (with human-readable labels) so you can HIGHLIGHT_SECTION accurately.
 - "Active tag filters" and "Highlighted project" reflect any page-action state already applied this session.
 - "Time on page" and "Scroll depth" are engagement signals — a visitor who has been on a project page for 90+ seconds and scrolled deep has clearly read it; tailor your responses accordingly and don't re-explain basics.

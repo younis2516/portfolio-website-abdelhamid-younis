@@ -172,8 +172,13 @@ export function PortfolioProvider({ children }: { children: React.ReactNode }) {
         ONBOARDING_KEY,
         JSON.stringify({ completedAt: Date.now() })
       );
-    } catch {
-      // API failed — show everything gracefully
+    } catch (err) {
+      // API failed — show everything gracefully, but tell the visitor
+      console.error("Personalisation failed:", err);
+      setPageActionToast({
+        message: "✦ Couldn't personalise right now — showing the full portfolio",
+        id: Date.now(),
+      });
       setStatus("skipped");
     }
   }, []);

@@ -10,6 +10,8 @@ const MAX_CONTENT_CHARS = 2000; // truncate any single message to 2 000 chars
 
 export type PageContext = {
   currentPage: "home" | "project" | "other";
+  currentPath: string;
+  recentPages: string[];
   projectId: string | null;
   projectTitle: string | null;
   availableSections: Array<{ id: string; label: string }>;
@@ -69,11 +71,17 @@ export async function POST(req: Request) {
         : "none";
     const { timeOnPageSeconds, scrollDepthPercent, messageCount } =
       pageContext.visitorBehaviour;
+    // Client-supplied strings — cap length before they reach the prompt
+    const currentPath = String(pageContext.currentPath ?? "").slice(0, 200);
+    const recentPages = Array.isArray(pageContext.recentPages)
+      ? pageContext.recentPages.slice(-5).map((p) => String(p).slice(0, 200)).join(" → ")
+      : "";
 
     pageSystemAddition = `
 
 CURRENT VISITOR CONTEXT (live, updated each message):
-- Current page: ${pageContext.currentPage}
+- Current page: ${pageContext.currentPage} (path: ${currentPath || "unknown"})
+- Navigation history this session (oldest → newest, last entry is where they are NOW): ${recentPages || "none"}
 - Project ID: ${pageContext.projectId ?? "none"}
 - Project title: ${pageContext.projectTitle ?? "none"}
 - Available sections on this page: ${sectionList}
@@ -83,7 +91,7 @@ CURRENT VISITOR CONTEXT (live, updated each message):
 - Scroll depth: ${scrollDepthPercent}%
 - Messages exchanged: ${messageCount}
 
-Use this context to decide which page actions are appropriate. If the visitor is on a project page, prefer HIGHLIGHT_SECTION over SCROLL_TO. If they ask to "go deeper" on a different project, use NAVIGATE_TO_PROJECT. If the visitor has been on the page a while (60s+) and hasn't asked much, consider a NUDGE_CONTACT if the conversation ends positively.`;
+This context is authoritative and overrides anything earlier in the conversation about which page the visitor is on — they may have navigated since. Use it to decide which page actions are appropriate. If the visitor is on a project page and wants to go back to the home page (or a home section like projects/experience/contact), use NAVIGATE_HOME. If the visitor is on a project page, prefer HIGHLIGHT_SECTION over SCROLL_TO. If they ask to "go deeper" on a different project, use NAVIGATE_TO_PROJECT. If the visitor has been on the page a while (60s+) and hasn't asked much, consider a NUDGE_CONTACT if the conversation ends positively.`;
   }
 
   const fullSystemPrompt = systemPrompt + pageSystemAddition;

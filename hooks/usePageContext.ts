@@ -12,7 +12,7 @@ export function usePageContext(): PageContext {
   const pathname = usePathname();
   const { sections } = usePageSections();
   const { activeTagFilters, highlightedProjectId } = usePortfolio();
-  const { messages } = useChat();
+  const { messages, pageHistory } = useChat();
   const [timeOnPage, setTimeOnPage] = useState(0);
   const [scrollDepth, setScrollDepth] = useState(0);
 
@@ -53,6 +53,8 @@ export function usePageContext(): PageContext {
 
   return {
     currentPage: isProject ? "project" : pathname === "/" ? "home" : "other",
+    currentPath: pathname,
+    recentPages: pageHistory.slice(-5).map((v) => v.title),
     projectId: projectId ?? null,
     projectTitle: project?.title ?? null,
     availableSections: sections.map((s) => ({ id: s.id, label: s.label })),

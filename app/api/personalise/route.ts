@@ -98,7 +98,7 @@ function buildPrompt(role: string, companyTypes: string[], companySize: string):
 VISITOR CONTEXT:
 - Role: ${role}
 - Company Type: ${companyTypes.join(", ")}
-- Company Size: ${companySize}
+- Company Size: ${companySize || "Not specified — infer the likely stage from the company type (e.g. Startup / Scale-up → small, Enterprise → large)"}
 
 AVAILABLE PROJECTS:
 ${PROJECTS.map((p) => `- ${p.id}: "${p.title}" [${p.tags.join(", ")}] — ${p.description}`).join("\n")}
@@ -171,7 +171,8 @@ export async function POST(req: Request) {
     return new Response("Invalid request body", { status: 400 });
   }
 
-  if (!role || !companySize) {
+  // companySize is optional — the onboarding wizard no longer collects it
+  if (!role) {
     return new Response("Missing required fields", { status: 400 });
   }
 

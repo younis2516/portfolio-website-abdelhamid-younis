@@ -167,7 +167,7 @@ function TypingIndicator() {
       {[0, 1, 2].map((i) => (
         <span
           key={i}
-          className="w-1.5 h-1.5 rounded-full animate-bounce bg-paper/40"
+          className="w-1.5 h-1.5 rounded-full animate-bounce bg-paper/60"
           style={{ animationDelay: `${i * 0.15}s` }}
         />
       ))}
@@ -311,7 +311,7 @@ export default function ChatWidget() {
     return () => clearTimeout(timer);
   }, [pathname]);
 
-  const typedText = useTypingCycle(PHRASES, 55, 1800, 30, nudgeActive);
+  const typedText = useTypingCycle(PHRASES, 55, 1800, 30, nudgeActive || isOpen);
 
   useEffect(() => {
     if (isOpen && displayMessages.length === 0) {
@@ -456,13 +456,13 @@ export default function ChatWidget() {
                 <p className="text-sm font-ss-mono font-normal text-paper">
                   Ask AI about my work
                 </p>
-                <p className="text-xs mt-0.5 text-paper/50">
+                <p className="text-xs mt-0.5 text-paper/70">
                   Powered by Claude
                 </p>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-8 h-8 flex items-center justify-center transition-colors text-paper/50 hover:text-paper"
+                className="w-8 h-8 flex items-center justify-center transition-colors text-paper/70 hover:text-paper"
                 aria-label="Close"
               >
                 <svg
@@ -485,7 +485,7 @@ export default function ChatWidget() {
             <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 scroll-smooth">
               {displayMessages.length === 0 && (
                 <div className="space-y-3">
-                  <p className="text-xs text-center text-paper/50">
+                  <p className="text-xs text-center text-paper/75">
                     Hi! Ask me anything about Younis&apos;s work, projects, or
                     skills.
                   </p>
@@ -494,7 +494,7 @@ export default function ChatWidget() {
                       <button
                         key={q}
                         onClick={() => send(q)}
-                        className="text-left text-xs px-3 py-2 border border-paper/15 text-paper/70 hover:border-accent hover:text-paper transition-colors"
+                        className="text-left text-xs px-3 py-2 border border-paper/25 text-paper/90 hover:border-accent hover:text-paper transition-colors"
                       >
                         {q}
                       </button>
@@ -531,7 +531,7 @@ export default function ChatWidget() {
                 placeholder="Ask something..."
                 rows={1}
                 disabled={streaming}
-                className="flex-1 resize-none text-sm bg-paper/10 text-paper placeholder:text-paper/40 px-3 py-2.5 outline-none focus:ring-1 focus:ring-accent max-h-28 overflow-y-auto disabled:opacity-50 transition-all"
+                className="flex-1 resize-none text-sm bg-paper/10 text-paper placeholder:text-paper/60 px-3 py-2.5 outline-none focus:ring-1 focus:ring-accent max-h-28 overflow-y-auto disabled:opacity-50 transition-all"
                 style={{ lineHeight: "1.5" }}
               />
               <button
@@ -607,6 +607,9 @@ export default function ChatWidget() {
               >
                 {NUDGE_LABEL}
               </motion.span>
+            ) : isOpen ? (
+              // Static label while the panel is open — no typewriter or caret
+              <span>{PHRASES[0]}</span>
             ) : (
               <>
                 <span>{typedText}</span>
